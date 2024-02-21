@@ -20,5 +20,19 @@ module.exports={
         connection.query(sql, [params.categorie, params.image, params.description, id], function(err, results) {
           callback(err, results);
         });
-      }
+      },
+      
+      deleteproduct:(id,callback)=>{
+        const sql='DELETE FROM categorie WHERE `id`=?';
+        connection.query(sql,[id],function(err,results){
+            callback(err,results)
+        })
+    },
+    getOne: function (categorie,callback) {
+        const sql=  'SELECT * FROM categorie WHERE `categorie`=?'
+        connection.query(sql,[categorie],function(error,results){
+          callback(error, results);
+        })
+  
+        }
 }

@@ -34,6 +34,28 @@ res.json(results)
             res.json(results)
           }
         });
-        }
-        
+        },
+        deleteCategorie:(req, res) => {
+            var id= req.params.id
+          
+            categorie.deleteproduct( id, function (err, results) {
+              if (err) {
+                res.status(500).send(err)
+              } else {
+                res.json(results)
+              }
+            });
+            },
+            getOnecategorie: function(req, res) {
+                var w=req.params.categorie
+                categorie.getOne(w,(err,results)=>{
+                    if(err)
+                        res.status(500).send(err)
+                    
+                
+                    else
+                        res.status(201).json(results)
+                    
+                })
+            }    
     }
