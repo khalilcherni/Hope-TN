@@ -10,6 +10,7 @@ app.use(express.json());
 
 // Use the routers correctly
 app.use('/api/categorie', categorieRoute);
+
 app.get('/api', (req, res) => {
   res.send('Hello from the server!');
 });
