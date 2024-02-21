@@ -5,7 +5,7 @@ const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root', 
     password: 'root',
-    database: '' 
+    database: 'charity' 
   });
 console.log("database is connected 👽");
 
