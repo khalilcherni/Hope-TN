@@ -5,6 +5,7 @@ const questionsRoute=require("./routes/questions")
 const donationRoute=require('./routes/donation.js')
 const schoolRoute= require ('./routes/schoolCourses.js')
 const eventsRoute=require ('./routes/events.js')
+const voluntarywork=require("./routes/voluntarywork.js")
 const app = express();
 const PORT = 4000;
 
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use('/api/categorie', categorieRoute);
 app.use("/api/question",questionsRoute)
 app.use ('/api',eventsRoute)
+app.use("/api/voluntary",voluntarywork)
 
 app.use('/api',donationRoute)
 app.use('/api',schoolRoute)
