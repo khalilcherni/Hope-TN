@@ -10,5 +10,30 @@ module.exports={
         res.json(results)
         }
         })
-            }
+            },
+            addevent:function(req,res){
+                var x=req.body
+                events.add(x,function(err,results){
+                    if(err){
+                        res.status(500).send(err)
+                       
+                       }
+                       else{
+                        res.json(results)
+                       }  
+                })
+            } ,
+            update:(req, res) => {
+                var x = req.body
+                var y = req.params.id
+              
+                events.updateevents(x, y, function (err, results) {
+                  if (err) {
+                    res.status(500).send(err)
+                  } else {
+                    res.json(results)
+                  }
+                });
+                }
+
 }
