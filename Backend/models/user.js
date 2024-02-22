@@ -54,4 +54,28 @@ const login = async (email, password, callback) => {
       }
     });
   };
-module.exports = { getAll,getUser,login };
+  const register = async (user, callback) => {
+    try {
+        const { firstName, lastName, email, birth, password } = user;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+        console.log("Attempting to register user:", user);
+
+        const connectionPromise = require('../Database/index');
+
+        await connectionPromise.promise().query(
+            'INSERT INTO `user` set firstName=?,lastName=?, email=?, birth=?, password=?',
+            [firstName, lastName, email, birth,password],(err)=>{
+                if(err){throw err;}
+                else {console.log("User registered successfully");
+        callback(null, 'Registration successful');}
+            }
+        );
+
+        
+    } catch (error) {
+        console.error(error);
+        callback(error, null);
+    }
+};
+module.exports = { getAll,getUser,login,register };
