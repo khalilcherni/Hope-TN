@@ -56,7 +56,7 @@ const addUser = async (req, res) => {
 const loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;
-        User.login(email, password, (err, result) => {
+        user.login(email, password, (err, result) => {
             if (err) {
                 res.status(401).json({ message: 'Invalid credentials' });
             } else {
