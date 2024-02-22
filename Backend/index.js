@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const categorieRoute=require('./routes/categorie')
 const questionsRoute=require("./routes/questions")
+const donationRoute=require('./routes/donation.js')
 const app = express();
 const PORT = 4000;
 
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use('/api/categorie', categorieRoute);
 app.use("/api/question",questionsRoute)
 
+app.use('/api',donationRoute)
 app.get('/api', (req, res) => {
   res.send('Hello from the server!');
 });
