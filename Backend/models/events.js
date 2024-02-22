@@ -25,5 +25,12 @@ module.exports={
           callback(error, results);
         })
   
-        }
+        },
+          
+        deletevents:(id,callback)=>{
+        const sql='DELETE FROM events WHERE `id`=?';
+        connection.query(sql,[id],function(err,results){
+            callback(err,results)
+        })
+    }
 }
