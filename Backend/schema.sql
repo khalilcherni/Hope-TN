@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS `charity`.`categorie` (
   `description` VARCHAR(1000) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 4
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -43,6 +44,7 @@ CREATE TABLE IF NOT EXISTS `charity`.`donation` (
   `state` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 3
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -62,6 +64,7 @@ CREATE TABLE IF NOT EXISTS `charity`.`events` (
   `registrationdeadline` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 3
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -159,11 +162,11 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `charity`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `email` VARCHAR(1000) NOT NULL,
-  `password` VARCHAR(1000) NOT NULL,
+  `firstName` VARCHAR(100) NOT NULL,
+  `lastName` VARCHAR(100) NOT NULL,
   `birth` VARCHAR(45) NOT NULL,
-  `first name` VARCHAR(45) NOT NULL,
-  `last name` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(1000) NOT NULL,
+  `password` VARCHAR(1000) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
