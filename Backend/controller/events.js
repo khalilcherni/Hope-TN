@@ -34,6 +34,18 @@ module.exports={
                     res.json(results)
                   }
                 });
-                }
+                },
+                getOneevents: function(req, res) {
+                    var w=req.params.name
+                    events.getOne(w,(err,results)=>{
+                        if(err)
+                            res.status(500).send(err)
+                        
+                    
+                        else
+                            res.status(201).json(results)
+                        
+                    })
+                }    
 
 }

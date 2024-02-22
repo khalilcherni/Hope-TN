@@ -18,5 +18,12 @@ module.exports={
         connection.query(sql, [params.name, params.description, params.image,params.location,params.type,params.startdate,params.enddate,params.registrationdeadline, id], function(err, results) {
           callback(err, results);
         });
-      }
+      },
+      getOne: function (name,callback) {
+        const sql=  'SELECT * FROM events WHERE `name`=?'
+        connection.query(sql,[name],function(error,results){
+          callback(error, results);
+        })
+  
+        }
 }
