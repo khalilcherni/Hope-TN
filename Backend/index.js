@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const categorieRoute=require('./routes/categorie')
+const questionsRoute=require("./routes/questions")
 const donationRoute=require('./routes/donation.js')
 const schoolRoute= require ('./routes/schoolCourses.js')
 const app = express();
@@ -12,6 +13,8 @@ app.use(express.json());
 
 // Use the routers correctly
 app.use('/api/categorie', categorieRoute);
+app.use("/api/question",questionsRoute)
+
 app.use('/api',donationRoute)
 app.use('/api',schoolRoute)
 app.get('/api', (req, res) => {
