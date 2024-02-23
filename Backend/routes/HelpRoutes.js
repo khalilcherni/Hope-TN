@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const helpController = require('../controllers/helpController');
+const helpController = require('../controller/help');
 
 router.post('/help', helpController.createHelp);
 router.get('/help', helpController.getAllHelp);

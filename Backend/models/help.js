@@ -1,6 +1,6 @@
 // models/helpModel.js
-const connection =require ('../database/index.js')
-const mysql = require('mysql');
+const connection =require ('../Database/index')
+// const mysql = require('mysql');
 
 
 const createHelp = (data, callback) => {

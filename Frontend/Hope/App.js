@@ -1,10 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import StartingPage from './component/StartingPage'; // Assuming StartingPage.js is located in the components directory
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>hello </Text>
+      <StartingPage />
       <StatusBar style="auto" />
     </View>
   );
@@ -16,6 +17,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    
   },
 });

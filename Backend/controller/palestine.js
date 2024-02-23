@@ -1,6 +1,6 @@
 // controllers/palestineController.js
 
-const Palestine = require('../models/palestineModel');
+const Palestine = require('../models/palastine');
 
 exports.createPalestine = (req, res) => {
   Palestine.createPalestine(req.body, (error, results, fields) => {
