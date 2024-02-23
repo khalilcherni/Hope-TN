@@ -134,13 +134,14 @@ const SignUp = () => {
       source={{ uri: 'https://cdn-icons-png.flaticon.com/512/270/270014.png' }}
       onPress={handleGoogleSignUp}
     />
-    <Text style={styles.text}>Your Text Here</Text>
-  </View>
+   
 </View>
-
+<View>  
+    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0085FF', textAlign: 'center',marginTop:-40 }}>Your Text Here</Text></View>
+  </View>
 
       
-        <Button title="Sign In" onPress={handleSignIn} />
+        {/* <Button title="Sign In" onPress={handleSignIn} /> */}
    
       </View>
     
@@ -152,6 +153,7 @@ const styles = StyleSheet.create({
       marginTop: 10,
       backgroundColor: '#D9D9D9',
       alignItems: 'center',
+      borderRadius: 30,
     },
     imageContainer: {
       flexDirection: 'row',
@@ -161,14 +163,9 @@ const styles = StyleSheet.create({
     image: {
       width: 50,
       height: 50,
-      marginRight: 110,
+      marginRight: 270,
     },
-    text: {
-      fontSize: 16,
-      fontWeight: 'bold',
-      alignItems:"center",
-      marginLeft:20,
-    },
+
   });
   
   
