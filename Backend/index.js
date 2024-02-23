@@ -18,7 +18,7 @@ app.use(express.json());
 app.use('/api/categorie', categorieRoute);
 app.use("/api/question",questionsRoute)
 app.use("/api/voluntary",questionsRoute)
-
+app.use("/api/people",peopleRoute)
 app.use('/api',donationRoute)
 app.use('/api',eventsRoute)
 app.use('/api',schoolRoute)
