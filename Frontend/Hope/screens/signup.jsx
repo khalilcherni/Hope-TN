@@ -143,7 +143,7 @@ const SignUp = () => {
   <View style={styles.imageContainer}>
     <Image
       style={styles.image}
-      source={{ uri: 'https://cdn-icons-png.flaticon.com/512/270/270014.png' }}
+      source={{ uri: 'https://cdn-icons-png.flaticon.com/128/5968/5968764.png' }}
       onPress={handleGoogleSignUp}
     />
    
@@ -152,10 +152,14 @@ const SignUp = () => {
     <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0085FF', textAlign: 'center',marginTop:-40 }}>sign up with facebook</Text></View>
   </View>
       
-        {/* <Button title="Sign In" onPress={handleSignIn} /> */}
+    
    
       </View>
-    
+      <TouchableOpacity onPress={handleSignIn}>
+      <Text style={{ color: 'black', marginTop:2,marginLeft:-100 }}>Have account?
+</Text>
+<Text style={{ color: 'black',  color: '#0085FF'}}> Sign In</Text>
+    </TouchableOpacity>
     </View>
   );
 };
