@@ -44,28 +44,28 @@ const SignIn = () => {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
       <View style={{ width: '80%', alignItems: 'center' }}>
-        <Text style={{ color: 'white', fontSize: 24, marginBottom: 20 }}>Sign In</Text>
+      <Text style={{ height: 26, fontSize: 20, fontWeight: 'bold', color: '#209FA6', marginBottom: 60, textAlign: 'center',width:101,marginLeft:10}}>HOPE TN</Text>
+      <Text style={{ height: 66, fontSize: 24, fontWeight: 'bold', color: 'black', marginBottom: 10, textAlign: 'center'}}>SIGN IN</Text>
         <TextInput
           placeholder="Email"
           value={email}
           onChangeText={setEmail}
-          style={{ width: '100%', height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 20, paddingHorizontal: 10, backgroundColor: 'white' }}
+          style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
         />
         <TextInput
           placeholder="Password"
           value={password}
           onChangeText={setPassword}
           secureTextEntry={true}
-          style={{ width: '100%', height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 20, paddingHorizontal: 10, backgroundColor: 'white' }}
+          style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
         />
         <TouchableOpacity
           onPress={handleSignIn}
-          style={{ width: '100%', backgroundColor: 'blue', paddingVertical: 10, borderRadius: 5, alignItems: 'center' }}
+          
         >
-          <Text style={{ color: 'white' }}>Sign In</Text>
+          <Text  style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}>Sign In</Text>
         </TouchableOpacity>
-        <Text style={{ color: 'white', marginTop: 20 }}>Don't have an account? <Text style={{ color: 'blue' }}>Sign Up</Text></Text>
-        <Text style={{ color: 'white', marginTop: 10 }}>By signing in, you agree to our <Text style={{ color: 'blue' }}>Terms of Service</Text> and <Text style={{ color: 'blue' }}>Privacy Policy</Text>.</Text>
+        
       </View>
     </View>
   );
