@@ -7,6 +7,7 @@ const eventsRoute=require('./routes/events.js')
 const schoolRoute= require ('./routes/schoolCourses.js')
 const userRoute=require('./routes/user.js')
 const peopleRoute=require ('./routes/peoplewhohelp.js')
+const supporterRoute=require ('./routes/supporters.js')
 const app = express();
 const PORT = 4000;
 
@@ -15,13 +16,14 @@ app.use(cors());
 app.use(express.json());
 
 // Use the routers correctly
-app.use('/api/categorie', categorieRoute);
-app.use("/api/question",questionsRoute)
-app.use ("/api",peopleRoute)
-app.use('/api',donationRoute)
-app.use('/api',eventsRoute)
-app.use('/api',schoolRoute)
+app.use('/categorie', categorieRoute);
+app.use("/questions",questionsRoute)
+app.use ("/people",peopleRoute)
+app.use('/donation',donationRoute)
+app.use('/events',eventsRoute)
+app.use('/school',schoolRoute)
 app.use('/users',userRoute)
+app.use('/supporters',supporterRoute)
 
 app.get('/api', (req, res) => {
   res.send('Hello from the server!');
