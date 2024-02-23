@@ -2,11 +2,13 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'; // Import NavigationContainer
 import SignUp from './screens/signup';
+import LeaderBoard from './screens/LeaderBoard';
 
 export default function App() {
   return (
     <NavigationContainer>
-      <SignUp />
+      {/* <SignUp /> */}
+      <LeaderBoard/>
     </NavigationContainer>
   );
 }
