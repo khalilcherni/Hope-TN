@@ -1,15 +1,4 @@
-// models/palestineModel.js
-
-const mysql = require('mysql');
-
-// const connection = mysql.createConnection({
-//   host: 'localhost',
-//   user: 'your_mysql_username',
-//   password: 'your_mysql_password',
-//   database: 'charity'
-// });
-
-// connection.connect();
+const connection = require("../Database/index.js")
 
 const createPalestine = (data, callback) => {
   const { image, description } = data;

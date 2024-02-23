@@ -1,6 +1,6 @@
 // controllers/helpController.js
 
-const Help = require('../models/helpModel');
+const Help = require('../models/help.js');
 
 exports.createHelp = (req, res) => {
   Help.createHelp(req.body, (error, results, fields) => {
