@@ -1,12 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native'; // Import NavigationContainer
+import SignUp from './screens/signup';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>hello</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <SignUp />
+    </NavigationContainer>
   );
 }
 
@@ -16,6 +17,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    
   },
 });
