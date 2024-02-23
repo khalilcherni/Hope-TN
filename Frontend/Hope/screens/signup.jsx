@@ -21,7 +21,7 @@ const SignUp = () => {
     const navigation = useNavigation();
 
     const handleSignIn = () => {
-      navigation.navigate('SignIn'); 
+      navigation.navigate(''); 
     };
 
     const handleSignUp = async () => {
@@ -155,11 +155,10 @@ const SignUp = () => {
     
    
       </View>
-      <TouchableOpacity onPress={handleSignIn}>
-      <Text style={{ color: 'black', marginTop:2,marginLeft:-100 }}>Have account?
-</Text>
-<Text style={{ color: 'black',  color: '#0085FF'}}> Sign In</Text>
-    </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+  <Text style={{ color: 'black', marginTop: 2, marginLeft: -100 }}>Have account?</Text>
+  <Text style={{ color: '#0085FF' }}> Sign In</Text>
+</TouchableOpacity>
     </View>
   );
 };

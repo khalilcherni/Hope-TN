@@ -42,7 +42,7 @@ const SignIn = () => {
   };
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'black' }}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
       <View style={{ width: '80%', alignItems: 'center' }}>
         <Text style={{ color: 'white', fontSize: 24, marginBottom: 20 }}>Sign In</Text>
         <TextInput
