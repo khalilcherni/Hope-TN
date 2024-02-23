@@ -7,6 +7,8 @@ const eventsRoute=require('./routes/events.js')
 const schoolRoute= require ('./routes/schoolCourses.js')
 const userRoute=require('./routes/user.js')
 const peopleRoute=require ('./routes/peoplewhohelp.js')
+const helpRoutes = require('./routes/HelpRoutes.js');
+const palestineRoutes = require('./routes/palestineRoutes')
 const app = express();
 const PORT = 4000;
 
@@ -23,6 +25,10 @@ app.use('/api',donationRoute)
 app.use('/api',eventsRoute)
 app.use('/api',schoolRoute)
 app.use('/users',userRoute)
+app.use('/api', helpRoutes);
+app.use('/api', palestineRoutes)
+
+
 
 app.get('/api', (req, res) => {
   res.send('Hello from the server!');
