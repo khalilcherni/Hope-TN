@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, TextInput, TouchableOpacity, Text, Alert, Image ,Button,StyleSheet} from 'react-native';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth'; // Update import statement
 import { auth } from '../firebase/config';
 import { useNavigation } from '@react-navigation/native';
 import FontFamily from './FontFamily'; // Adjust the path as needed
@@ -16,8 +16,7 @@ const SignUp = () => {
     const [password, setPassword] = useState('');
    
     const [signInWithGoogle] = useSignInWithGoogle(auth);
-
-    const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
+    const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth); // Add sign in with email/password hook
     const navigation = useNavigation();
 
     const handleSignIn = () => {
@@ -72,7 +71,18 @@ const SignUp = () => {
   
   const handleGoogleSignUp = async () => {
     try {
-      const res = await signInWithGoogle(GoogleProvider);
+      const res = await signInWithGoogle();
+      console.log({ res });
+      sessionStorage.setItem('user', true);
+      navigation.navigate('/');
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleEmailSignIn = async () => {
+    try {
+      const res = await signInWithEmailAndPassword(email, password);
       console.log({ res });
       sessionStorage.setItem('user', true);
       navigation.navigate('/');
@@ -84,8 +94,7 @@ const SignUp = () => {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
       <View style={{ width: '80%', marginBottom: 20 }}>
-   <Text style={{ height: 26, fontSize: 20, fontWeight: 'bold', color: '#209FA6', marginBottom: 60, textAlign: 'center',    fontFamily: FontFamily.smallNormalBold,width:101,marginLeft:10}}>HOPE TN</Text>
-   
+        <Text style={{ height: 26, fontSize: 20, fontWeight: 'bold', color: '#209FA6', marginBottom: 60, textAlign: 'center', fontFamily: FontFamily.smallNormalBold,width:101,marginLeft:10}}>HOPE TN</Text>
         <Text style={{ height: 66, fontSize: 24, fontWeight: 'bold', color: 'black', marginBottom: 10, textAlign: 'center', fontFamily: FontFamily.kanit }}>SIGN UP</Text>
         
         <TextInput
@@ -128,41 +137,32 @@ const SignUp = () => {
         <Text  style={{ fontSize: 15, fontWeight: 'bold', color: 'black', textAlign: 'center',color: 'black' }}> or continue with</Text>
         
         <View style={styles.container}>
-  <View style={styles.imageContainer}>
-    <Image
-      style={styles.image}
-      source={{ uri: 'https://cdn-icons-png.flaticon.com/512/270/270014.png' }}
-      onPress={handleGoogleSignUp}
-    />
-   
-</View>
-<View>  
-    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0085FF', textAlign: 'center',marginTop:-40 }}>sign up with email</Text></View>
-  </View>
-  <View style={styles.container}>
-  <View style={styles.imageContainer}>
-    <Image
-      style={styles.image}
-      source={{ uri: 'https://cdn-icons-png.flaticon.com/128/5968/5968764.png' }}
-      onPress={handleGoogleSignUp}
-    />
-   
-</View>
-<View>  
-    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0085FF', textAlign: 'center',marginTop:-40 }}>sign up with facebook</Text></View>
-  </View>
-      
-    
-   
+          <TouchableOpacity onPress={handleGoogleSignUp} style={styles.imageContainer}>
+            <Image
+              style={styles.image}
+              source={{ uri: 'https://cdn-icons-png.flaticon.com/512/270/270014.png' }}
+            />
+          </TouchableOpacity>
+          <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0085FF', textAlign: 'center', marginTop: -40 }}>Sign up with email</Text>
+        </View>
+        <View style={styles.container}>
+          <TouchableOpacity onPress={handleEmailSignIn} style={styles.imageContainer}>
+            <Image
+              style={styles.image}
+              source={{ uri: 'https://cdn-icons-png.flaticon.com/128/5968/5968764.png' }}
+            />
+          </TouchableOpacity>
+          <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0085FF', textAlign: 'center', marginTop: -40 }}>Sign up with facebook</Text>
+        </View>
       </View>
       <TouchableOpacity onPress={handleSignIn}>
-      <Text style={{ color: 'black', marginTop:2,marginLeft:-100 }}>Have account?
-</Text>
-<Text style={{ color: 'black',  color: '#0085FF'}}> Sign In</Text>
-    </TouchableOpacity>
+        <Text style={{ color: 'black', marginTop:2,marginLeft:-100 }}>Have account?</Text>
+        <Text style={{ color: 'black',  color: '#0085FF'}}> Sign In</Text>
+      </TouchableOpacity>
     </View>
   );
 };
+
 const styles = StyleSheet.create({
     container: {
       marginTop: 10,
@@ -180,8 +180,6 @@ const styles = StyleSheet.create({
       height: 50,
       marginRight: 270,
     },
+});
 
-  });
-  
-  
 export default SignUp;
