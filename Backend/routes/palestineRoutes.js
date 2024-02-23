@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const palestineController = require('../controllers/palestineController');
+const palestineController = require('../controller/palestine');
 
 router.post('/palestine', palestineController.createPalestine);
 router.get('/palestine', palestineController.getAllPalestine);
