@@ -4,6 +4,8 @@ import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase/config';
 import { useNavigation } from '@react-navigation/native';
+import FontFamily from './FontFamily'; // Adjust the path as needed
+
 
 import axios from 'axios';
 
@@ -84,37 +86,39 @@ const SignUp = () => {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
       <View style={{ width: '80%', marginBottom: 20 }}>
-        <Text style={{ fontSize: 24, fontWeight: 'bold', color: 'white', marginBottom: 20 }}>Sign Up</Text>
+        <Text style={{ height: 66,fontSize: 24, fontWeight: 'bold', color: 'black', marginBottom: 20 , textAlign: 'center',  fontFamily: FontFamily.kanit }}>SIGN UP</Text>
+        
         <TextInput
           placeholder="First Name"
           value={firstName}
-          onChangeText={setFirst}
-          style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: 'white' }}
+          onChangeText={setFirst}  style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9',width:290,borderRadius:30,  marginLeft:15, textAlign: 'center'
+       }}
+        
         />
         <TextInput
           placeholder="Last Name"
           value={lastName}
           onChangeText={setLast}
-          style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: 'white' }}
+          style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9',width:290,borderRadius:30,  marginLeft:15, textAlign: 'center' }}
         />
         <TextInput
           placeholder="Email"
           value={email}
           onChangeText={setEmail}
-          style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: 'white' }}
+          style={{  height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9',width:290,borderRadius:30,  marginLeft:15, textAlign: 'center'}}
         />
         <TextInput
           placeholder="Birth"
           value={birth}
           onChangeText={setBirth}
-          style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: 'white' }}
+          style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9',width:290,borderRadius:30,  marginLeft:15, textAlign: 'center'}}
         />
         <TextInput
           placeholder="Password"
           value={password}
           onChangeText={setPassword}
           secureTextEntry={true}
-          style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: 'white' }}
+          style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9',width:290,borderRadius:30,  marginLeft:15, textAlign: 'center'}}
         />
         <Button title="Sign Up" onPress={handleSignUp} />
         <Image
