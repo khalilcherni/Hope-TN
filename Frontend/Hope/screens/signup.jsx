@@ -137,9 +137,20 @@ const SignUp = () => {
    
 </View>
 <View>  
-    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0085FF', textAlign: 'center',marginTop:-40 }}>Your Text Here</Text></View>
+    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0085FF', textAlign: 'center',marginTop:-40 }}>sign up with email</Text></View>
   </View>
-
+  <View style={styles.container}>
+  <View style={styles.imageContainer}>
+    <Image
+      style={styles.image}
+      source={{ uri: 'https://cdn-icons-png.flaticon.com/512/270/270014.png' }}
+      onPress={handleGoogleSignUp}
+    />
+   
+</View>
+<View>  
+    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0085FF', textAlign: 'center',marginTop:-40 }}>sign up with facebook</Text></View>
+  </View>
       
         {/* <Button title="Sign In" onPress={handleSignIn} /> */}
    
