@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'; // Import NavigationContainer
-import StartingPage from './component/StartingPage'; // Import StartingPage component
-import SignUp from './screens/signup';
+// import StartingPage from './component/StartingPage'; // Import StartingPage component
+// import SignUp from './screens/signup';
+import OnboardingPage from './screens/onboardingPage1';
 
 
 export default function App() {
@@ -10,9 +11,10 @@ export default function App() {
 
     <NavigationContainer>
     {/* Render StartingPage */}
-    <StartingPage />
+    {/* <StartingPage /> */}
     {/* You can render other components here */}
-    <SignUp />
+    {/* <SignUp /> */}
+    <OnboardingPage/>
   </NavigationContainer>
 );
 }
