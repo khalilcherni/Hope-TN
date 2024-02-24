@@ -55,7 +55,7 @@ const OnboardingPage = () => {
       </Text>
       <Pressable
         style={styles.nextButton}
-        onPress={() => navigation.navigate("OnboardingPage2")}
+        onPress={() => navigation.navigate("SignUp")}
       >
         <Image
           style={styles.icon}

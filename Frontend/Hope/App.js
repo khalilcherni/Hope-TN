@@ -7,9 +7,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';// Import NavigationContainer
 import StartingPage from './screens/StartingPage';
 // import StartingPage from './component/StartingPage'; // Import StartingPage component
-// import SignUp from './screens/signup';
+import SignUp from './screens/signup';
 import OnboardingPage from './screens/onboardingPage1';
-
+import SignIn  from './screens/signin';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -24,7 +24,8 @@ export default function App() {
     <Stack.Navigator initialRouteName="StartingPage">
         <Stack.Screen name="StartingPage" component={StartingPage} />
         <Stack.Screen name="OnboardingPage" component={OnboardingPage} />
-        {/* Add other screens here */}
+        <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="SignIn" component={SignIn} />
       </Stack.Navigator>
 
   </NavigationContainer>
