@@ -59,11 +59,11 @@ const SignIn = () => {
           secureTextEntry={true}
           style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
         />
-        <TouchableOpacity
+        <TouchableOpacity 
+          style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#209FA6', width: 290, borderRadius: 30, marginLeft: 15, justifyContent: 'center', alignItems: 'center' ,}}
           onPress={handleSignIn}
-          
         >
-          <Text  style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}>Sign In</Text>
+          <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'black', textAlign: 'center',color: 'white' }}>Sign Up</Text>
         </TouchableOpacity>
         
       </View>
