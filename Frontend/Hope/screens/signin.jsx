@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, Text, Alert } from 'react-native';
+import { View, TextInput, TouchableOpacity, Text,Image, Alert,StyleSheet } from 'react-native';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase/config';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
-
+  const [signInWithGoogle] = useSignInWithGoogle(auth);
   const handleSignIn = async () => {
     try {
       // Validate email and password
@@ -40,7 +41,16 @@ const SignIn = () => {
       Alert.alert("Sign in failed. Please try again.");
     }
   };
-
+  const handleGoogleSignUp = async () => {
+    try {
+      const res = await signInWithGoogle(GoogleProvider);
+      console.log({ res });
+      sessionStorage.setItem('user', true);
+      navigation.navigate('/');
+    } catch (e) {
+      console.error(e);
+    }
+  };
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
    <View style={{ width: '80%', marginBottom: 20 }}>
@@ -66,10 +76,61 @@ const SignIn = () => {
         >
           <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'black', textAlign: 'center',color: 'white' }}>Sign Up</Text>
         </TouchableOpacity>
-        
+        <View style={styles.container}>
+  <View style={styles.imageContainer}>
+    <Image
+      style={styles.image}
+      source={{ uri: 'https://cdn-icons-png.flaticon.com/512/270/270014.png' }}
+      onPress={handleGoogleSignUp}
+    />
+   
+</View>
+<View>  
+    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0085FF', textAlign: 'center',marginTop:-40 }}>sign up with email</Text></View>
+  </View>
+       < View style={styles.container}>
+  <View style={styles.imageContainer}>
+    <Image
+      style={styles.image}
+      source={{ uri: 'https://cdn-icons-png.flaticon.com/128/5968/5968764.png' }}
+      onPress={handleGoogleSignUp}
+    />
+   
+</View>
+<View>  
+    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0085FF', textAlign: 'center',marginTop:-40 }}>sign up with facebook</Text></View>
+  </View>
+      
+    
+   
       </View>
-    </View>
+      <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+  <Text style={{ color: 'black', marginTop: 2, marginLeft: -100 }}>Have account?</Text>
+  <Text style={{ color: '#0085FF',marginBottom:10 }}> Sign In</Text>
+</TouchableOpacity>
+      </View>
+      
+  
+    
   );
 };
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 10,
+    backgroundColor: '#D9D9D9',
+    alignItems: 'center',
+    borderRadius: 30,
+  },
+  imageContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  image: {
+    width: 50,
+    height: 50,
+    marginRight: 270,
+  },
 
+});
 export default SignIn;
