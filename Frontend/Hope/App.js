@@ -4,6 +4,7 @@ import React from 'react';
 
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'; // Import NavigationContainer
+// import StartingPage from './component/StartingPage';
 // import StartingPage from './component/StartingPage'; // Import StartingPage component
 // import SignUp from './screens/signup';
 import OnboardingPage from './screens/onboardingPage1';
@@ -18,6 +19,7 @@ export default function App() {
     {/* You can render other components here */}
     {/* <SignUp /> */}
     <OnboardingPage/>
+    {/* <StartingPage/> */}
   </NavigationContainer>
 );
 }
