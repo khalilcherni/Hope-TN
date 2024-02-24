@@ -43,9 +43,10 @@ const SignIn = () => {
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
-      <View style={{ width: '80%', alignItems: 'center' }}>
-      <Text style={{ height: 26, fontSize: 20, fontWeight: 'bold', color: '#209FA6', marginBottom: 60, textAlign: 'center',width:101,marginLeft:10}}>HOPE TN</Text>
-      <Text style={{ height: 66, fontSize: 24, fontWeight: 'bold', color: 'black', marginBottom: 10, textAlign: 'center'}}>SIGN IN</Text>
+   <View style={{ width: '80%', marginBottom: 20 }}>
+   <Text style={{ height: 26, fontSize: 20, fontWeight: 'bold', color: '#209FA6', marginBottom: 60, textAlign: 'center',  width:101,marginLeft:10}}>HOPE TN</Text>
+   
+   <Text style={{ height: 66, fontSize: 24, fontWeight: 'bold', color: 'black', marginBottom: 10, textAlign: 'center' }}>SIGN IN</Text>
         <TextInput
           placeholder="Email"
           value={email}
