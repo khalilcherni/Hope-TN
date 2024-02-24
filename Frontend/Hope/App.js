@@ -1,16 +1,21 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import StartingPage from './component/StartingPage'; // Assuming StartingPage.js is located in the components directory
+import { NavigationContainer } from '@react-navigation/native'; // Import NavigationContainer
+import StartingPage from './component/StartingPage'; // Import StartingPage component
+import SignUp from './screens/signup';
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <StartingPage />
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 
+    <NavigationContainer>
+    {/* Render StartingPage */}
+    <StartingPage />
+    {/* You can render other components here */}
+    <SignUp />
+  </NavigationContainer>
+);
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
