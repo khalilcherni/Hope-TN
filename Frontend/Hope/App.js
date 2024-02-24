@@ -21,7 +21,7 @@ export default function App() {
     {/* You can render other components here */}
     {/* <SignUp /> */}
     {/* <OnboardingPage/> */}
-    <Stack.Navigator initialRouteName="StartingPage">
+    <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="StartingPage" component={StartingPage} />
         <Stack.Screen name="OnboardingPage" component={OnboardingPage} />
         <Stack.Screen name="SignUp" component={SignUp} />
