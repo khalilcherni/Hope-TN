@@ -47,7 +47,7 @@ const OnboardingPage = () => {
       <Image
         style={[styles.poo3131Icon, styles.iconLayout2]}
         contentFit="cover"
-        source={require("../assets/poo313.jpg")}
+        source={require("../assets/aaa.jpg")}
       />
       <Text style={styles.letsHelpEach}>Let’s help each others</Text>
       <Text style={[styles.whenWeGive, styles.whenWeGiveTypo]}>
@@ -55,12 +55,12 @@ const OnboardingPage = () => {
       </Text>
       <Pressable
         style={styles.nextButton}
-        onPress={() => navigation.navigate("OnboardingPage2")}
+        onPress={() => navigation.navigate("SignUp")}
       >
         <Image
           style={styles.icon}
           contentFit="cover"
-          source={require("../assets/right-arrow.png")}
+          source={require("../assets/aaa.jpg")}
         />
       </Pressable>
       {/* <Text style={[styles.httpswwwfigcomponentscom, styles.whenWeGiveTypo]}>
