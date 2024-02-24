@@ -3,12 +3,14 @@ import 'react-native-gesture-handler';
 import React from 'react';
 
 import { StyleSheet, Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native'; // Import NavigationContainer
-// import StartingPage from './component/StartingPage';
+import { NavigationContainer } from '@react-navigation/native'; 
+import { createStackNavigator } from '@react-navigation/stack';// Import NavigationContainer
+import StartingPage from './screens/StartingPage';
 // import StartingPage from './component/StartingPage'; // Import StartingPage component
 // import SignUp from './screens/signup';
 import OnboardingPage from './screens/onboardingPage1';
 
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
@@ -18,8 +20,13 @@ export default function App() {
     {/* <StartingPage /> */}
     {/* You can render other components here */}
     {/* <SignUp /> */}
-    <OnboardingPage/>
-    {/* <StartingPage/> */}
+    {/* <OnboardingPage/> */}
+    <Stack.Navigator initialRouteName="StartingPage">
+        <Stack.Screen name="StartingPage" component={StartingPage} />
+        <Stack.Screen name="OnboardingPage" component={OnboardingPage} />
+        {/* Add other screens here */}
+      </Stack.Navigator>
+
   </NavigationContainer>
 );
 }
