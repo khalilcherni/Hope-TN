@@ -1,16 +1,21 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'; // Import NavigationContainer
+import StartingPage from './component/StartingPage'; // Import StartingPage component
 import SignUp from './screens/signup';
+
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <SignUp />
-    </NavigationContainer>
-  );
-}
 
+    <NavigationContainer>
+    {/* Render StartingPage */}
+    <StartingPage />
+    {/* You can render other components here */}
+    <SignUp />
+  </NavigationContainer>
+);
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
