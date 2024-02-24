@@ -3,24 +3,24 @@ import 'react-native-gesture-handler';
 import React from 'react';
 
 import { StyleSheet, Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import SignUp from './screens/signup';
-import SignIn from './screens/signin'; // Import your SignIn component if you have one
+import { NavigationContainer } from '@react-navigation/native'; // Import NavigationContainer
+// import StartingPage from './component/StartingPage'; // Import StartingPage component
+// import SignUp from './screens/signup';
+import OnboardingPage from './screens/onboardingPage1';
 
-const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator >
-        <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="SignIn" component={SignIn} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
 
+    <NavigationContainer>
+    {/* Render StartingPage */}
+    {/* <StartingPage /> */}
+    {/* You can render other components here */}
+    {/* <SignUp /> */}
+    <OnboardingPage/>
+  </NavigationContainer>
+);
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
