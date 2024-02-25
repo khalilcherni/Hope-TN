@@ -118,15 +118,18 @@ const SignUp = () => {
                 >
                     <Text style={styles.buttonText}>Sign Up</Text>
                 </TouchableOpacity>
+            
                 <Text style={styles.orText}> or continue with</Text>
-
+                <View style={styles.container}>
                 <TouchableOpacity style={styles.imageContainer} onPress={handleGoogleSignUp}>
                     <Image
                         style={styles.image}
                         source={{ uri: 'https://cdn-icons-png.flaticon.com/512/270/270014.png' }}
                     />
                     <Text style={styles.imageText}>sign up with Google</Text>
+                 
                 </TouchableOpacity>
+                </View>
                 <View style={styles.container}>
                 <TouchableOpacity  style={styles.imageContainer} onPress={handleGoogleSignUp}>
                
