@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     height: 40,
     lineHeight: 17,
     textAlign: "center",
-    fontFamily: FontFamily.kalamRegular,
+    // fontFamily: FontFamily.kalamRegular,
     position: "absolute",
   },
   getPosition: {
@@ -101,12 +101,13 @@ const styles = StyleSheet.create({
     top: 435,    
     left: 50,
     fontSize: FontSize.size_16xl,
+    fontWeight: "700",
     lineHeight: 34,
     width: 300,
     height: 75,
     textAlign: "center",
     color: Color.lightBlack,
-    fontFamily: FontFamily.kalamRegular,
+    // fontFamily: FontFamily.kalamRegular,
     position: "absolute",
   },
   whenWeGive: {
@@ -116,6 +117,7 @@ const styles = StyleSheet.create({
     left: 60,
     height: 40,
     lineHeight:20,
+    fontWeight:'700',
     color: Color.lightBlack,
   },
   getStartedButtonChild: {
@@ -126,7 +128,7 @@ const styles = StyleSheet.create({
     height: 30,
     lineHeight: 22,
     textAlign: "center",
-    fontFamily: FontFamily.kalamRegular,
+    // fontFamily: FontFamily.kalamRegular,
     position: "absolute",
 
   },

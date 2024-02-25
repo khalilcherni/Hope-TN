@@ -63,9 +63,7 @@ const OnboardingPage = () => {
           source={require("../assets/right-arrow.png")}
         />
       </Pressable>
-      {/* <Text style={[styles.httpswwwfigcomponentscom, styles.whenWeGiveTypo]}>
-        next
-      </Text> */}
+      
     </View>
   );
 };
@@ -98,11 +96,10 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   whenWeGiveTypo: {
-    fontFamily: FontFamily.kalamRegular,
-    lineHeight: 30,
-    fontSize: FontSize.iOSHeadlineBold_size,
+    height: 40,
+    lineHeight: 17,
     textAlign: "center",
-    color: Color.lightBlack,
+    // fontFamily: FontFamily.kalamRegular,
     position: "absolute",
   },
   poor91Icon: {
@@ -147,26 +144,25 @@ const styles = StyleSheet.create({
   },
   letsHelpEach: {
     top: 443,
-    left: 60,
-    fontSize:30,
-    lineHeight: 40,
+    left: 65,
+    fontSize: FontSize.size_16xl,
+    lineHeight: 34,
     fontWeight: "700",
-    fontFamily: FontFamily.kalamRegular,
+    // fontFamily: FontFamily.kalamRegular,
     width: 273,
-    height: 34,
+    height: 340,
     textAlign: "center",
     color: Color.lightBlack,
     position: "absolute",
   },
   whenWeGive: {
     top: 580,
-    left: 60,
+    left: 70,
     width: 272,
-    height: 20,
-    fontFamily: 'Kalam', // Set your desired font family
-    fontSize: 16,
-    lineHeight: 30,
-    fontWeight: 'regular', // Assuming regular is a valid font weight value
+    height: 20, 
+    fontSize: FontSize.size_mini,
+   
+    fontWeight:'700', // Assuming regular is a valid font weight value
   },
   
   icon: {
@@ -180,7 +176,7 @@ const styles = StyleSheet.create({
     borderRadius: 37, // Half of the width to make it a circle
     position: 'absolute',
     top: 700,
-    left: 155,
+    left: 175,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
