@@ -5,7 +5,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'; 
 import { createStackNavigator } from '@react-navigation/stack';// Import NavigationContainer
-import Home from './screens/Home';
+// import Home from './screens/Home';
 import StartingPage from './screens/StartingPage';
 import SignUp from './screens/signup';
 import OnboardingPage1 from './screens/onboardingPage1';
@@ -31,22 +31,22 @@ export default function App() {
     {/ You can render other components here /}
     {/ <SignUp /> /}
     {/ <OnboardingPage/> */}
-    <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}>
+
 
     {/* Render StartingPage */}
     {/* <StartingPage /> */}
     {/* You can render other components here */}
     {/* <SignUp /> */}
     {/* <OnboardingPage/> */}
-    {/* <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}>
+    <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}>
 
         <Stack.Screen name="StartingPage" component={StartingPage} />
         <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} />
         <Stack.Screen name="OnboardingPage2" component={OnboardingPage2} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="SignIn" component={SignIn} />
-      </Stack.Navigator> */}
-   <Home/>
+      </Stack.Navigator>
+   {/* <Home/> */}
 
   </NavigationContainer>
 );
