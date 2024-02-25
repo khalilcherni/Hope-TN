@@ -11,7 +11,7 @@ const Home = () => {
       <Image
         style={[styles.helloJohnDoe, styles.menuIconPosition]}
         contentFit="cover"
-         source={require("../assets/111.jpg")}
+         source={require("../assets/aaa.jpg")}
       />
       <Image
         style={[styles.menuIcon, styles.menuIconPosition]}

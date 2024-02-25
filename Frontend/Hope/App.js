@@ -5,6 +5,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'; 
 import { createStackNavigator } from '@react-navigation/stack';// Import NavigationContainer
+import Home from './screens/Home';
 // import StartingPage from './screens/StartingPage';
 // import StartingPage from './component/StartingPage'; // Import StartingPage component
 // import SignUp from './screens/signup';
@@ -16,7 +17,8 @@ export default function App() {
   return (
 
     <NavigationContainer>
-    {/* Render StartingPage */}
+    {/* Render StartingPage */}    
+     
     {/* <StartingPage /> */}
     {/* You can render other components here */}
     {/* <SignUp /> */}
@@ -27,7 +29,7 @@ export default function App() {
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="SignIn" component={SignIn} />
       </Stack.Navigator> */}
-      <Home/>
+   <Home/>
 
   </NavigationContainer>
 );
