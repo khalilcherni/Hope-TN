@@ -85,32 +85,32 @@ const SignUp = () => {
                     placeholder="First Name"
                     value={firstName}
                     onChangeText={setFirst}
-                    style={styles.input}
+                    style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
                 />
                 <TextInput
                     placeholder="Last Name"
                     value={lastName}
                     onChangeText={setLast}
-                    style={styles.input}
+                    style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
                 />
                 <TextInput
                     placeholder="Email"
                     value={email}
                     onChangeText={setEmail}
-                    style={styles.input}
+                    style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
                 />
                 <TextInput
                     placeholder="Birth"
                     value={birth}
                     onChangeText={setBirth}
-                    style={styles.input}
+                    style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
                 />
                 <TextInput
                     placeholder="Password"
                     value={password}
                     onChangeText={setPassword}
                     secureTextEntry={true}
-                    style={styles.input}
+                    style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
                 />
                 <TouchableOpacity
                     style={styles.button}
@@ -204,7 +204,7 @@ const styles = StyleSheet.create({
     image: {
         width: 50,
         height: 50,
-        marginRight: 10
+        marginRight: 50
     },
     imageText: {
         fontSize: 18,
