@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'; // Import NavigationContainer
 // import StartingPage from './component/StartingPage'; // Import StartingPage component
 // import SignUp from './screens/signup';
-import OnboardingPage from './screens/onboardingPage1';
+import OnboardingPage2 from './screens/OnboardingPage2';
 
 
 export default function App() {
@@ -14,7 +14,7 @@ export default function App() {
     {/* <StartingPage /> */}
     {/* You can render other components here */}
     {/* <SignUp /> */}
-    <OnboardingPage/>
+    <OnboardingPage2/>
   </NavigationContainer>
 );
 }
