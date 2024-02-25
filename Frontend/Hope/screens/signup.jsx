@@ -127,15 +127,17 @@ const SignUp = () => {
                     />
                     <Text style={styles.imageText}>sign up with Google</Text>
                 </TouchableOpacity>
-
-                <TouchableOpacity style={styles.imageContainer} onPress={handleGoogleSignUp}>
+                <View style={styles.container}>
+                <TouchableOpacity  style={styles.imageContainer} onPress={handleGoogleSignUp}>
+               
                     <Image
                         style={styles.image}
                         source={{ uri: 'https://cdn-icons-png.flaticon.com/128/5968/5968764.png' }}
                     />
                     <Text style={styles.imageText}>sign up with Facebook</Text>
+                  
                 </TouchableOpacity>
-
+                </View>
             </View>
             <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
                 <Text style={styles.haveAccountText}>Have an account? <Text style={styles.signInText}>Sign In</Text></Text>
@@ -145,6 +147,12 @@ const SignUp = () => {
 };
 
 const styles = StyleSheet.create({
+    container: {
+        marginTop: 10,
+        backgroundColor: '#D9D9D9',
+        alignItems: 'center',
+        borderRadius: 30,
+      },
     input: {
         height: 55,
         borderColor: 'gray',
