@@ -11,17 +11,17 @@ const Home = () => {
       <Image
         style={[styles.helloJohnDoe, styles.menuIconPosition]}
         contentFit="cover"
-        source={require("../assets/hello-john-doe.png")}
+        // source={require("../assets/hello-john-doe.png")}
       />
       <Image
         style={[styles.menuIcon, styles.menuIconPosition]}
         contentFit="cover"
-        source={require("../assets/menu.png")}
+        // source={require("../assets/menu.png")}
       />
       <Image
         style={[styles.homeChild, styles.menuIconPosition]}
         contentFit="cover"
-        source={require("../assets/rectangle-4179.png")}
+        // source={require("../assets/rectangle-4179.png")}
       />
       <Pressable
         style={[styles.profileCircle, styles.menuIconPosition]}
@@ -30,13 +30,13 @@ const Home = () => {
         <Image
           style={[styles.icon, styles.iconLayout3]}
           contentFit="cover"
-          source={require("../assets/profilecircle.png")}
+          // source={require("../assets/profilecircle.png")}
         />
       </Pressable>
       <Image
         style={[styles.homeItem, styles.homeItemPosition]}
         contentFit="cover"
-        source={require("../assets/frame-495.png")}
+        // source={require("../assets/frame-495.png")}
       />
       <Text style={[styles.somePhotos, styles.somePhotosTypo]}>
         Some Photos :
@@ -53,28 +53,28 @@ const Home = () => {
         <Image
           style={[styles.jeuneMereEnfantsRemplitBidIcon, styles.iconLayout2]}
           contentFit="cover"
-          source={require("../assets/jeunemereenfantsremplitbidonseaupotabletunisie-1.png")}
+          // source={require("../assets/jeunemereenfantsremplitbidonseaupotabletunisie-1.png")}
         />
         <Image
           style={[styles.fediMejriTunisiaWarmMeUpIcon, styles.iconLayout2]}
           contentFit="cover"
-          source={require("../assets/fedimejritunisiawarmmeupproject1-1.png")}
+          // source={require("../assets/fedimejritunisiawarmmeupproject1-1.png")}
         />
         <Image
           style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
           contentFit="cover"
-          source={require("../assets/tunisiacovidstation767-1.png")}
+          // source={require("../assets/tunisiacovidstation767-1.png")}
         />
         <Image
           style={[styles.demt1Icon, styles.demt1IconPosition]}
           contentFit="cover"
-          source={require("../assets/demt-1.png")}
+          // source={require("../assets/demt-1.png")}
         />
       </View>
       <Image
         style={styles.jpgRemovebgPreview1Icon}
         contentFit="cover"
-        source={require("../assets/jpgremovebgpreview-1.png")}
+        // source={require("../assets/jpgremovebgpreview-1.png")}
       />
       <Text style={[styles.povertyRatesIn, styles.somePhotosTypo]}>
         Poverty rates in Tunisia :
@@ -82,7 +82,7 @@ const Home = () => {
       <Image
         style={[styles.homeInner, styles.demt1IconPosition]}
         contentFit="cover"
-        source={require("../assets/rectangle-4197.png")}
+        // source={require("../assets/rectangle-4197.png")}
       />
       <Pressable
         style={[styles.vuesaxbrokenmessageText, styles.houseIconLayout]}
@@ -91,13 +91,13 @@ const Home = () => {
         <Image
           style={[styles.icon1, styles.iconLayout]}
           contentFit="cover"
-          source={require("../assets/vuesaxbrokenmessagetext.png")}
+          // source={require("../assets/vuesaxbrokenmessagetext.png")}
         />
       </Pressable>
       <Image
         style={[styles.houseIcon, styles.iconLayout]}
         contentFit="cover"
-        source={require("../assets/house.png")}
+        // source={require("../assets/house.png")}
       />
       <Pressable
         style={[styles.vuesaxboldchart, styles.houseIconLayout]}
@@ -106,7 +106,7 @@ const Home = () => {
         <Image
           style={[styles.icon1, styles.iconLayout]}
           contentFit="cover"
-          source={require("../assets/vuesaxboldchart.png")}
+          // source={require("../assets/vuesaxboldchart.png")}
         />
       </Pressable>
     </View>
