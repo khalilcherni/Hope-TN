@@ -5,11 +5,12 @@ import { Color, FontFamily, FontSize, Padding, Border } from "../GlobalStyles";
 
 const LeaderBoard = () => {
   return (
+
     <View style={styles.leaderBoard}>
       <Image
         style={styles.leaderBoardChild}
         contentFit="cover"
-        source={require("../assets/rectangle-1.png")}
+        source={require("../assets/444444.png")}
       />
       <View style={[styles.davidParent, styles.parentLayout]}>
         <Text style={[styles.david, styles.johnTypo]}>David</Text>
@@ -18,13 +19,13 @@ const LeaderBoard = () => {
           <Image
             style={[styles.groupParent, styles.groupParentPosition]}
             contentFit="cover"
-            source={require("../assets/group-1.png")}
+            source={require("../assets/iyess.png")}
           />
           <View style={[styles.ellipseParent, styles.ellipseFlexBox]}>
             <Image
               style={[styles.frameChild, styles.frameChildLayout]}
               contentFit="cover"
-              source={require("../assets/ellipse-9.png")}
+              source={require("../assets/first.png")}
             />
             <Text style={[styles.text1, styles.textPosition]}>1</Text>
           </View>
@@ -37,13 +38,13 @@ const LeaderBoard = () => {
           <Image
             style={[styles.groupContainer, styles.groupPosition]}
             contentFit="cover"
-            source={require("../assets/group-9.png")}
+            source={require("../assets/iyess.png")}
           />
           <View style={[styles.ellipseGroup, styles.frameItemLayout]}>
             <Image
               style={[styles.frameItem, styles.frameItemLayout]}
               contentFit="cover"
-              source={require("../assets/ellipse-91.png")}
+              source={require("../assets/iyess.png")}
             />
             <Text style={[styles.text3, styles.textPosition]}>2</Text>
           </View>
@@ -55,7 +56,7 @@ const LeaderBoard = () => {
           <Image
             style={styles.frameInner}
             contentFit="cover"
-            source={require("../assets/ellipse-4.png")}
+            source={require("../assets/iyess.png")}
           />
           <Text style={[styles.devonLane, styles.text4Typo]}>Devon Lane</Text>
         </View>
@@ -64,7 +65,7 @@ const LeaderBoard = () => {
           <Image
             style={styles.polygonIcon}
             contentFit="cover"
-            source={require("../assets/polygon-1.png")}
+            source={require("../assets/iyess.png")}
           />
         </View>
       </View>
@@ -74,7 +75,7 @@ const LeaderBoard = () => {
           <Image
             style={styles.frameInner}
             contentFit="cover"
-            source={require("../assets/ellipse-5.png")}
+            source={require("../assets/iyess.png")}
           />
           <Text style={[styles.devonLane, styles.text4Typo]}>Ronald</Text>
         </View>
@@ -83,7 +84,7 @@ const LeaderBoard = () => {
           <Image
             style={styles.polygonIcon}
             contentFit="cover"
-            source={require("../assets/polygon-11.png")}
+            source={require("../assets/iyess.png")}
           />
         </View>
       </View>
@@ -93,7 +94,7 @@ const LeaderBoard = () => {
           <Image
             style={styles.frameInner}
             contentFit="cover"
-            source={require("../assets/ellipse-6.png")}
+            source={require("../assets/iyess.png")}
           />
           <Text style={[styles.devonLane, styles.text4Typo]}>Eleanor Pena</Text>
         </View>
@@ -102,7 +103,7 @@ const LeaderBoard = () => {
           <Image
             style={styles.polygonIcon}
             contentFit="cover"
-            source={require("../assets/polygon-1.png")}
+            source={require("../assets/iyess.png")}
           />
         </View>
       </View>
@@ -112,7 +113,7 @@ const LeaderBoard = () => {
           <Image
             style={styles.frameInner}
             contentFit="cover"
-            source={require("../assets/ellipse-7.png")}
+            source={require("../assets/iyess.png")}
           />
           <Text style={[styles.devonLane, styles.text4Typo]}>Savannah</Text>
         </View>
@@ -121,7 +122,7 @@ const LeaderBoard = () => {
           <Image
             style={styles.polygonIcon}
             contentFit="cover"
-            source={require("../assets/polygon-11.png")}
+            source={require("../assets/iyess.png")}
           />
         </View>
       </View>
@@ -131,7 +132,7 @@ const LeaderBoard = () => {
           <Image
             style={styles.frameInner}
             contentFit="cover"
-            source={require("../assets/ellipse-8.png")}
+            source={require("../assets/iyess.png")}
           />
           <Text style={[styles.devonLane, styles.text4Typo]}>Wade Warren</Text>
         </View>
@@ -140,7 +141,7 @@ const LeaderBoard = () => {
           <Image
             style={styles.polygonIcon}
             contentFit="cover"
-            source={require("../assets/polygon-1.png")}
+            source={require("../assets/iyess.png")}
           />
         </View>
       </View>
@@ -151,13 +152,13 @@ const LeaderBoard = () => {
           <Image
             style={[styles.groupView, styles.groupViewLayout]}
             contentFit="cover"
-            source={require("../assets/group-7.png")}
+            source={require("../assets/iyess.png")}
           />
           <View style={[styles.ellipseGroup, styles.frameItemLayout]}>
             <Image
               style={[styles.frameItem, styles.frameItemLayout]}
               contentFit="cover"
-              source={require("../assets/ellipse-92.png")}
+              source={require("../assets/iyess.png")}
             />
             <Text style={[styles.text3, styles.textPosition]}>3</Text>
           </View>
@@ -167,7 +168,7 @@ const LeaderBoard = () => {
         <Image
           style={[styles.iconamoonarrowUp2Bold, styles.frameItemLayout]}
           contentFit="cover"
-          source={require("../assets/iconamoonarrowup2bold.png")}
+          source={require("../assets/iyess.png")}
         />
         <Text style={[styles.leaderBoard1, styles.leaderBoard1FlexBox]}>
           Leader Board
@@ -175,7 +176,7 @@ const LeaderBoard = () => {
         <Image
           style={[styles.bithreeDotsVerticalIcon, styles.frameItemLayout]}
           contentFit="cover"
-          source={require("../assets/bithreedotsvertical.png")}
+          source={require("../assets/iyess.png")}
         />
       </View>
     </View>
