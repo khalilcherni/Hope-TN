@@ -4,7 +4,7 @@ import { StyleSheet, Text, Pressable, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Border, FontFamily, FontSize, Color } from "../GlobalStyles";
 
-const OnboardingPage = () => {
+const OnboardingPage1 = () => {
   const navigation = useNavigation();
 
   return (
@@ -47,7 +47,7 @@ const OnboardingPage = () => {
       <Image
         style={[styles.poo3131Icon, styles.iconLayout2]}
         contentFit="cover"
-        source={require("../assets/poo313.jpg")}
+        source={require("../assets/aaa.jpg")}
       />
       <Text style={styles.letsHelpEach}>Let’s help each others</Text>
       <Text style={[styles.whenWeGive, styles.whenWeGiveTypo]}>
@@ -199,4 +199,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OnboardingPage;
+export default OnboardingPage1;
