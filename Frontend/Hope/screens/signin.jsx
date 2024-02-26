@@ -104,9 +104,9 @@ const SignIn = () => {
     
    
       </View>
-      <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+      <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
   <Text style={{ color: 'black', marginTop: 2, marginLeft: -100 }}>Have account?</Text>
-  <Text style={{ color: '#0085FF',marginBottom:10 }}> Sign In</Text>
+  <Text style={{ color: '#0085FF',marginBottom:10 }}> Sign Up </Text>
 </TouchableOpacity>
       </View>
       

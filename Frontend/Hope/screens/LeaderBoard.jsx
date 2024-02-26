@@ -2,8 +2,32 @@ import * as React from "react";
 import { Image } from "expo-image";
 import { StyleSheet, Text, View } from "react-native";
 import { Color, FontFamily, FontSize, Padding, Border } from "../GlobalStyles";
+import { useState , useEffect } from "react";
 
 const LeaderBoard = () => {
+
+  const [supporters, setSupporters] = useState([]);
+  
+  useEffect(() => {
+    const fetchSupporters = async () => {
+      try {
+        const response = await axios.get('http://localhost:4000/supporters/get');
+        const sortedSupporters = response.data.sort((a, b) => b.points - a.points);
+        
+        // Splitting supporters into top three and the rest
+        const topThreeSupporters = sortedSupporters.slice(0, 3);
+        const otherSupporters = sortedSupporters.slice(3);
+        
+        // Setting state for both arrays
+        setTopThreeSupporters(topThreeSupporters);
+        setOtherSupporters(otherSupporters);
+      } catch (error) {
+        console.error('Error fetching supporters:', error);
+      }
+    };
+  
+    fetchSupporters();
+  }, []);
   return (
 
     <View style={styles.leaderBoard}>
@@ -13,7 +37,7 @@ const LeaderBoard = () => {
         source={require("../assets/444444.png")}
       />
       <View style={[styles.davidParent, styles.parentLayout]}>
-        <Text style={[styles.david, styles.johnTypo]}>David</Text>
+        <Text style={[styles.david, styles.johnTypo]}>{supporters.length > 0 ? supporters[0].name : ''}</Text>
         <Text style={styles.text}>4578</Text>
         <View style={[styles.groupParent, styles.groupParentPosition]}>
           <Image
@@ -47,6 +71,25 @@ const LeaderBoard = () => {
               source={require("../assets/first.png")}
             />
             <Text style={[styles.text3, styles.textPosition]}>2</Text>
+          </View>
+        </View>
+      </View>
+      <View style={[styles.merryParent, styles.groupViewLayout]}>
+        <Text style={[styles.merry, styles.johnTypo]}>Merry</Text>
+        <Text style={[styles.text14, styles.textTypo]}>3967</Text>
+        <View style={[styles.groupView, styles.groupViewLayout]}>
+          <Image
+            style={[styles.groupView, styles.groupViewLayout]}
+            contentFit="cover"
+            source={require("../assets/iyess.png")}
+          />
+          <View style={[styles.ellipseGroup, styles.frameItemLayout]}>
+            <Image
+              style={[styles.frameItem, styles.frameItemLayout]}
+              contentFit="cover"
+              source={require("../assets/iyess.png")}
+            />
+            <Text style={[styles.text3, styles.textPosition]}>3</Text>
           </View>
         </View>
       </View>
@@ -145,25 +188,7 @@ const LeaderBoard = () => {
           />
         </View>
       </View>
-      <View style={[styles.merryParent, styles.groupViewLayout]}>
-        <Text style={[styles.merry, styles.johnTypo]}>Merry</Text>
-        <Text style={[styles.text14, styles.textTypo]}>3967</Text>
-        <View style={[styles.groupView, styles.groupViewLayout]}>
-          <Image
-            style={[styles.groupView, styles.groupViewLayout]}
-            contentFit="cover"
-            source={require("../assets/iyess.png")}
-          />
-          <View style={[styles.ellipseGroup, styles.frameItemLayout]}>
-            <Image
-              style={[styles.frameItem, styles.frameItemLayout]}
-              contentFit="cover"
-              source={require("../assets/iyess.png")}
-            />
-            <Text style={[styles.text3, styles.textPosition]}>3</Text>
-          </View>
-        </View>
-      </View>
+
       <View style={[styles.board, styles.ellipseFlexBox]}>
         <Image
           style={[styles.iconamoonarrowUp2Bold, styles.frameItemLayout]}
@@ -191,7 +216,7 @@ const styles = StyleSheet.create({
   johnTypo: {
     textAlign: "center",
     color: Color.lightWhite,
-    fontFamily: FontFamily.mitrMedium,
+    fontFamily: FontFamily.androidFootnote,
     fontWeight: "500",
   },
   groupParentPosition: {
@@ -215,7 +240,7 @@ const styles = StyleSheet.create({
     marginLeft: -6,
     color: Color.lightBlack,
     textAlign: "center",
-    fontFamily: FontFamily.mitrMedium,
+    fontFamily: FontFamily.androidFootnote,
     fontWeight: "500",
     position: "absolute",
   },
@@ -226,7 +251,7 @@ const styles = StyleSheet.create({
   textTypo: {
     top: 138,
     color: Color.colorWhitesmoke_100,
-    fontFamily: FontFamily.mitrRegular,
+    fontFamily: FontFamily.androidFootnote,
     fontSize: FontSize.size_lg,
     textAlign: "center",
     position: "absolute",
@@ -267,7 +292,7 @@ const styles = StyleSheet.create({
   text4Typo: {
     fontSize: FontSize.size_xl,
     color: Color.lightBlack,
-    fontFamily: FontFamily.mitrRegular,
+    fontFamily: FontFamily.androidFootnote,
     textAlign: "center",
   },
   parentFlexBox: {
@@ -294,7 +319,7 @@ const styles = StyleSheet.create({
     left: 32,
     fontSize: FontSize.size_5xl,
     color: Color.lightWhite,
-    fontFamily: FontFamily.mitrMedium,
+    fontFamily: FontFamily.androidFootnote,
     fontWeight: "500",
     position: "absolute",
   },
@@ -302,7 +327,7 @@ const styles = StyleSheet.create({
     top: 168,
     left: 42,
     color: Color.colorWhitesmoke_100,
-    fontFamily: FontFamily.mitrRegular,
+    fontFamily: FontFamily.androidFootnote,
     fontSize: FontSize.size_lg,
     textAlign: "center",
     position: "absolute",
@@ -334,7 +359,7 @@ const styles = StyleSheet.create({
     left: 23,
     fontSize: FontSize.size_5xl,
     color: Color.lightWhite,
-    fontFamily: FontFamily.mitrMedium,
+    fontFamily: FontFamily.androidFootnote,
     fontWeight: "500",
     position: "absolute",
     top: 100,
@@ -385,7 +410,7 @@ const styles = StyleSheet.create({
   },
   text5: {
     color: Color.lightBlack,
-    fontFamily: FontFamily.mitrRegular,
+    fontFamily: FontFamily.androidFootnote,
     fontSize: FontSize.size_lg,
     textAlign: "center",
   },
@@ -420,7 +445,7 @@ const styles = StyleSheet.create({
     left: 15,
     fontSize: FontSize.size_5xl,
     color: Color.lightWhite,
-    fontFamily: FontFamily.mitrMedium,
+    fontFamily: FontFamily.androidFootnote,
     fontWeight: "500",
     position: "absolute",
     top: 100,
@@ -446,7 +471,7 @@ const styles = StyleSheet.create({
     marginLeft: 60,
     textAlign: "center",
     color: Color.lightWhite,
-    fontFamily: FontFamily.mitrMedium,
+    fontFamily: FontFamily.androidFootnote,
     fontWeight: "500",
   },
   bithreeDotsVerticalIcon: {
@@ -464,7 +489,7 @@ const styles = StyleSheet.create({
     backgroundColor: Color.lightWhite,
     shadowRadius: 20,
     elevation: 20,
-    width: "100%",
+    width: "90%",
     height: 800,
     overflow: "hidden",
     flex: 1,
