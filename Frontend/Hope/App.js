@@ -10,6 +10,7 @@ import { createStackNavigator } from '@react-navigation/stack';// Import Navigat
 // import SignUp from './screens/signup';
 // import OnboardingPage from './screens/onboardingPage1';
 // import SignIn  from './screens/signin';
+import Home from "./screens/Home";
 const Stack = createStackNavigator();
 
 export default function App() {
