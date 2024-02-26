@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { View, TextInput, TouchableOpacity, Text, Alert, Image, StyleSheet } from 'react-native';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'; // Updated import statement
+import { GoogleAuthProvider } from '@firebase/auth'; // Corrected import
 import { auth } from '../firebase/config';
+import { signInWithPopup } from 'firebase/auth';
+
 import { useNavigation } from '@react-navigation/native';
 import FontFamily from './FontFamily';
+
 const SignUp = () => {
     const [email, setEmail] = useState('');
     const [birth, setBirth] = useState('');
@@ -33,17 +36,6 @@ const SignUp = () => {
                 return;
             }
 
-            // Make API call to register the user (if needed)
-            // Example:
-            // const registerResponse = await axios.post('http://localhost:4000/users/register', {
-            //     firstName,
-            //     lastName,
-            //     email,
-            //     birth,
-            //     password
-            // });
-            // console.log('Registration API response:', registerResponse);
-
             // Clear input fields
             setEmail('');
             setPassword('');
@@ -53,6 +45,7 @@ const SignUp = () => {
 
             // Show success message
             Alert.alert("Sign up successful");
+         
         } catch (e) {
             console.error(e);
             Alert.alert("Sign up failed. Please try again.");
@@ -66,7 +59,7 @@ const SignUp = () => {
             console.log({ res });
 
             // Example: Navigate to another screen after successful sign-up
-            navigation.navigate('/');
+            navigation.navigate('/Home');
 
         } catch (e) {
             console.error(e);
@@ -85,32 +78,32 @@ const SignUp = () => {
                     placeholder="First Name"
                     value={firstName}
                     onChangeText={setFirst}
-                    style={styles.input}
+                    style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
                 />
                 <TextInput
                     placeholder="Last Name"
                     value={lastName}
                     onChangeText={setLast}
-                    style={styles.input}
+                    style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
                 />
                 <TextInput
                     placeholder="Email"
                     value={email}
                     onChangeText={setEmail}
-                    style={styles.input}
+                    style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
                 />
                 <TextInput
                     placeholder="Birth"
                     value={birth}
                     onChangeText={setBirth}
-                    style={styles.input}
+                    style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
                 />
                 <TextInput
                     placeholder="Password"
                     value={password}
                     onChangeText={setPassword}
                     secureTextEntry={true}
-                    style={styles.input}
+                    style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
                 />
                 <TouchableOpacity
                     style={styles.button}
@@ -118,24 +111,29 @@ const SignUp = () => {
                 >
                     <Text style={styles.buttonText}>Sign Up</Text>
                 </TouchableOpacity>
+            
                 <Text style={styles.orText}> or continue with</Text>
-
+                <View style={styles.container}>
                 <TouchableOpacity style={styles.imageContainer} onPress={handleGoogleSignUp}>
                     <Image
                         style={styles.image}
                         source={{ uri: 'https://cdn-icons-png.flaticon.com/512/270/270014.png' }}
                     />
                     <Text style={styles.imageText}>sign up with Google</Text>
+                 
                 </TouchableOpacity>
-
-                <TouchableOpacity style={styles.imageContainer} onPress={handleGoogleSignUp}>
+                </View>
+                <View style={styles.container}>
+                <TouchableOpacity  style={styles.imageContainer} onPress={handleGoogleSignUp}>
+               
                     <Image
                         style={styles.image}
                         source={{ uri: 'https://cdn-icons-png.flaticon.com/128/5968/5968764.png' }}
                     />
                     <Text style={styles.imageText}>sign up with Facebook</Text>
+                  
                 </TouchableOpacity>
-
+                </View>
             </View>
             <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
                 <Text style={styles.haveAccountText}>Have an account? <Text style={styles.signInText}>Sign In</Text></Text>
@@ -145,6 +143,12 @@ const SignUp = () => {
 };
 
 const styles = StyleSheet.create({
+    container: {
+        marginTop: 10,
+        backgroundColor: '#D9D9D9',
+        alignItems: 'center',
+        borderRadius: 30,
+      },
     input: {
         height: 55,
         borderColor: 'gray',
@@ -193,7 +197,7 @@ const styles = StyleSheet.create({
     image: {
         width: 50,
         height: 50,
-        marginRight: 10
+        marginRight: 50
     },
     imageText: {
         fontSize: 18,
