@@ -1,71 +1,82 @@
 import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, Text, Alert, Image, StyleSheet } from 'react-native';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { GoogleAuthProvider } from '@firebase/auth'; // Corrected import
-import { auth } from '../firebase/config';
-import { signInWithPopup } from 'firebase/auth';
-
+import { View, TextInput, TouchableOpacity, Text, StyleSheet, Image } from 'react-native';
+import { useCreateUserWithEmailAndPassword,useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
+import { auth } from '../firebase/config'; // Import Firebase auth
+
+import { GoogleProvider } from '@firebase/auth'; // Import GoogleProvider from firebase auth
 import FontFamily from './FontFamily';
 
 const SignUp = () => {
-    const [email, setEmail] = useState('');
-    const [birth, setBirth] = useState('');
-    const [firstName, setFirst] = useState('');
-    const [lastName, setLast] = useState('');
-    const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [birth, setBirth] = useState('');
+  const [firstName, setFirst] = useState('');
+  const [lastName, setLast] = useState('');
+  const [password, setPassword] = useState('');
 
-    const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
-    const navigation = useNavigation();
+  const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
+  const [signInWithGoogle] = useSignInWithGoogle(auth);
+  const navigation = useNavigation();
 
-    const handleSignUp = async () => {
-        try {
-            // Password validation
-            const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/;
-            if (!passwordRegex.test(password)) {
-                Alert.alert("Password must contain at least one capital letter, one number, and one symbol (!@#$%^&*)");
-                return;
-            }
+  const handleSignIn = () => {
+    navigation.navigate('SignIn');
+  };
 
-            // Create user with email and password
-            const res = await createUserWithEmailAndPassword(email, password);
-            console.log('User creation response:', res);
+  const handleSignUp = async () => {
+    try {
+      const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/;
+      if (!passwordRegex.test(password)) {
+        alert("Password must contain at least one capital letter, one number, and one symbol (!@#$%^&*)");
+        return;
+      }
 
-            if (!res || !res.user) {
-                Alert.alert("User creation failed. Please try again.");
-                return;
-            }
+      // Create user in Firebase
+      const res = await createUserWithEmailAndPassword(email, password);
 
-            // Clear input fields
-            setEmail('');
-            setPassword('');
-            setBirth('');
-            setFirst('');
-            setLast('');
+      if (!res || !res.user) {
+        alert("suup");
+        return;
+      }
 
-            // Show success message
-            Alert.alert("Sign up successful");
-         
-        } catch (e) {
-            console.error(e);
-            Alert.alert("Sign up failed. Please try again.");
-        }
-    };
+      // Create user in backend SQL database
+      const registerResponse = await axios.post('http://192.168.100.42:4000/users/register', {
+        firstName,
+        lastName,
+        birth,
+        email,
+        password
+      });
+      
+      console.log('Registration API response:', registerResponse.data);
 
-    const handleGoogleSignUp = async () => {
-        try {
-            const provider = new GoogleAuthProvider();
-            const res = await signInWithPopup(auth, provider);
-            console.log({ res });
+      // Store the user's email in session storage
+      sessionStorage.setItem('userEmail', email);
 
-            // Example: Navigate to another screen after successful sign-up
-            navigation.navigate('/Home');
+      // Clear input fields
+      setEmail('');
+      setPassword('');
+      setBirth('');
+      setFirst('');
+      setLast('');
 
-        } catch (e) {
-            console.error(e);
-            Alert.alert("Sign up with Google failed. Please try again.");
-        }
-    };
+      // Navigate to home screen
+      navigation.navigate('Home');
+      alert("Sign up successful");
+    } catch (error) {
+      console.error(error);
+      alert("Sign up failed. Please try again.");
+    }
+  };
+
+  const handleGoogleSignUp = async () => {
+    try {
+      const res = await signInWithGoogle(GoogleProvider);
+      console.log({ res });
+    } catch (error) {
+      console.error(error);
+    }
+}
 
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
@@ -108,6 +119,7 @@ const SignUp = () => {
                 <TouchableOpacity
                     style={styles.button}
                     onPress={handleSignUp}
+                    
                 >
                     <Text style={styles.buttonText}>Sign Up</Text>
                 </TouchableOpacity>
