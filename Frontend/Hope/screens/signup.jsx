@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { View, TextInput, TouchableOpacity, Text, Alert, Image, StyleSheet } from 'react-native';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'; // Updated import statement
+import { GoogleAuthProvider } from '@firebase/auth'; // Corrected import
 import { auth } from '../firebase/config';
+import { signInWithPopup } from 'firebase/auth';
+
 import { useNavigation } from '@react-navigation/native';
 import FontFamily from './FontFamily';
+
 const SignUp = () => {
     const [email, setEmail] = useState('');
     const [birth, setBirth] = useState('');
@@ -33,17 +36,6 @@ const SignUp = () => {
                 return;
             }
 
-            // Make API call to register the user (if needed)
-            // Example:
-            // const registerResponse = await axios.post('http://localhost:4000/users/register', {
-            //     firstName,
-            //     lastName,
-            //     email,
-            //     birth,
-            //     password
-            // });
-            // console.log('Registration API response:', registerResponse);
-
             // Clear input fields
             setEmail('');
             setPassword('');
@@ -53,6 +45,7 @@ const SignUp = () => {
 
             // Show success message
             Alert.alert("Sign up successful");
+         
         } catch (e) {
             console.error(e);
             Alert.alert("Sign up failed. Please try again.");
@@ -66,7 +59,7 @@ const SignUp = () => {
             console.log({ res });
 
             // Example: Navigate to another screen after successful sign-up
-            navigation.navigate('/');
+            navigation.navigate('/Home');
 
         } catch (e) {
             console.error(e);
