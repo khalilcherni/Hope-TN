@@ -31,7 +31,7 @@ const SignUp = () => {
         return;
       }
 
-      // Create user in Firebase
+    //   Create user in Firebase
       const res = await createUserWithEmailAndPassword(email, password);
 
       if (!res || !res.user) {
@@ -40,7 +40,7 @@ const SignUp = () => {
       }
 
       // Create user in backend SQL database
-      const registerResponse = await axios.post('http://192.168.100.42:4000/users/register', {
+      const registerResponse = await axios.post('http://192.168.72.231:4000/users/register', {
         firstName,
         lastName,
         birth,
@@ -73,6 +73,7 @@ const SignUp = () => {
     try {
       const res = await signInWithGoogle(GoogleProvider);
       console.log({ res });
+      navigation.navigate('Home');
     } catch (error) {
       console.error(error);
     }
