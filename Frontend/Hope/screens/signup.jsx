@@ -61,7 +61,7 @@ const SignUp = () => {
       setLast('');
 
       // Navigate to home screen
-      navigation.navigate('Home');
+      navigation.navigate("Home");
       alert("Sign up successful");
     } catch (error) {
       console.error(error);
@@ -122,7 +122,7 @@ const SignUp = () => {
                     onPress={handleSignUp}
                     
                 >
-                    <Text style={styles.buttonText}>Sign Up</Text>
+                    <Text onPress={() => navigation.navigate('SignIn')} style={styles.buttonText}>Sign Up</Text>
                 </TouchableOpacity>
             
                 <Text style={styles.orText}> or continue with</Text>
