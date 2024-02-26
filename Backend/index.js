@@ -22,6 +22,13 @@ app.use(cors());
 app.use(express.json());
 
 // Use the routers correctly
+app.use('/api/categorie', categorieRoute);
+app.use("/api/question",questionsRoute)
+app.use("/api/voluntary",questionsRoute)
+app.use("/api/people",peopleRoute)
+app.use('/api',donationRoute)
+app.use('/api',eventsRoute)
+app.use('/api',schoolRoute)
 app.use('/categorie', categorieRoute);
 app.use("/questions",questionsRoute)
 app.use ("/people",peopleRoute)

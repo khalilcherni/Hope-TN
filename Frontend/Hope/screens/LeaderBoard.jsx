@@ -44,7 +44,7 @@ const LeaderBoard = () => {
             <Image
               style={[styles.frameItem, styles.frameItemLayout]}
               contentFit="cover"
-              source={require("../assets/iyess.png")}
+              source={require("../assets/first.png")}
             />
             <Text style={[styles.text3, styles.textPosition]}>2</Text>
           </View>
