@@ -12,22 +12,22 @@ const OnboardingPage2 = () => {
       <Image
         style={[styles.charityWork1080x6751Icon, styles.charityIconLayout]}
         contentFit="cover"
-        source={require("../assets/charity-work.jpg")}
+        source={require("../assets/poor1.jpg")}
       />
       <Image
         style={[styles.charityWork1Icon, styles.charityIconLayout]}
         contentFit="cover"
-        source={require("../assets/help1.jpg")}
+        source={require("../assets/poor1.jpg")}
       />
       <Image
         style={[styles.theHalle101Icon, styles.iconLayout]}
         contentFit="cover"
-        source={require("../assets/help.jpg")}
+        source={require("../assets/poor1.jpg")}
       />
       <Image
         style={[styles.icon, styles.iconLayout]}
         contentFit="cover"
-        source={require("../assets/poor11.jpg")}
+        source={require("../assets/poor1.jpg")}
       />
       <Text style={styles.weCanHelp}>We Can Help Those In Need</Text>
       <Text style={[styles.whenWeGive, styles.whenWeGiveLayout]}>
