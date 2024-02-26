@@ -5,6 +5,18 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'; 
 import { createStackNavigator } from '@react-navigation/stack';// Import NavigationContainer
+// import Home from './screens/Home';
+import StartingPage from './screens/StartingPage';
+import SignUp from './screens/signup';
+import OnboardingPage1 from './screens/onboardingPage1';
+import OnboardingPage2 from './screens/OnboardingPage2';
+import SignIn  from './screens/signin';
+// import StartingPage from './screens/StartingPage';
+// import StartingPage from './component/StartingPage'; // Import StartingPage component
+// import SignUp from './screens/signup';
+// import OnboardingPage from './screens/onboardingPage1';
+// import SignIn  from './screens/signin';
+
 import StartingPage from './screens/StartingPage';
 import SignUp from './screens/signup';
 import OnboardingPage1 from './screens/onboardingPage1';

@@ -60,7 +60,7 @@ const OnboardingPage1 = () => {
         <Image
           style={styles.icon}
           contentFit="cover"
-          source={require("../assets/right-arrow.png")}
+          source={require("../assets/poor1.jpg")}
         />
       </Pressable>
       
