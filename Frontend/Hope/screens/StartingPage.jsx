@@ -7,7 +7,7 @@ const StartingPage = () => {
   const navigation = useNavigation();
 
   const handleStart = () => {
-    navigation.navigate("OnboardingPage");
+    navigation.navigate("OnboardingPage1");
   };
 
   return (

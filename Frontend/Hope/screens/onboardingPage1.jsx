@@ -42,12 +42,12 @@ const OnboardingPage = () => {
       <Image
         style={[styles.poor11Icon, styles.iconLayout]}
         contentFit="cover"
-        source={require("../assets/child.avif")}
+        source={require("../assets/child.jpg")}
       />
       <Image
         style={[styles.poo3131Icon, styles.iconLayout2]}
         contentFit="cover"
-        source={require("../assets/child.avif")}
+        source={require("../assets/child.jpg")}
       />
       <Text style={styles.letsHelpEach}>Let’s help each others</Text>
       <Text style={[styles.whenWeGive, styles.whenWeGiveTypo]}>

@@ -17,23 +17,36 @@ import SignIn  from './screens/signin';
 // import OnboardingPage from './screens/onboardingPage1';
 // import SignIn  from './screens/signin';
 
-
-
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
 
     <NavigationContainer>
- 
-      <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}> 
+    {/* Render StartingPage */}    
+     
+
+    {/* Render StartingPage /}
+    {/ <StartingPage /> /}
+    {/ You can render other components here /}
+    {/ <SignUp /> /}
+    {/ <OnboardingPage/> */}
+
+
+    {/* Render StartingPage */}
+    {/* <StartingPage /> */}
+    {/* You can render other components here */}
+    {/* <SignUp /> */}
+    {/* <OnboardingPage/> */}
+    <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}>
+
         <Stack.Screen name="StartingPage" component={StartingPage} />
         <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} />
         <Stack.Screen name="OnboardingPage2" component={OnboardingPage2} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="SignIn" component={SignIn} />
       </Stack.Navigator>
-      {/* <Home/> */}
+   {/* <Home/> */}
 
   </NavigationContainer>
 );
