@@ -19,14 +19,14 @@ export default function App() {
 
     <NavigationContainer>
  
-      {/* <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}> 
+      <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}> 
         <Stack.Screen name="StartingPage" component={StartingPage} />
         <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} />
         <Stack.Screen name="OnboardingPage2" component={OnboardingPage2} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="SignIn" component={SignIn} />
-      </Stack.Navigator> */}
-      <Frame/>
+      </Stack.Navigator>
+      {/* <Frame/> */}
 
   </NavigationContainer>
 );
