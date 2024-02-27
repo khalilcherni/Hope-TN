@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Image, StyleSheet, ActivityIndicator, ScrollView, TouchableOpacity } from 'react-native';
 import axios from 'axios';
-
+import { useNavigation } from '@react-navigation/native';
 export default function Example() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const navigation = useNavigation(); // Navigation hook
   useEffect(() => {
     axios.get("http://192.168.1.201:4000/palestine/get")
       .then(res => {
@@ -24,7 +24,7 @@ export default function Example() {
 
   const handleDonatePress = () => {
     // Handle donate button press
-    console.log('Donate button pressed');
+    navigation.navigate('AndroidLarge2');
   };
 
   return (
