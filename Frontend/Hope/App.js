@@ -11,21 +11,24 @@ import SignIn from './screens/signin';
 // import Home from './screens/Home';
 import Setting from './screens/Setting';
 import ProfileEdit from "./screens/EditProfile"
+import Home from "./screens/Home"
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      {/* <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="StartingPage" component={StartingPage} />
-        <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} />
-        <Stack.Screen name="OnboardingPage2" component={OnboardingPage2} />
-        <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="SignIn" component={SignIn} />
-        <Stack.Screen name="Home" component={Home} />
-      </Stack.Navigator> */}
-      <Home/>
+      <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}>
+        {/* <Stack.Screen name="StartingPage" component={StartingPage} /> /}
+        {/ <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} /> /}
+        {/ <Stack.Screen name="OnboardingPage2" component={OnboardingPage2} /> /}
+        {/ <Stack.Screen name="SignUp" component={SignUp} /> /}
+        {/ <Stack.Screen name="SignIn" component={SignIn} /> /}
+        {/ <Stack.Screen name="Home" component={Home} /> */}
+        <Stack.Screen name="Setting" component={Setting}/>
+        <Stack.Screen name="ProfileEdit" component={ProfileEdit}/>
+        {/* <Stack.Screen name ="Home" component={Home}/> */}
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
