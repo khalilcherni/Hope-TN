@@ -29,6 +29,7 @@ export default function App() {
       </Stack.Navigator> */}
  {/* <AndroidLarge2/> */}
  <Voluntarywork/>
+      <Home/>
     </NavigationContainer>
   );
 }
