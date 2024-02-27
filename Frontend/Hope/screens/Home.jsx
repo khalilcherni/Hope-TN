@@ -1,112 +1,89 @@
+Home
 import * as React from "react";
 import { Image } from "expo-image";
-import { StyleSheet, Pressable, Text, View } from "react-native";
+import { StyleSheet, Pressable, Text, View, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
-import { ScrollView } from "react-native-gesture-handler";
 
-const HomeRE = () => {
+const Home = () => {
   const navigation = useNavigation();
 
   return (
     <ScrollView>
-    <View style={styles.homeRe}>
+    <View style={styles.home}>
+      <Image
+        style={[styles.helloJohnDoe, styles.menuIconPosition]}
+        contentFit="cover"
+        source={require("../assets/profile-circle.webp")}
+      />
+      <Image
+        style={[styles.menuIcon, styles.menuIconPosition]}
+        contentFit="cover"
+        source={require("../assets/menu.webp")}
+      />
+      <Image
+        style={[styles.homeChild, styles.menuIconPosition]}
+        contentFit="cover"
+        source={require("../assets/Rectangle.png")}
+      />
       <Pressable
-        style={[styles.profileCircle, styles.ellipseIconLayout]}
+        style={[styles.profileCircle, styles.menuIconPosition]}
         onPress={() => navigation.navigate("Setting")}
       >
         <Image
           style={[styles.icon, styles.iconLayout3]}
           contentFit="cover"
-          source={require("../assets/profile-circle.png")}
+          source={require("../assets/Ellipse.webp")}
         />
       </Pressable>
-      <Text style={[styles.welcome, styles.welcomeTypo]}>Welcome</Text>
       <Image
-        style={styles.menuIcon}
+        style={[styles.homeItem, styles.homeItemPosition]}
         contentFit="cover"
-        source={require("../assets/menu.png")}
+        source={require("../assets/Frame_495.webp")}
       />
-      <Image
-        style={styles.homeReChild}
-        contentFit="cover"
-        source={require("../assets/Rectangle.png")}
-      />
-      <Text style={[styles.categories, styles.categoriesTypo]}>
-        Categories:
+      <Text style={[styles.somePhotos, styles.somePhotosTypo]}>
+        Some Photos :
       </Text>
-      <Image
-        style={[styles.homeReItem, styles.homePosition]}
-        contentFit="cover"
-        source={require("../assets/Ellipse 52.png")}
-      />
-      <Image
-        style={[styles.dropIcon, styles.iconPosition]}
-        contentFit="cover"
-        source={require("../assets/drop.png")}
-      />
-      <Pressable
-        style={[styles.wrapper, styles.homePosition]}
-        onPress={() => navigation.navigate("Details")}
+      <Text style={[styles.categories, styles.somePhotosTypo]}>
+        Categories :
+      </Text>
+      <View
+        style={[
+          styles.jeuneMereEnfantsRemplitBidParent,
+          styles.homeItemPosition,
+        ]}
       >
         <Image
-          style={styles.iconLayout3}
+          style={[styles.jeuneMereEnfantsRemplitBidIcon, styles.iconLayout2]}
           contentFit="cover"
-          source={require("../assets/Ellipse 52.png")}
+          source={require("../assets/jeune-mere-enfants-remplit-bidons-eau-potable-tunisie 1.png")}
         />
-      </Pressable>
-      <Image
-        style={[styles.dollarCircleIcon, styles.iconPosition]}
-        contentFit="cover"
-        source={require("../assets/dollar-circle.png")}
-      />
-      <Image
-        style={[styles.homeReInner, styles.homePosition]}
-        contentFit="cover"
-        source={require("../assets/Ellipse 52.png")}
-      />
-      <Image
-        style={[styles.downloadRemovebgPreview1Icon, styles.iconLayout2]}
-        contentFit="cover"
-        source={require("../assets/4.png")}
-      />
-      <Image
-        style={[styles.ellipseIcon, styles.ellipseIconLayout]}
-        contentFit="cover"
-        source={require("../assets/Ellipse 52.png")}
-      />
-      <Image
-        style={[styles.depositphotos105691240StockIcon, styles.iconLayout2]}
-        contentFit="cover"
-        source={require("../assets/3.png")}
-      />
-      <Image
-        style={[styles.homeReChild1, styles.homePosition]}
-        contentFit="cover"
-        source={require("../assets/Ellipse 52.png")}
-      />
-      <Image style={styles.seniorCitizenLogoPngSeniorIcon} contentFit="cover" />
-      <Text style={[styles.ourWork, styles.welcomeTypo]}>Our Work :</Text>
-      <Image
-        style={[styles.demt1Icon, styles.iconLayout1]}
-        contentFit="cover"
-        source={require("../assets/DEMT 1.png")}
-      />
-      <Image
-        style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
-        contentFit="cover"
-        source={require("../assets/tunisia-covid-station-767 1 (1).png")}
-      />
-      <Text style={[styles.povertyInTunisia, styles.categoriesTypo]}>
-        Poverty in Tunisia :
-      </Text>
+        <Image
+          style={[styles.fediMejriTunisiaWarmMeUpIcon, styles.iconLayout2]}
+          contentFit="cover"
+          source={require("../assets/Fedi-Mejri-Tunisia-Warm-Me-Up-project-1 1.png")}
+        />
+        <Image
+          style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
+          contentFit="cover"
+          source={require("../assets/tunisia-covid-station-767 1 (1).png")}
+        />
+        <Image
+          style={[styles.demt1Icon, styles.demt1IconPosition]}
+          contentFit="cover"
+          source={require("../assets/DEMT 1.png")}
+        />
+      </View>
       <Image
         style={styles.jpgRemovebgPreview1Icon}
         contentFit="cover"
         source={require("../assets/jpg-removebg-preview 1.png")}
       />
+      <Text style={[styles.povertyRatesIn, styles.somePhotosTypo]}>
+        Poverty rates in Tunisia :
+      </Text>
       <Image
-        style={styles.rectangleIcon}
+        style={[styles.homeInner, styles.demt1IconPosition]}
         contentFit="cover"
         source={require("../assets/Rect.png")}
       />
@@ -115,9 +92,9 @@ const HomeRE = () => {
         onPress={() => navigation.navigate("ChannelList")}
       >
         <Image
-          style={[styles.icon2, styles.iconLayout]}
+          style={[styles.icon1, styles.iconLayout]}
           contentFit="cover"
-          source={require("../assets/message-text.png")}
+          source={require("../assets/drop.png")}
         />
       </Pressable>
       <Image
@@ -130,9 +107,9 @@ const HomeRE = () => {
         onPress={() => navigation.navigate("LeaderBoard")}
       >
         <Image
-          style={[styles.icon2, styles.iconLayout]}
+          style={[styles.icon1, styles.iconLayout]}
           contentFit="cover"
-          source={require("../assets/chart.png")}
+          source={require("../assets/message-text.png")}
         />
       </Pressable>
     </View>
@@ -141,53 +118,49 @@ const HomeRE = () => {
 };
 
 const styles = StyleSheet.create({
-  ellipseIconLayout: {
-    height: 60,
-    width: 60,
+  scrollViewContent: {
+    flexGrow: 1,
+  },
+  menuIconPosition: {
+    left: "50%",
     position: "absolute",
   },
   iconLayout3: {
     height: "100%",
     width: "100%",
   },
-  welcomeTypo: {
+  homeItemPosition: {
+    left: 15,
+    position: "absolute",
+  },
+  somePhotosTypo: {
+    height: 19,
     textAlign: "left",
     color: Color.lightBlack,
-    fontFamily: FontFamily.kalam,
+    fontFamily: FontFamily.outfitMedium,
+    fontWeight: "500",
     fontSize: FontSize.size_xl,
-    position: "absolute",
-  },
-  categoriesTypo: {
-    left: 9,
-    textAlign: "left",
-    color: Color.lightBlack,
-    fontFamily: FontFamily.kalam,
-    fontSize: FontSize.size_xl,
-    position: "absolute",
-  },
-  homePosition: {
-    top: 270,
-    height: 60,
-    width: 60,
-    position: "absolute",
-  },
-  iconPosition: {
-    top: 288,
     position: "absolute",
   },
   iconLayout2: {
-    width: 47,
+    height: 159,
+    borderRadius: Border.br_3xs,
+    top: 0,
     position: "absolute",
   },
   iconLayout1: {
-    height: 159,
     width: 159,
+    height: 159,
     borderRadius: Border.br_3xs,
+    top: 0,
+  },
+  demt1IconPosition: {
+    left: 0,
     position: "absolute",
   },
   houseIconLayout: {
-    height: "2.92%",
-    width: "11.94%",
+    height: "2.94%",
+    width: "10.75%",
     position: "absolute",
   },
   iconLayout: {
@@ -195,149 +168,142 @@ const styles = StyleSheet.create({
     maxWidth: "100%",
     overflow: "hidden",
   },
-  icon: {
-    marginLeft: 122,
-  },
-  profileCircle: {
-    bottom: 1310,
-    left: "50%",
-  },
-  welcome: {
-    top: 9,
-    left: 140,
-    width: 181,
-    height: 22,
+  helloJohnDoe: {
+    marginLeft: -95,
+    bottom: 1291,
+    width: 152,
+    height: 17,
   },
   menuIcon: {
-    marginLeft: -174,
-    bottom: 1331,
+    marginLeft: -169,
+    bottom: 1290,
     width: 27,
     height: 30,
-    left: "50%",
-    position: "absolute",
     overflow: "hidden",
   },
-  homeReChild: {
-    marginLeft: -165,
-    bottom: 1146,
+  homeChild: {
+    marginLeft: -171,
+    bottom: 1110,
     width: 330,
     height: 160,
-    left: "50%",
-    position: "absolute",
   },
-  categories: {
-    top: 237,
-    width: 155,
-    height: 25,
+  icon: {
+    marginLeft: 102,
   },
-  homeReItem: {
-    left: 6,
+  profileCircle: {
+    bottom: 1274,
+    width: 60,
+    height: 60,
   },
-  dropIcon: {
-    left: 24,
-    width: 25,
-    height: 25,
-  },
-  wrapper: {
-    left: 73,
-  },
-  dollarCircleIcon: {
-    left: 91,
-    width: 24,
-    height: 24,
-  },
-  homeReInner: {
-    left: 143,
-  },
-  downloadRemovebgPreview1Icon: {
-    top: 282,
-    left: 149,
-    height: 36,
-  },
-  ellipseIcon: {
-    top: 267,
-    left: 207,
-  },
-  depositphotos105691240StockIcon: {
-    top: 265,
-    left: 213,
+  homeItem: {
+    top: 279,
+    width: 356,
     height: 64,
   },
-  homeReChild1: {
-    left: 279,
+  somePhotos: {
+    top: 373,
+    width: 164,
+    left: 16,
+    height: 19,
+    textAlign: "left",
+    color: Color.lightBlack,
+    fontFamily: FontFamily.outfitMedium,
+    fontWeight: "500",
+    fontSize: FontSize.size_xl,
   },
-  seniorCitizenLogoPngSeniorIcon: {
-    top: 283,
-    left: 287,
-    width: 43,
-    height: 33,
-    position: "absolute",
+  categories: {
+    top: 251,
+    width: 164,
+    left: 16,
+    height: 19,
+    textAlign: "left",
+    color: Color.lightBlack,
+    fontFamily: FontFamily.outfitMedium,
+    fontWeight: "500",
+    fontSize: FontSize.size_xl,
   },
-  ourWork: {
-    top: 345,
-    left: 12,
-    width: 128,
-    height: 25,
+  jeuneMereEnfantsRemplitBidIcon: {
+    left: 580,
+    width: 294,
   },
-  demt1Icon: {
-    top: 370,
-    left: 7,
+  fediMejriTunisiaWarmMeUpIcon: {
+    left: 380,
+    width: 169,
   },
   tunisiaCovidStation7671Icon: {
-    top: 372,
     left: 190,
+    position: "absolute",
   },
-  povertyInTunisia: {
-    top: 542,
-    width: 194,
-    height: 23,
+  demt1Icon: {
+    width: 159,
+    height: 159,
+    borderRadius: Border.br_3xs,
+    top: 0,
+  },
+  jeuneMereEnfantsRemplitBidParent: {
+    top: 401,
+    width: 1505,
+    height: 160,
   },
   jpgRemovebgPreview1Icon: {
-    top: 586,
-    left: -15,
+    top: 599,
+    left: -11,
     width: 375,
-    height: 569,
+    height: 643,
     position: "absolute",
   },
-  rectangleIcon: {
-    top: 1132,
-    left: 0,
-    width: 470,
+  povertyRatesIn: {
+    top: 571,
+    width: 228,
+    height: 19,
+    textAlign: "left",
+    color: Color.lightBlack,
+    fontFamily: FontFamily.outfitMedium,
+    fontWeight: "500",
+    fontSize: FontSize.size_xl,
+    left: 15,
+  },
+  homeInner: {
+    top: 1110,
+    width: 404,
     height: 238,
-    position: "absolute",
   },
-  icon2: {
+  icon1: {
     height: "100%",
     width: "100%",
   },
   vuesaxbrokenmessageText: {
-    left: "86.11%",
-    top: "95.99%",
-    right: "1.94%",
-    bottom: "1.09%",
+    left: "75.81%",
+    top: "95.37%",
+    right: "13.44%",
+    bottom: "1.69%",
   },
   houseIcon: {
-    top: "95.77%",
-    right: "43.61%",
-    bottom: "1.31%",
-    left: "44.44%",
-    height: "2.92%",
-    width: "11.94%",
+    top: "95.15%",
+    right: "45.7%",
+    bottom: "1.91%",
+    left: "43.55%",
+    height: "2.94%",
+    width: "10.75%",
     position: "absolute",
   },
   vuesaxboldchart: {
-    left: "2.78%",
-    top: "96.06%",
-    right: "85.28%",
-    bottom: "1.02%",
+    left: "10.75%",
+    top: "95.29%",
+    right: "78.49%",
+    bottom: "1.76%",
   },
-  homeRe: {
-    backgroundColor: Color.lightWhite,
+  home: {
+    borderRadius: 24,
+    backgroundColor: Color.lightWhiteSnow,
+    borderStyle: "solid",
+    borderColor: "#262626",
+    borderWidth: 6,
     flex: 1,
-    height: 1370,
+    height: 1360,
     overflow: "hidden",
     width: "100%",
   },
 });
 
-export default Home
+export default Home;
