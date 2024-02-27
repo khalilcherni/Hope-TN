@@ -35,7 +35,7 @@ return (
           placeholderTextColor="white"
           style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#209FA6', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
         />
-        <Text>or</Text>
+        <Text style={{textAlign: 'center', height: 55,fontSize: 24,color:"#0085FF"}} >or</Text>
         <TextInput
           placeholder="enter here"
           placeholderTextColor="white"
@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 30,
   },
+
   input: {
     height: 55,
     borderColor: 'white',
