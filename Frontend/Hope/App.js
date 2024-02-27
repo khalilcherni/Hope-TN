@@ -17,11 +17,7 @@ import SignIn  from './screens/signin';
 // import OnboardingPage from './screens/onboardingPage1';
 // import SignIn  from './screens/signin';
 
-import StartingPage from './screens/StartingPage';
-import SignUp from './screens/signup';
-import OnboardingPage1 from './screens/onboardingPage1';
-import OnboardingPage2 from './screens/OnboardingPage2';
-import SignIn  from './screens/signin';
+
 
 const Stack = createStackNavigator();
 
