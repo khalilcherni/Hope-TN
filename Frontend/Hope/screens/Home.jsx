@@ -1,5 +1,7 @@
+Home
 import * as React from "react";
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { Image } from "expo-image";
+import { StyleSheet, Pressable, Text, View, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 
@@ -7,21 +9,22 @@ const Home = () => {
   const navigation = useNavigation();
 
   return (
+    <ScrollView>
     <View style={styles.home}>
       <Image
         style={[styles.helloJohnDoe, styles.menuIconPosition]}
         contentFit="cover"
-         source={require("../assets/aaa.jpg")}
+        source={require("../assets/111.jpg")}
       />
       <Image
         style={[styles.menuIcon, styles.menuIconPosition]}
         contentFit="cover"
-        // source={require("../assets/menu.png")}
+        source={require("../assets/menu.png")}
       />
       <Image
         style={[styles.homeChild, styles.menuIconPosition]}
         contentFit="cover"
-        // source={require("../assets/rectangle-4179.png")}
+        source={require("../assets/Rectangle.png")}
       />
       <Pressable
         style={[styles.profileCircle, styles.menuIconPosition]}
@@ -30,13 +33,13 @@ const Home = () => {
         <Image
           style={[styles.icon, styles.iconLayout3]}
           contentFit="cover"
-          // source={require("../assets/profilecircle.png")}
+          source={require("../assets/profile-circle.png")}
         />
       </Pressable>
       <Image
         style={[styles.homeItem, styles.homeItemPosition]}
         contentFit="cover"
-        // source={require("../assets/frame-495.png")}
+        source={require("../assets/Frame 495.png")}
       />
       <Text style={[styles.somePhotos, styles.somePhotosTypo]}>
         Some Photos :
@@ -53,28 +56,28 @@ const Home = () => {
         <Image
           style={[styles.jeuneMereEnfantsRemplitBidIcon, styles.iconLayout2]}
           contentFit="cover"
-          // source={require("../assets/jeunemereenfantsremplitbidonseaupotabletunisie-1.png")}
+          source={require("../assets/jeune-mere-enfants-remplit-bidons-eau-potable-tunisie 1.png")}
         />
         <Image
           style={[styles.fediMejriTunisiaWarmMeUpIcon, styles.iconLayout2]}
           contentFit="cover"
-          // source={require("../assets/fedimejritunisiawarmmeupproject1-1.png")}
+          source={require("../assets/Fedi-Mejri-Tunisia-Warm-Me-Up-project-1 1.png")}
         />
         <Image
           style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
           contentFit="cover"
-          // source={require("../assets/tunisiacovidstation767-1.png")}
+          source={require("../assets/tunisia-covid-station-767 1 (1).png")}
         />
         <Image
           style={[styles.demt1Icon, styles.demt1IconPosition]}
           contentFit="cover"
-          // source={require("../assets/demt-1.png")}
+          source={require("../assets/DEMT 1.png")}
         />
       </View>
       <Image
         style={styles.jpgRemovebgPreview1Icon}
         contentFit="cover"
-        // source={require("../assets/jpgremovebgpreview-1.png")}
+        source={require("../assets/jpg-removebg-preview 1.png")}
       />
       <Text style={[styles.povertyRatesIn, styles.somePhotosTypo]}>
         Poverty rates in Tunisia :
@@ -82,7 +85,7 @@ const Home = () => {
       <Image
         style={[styles.homeInner, styles.demt1IconPosition]}
         contentFit="cover"
-        // source={require("../assets/rectangle-4197.png")}
+        source={require("../assets/Rect.png")}
       />
       <Pressable
         style={[styles.vuesaxbrokenmessageText, styles.houseIconLayout]}
@@ -91,13 +94,13 @@ const Home = () => {
         <Image
           style={[styles.icon1, styles.iconLayout]}
           contentFit="cover"
-          // source={require("../assets/vuesaxbrokenmessagetext.png")}
+          source={require("../assets/drop.png")}
         />
       </Pressable>
       <Image
         style={[styles.houseIcon, styles.iconLayout]}
         contentFit="cover"
-        // source={require("../assets/house.png")}
+        source={require("../assets/house.png")}
       />
       <Pressable
         style={[styles.vuesaxboldchart, styles.houseIconLayout]}
@@ -106,14 +109,18 @@ const Home = () => {
         <Image
           style={[styles.icon1, styles.iconLayout]}
           contentFit="cover"
-          // source={require("../assets/vuesaxboldchart.png")}
+          source={require("../assets/message-text.png")}
         />
       </Pressable>
     </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
+  scrollViewContent: {
+    flexGrow: 1,
+  },
   menuIconPosition: {
     left: "50%",
     position: "absolute",
