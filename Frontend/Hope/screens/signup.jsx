@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { View, TextInput, TouchableOpacity, Text, StyleSheet, Image, Alert } from 'react-native';
-import axios from 'axios';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
+import { auth, GoogleProvider } from '../firebase/config'; // Import Firebase auth
+
+import FontFamily from './FontFamily';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -9,42 +13,72 @@ const SignUp = () => {
   const [firstName, setFirst] = useState('');
   const [lastName, setLast] = useState('');
   const [password, setPassword] = useState('');
+
+  const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
+  const [signInWithGoogle] = useSignInWithGoogle(auth);
   const navigation = useNavigation();
 
-  const handleSignUp = async () => {
+  const handleSignIn = () => {
+    navigation.navigate('SignIn');
+  };
+const handleSignUp = async () => {
+  try {
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/;
+    if (!passwordRegex.test(password)) {
+      Alert.alert("Password must contain at least one capital letter, one number, and one symbol (!@#$%^&*)");
+      return;
+    }
+
+    // Create user in Firebase
+    // const res = await createUserWithEmailAndPassword(email, password);
+
+    // if (!res || !res.user) {
+    //   Alert.alert("Sign up failed. Please try again.");
+    //   return;
+    // }
+
+    // Create user in backend SQL database
+    const registerResponse = await axios.post('http://192.168.100.42:4000/users/register', {
+      firstName,
+      lastName,
+      birth,
+      email,
+      password
+    });
+
+    console.log('Registration API response:', registerResponse.data);
+
+    // Store the user's email in session storage
+    sessionStorage.setItem('userEmail', email);
+
+    // Clear input fields
+    setEmail('');
+    setPassword('');
+    setBirth('');
+    setFirst('');
+    setLast('');
+
+    Alert.alert("Sign up successful");
+    // Navigate to sign-in screen
+    navigation.navigate("SignIn");
+    
+
+  } catch (error) {
+    console.error(error);
+    Alert.alert("Sign up failed. Please try again.");
+  }
+};
+
+  const handleGoogleSignUp = async () => {
     try {
-      const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/;
-      if (!passwordRegex.test(password)) {
-        Alert.alert("Password must contain at least one capital letter, one number, and one symbol (!@#$%^&*)");
-        return;
-      }
-
-      const registerResponse = await axios.post('http://192.168.100.42:4000/users/register', {
-        firstName,
-        lastName,
-        birth,
-        email,
-        password
-      });
-
-      console.log('Registration API response:', registerResponse.data);
-
-      sessionStorage.setItem('userEmail', email);
-
-      setEmail('');
-      setPassword('');
-      setBirth('');
-      setFirst('');
-      setLast('');
-
-      Alert.alert("Sign up successful");
-      navigation.navigate("SignIn");
-
+      const res = await signInWithGoogle(GoogleProvider);
+      console.log({ res });
+      navigation.navigate('Home');
     } catch (error) {
       console.error(error);
-      Alert.alert("Sign up failed. Please try again.");
     }
-  };
+  }
+
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
       <View style={{ width: '80%', marginBottom: 20 }}>
