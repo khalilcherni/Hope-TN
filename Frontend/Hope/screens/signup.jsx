@@ -30,12 +30,12 @@ const handleSignUp = async () => {
     }
 
     // Create user in Firebase
-    // const res = await createUserWithEmailAndPassword(email, password);
+    const res = await createUserWithEmailAndPassword(email, password);
 
-    // if (!res || !res.user) {
-    //   Alert.alert("Sign up failed. Please try again.");
-    //   return;
-    // }
+    if (!res || !res.user) {
+      Alert.alert("Sign up failed. Please try again.");
+      return;
+    }
 
     // Create user in backend SQL database
     const registerResponse = await axios.post('http://192.168.100.42:4000/users/register', {
