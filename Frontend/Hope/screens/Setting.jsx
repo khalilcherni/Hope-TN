@@ -65,15 +65,19 @@ const Setting = () => {
         contentFit="cover"
         source={require("../assets/bell.webp")}
       />
-      <Text style={[styles.language, styles.eventsFlexBox]}>Language</Text>
+      <Text style={[styles.favorites, styles.eventsFlexBox]}>Favorites</Text>
+      {/* <Text style={[styles.language, styles.eventsFlexBox]}>Language</Text> */}
       <Text style={[styles.preferences, styles.eventsTypo]}>Preferences</Text>
+      <Text style={[styles.favourite, styles.favouritePosition]}>
+        Favourite
+      </Text>
       <Text style={[styles.darkmode, styles.eventsFlexBox]}>Darkmode</Text>
       <View style={[styles.rectangle36Copy5Parent, styles.groupLayout]}>
         <View style={styles.rectangle36Copy5} />
         <Image
-          style={styles.rightIcon}
-          contentFit="cover"
-          source={require("../assets/right.png")}
+          // style={styles.rightIcon}
+          // contentFit="cover"
+          // source={require("../assets/right.png")}
         />
       </View>
       <View style={[styles.rectangle36Copy5Group, styles.groupLayout]}>
@@ -98,9 +102,9 @@ const Setting = () => {
       />
       <Text style={[styles.editProfile, styles.profileClr]}>Edit Profile</Text>
       <Image
-        style={styles.translateIcon}
-        contentFit="cover"
-        source={require("../assets/translate.png")}
+        // style={styles.translateIcon}
+        // contentFit="cover"
+        // source={require("../assets/translate.png")}
       />
       <Image
         style={[styles.umoonIcon, styles.iconLayout]}
@@ -274,14 +278,23 @@ const styles = StyleSheet.create({
       height: 19,
       position: "absolute",
     },
-    language: {
-      top: 399,
-      left: 47,
+    favorites: {
+      top: 464,
+      left: 60,
+      display: "none",
       fontFamily: FontFamily.poppinsMedium,
       fontWeight: "500",
       fontSize: FontSize.size_mini,
       position: "absolute",
     },
+    // language: {
+    //   top: 399,
+    //   left: 47,
+    //   fontFamily: FontFamily.poppinsMedium,
+    //   fontWeight: "500",
+    //   fontSize: FontSize.size_mini,
+    //   position: "absolute",
+    // },
     preferences: {
       top: 366,
       fontSize: FontSize.unifiedDesignDeprecatedFootnote_size,
@@ -289,6 +302,14 @@ const styles = StyleSheet.create({
       textAlign: "left",
       color: Color.lightBlack,
       position: "absolute",
+    },
+    favourite: {
+      left: 33,
+      textAlign: "left",
+      color: Color.lightBlack,
+      fontFamily: FontFamily.poppinsMedium,
+      fontWeight: "500",
+      fontSize: FontSize.size_mini,
     },
     darkmode: {
       top: 433,
