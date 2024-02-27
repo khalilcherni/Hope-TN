@@ -1,79 +1,118 @@
 import * as React from "react";
-import { StyleSheet, TextInput,View,TouchableOpacity, Text, Pressable } from "react-native";
-import { Image } from "expo-image";
-import { useNavigation } from "@react-navigation/native";
-import { Color, Border, FontSize, FontFamily } from "../GlobalStyles";
+import { StyleSheet, TextInput, View, TouchableOpacity, Text, Alert } from "react-native";
 
 const AndroidLarge2 = () => {
-  const navigation = useNavigation();
+  const [donationAmount, setDonationAmount] = React.useState('');
+  const [enteredAmount, setEnteredAmount] = React.useState('');
 
- 
-return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
-       <Text  style={{ height: 66, fontSize: 24, fontWeight: 'bold', color: 'black', marginBottom: 10, textAlign: 'center', fontFamily: FontFamily.kanit }}>Donation</Text>
-      <View style={{ width: '80%', marginBottom: 10}}>
-       
-       
+  const handleSelectAmount = (amount) => {
+    setDonationAmount(amount);
+    setEnteredAmount(amount);
+  };
 
-        <TextInput
-          placeholder="50tnd"
-          placeholderTextColor="white"
-          style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#209FA6', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
-        />
-        <TextInput
-          placeholder="80tnd"
-          placeholderTextColor="white"
-          style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#209FA6', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
-        />
-        <TextInput
-          placeholder="100tnd"
-          placeholderTextColor="white"
-          style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#209FA6', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
-        />
-        <TextInput
-          placeholder="120tnd"
-          placeholderTextColor="white"
-          style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#209FA6', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
-        />
-        <Text style={{textAlign: 'center', height: 55,fontSize: 24,color:"#0085FF"}} >or</Text>
-        <TextInput
-          placeholder="enter here"
-          placeholderTextColor="white"
-    
-          style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#209FA6', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
-        />
-           <View   style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#209FA6', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}>
-        <TouchableOpacity >
-           
-            <Text  style={styles.buttonText} >Donate</Text>
-          </TouchableOpacity>
-          </View>
-       </View>
-    
+  const handleDonate = () => {
+    if (enteredAmount) {
+      Alert.alert("Donation done", "Rabi ykather khirk");
+    } else {
+      Alert.alert("Please enter a donation amount");
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.heading}>Donation</Text>
+      <View style={styles.amountContainer}>
+        <TouchableOpacity
+          style={styles.amountButton}
+          onPress={() => handleSelectAmount("50tnd")}
+        >
+          <Text style={styles.amountButtonText}>50tnd</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.amountButton}
+          onPress={() => handleSelectAmount("80tnd")}
+        >
+          <Text style={styles.amountButtonText}>80tnd</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.amountButton}
+          onPress={() => handleSelectAmount("100tnd")}
+        >
+          <Text style={styles.amountButtonText}>100tnd</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.amountButton}
+          onPress={() => handleSelectAmount("120tnd")}
+        >
+          <Text style={styles.amountButtonText}>120tnd</Text>
+        </TouchableOpacity>
+      </View>
+      <Text style={styles.orText}>or</Text>
+      <TextInput
+        placeholder="enter here"
+        placeholderTextColor="white"
+        style={styles.input}
+        value={enteredAmount}
+        onChangeText={setEnteredAmount}
+      />
+      <TouchableOpacity
+        style={styles.button}
+        onPress={handleDonate}
+      >
+        <Text style={styles.buttonText}>Donate</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 10,
-    backgroundColor: '#D9D9D9',
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 30,
+    backgroundColor: 'white',
   },
-
+  heading: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'black',
+    marginBottom: 10,
+    fontFamily: 'Arial', // Adjust font family as needed
+  },
+  amountContainer: {
+    flexDirection: 'row',
+    marginBottom: 10,
+  },
+  amountButton: {
+    height: 40,
+    marginHorizontal: 5,
+    paddingHorizontal: 10,
+    backgroundColor: '#209FA6',
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  amountButtonText: {
+    fontSize: 16,
+    color: 'white',
+  },
+  orText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'black',
+    marginBottom: 10,
+  },
   input: {
     height: 55,
-    borderColor: 'white',
+    borderColor: 'gray',
     borderWidth: 1,
-    marginBottom: 10,
     paddingHorizontal: 10,
-    backgroundColor: '#D9D9D9',
+    backgroundColor: '#209FA6',
     width: 290,
     borderRadius: 30,
-    marginLeft: 15,
     textAlign: 'center',
-    color:'white'
+    color: 'white',
+    marginBottom: 10,
   },
   button: {
     height: 55,
@@ -84,51 +123,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#209FA6',
     width: 290,
     borderRadius: 30,
-    marginLeft: 15,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   buttonText: {
     fontSize: 18,
     fontWeight: 'bold',
     color: 'white',
     textAlign: 'center',
-    marginTop:10
-   
   },
-  orText: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    color: 'black',
-    textAlign: 'center',
-  },
-  imageContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 10
-  },
-  image: {
-    width: 50,
-    height: 50,
-    marginRight: 10
-  },
-  imageText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#0085FF',
-    textAlign: 'center',
-    marginLeft:500
-  },
-  haveAccountText: {
-    color: 'black',
-    marginTop: 2,
-    marginLeft: -100,
-    marginBottom: 10
-  },
-  signInText: {
-    color: '#0085FF'
-  }
 });
 
 export default AndroidLarge2;
