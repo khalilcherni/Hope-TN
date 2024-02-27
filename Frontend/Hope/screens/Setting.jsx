@@ -65,12 +65,8 @@ const Setting = () => {
         contentFit="cover"
         source={require("../assets/bell.webp")}
       />
-      <Text style={[styles.favorites, styles.eventsFlexBox]}>Favorites</Text>
       <Text style={[styles.language, styles.eventsFlexBox]}>Language</Text>
       <Text style={[styles.preferences, styles.eventsTypo]}>Preferences</Text>
-      <Text style={[styles.favourite, styles.favouritePosition]}>
-        Favourite
-      </Text>
       <Text style={[styles.darkmode, styles.eventsFlexBox]}>Darkmode</Text>
       <View style={[styles.rectangle36Copy5Parent, styles.groupLayout]}>
         <View style={styles.rectangle36Copy5} />
@@ -278,15 +274,6 @@ const styles = StyleSheet.create({
       height: 19,
       position: "absolute",
     },
-    favorites: {
-      top: 464,
-      left: 60,
-      display: "none",
-      fontFamily: FontFamily.poppinsMedium,
-      fontWeight: "500",
-      fontSize: FontSize.size_mini,
-      position: "absolute",
-    },
     language: {
       top: 399,
       left: 47,
@@ -302,14 +289,6 @@ const styles = StyleSheet.create({
       textAlign: "left",
       color: Color.lightBlack,
       position: "absolute",
-    },
-    favourite: {
-      left: 33,
-      textAlign: "left",
-      color: Color.lightBlack,
-      fontFamily: FontFamily.poppinsMedium,
-      fontWeight: "500",
-      fontSize: FontSize.size_mini,
     },
     darkmode: {
       top: 433,
