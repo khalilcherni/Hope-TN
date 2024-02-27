@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, TextInput,View, Text, Pressable } from "react-native";
+import { StyleSheet, TextInput,View,TouchableOpacity, Text, Pressable } from "react-native";
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
 import { Color, Border, FontSize, FontFamily } from "../GlobalStyles";
@@ -10,38 +10,44 @@ const AndroidLarge2 = () => {
  
 return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
-      <View style={{ width: '80%', marginBottom: 20 }}>
+       <Text  style={{ height: 66, fontSize: 24, fontWeight: 'bold', color: 'black', marginBottom: 10, textAlign: 'center', fontFamily: FontFamily.kanit }}>Donation</Text>
+      <View style={{ width: '80%', marginBottom: 10}}>
        
-        <Text style={{ height: 66, fontSize: 24, fontWeight: 'bold', color: 'black', marginBottom: 10, textAlign: 'center', fontFamily: FontFamily.kanit }}>Donation</Text>
+       
 
         <TextInput
           placeholder="50tnd"
-         
+          placeholderTextColor="white"
           style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#209FA6', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
         />
         <TextInput
           placeholder="80tnd"
-        
-          style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
+          placeholderTextColor="white"
+          style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#209FA6', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
         />
         <TextInput
           placeholder="100tnd"
-       
-          style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
+          placeholderTextColor="white"
+          style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#209FA6', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
         />
         <TextInput
           placeholder="120tnd"
-       
-          style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
+          placeholderTextColor="white"
+          style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#209FA6', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
         />
         <Text>or</Text>
         <TextInput
-          placeholder="Password"
-       
-          secureTextEntry={true}
-          style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
+          placeholder="enter here"
+          placeholderTextColor="white"
+    
+          style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#209FA6', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
         />
-       
+           <View   style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#209FA6', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}>
+        <TouchableOpacity >
+           
+            <Text  style={styles.buttonText} >Donate</Text>
+          </TouchableOpacity>
+          </View>
        </View>
     
     </View>
@@ -57,7 +63,7 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 55,
-    borderColor: 'gray',
+    borderColor: 'white',
     borderWidth: 1,
     marginBottom: 10,
     paddingHorizontal: 10,
@@ -65,7 +71,8 @@ const styles = StyleSheet.create({
     width: 290,
     borderRadius: 30,
     marginLeft: 15,
-    textAlign: 'center'
+    textAlign: 'center',
+    color:'white'
   },
   button: {
     height: 55,
@@ -85,6 +92,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
     textAlign: 'center',
+    marginTop:10
+   
   },
   orText: {
     fontSize: 15,
@@ -107,7 +116,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: '#0085FF',
-    textAlign: 'center'
+    textAlign: 'center',
+    marginLeft:500
   },
   haveAccountText: {
     color: 'black',
