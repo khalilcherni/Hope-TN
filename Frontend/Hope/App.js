@@ -3,7 +3,8 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import AndroidLarge2 from './screens/donation';
+import Voluntarywork from './screens/Voluntarywork';
+// import AndroidLarge2 from './screens/donation';
 
 // import StartingPage from './screens/StartingPage';
 // import SignUp from './screens/signup';
@@ -26,7 +27,8 @@ export default function App() {
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="Home" component={Home} />
       </Stack.Navigator> */}
- <AndroidLarge2/>
+ {/* <AndroidLarge2/> */}
+ <Voluntarywork/>
     </NavigationContainer>
   );
 }
