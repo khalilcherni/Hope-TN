@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, StyleSheet, ActivityIndicator, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, ActivityIndicator, ScrollView, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 
 export default function Example() {
@@ -22,8 +22,14 @@ export default function Example() {
     setLoading(true);
   };
 
+  const handleDonatePress = () => {
+    // Handle donate button press
+    console.log('Donate button pressed');
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
+      <Text> If you want to help our brotheres and sisters . </Text>
       <View style={styles.container}>
         {loading ? (
           <ActivityIndicator size="large" color="#0000ff" />
@@ -37,6 +43,9 @@ export default function Example() {
               />
               <View style={styles.textContainer}>
                 <Text style={styles.description}>{e.description}</Text>
+                <TouchableOpacity onPress={handleDonatePress} style={styles.donateButton}>
+                  <Text style={styles.donateButtonText}>Donate</Text>
+                </TouchableOpacity>
               </View>
             </View>
           ))
@@ -51,7 +60,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop:50,
+    marginTop: 50,
   },
   container: {
     width: '100%',
@@ -77,6 +86,19 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   description: {
+    fontSize: 16,
+  },
+  donateButton: {
+    backgroundColor: '#209FA6',
+    borderRadius: 5,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginTop: 10,
+    alignItems: 'center',
+    borderRadius:30
+  },
+  donateButtonText: {
+    color: '#fff',
     fontSize: 16,
   },
 });
