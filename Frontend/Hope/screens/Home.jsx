@@ -10,7 +10,7 @@ const Home = () => {
 
   return (
     <ScrollView>
-    <View style={styles.homeRe}>
+    <View  style={styles.homeRe}>
       <Pressable
         style={[styles.profileCircle, styles.ellipseIconLayout]}
         onPress={() => navigation.navigate("Setting")}
