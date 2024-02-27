@@ -11,14 +11,7 @@ import SignUp from './screens/signup';
 import OnboardingPage1 from './screens/onboardingPage1';
 import OnboardingPage2 from './screens/OnboardingPage2';
 import SignIn  from './screens/signin';
-// import StartingPage from './screens/StartingPage';
-// import StartingPage from './component/StartingPage'; // Import StartingPage component
-// import SignUp from './screens/signup';
-// import OnboardingPage from './screens/onboardingPage1';
-// import SignIn  from './screens/signin';
-
-
-
+import Frame from './screens/categoriePeopleWhoNeedWater'
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -26,14 +19,14 @@ export default function App() {
 
     <NavigationContainer>
  
-      <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}> 
+      {/* <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}> 
         <Stack.Screen name="StartingPage" component={StartingPage} />
         <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} />
         <Stack.Screen name="OnboardingPage2" component={OnboardingPage2} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="SignIn" component={SignIn} />
-      </Stack.Navigator>
-      {/* <Home/> */}
+      </Stack.Navigator> */}
+      <Frame/>
 
   </NavigationContainer>
 );
