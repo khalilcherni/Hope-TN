@@ -9,20 +9,26 @@ import OnboardingPage1 from './screens/onboardingPage1';
 import OnboardingPage2 from './screens/OnboardingPage2';
 import SignIn from './screens/signin';
 import Home from './screens/Home';
+// import StartingPage from './screens/StartingPage';
+// import StartingPage from './component/StartingPage'; // Import StartingPage component
+// import SignUp from './screens/signup';
+// import OnboardingPage from './screens/onboardingPage1';
+// import SignIn  from './screens/signin';
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}>
+      {/* <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="StartingPage" component={StartingPage} />
         <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} />
         <Stack.Screen name="OnboardingPage2" component={OnboardingPage2} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="Home" component={Home} />
-      </Stack.Navigator>
+      </Stack.Navigator> */}
+      <Home/>
     </NavigationContainer>
   );
 }
