@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+
 import BottomAppBar from './screens/Messages';
 // import Voluntarywork from './screens/Voluntarywork';
 // import Home from './screens/Home';
@@ -17,11 +18,23 @@ import BottomAppBar from './screens/Messages';
 // import Example from './screens/Example';
 
 
+import StartingPage from './screens/StartingPage';
+import SignUp from './screens/signup';
+import OnboardingPage1 from './screens/onboardingPage1';
+import OnboardingPage2 from './screens/OnboardingPage2';
+import SignIn from './screens/signin';
+// import Home from './screens/Home';
+import Setting from './screens/Setting';
+import ProfileEdit from "./screens/EditProfile"
+import Home from "./screens/Home"
+
+
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
+
       {/* <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="StartingPage" component={StartingPage} />
         <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} />
@@ -36,6 +49,19 @@ export default function App() {
 
  {/* <AndroidLarge2/> */}
  {/* <Example/> */}
+
+
+      <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}>
+        {/* <Stack.Screen name="StartingPage" component={StartingPage} /> /}
+        {/ <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} /> /}
+        {/ <Stack.Screen name="OnboardingPage2" component={OnboardingPage2} /> /}
+        {/ <Stack.Screen name="SignUp" component={SignUp} /> /}
+        {/ <Stack.Screen name="SignIn" component={SignIn} /> /}
+        {/ <Stack.Screen name="Home" component={Home} /> */}
+        <Stack.Screen name="Setting" component={Setting}/>
+        <Stack.Screen name="ProfileEdit" component={ProfileEdit}/>
+        {/* <Stack.Screen name ="Home" component={Home}/> */}
+      </Stack.Navigator>
 
     </NavigationContainer>
   );

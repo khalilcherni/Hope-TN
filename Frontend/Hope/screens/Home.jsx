@@ -18,14 +18,22 @@ const Home = () => {
         <Image
           style={[styles.icon, styles.iconLayout3]}
           contentFit="cover"
+
           source={require("../assets/poor1.jpg")}
+
+          source={require("../assets/profile-circle.webp")}
+
         />
       </Pressable>
       <Text style={[styles.welcome, styles.welcomeTypo]}>Welcome</Text>
       <Image
         style={styles.menuIcon}
         contentFit="cover"
+
         source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/menu.webp")}
+
       />
       <Image
         style={styles.homeReChild}
@@ -38,12 +46,19 @@ const Home = () => {
       <Image
         style={[styles.homeReItem, styles.homePosition]}
         contentFit="cover"
+
         source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/Ellipse.webp")}
+
       />
       <Image
         style={[styles.dropIcon, styles.iconPosition]}
         contentFit="cover"
-        source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/poor1.jpg")
+        source={require("../assets/drop.webp")}
+
       />
       <Pressable
         style={[styles.wrapper, styles.homePosition]}
@@ -52,50 +67,85 @@ const Home = () => {
         <Image
           style={styles.iconLayout3}
           contentFit="cover"
+
           source={require("../assets/poor1.jpg")}
+
+          source={require("../assets/Ellipse.webp")}
+
         />
       </Pressable>
       <Image
         style={[styles.dollarCircleIcon, styles.iconPosition]}
         contentFit="cover"
+
         source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/dollar-circle.webp")}
+
       />
       <Image
         style={[styles.homeReInner, styles.homePosition]}
         contentFit="cover"
+
         source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/Ellipse.webp")}
+
       />
       <Image
         style={[styles.downloadRemovebgPreview1Icon, styles.iconLayout2]}
         contentFit="cover"
+
         source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/4.webp")}
+
       />
       <Image
         style={[styles.ellipseIcon, styles.ellipseIconLayout]}
         contentFit="cover"
+
         source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/Ellipse.webp")}
+
       />
       <Image
         style={[styles.depositphotos105691240StockIcon, styles.iconLayout2]}
         contentFit="cover"
+
         source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/3.webp")}
+
       />
       <Image
         style={[styles.homeReChild1, styles.homePosition]}
         contentFit="cover"
+
         source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/Ellipse.webp")}
+
       />
       <Image style={styles.seniorCitizenLogoPngSeniorIcon} contentFit="cover" />
       <Text style={[styles.ourWork, styles.welcomeTypo]}>Our Work :</Text>
       <Image
         style={[styles.demt1Icon, styles.iconLayout1]}
         contentFit="cover"
+
         source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/DEMT_1.webp")}
+
       />
       <Image
         style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
         contentFit="cover"
+
         source={require("../assets/poor1.jpg")}
+        source={require("../assets/covid.jpg")}
+
       />
       <Text style={[styles.povertyInTunisia, styles.categoriesTypo]}>
         Poverty in Tunisia :
@@ -103,12 +153,20 @@ const Home = () => {
       <Image
         style={styles.jpgRemovebgPreview1Icon}
         contentFit="cover"
+
         source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/remove.webp")}
+
       />
       <Image
         style={styles.rectangleIcon}
         contentFit="cover"
+
         source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/Rect.webp")}
+
       />
       <Pressable
         style={[styles.vuesaxbrokenmessageText, styles.houseIconLayout]}
@@ -117,13 +175,21 @@ const Home = () => {
         <Image
           style={[styles.icon2, styles.iconLayout]}
           contentFit="cover"
+
           source={require("../assets/poor1.jpg")}
+
+          source={require("../assets/message-text.webp")}
+
         />
       </Pressable>
       <Image
         style={[styles.houseIcon, styles.iconLayout]}
         contentFit="cover"
+
         source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/house.webp")}
+
       />
       <Pressable
         style={[styles.vuesaxboldchart, styles.houseIconLayout]}
@@ -132,7 +198,11 @@ const Home = () => {
         <Image
           style={[styles.icon2, styles.iconLayout]}
           contentFit="cover"
+
           source={require("../assets/poor1.jpg")}
+
+          // source={require("../assets/chart.png")}
+
         />
       </Pressable>
     </View>

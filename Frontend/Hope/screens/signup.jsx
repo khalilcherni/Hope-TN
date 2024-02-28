@@ -38,7 +38,7 @@ const handleSignUp = async () => {
     // }
 
     // Create user in backend SQL database
-    const registerResponse = await axios.post('http://192.168.100.42:4000/users/register', {
+    const registerResponse = await axios.post('http://192.168.137.198:4000/users/register', {
       firstName,
       lastName,
       birth,

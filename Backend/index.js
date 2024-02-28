@@ -11,7 +11,11 @@ const helpRoute = require('./routes/HelpRoutes.js');
 const palestineRoute = require('./routes/palestineRoutes.js')
 const supporterRoute = require('./routes/supporters.js')
 const whatTheyNeedRoute = require('./routes/whattheyneed.js')
+
 const Voluntarywork=require('./routes/voluntarywork.js')
+
+const profileRoute=require('./routes/ProfileRoutes.js')
+
 
 const app = express();
 const PORT = 4000;
@@ -40,6 +44,7 @@ app.use('/supporters',supporterRoute)
 app.use('/whatTheyNeed',whatTheyNeedRoute)
 app.use('/help', helpRoute);
 app.use('/palestine', palestineRoute)
+app.use('/profile',profileRoute)
 
 
 
