@@ -17,6 +17,7 @@ import SignIn  from './screens/signin';
 // import OnboardingPage from './screens/onboardingPage1';
 // import SignIn  from './screens/signin';
 import Home from "./screens/Home";
+import LeaderBoard from './screens/LeaderBoard';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -47,6 +48,7 @@ export default function App() {
         <Stack.Screen name="SignIn" component={SignIn} />
       </Stack.Navigator>
    {/* <Home/> */}
+        {/* <LeaderBoard/> */}
 
   </NavigationContainer>
 );

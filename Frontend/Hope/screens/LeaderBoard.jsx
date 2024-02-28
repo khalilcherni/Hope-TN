@@ -3,6 +3,7 @@ import { Image } from "expo-image";
 import { StyleSheet, Text, View } from "react-native";
 import { Color, FontFamily, FontSize, Padding, Border } from "../GlobalStyles";
 import { useState , useEffect } from "react";
+import axios from "axios";
 
 const LeaderBoard = () => {
 
@@ -34,16 +35,16 @@ const LeaderBoard = () => {
       <Image
         style={styles.leaderBoardChild}
         contentFit="cover"
-        source={require("../assets/444444.png")}
+        source={require("../assets/leadrbg.jpg")}
       />
       <View style={[styles.davidParent, styles.parentLayout]}>
-        <Text style={[styles.david, styles.johnTypo]}>{supporters.length > 0 ? supporters[0].name : ''}</Text>
+        <Text style={[styles.david, styles.johnTypo]}>Ahmed</Text>
         <Text style={styles.text}>4578</Text>
         <View style={[styles.groupParent, styles.groupParentPosition]}>
           <Image
             style={[styles.groupParent, styles.groupParentPosition]}
             contentFit="cover"
-            source={require("../assets/iyess.png")}
+            source={require("../assets/profile1.jpg")}
           />
           <View style={[styles.ellipseParent, styles.ellipseFlexBox]}>
             <Image
@@ -56,13 +57,13 @@ const LeaderBoard = () => {
         </View>
       </View>
       <View style={[styles.johnParent, styles.johnParentLayout]}>
-        <Text style={[styles.john, styles.johnTypo]}>John</Text>
+        <Text style={[styles.john, styles.johnTypo]}>Ali</Text>
         <Text style={[styles.text2, styles.textTypo]}>4235</Text>
         <View style={[styles.groupContainer, styles.groupPosition]}>
           <Image
             style={[styles.groupContainer, styles.groupPosition]}
             contentFit="cover"
-            source={require("../assets/iyess.png")}
+            source={require("../assets/profile2.jpg")}
           />
           <View style={[styles.ellipseGroup, styles.frameItemLayout]}>
             <Image
@@ -75,19 +76,19 @@ const LeaderBoard = () => {
         </View>
       </View>
       <View style={[styles.merryParent, styles.groupViewLayout]}>
-        <Text style={[styles.merry, styles.johnTypo]}>Merry</Text>
+        <Text style={[styles.merry, styles.johnTypo]}>Foued</Text>
         <Text style={[styles.text14, styles.textTypo]}>3967</Text>
         <View style={[styles.groupView, styles.groupViewLayout]}>
           <Image
-            style={[styles.groupView, styles.groupViewLayout]}
+            style={[styles.groupContainer, styles.groupViewLayout]}
             contentFit="cover"
-            source={require("../assets/iyess.png")}
+            source={require("../assets/pdp3.jpg")}
           />
           <View style={[styles.ellipseGroup, styles.frameItemLayout]}>
             <Image
               style={[styles.frameItem, styles.frameItemLayout]}
               contentFit="cover"
-              source={require("../assets/iyess.png")}
+              source={require("../assets/first.png")}
             />
             <Text style={[styles.text3, styles.textPosition]}>3</Text>
           </View>
@@ -99,9 +100,9 @@ const LeaderBoard = () => {
           <Image
             style={styles.frameInner}
             contentFit="cover"
-            source={require("../assets/iyess.png")}
+            source={require("../assets/profile4.jpg")}
           />
-          <Text style={[styles.devonLane, styles.text4Typo]}>Devon Lane</Text>
+          <Text style={[styles.devonLane, styles.text4Typo]}>Ramyy</Text>
         </View>
         <View style={[styles.group, styles.parentFlexBox]}>
           <Text style={styles.text5}>3768</Text>
@@ -118,9 +119,9 @@ const LeaderBoard = () => {
           <Image
             style={styles.frameInner}
             contentFit="cover"
-            source={require("../assets/iyess.png")}
+            source={require("../assets/profile5.jpg")}
           />
-          <Text style={[styles.devonLane, styles.text4Typo]}>Ronald</Text>
+          <Text style={[styles.devonLane, styles.text4Typo]}>Rania</Text>
         </View>
         <View style={styles.parentFlexBox}>
           <Text style={styles.text5}>3578</Text>
@@ -137,9 +138,9 @@ const LeaderBoard = () => {
           <Image
             style={styles.frameInner}
             contentFit="cover"
-            source={require("../assets/iyess.png")}
+            source={require("../assets/profile6.jpg")}
           />
-          <Text style={[styles.devonLane, styles.text4Typo]}>Eleanor Pena</Text>
+          <Text style={[styles.devonLane, styles.text4Typo]}>Fawzi</Text>
         </View>
         <View style={[styles.parent3, styles.parentFlexBox]}>
           <Text style={styles.text5}>3476</Text>
@@ -156,9 +157,9 @@ const LeaderBoard = () => {
           <Image
             style={styles.frameInner}
             contentFit="cover"
-            source={require("../assets/iyess.png")}
+            source={require("../assets/profile7.jpg")}
           />
-          <Text style={[styles.devonLane, styles.text4Typo]}>Savannah</Text>
+          <Text style={[styles.devonLane, styles.text4Typo]}>Anwar</Text>
         </View>
         <View style={styles.parentFlexBox}>
           <Text style={styles.text5}>3125</Text>
@@ -169,41 +170,7 @@ const LeaderBoard = () => {
           />
         </View>
       </View>
-      <View style={[styles.parent6, styles.parentShadowBox]}>
-        <Text style={styles.text4Typo}>8</Text>
-        <View style={[styles.ellipseContainer, styles.leaderBoard1FlexBox]}>
-          <Image
-            style={styles.frameInner}
-            contentFit="cover"
-            source={require("../assets/iyess.png")}
-          />
-          <Text style={[styles.devonLane, styles.text4Typo]}>Wade Warren</Text>
-        </View>
-        <View style={[styles.parent3, styles.parentFlexBox]}>
-          <Text style={styles.text5}>2857</Text>
-          <Image
-            style={styles.polygonIcon}
-            contentFit="cover"
-            source={require("../assets/iyess.png")}
-          />
-        </View>
-      </View>
-
-      <View style={[styles.board, styles.ellipseFlexBox]}>
-        <Image
-          style={[styles.iconamoonarrowUp2Bold, styles.frameItemLayout]}
-          contentFit="cover"
-          source={require("../assets/iyess.png")}
-        />
-        <Text style={[styles.leaderBoard1, styles.leaderBoard1FlexBox]}>
-          Leader Board
-        </Text>
-        <Image
-          style={[styles.bithreeDotsVerticalIcon, styles.frameItemLayout]}
-          contentFit="cover"
-          source={require("../assets/iyess.png")}
-        />
-      </View>
+    
     </View>
   );
 };
@@ -336,6 +303,7 @@ const styles = StyleSheet.create({
     height: 130,
     width: 130,
     position: "absolute",
+    borderRadius:70
   },
   frameChild: {
     zIndex: 0,
@@ -370,6 +338,7 @@ const styles = StyleSheet.create({
   groupContainer: {
     width: 102,
     position: "absolute",
+    borderRadius: 100
   },
   frameItem: {
     zIndex: 0,
@@ -398,6 +367,7 @@ const styles = StyleSheet.create({
   frameInner: {
     width: 60,
     height: 60,
+    borderRadius: 70,
   },
   devonLane: {
     marginLeft: 15,
