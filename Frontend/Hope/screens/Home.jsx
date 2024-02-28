@@ -21,7 +21,7 @@ const Home = () => {
 
           source={require("../assets/poor1.jpg")}
 
-          source={require("../assets/profile-circle.webp")}
+        
 
         />
       </Pressable>
@@ -32,7 +32,7 @@ const Home = () => {
 
         source={require("../assets/poor1.jpg")}
 
-        source={require("../assets/menu.webp")}
+        
 
       />
       <Image
@@ -49,15 +49,15 @@ const Home = () => {
 
         source={require("../assets/poor1.jpg")}
 
-        source={require("../assets/Ellipse.webp")}
+        
 
       />
       <Image
         style={[styles.dropIcon, styles.iconPosition]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")
-        source={require("../assets/drop.webp")}
+        source={require("../assets/poor1.jpg")}
+
 
       />
       <Pressable
@@ -70,7 +70,7 @@ const Home = () => {
 
           source={require("../assets/poor1.jpg")}
 
-          source={require("../assets/Ellipse.webp")}
+
 
         />
       </Pressable>
@@ -80,7 +80,7 @@ const Home = () => {
 
         source={require("../assets/poor1.jpg")}
 
-        source={require("../assets/dollar-circle.webp")}
+    
 
       />
       <Image
@@ -89,7 +89,7 @@ const Home = () => {
 
         source={require("../assets/poor1.jpg")}
 
-        source={require("../assets/Ellipse.webp")}
+        
 
       />
       <Image
@@ -98,8 +98,6 @@ const Home = () => {
 
         source={require("../assets/poor1.jpg")}
 
-        source={require("../assets/4.webp")}
-
       />
       <Image
         style={[styles.ellipseIcon, styles.ellipseIconLayout]}
@@ -107,7 +105,7 @@ const Home = () => {
 
         source={require("../assets/poor1.jpg")}
 
-        source={require("../assets/Ellipse.webp")}
+    
 
       />
       <Image
@@ -116,7 +114,7 @@ const Home = () => {
 
         source={require("../assets/poor1.jpg")}
 
-        source={require("../assets/3.webp")}
+        
 
       />
       <Image
@@ -125,7 +123,7 @@ const Home = () => {
 
         source={require("../assets/poor1.jpg")}
 
-        source={require("../assets/Ellipse.webp")}
+        
 
       />
       <Image style={styles.seniorCitizenLogoPngSeniorIcon} contentFit="cover" />
@@ -135,8 +133,7 @@ const Home = () => {
         contentFit="cover"
 
         source={require("../assets/poor1.jpg")}
-
-        source={require("../assets/DEMT_1.webp")}
+        
 
       />
       <Image
@@ -144,7 +141,7 @@ const Home = () => {
         contentFit="cover"
 
         source={require("../assets/poor1.jpg")}
-        source={require("../assets/covid.jpg")}
+        
 
       />
       <Text style={[styles.povertyInTunisia, styles.categoriesTypo]}>
@@ -156,7 +153,7 @@ const Home = () => {
 
         source={require("../assets/poor1.jpg")}
 
-        source={require("../assets/remove.webp")}
+    
 
       />
       <Image
@@ -165,7 +162,7 @@ const Home = () => {
 
         source={require("../assets/poor1.jpg")}
 
-        source={require("../assets/Rect.webp")}
+    
 
       />
       <Pressable
@@ -178,7 +175,7 @@ const Home = () => {
 
           source={require("../assets/poor1.jpg")}
 
-          source={require("../assets/message-text.webp")}
+        
 
         />
       </Pressable>
@@ -188,7 +185,7 @@ const Home = () => {
 
         source={require("../assets/poor1.jpg")}
 
-        source={require("../assets/house.webp")}
+        
 
       />
       <Pressable
