@@ -5,12 +5,12 @@ import { useNavigation } from "@react-navigation/native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 import { ScrollView } from "react-native-gesture-handler";
 
-const HomeRE = () => {
+const Home = () => {
   const navigation = useNavigation();
 
   return (
     <ScrollView>
-    <View style={styles.homeRe}>
+    <View  style={styles.homeRe}>
       <Pressable
         style={[styles.profileCircle, styles.ellipseIconLayout]}
         onPress={() => navigation.navigate("Setting")}
@@ -25,7 +25,11 @@ const HomeRE = () => {
       <Image
         style={styles.menuIcon}
         contentFit="cover"
-        source={require("../assets/menu.png")}
+
+        source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/menu.webp")}
+
       />
       <Image
         style={styles.homeReChild}
@@ -38,12 +42,19 @@ const HomeRE = () => {
       <Image
         style={[styles.homeReItem, styles.homePosition]}
         contentFit="cover"
-        source={require("../assets/Ellipse 52.png")}
+
+        source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/Ellipse.webp")}
+
       />
       <Image
         style={[styles.dropIcon, styles.iconPosition]}
         contentFit="cover"
-        source={require("../assets/drop.png")}
+
+        source={require("../assets/poor1.jpg")
+        source={require("../assets/drop.webp")}
+
       />
       <Pressable
         style={[styles.wrapper, styles.homePosition]}
@@ -73,7 +84,11 @@ const HomeRE = () => {
       <Image
         style={styles.jpgRemovebgPreview1Icon}
         contentFit="cover"
-        source={require("../assets/jpg-removebg-preview 1.png")}
+
+        source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/remove.webp")}
+
       />
       <Image
         style={styles.rectangleIcon}

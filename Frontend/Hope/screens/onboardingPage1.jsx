@@ -47,7 +47,7 @@ const OnboardingPage1 = () => {
       <Image
         style={[styles.poo3131Icon, styles.iconLayout2]}
         contentFit="cover"
-        source={require("../assets/a.jpg")}
+        source={require("../assets/aaa.jpg")}
       />
       <Text style={styles.letsHelpEach}>Let’s help each others</Text>
       <Text style={[styles.whenWeGive, styles.whenWeGiveTypo]}>
@@ -60,7 +60,7 @@ const OnboardingPage1 = () => {
         <Image
           style={styles.icon}
           contentFit="cover"
-          source={require("../assets/right-arrow.png")}
+          source={require("../assets/poor1.jpg")}
         />
       </Pressable>
       
