@@ -13,6 +13,6 @@ router.get('/get', getALLCategorie);
 router.post('/add',addCategorie)
 router.put('/put/:id',update)
 router.delete('/delete/:id',deleteCategorie)
-router.get('/get/:name',getOnecategorie)
+router.get('/get/:categorie',getOnecategorie)
 
 module.exports=router

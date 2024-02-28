@@ -4,16 +4,17 @@ import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-// import BottomAppBar from './screens/Messages';
-// import Voluntarywork from './screens/Voluntarywork';
-// import Home from './screens/Home';
-// import AndroidLarge2 from './screens/donation';
+import BottomAppBar from './screens/Messages';
+import Voluntarywork from './screens/Voluntarywork';
+import Home from './screens/Home';
+import AndroidLarge2 from './screens/donation';
 
-// import StartingPage from './screens/StartingPage';
-// import SignUp from './screens/signup';
-// import OnboardingPage1 from './screens/onboardingPage1';
-// import OnboardingPage2 from './screens/OnboardingPage2';
-// import SignIn from './screens/signin';
+import StartingPage from './screens/StartingPage';
+import SignUp from './screens/signup';
+import OnboardingPage1 from './screens/onboardingPage1';
+import OnboardingPage2 from './screens/OnboardingPage2';
+import SignIn from './screens/signin';
+import Example from './screens/Example';
 // import Home from './screens/Home';
 // import Example from './screens/Example';
 
@@ -27,8 +28,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 // import Setting from './screens/Setting';
 // import ProfileEdit from "./screens/EditProfile"
 // import Home from "./screens/Home"
-import MessageCard from './screens/Messages'
-
+// import MessageCard from './screens/Messages'
+import Frame2 from "./screens/Elderly"
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -45,6 +46,7 @@ export default function App() {
         <Stack.Screen name="Example" component={Example} />
         <Stack.Screen name="AndroidLarge2" component={AndroidLarge2} />
       </Stack.Navigator> */}
+      {/* <Example/> */}
       {/* <BottomAppBar/> */}
 
  {/* <AndroidLarge2/> */}
@@ -62,7 +64,7 @@ export default function App() {
         <Stack.Screen name="ProfileEdit" component={ProfileEdit}/> */}
         {/* <Stack.Screen name ="Home" component={Home}/> */}
       {/* </Stack.Navigator> */}
-<MessageCard/>
+<Frame2/>
     </NavigationContainer>
   );
 }
