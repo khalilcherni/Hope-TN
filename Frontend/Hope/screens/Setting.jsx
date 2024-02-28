@@ -15,12 +15,12 @@ const Setting = () => {
         <Image
           style={[styles.notchIcon, styles.notchIconLayout]}
           contentFit="cover"
-          source={require("../assets/poor1.jpg")}
+          source={require("../assets/aaa.jpg")}
         />
         <Image
           style={styles.indicatorIcon}
           contentFit="cover"
-          source={require("../assets/poor1.jpg")}
+          source={require("../assets/aaa.jpg")}
         />
         <Image
           style={styles.timeLight}
@@ -31,7 +31,7 @@ const Setting = () => {
       <Image
         style={styles.unsplashjmurdhtm7ngIcon}
         contentFit="cover"
-        source={require("../assets/poor1.jpg")}
+        source={require("../assets/aaa.jpg")}
       />
       <Pressable
         style={[styles.arrowLeft, styles.notchIconLayout]}
@@ -40,13 +40,13 @@ const Setting = () => {
         <Image
           style={styles.icon}
           contentFit="cover"
-          source={require("../assets/poor1.jpg")}
+          source={require("../assets/aaa.jpg")}
         />
       </Pressable>
       <Image
         style={[styles.bellIcon, styles.iconLayout1]}
         contentFit="cover"
-        source={require("../assets/poor1.jpg")}
+        source={require("../assets/aaa.jpg")}
       />
       <Text style={[styles.favorites, styles.eventsFlexBox]}>Favorites</Text>
       <Text style={[styles.preferences, styles.eventsTypo]}>Preferences</Text>
@@ -67,7 +67,7 @@ const Setting = () => {
         <Image
           style={styles.rightIcon}
           contentFit="cover"
-          source={require("../assets/poor1.jpg")}
+          source={require("../assets/aaa.jpg")}
         />
       </View>
       <View style={[styles.rectangle36Copy5Container, styles.groupLayout]}>
@@ -75,7 +75,7 @@ const Setting = () => {
         <Image
           style={styles.rightIcon}
           contentFit="cover"
-          source={require("../assets/poor1.jpg")}
+          source={require("../assets/aaa.jpg")}
         />
       </View>
       <Pressable
@@ -87,12 +87,12 @@ const Setting = () => {
       <Image
         style={[styles.umoonIcon, styles.iconLayout]}
         contentFit="cover"
-        source={require("../assets/poor1.jpg")}
+        source={require("../assets/aaa.jpg")}
       />
       <Image
         style={[styles.heartIcon, styles.favouritePosition]}
         contentFit="cover"
-        source={require("../assets/poor1.jpg")}
+        source={require("../assets/aaa.jpg")}
       />
       <Text style={[styles.profile, styles.profileClr]}>Profile</Text>
       <View style={[styles.rectangleView, styles.settingLayout]} />
@@ -100,7 +100,7 @@ const Setting = () => {
       <Image
         style={[styles.editDuotoneIcon, styles.iconLayout]}
         contentFit="cover"
-        source={require("../assets/poor1.jpg")}
+        source={require("../assets/aaa.jpg")}
       />
       <Text style={[styles.editProfile1, styles.settingInnerLayout]}>
         Edit Profile
@@ -110,7 +110,7 @@ const Setting = () => {
         <Image
           style={styles.rightIcon}
           contentFit="cover"
-          source={require("../assets/poor1.jpg")}
+          source={require("../assets/aaa.jpg")}
         />
       </View>
     </View>
