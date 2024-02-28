@@ -3,11 +3,12 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
- import Frame from './screens/categoriePeopleWhoNeedWater';
+//  import Frame from './screens/categoriePeopleWhoNeedWater';
 // import BottomAppBar from './screens/Messages';
 // import Voluntarywork from './screens/Voluntarywork';
 // import Home from './screens/Home';
 // import AndroidLarge2 from './screens/donation';
+// import Poor from './screens/poorPeople';
 
 
 
@@ -37,7 +38,7 @@ export default function App() {
 
 
       {/* </Stack.Navigator> */}
-      <Frame/>
+      {/* <Poor/> */}
     </NavigationContainer>
   );
 }
