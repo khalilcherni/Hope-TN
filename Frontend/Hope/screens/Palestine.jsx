@@ -3,10 +3,11 @@ import { Image } from "expo-image";
 // import {Video} from 'react-native-video';
 import { StyleSheet, Text, View,Pressable , ScrollView,Dimensions,TouchableOpacity } from "react-native";
 import { FontFamily, Color, FontSize } from "../GlobalStyles";
-import { useNavigation } from "@react-navigation/native"; 
+
 import { WebView } from 'react-native-webview';
+import { useNavigation } from "@react-navigation/native"; 
 const Frame3 = () => {
-  const videoUrl = 'https://www.youtube.com/embed/Tg8FDNYkEIQ';
+  const videoUrl = 'https://youtu.be/PeuNRaNGQr8?si=uC-Au9tE6MshojRn';
   const navigation = useNavigation();
   return (
     <ScrollView>
@@ -14,36 +15,28 @@ const Frame3 = () => {
       <Image
         style={styles.frameChild}
         contentFit="cover"
-        source={require("../assets/water4.jpg")}
+        source={require("../assets/55.jpg")}
       />
       <Image
         style={styles.needwater21Icon}
         contentFit="cover"
-        source={require("../assets/needWater.jpg")}
+        source={require("../assets/56.jpg")}
       />
       <Image
         style={[styles.needwater22Icon, styles.iconPosition]}
         contentFit="cover"
-        source={require("../assets/needWater2.jpg")}
+        source={require("../assets/57.jpg")}
       />
       <Image
         style={styles.needwater31Icon}
         contentFit="cover"
-        source={require("../assets/needWater2.jpg")}
+        source={require("../assets/58.jpg")}
       />
       <Text
         style={[styles.yearOldOunissaMazhoud, styles.donateTypo]}
-      >{`57-year-old Ounissa Mazhoud lives in Tunisia's remote village of Ouled Omar, 180 kilometers (110 miles) southwest of Tunis.
-She wakes up every morning with one obsession: finding water. She walks to fetch water at the village's last spring.
-Today she went with her cousin Djamila. Both women lead a donkey, with two jerry cans tied to it, and cautiously descend a stony hill towards the last local source of water in the village.
-tunisia is the 33rd most water-stressed country according to the World Resources Institute.
-The north African nation is in its fourth year of drought and inhabitants of rural communities are grappling with the nation's worst water scarcity in years.`}</Text>
-     
-      <Text
-        style={[styles.mazhoudiFeelsAbandonned, styles.donateTypo]}
-      >{`Mazhoudi feels abandonned by authorities: "We are the living [who are] dead, forgotten by everyone."
-"We have no roads or water, no help or decent housing. We own nothing. Are we Tunisians? No, because here we are not considered as such, Why? Because we lack a lot of things."
-`}</Text>
+      >{`Last month, Reham Shaheen’s four-year-old daughter cried all day from hunger, finally falling asleep while waiting for her only meal of the day to finish cooking.
+ Shaheen has been stuck in Jordan since the Israel-Hamas war began, separated from her home, husband and three children who are in Gaza. “I spent two days not able to eat at all, thinking of my daughter, that she couldn’t find food,” Shaheen told TIME in a voice note Friday. `}</Text>
+   
   <WebView
         source={{ uri: videoUrl }}
         allowsFullscreenVideo
@@ -63,16 +56,18 @@ About 300,000 of Tunisia's 12 million people have no drinking water in their hom
       
       <View style={styles.youtubeAndVimeoVideo} />
       <Text style={[styles.tunisiansSatisfiedWith ]}>
-        Tunisians Satisfied With Water Quality?
+      Half a million people are starving in Gaza
       </Text>
       <Image
         style={styles.captureDcran20240227113}
         contentFit="cover"
-        source={require("../assets/Capture d’écran.png")}
+        source={require("../assets/60.jpg")}
       />
       <Text
         style={[styles.theSouthernRegion, styles.donateTypo]}
-      >{`The southern region of Tunisia offers a stark illustration of the country’s water crisis. Here, only 7% were satisfied with their water quality -- the lowest total anywhere in the world -- in 2022. This is a rapid drop from 2015, when roughly half (48%) of Tunisians in the south were satisfied with their water.
+      >{`More than half a million people in Gaza — a quarter of the population — are starving, according to a report released Thursday by the UN and other agencies that highlights the humanitarian crisis caused by Israel's bombardment and siege on the territory in response to Hamas's Oct. 7 attack.
+
+      The extent of the population's hunger eclipsed even the near-famines in Afghanistan and Yemen of recent years, according to figures in the report. The report warned that the risk of famine is "increasing each day," blaming the hunger on insufficient aid entering Gaza.
 
 `}</Text>
        <TouchableOpacity
@@ -156,7 +151,7 @@ const styles = StyleSheet.create({
   },
   mazhoudiFeelsAbandonned: {
  
-    top: 883,
+    top: 889,
     left: 20,
     width: 372,
     height: 488,
@@ -181,7 +176,7 @@ const styles = StyleSheet.create({
     left: 27,
   },
   d7unHighres17024256661Icon: {
-    top: 1050,
+    top: 800,
     borderRadius: 14,
     width: 370,
     height: 220,
