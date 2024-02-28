@@ -14,7 +14,7 @@ import SignUp from './screens/signup';
 import OnboardingPage1 from './screens/onboardingPage1';
 import OnboardingPage2 from './screens/OnboardingPage2';
 import SignIn from './screens/signin';
-import Example from './screens/Example';
+import Example from './screens/Palestine';
 // import Home from './screens/Home';
 // import Example from './screens/Example';
 import AndroidLarge2 from './screens/donation';
@@ -30,29 +30,30 @@ import AndroidLarge2 from './screens/donation';
 // import Home from "./screens/Home"
 // import MessageCard from './screens/Messages'
 import Frame from "./screens/categoriePeopleWhoNeedWater"
+import Frame3 from './screens/Palestine';
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
  
-      <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}> 
+      {/* <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}>  */}
          {/* <Stack.Screen name="StartingPage" component={StartingPage} />
         <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} />
         <Stack.Screen name="OnboardingPage2" component={OnboardingPage2} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="Home" component={Home} />  */}
-   <Stack.Screen name="Frame" component={Frame} />
-   <Stack.Screen name="donation" component={AndroidLarge2}/>
-   </Stack.Navigator> 
+   {/* <Stack.Screen name="Frame" component={Frame} />
+   <Stack.Screen name="donation" component={AndroidLarge2}/> */}
+   {/* </Stack.Navigator>  */}
       {/* <Example/> */}
       {/* <BottomAppBar/> */}
 
  {/* <AndroidLarge2/> */}
  {/* <Example/> */}
 
-
+<Frame3/>
       {/* <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}> */}
         {/* <Stack.Screen name="StartingPage" component={StartingPage} /> /}
         {/ <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} /> /}
