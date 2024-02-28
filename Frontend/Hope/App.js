@@ -24,6 +24,10 @@ import AndroidLarge2 from './screens/donation';
 // import OnboardingPage1 from './screens/onboardingPage1';
 // import OnboardingPage2 from './screens/OnboardingPage2';
 // import SignIn from './screens/signin';
+
+import HomeRE from './screens/Home';
+import Setting from './screens/Setting';
+=======
 // import Home from './screens/Home';
 // import Setting from './screens/Setting';
 // import ProfileEdit from "./screens/EditProfile"
@@ -65,7 +69,7 @@ export default function App() {
         <Stack.Screen name="ProfileEdit" component={ProfileEdit}/> */}
         {/* <Stack.Screen name ="Home" component={Home}/> */}
       {/* </Stack.Navigator> */}
-{/* <Frame2/> */}
+
     </NavigationContainer>
   );
 }

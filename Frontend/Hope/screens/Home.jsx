@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 import { ScrollView } from "react-native-gesture-handler";
 
-const Home = () => {
+const HomeRE = () => {
   const navigation = useNavigation();
 
   return (
@@ -407,4 +407,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Home
+export default HomeRE
