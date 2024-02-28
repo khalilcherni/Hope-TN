@@ -7,7 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import BottomAppBar from './screens/Messages';
 import Voluntarywork from './screens/Voluntarywork';
 import Home from './screens/Home';
-import AndroidLarge2 from './screens/donation';
+
 
 import StartingPage from './screens/StartingPage';
 import SignUp from './screens/signup';
@@ -17,7 +17,7 @@ import SignIn from './screens/signin';
 import Example from './screens/Example';
 // import Home from './screens/Home';
 // import Example from './screens/Example';
-
+import AndroidLarge2 from './screens/donation';
 
 // import StartingPage from './screens/StartingPage';
 // import SignUp from './screens/signup';
@@ -29,23 +29,23 @@ import Example from './screens/Example';
 // import ProfileEdit from "./screens/EditProfile"
 // import Home from "./screens/Home"
 // import MessageCard from './screens/Messages'
-import Frame2 from "./screens/Elderly"
+import Frame from "./screens/categoriePeopleWhoNeedWater"
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-
-      {/* <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="StartingPage" component={StartingPage} />
+ 
+      <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}> 
+         {/* <Stack.Screen name="StartingPage" component={StartingPage} />
         <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} />
         <Stack.Screen name="OnboardingPage2" component={OnboardingPage2} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="SignIn" component={SignIn} />
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Example" component={Example} />
-        <Stack.Screen name="AndroidLarge2" component={AndroidLarge2} />
-      </Stack.Navigator> */}
+        <Stack.Screen name="Home" component={Home} />  */}
+   <Stack.Screen name="Frame" component={Frame} />
+   <Stack.Screen name="donation" component={AndroidLarge2}/>
+   </Stack.Navigator> 
       {/* <Example/> */}
       {/* <BottomAppBar/> */}
 
@@ -64,7 +64,7 @@ export default function App() {
         <Stack.Screen name="ProfileEdit" component={ProfileEdit}/> */}
         {/* <Stack.Screen name ="Home" component={Home}/> */}
       {/* </Stack.Navigator> */}
-<Frame2/>
+{/* <Frame2/> */}
     </NavigationContainer>
   );
 }

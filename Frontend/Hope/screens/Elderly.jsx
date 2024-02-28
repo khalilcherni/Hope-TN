@@ -1,12 +1,12 @@
 import * as React from "react";
 import { Image } from "expo-image";
-import { StyleSheet, Text, View, Pressable, ScrollView, Dimensions } from "react-native";
+import { StyleSheet, Text, View, Pressable, ScrollView, Dimensions ,TouchableOpacity} from "react-native";
 import { FontFamily, Color, FontSize } from "../GlobalStyles";
 import { WebView } from 'react-native-webview';
-
+import { useNavigation } from "@react-navigation/native"; 
 const Frame2 = () => {
   const videoUrl = 'https://youtu.be/Qro0Rb7XJjI?si=dA1H-KkCa_u-RL-g';
-
+  const navigation = useNavigation();
   return (
     <ScrollView>
       <View style={styles.vectorParent}>
@@ -59,12 +59,12 @@ const Frame2 = () => {
         <Text style={[styles.theSouthernRegion, styles.donateTypo]}>
           The 2014 Tunisia Country report on Out-of-school children showed that while pre-primary out-of-school rates decreased, and primary rates fell to nearly zero, there had been no improvement at the lower secondary level. Poor children, children in rural areas, disabled children and children with uneducated parents were facing particular risk of being excluded from school. The report argued that poverty, poor school conditions, difference of language of instruction and low quality of education were among key barriers to education access.
         </Text>
-        <Pressable
+        <TouchableOpacity
           style={styles.nextButton}
-          onPress={() => navigation.navigate("OnboardingPage2")}
+          onPress={() => navigation.navigate("donation")}
         >
-          <Text style={[styles.donate, styles.donateTypo]}>Donate</Text>
-        </Pressable>
+          <Text style={styles.donate}>Donate</Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );
