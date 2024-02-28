@@ -18,7 +18,11 @@ const Home = () => {
         <Image
           style={[styles.icon, styles.iconLayout3]}
           contentFit="cover"
-          source={require("../assets/a.jpg")}
+
+          source={require("../assets/poor1.jpg")}
+
+        
+
         />
       </Pressable>
       <Text style={[styles.welcome, styles.welcomeTypo]}>Welcome</Text>
@@ -28,13 +32,13 @@ const Home = () => {
 
         source={require("../assets/poor1.jpg")}
 
-        source={require("../assets/menu.webp")}
+        
 
       />
       <Image
         style={styles.homeReChild}
         contentFit="cover"
-        source={require("../assets/Frame 495.png")}
+        source={require("../assets/poor1.jpg")}
       />
       <Text style={[styles.categories, styles.categoriesTypo]}>
         Categories:
@@ -45,15 +49,15 @@ const Home = () => {
 
         source={require("../assets/poor1.jpg")}
 
-        source={require("../assets/Ellipse.webp")}
+        
 
       />
       <Image
         style={[styles.dropIcon, styles.iconPosition]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")
-        source={require("../assets/drop.webp")}
+        source={require("../assets/poor1.jpg")}
+
 
       />
       <Pressable
@@ -63,37 +67,103 @@ const Home = () => {
         <Image
           style={styles.iconLayout3}
           contentFit="cover"
-          source={require("../assets/jeune-mere-enfants-remplit-bidons-eau-potable-tunisie 1.png")}
+
+          source={require("../assets/poor1.jpg")}
+
+
+
         />
-        <Image
-          style={[styles.fediMejriTunisiaWarmMeUpIcon, styles.iconLayout2]}
-          contentFit="cover"
-          source={require("../assets/Fedi-Mejri-Tunisia-Warm-Me-Up-project-1 1.png")}
-        />
-        <Image
-          style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
-          contentFit="cover"
-          source={require("../assets/tunisia-covid-station-767 1 (1).png")}
-        />
-        <Image
-          style={[styles.demt1Icon, styles.demt1IconPosition]}
-          contentFit="cover"
-          source={require("../assets/DEMT 1.png")}
-        />
-      </View>
+      </Pressable>
+      <Image
+        style={[styles.dollarCircleIcon, styles.iconPosition]}
+        contentFit="cover"
+
+        source={require("../assets/poor1.jpg")}
+
+    
+
+      />
+      <Image
+        style={[styles.homeReInner, styles.homePosition]}
+        contentFit="cover"
+
+        source={require("../assets/poor1.jpg")}
+
+        
+
+      />
+      <Image
+        style={[styles.downloadRemovebgPreview1Icon, styles.iconLayout2]}
+        contentFit="cover"
+
+        source={require("../assets/poor1.jpg")}
+
+      />
+      <Image
+        style={[styles.ellipseIcon, styles.ellipseIconLayout]}
+        contentFit="cover"
+
+        source={require("../assets/poor1.jpg")}
+
+    
+
+      />
+      <Image
+        style={[styles.depositphotos105691240StockIcon, styles.iconLayout2]}
+        contentFit="cover"
+
+        source={require("../assets/poor1.jpg")}
+
+        
+
+      />
+      <Image
+        style={[styles.homeReChild1, styles.homePosition]}
+        contentFit="cover"
+
+        source={require("../assets/poor1.jpg")}
+
+        
+
+      />
+      <Image style={styles.seniorCitizenLogoPngSeniorIcon} contentFit="cover" />
+      <Text style={[styles.ourWork, styles.welcomeTypo]}>Our Work :</Text>
+      <Image
+        style={[styles.demt1Icon, styles.iconLayout1]}
+        contentFit="cover"
+
+        source={require("../assets/poor1.jpg")}
+        
+
+      />
+      <Image
+        style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
+        contentFit="cover"
+
+        source={require("../assets/poor1.jpg")}
+        
+
+      />
+      <Text style={[styles.povertyInTunisia, styles.categoriesTypo]}>
+        Poverty in Tunisia :
+      </Text>
       <Image
         style={styles.jpgRemovebgPreview1Icon}
         contentFit="cover"
 
         source={require("../assets/poor1.jpg")}
 
-        source={require("../assets/remove.webp")}
+    
 
       />
       <Image
         style={styles.rectangleIcon}
         contentFit="cover"
-        source={require("../assets/a.jpg")}
+
+        source={require("../assets/poor1.jpg")}
+
+    
+
       />
       <Pressable
         style={[styles.vuesaxbrokenmessageText, styles.houseIconLayout]}
@@ -102,13 +172,21 @@ const Home = () => {
         <Image
           style={[styles.icon2, styles.iconLayout]}
           contentFit="cover"
-          source={require("../assets/drop.png")}
+
+          source={require("../assets/poor1.jpg")}
+
+        
+
         />
       </Pressable>
       <Image
         style={[styles.houseIcon, styles.iconLayout]}
         contentFit="cover"
-        source={require("../assets/a.jpg")}
+
+        source={require("../assets/poor1.jpg")}
+
+        
+
       />
       <Pressable
         style={[styles.vuesaxboldchart, styles.houseIconLayout]}
@@ -117,7 +195,11 @@ const Home = () => {
         <Image
           style={[styles.icon2, styles.iconLayout]}
           contentFit="cover"
-          source={require("../assets/message-text.png")}
+
+          source={require("../assets/poor1.jpg")}
+
+          // source={require("../assets/chart.png")}
+
         />
       </Pressable>
     </View>
