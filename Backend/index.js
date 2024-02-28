@@ -11,7 +11,11 @@ const helpRoute = require('./routes/HelpRoutes.js');
 const palestineRoute = require('./routes/palestineRoutes.js')
 const supporterRoute = require('./routes/supporters.js')
 const whatTheyNeedRoute = require('./routes/whattheyneed.js')
+
+const Voluntarywork=require('./routes/voluntarywork.js')
+
 const profileRoute=require('./routes/ProfileRoutes.js')
+
 
 const app = express();
 const PORT = 4000;
@@ -24,7 +28,7 @@ app.use(express.json());
 // Use the routers correctly
 app.use('/api/categorie', categorieRoute);
 app.use("/api/question",questionsRoute)
-app.use("/api/voluntary",questionsRoute)
+app.use("/api/voluntary",Voluntarywork)
 app.use("/api/people",peopleRoute)
 app.use('/api',donationRoute)
 app.use('/api',eventsRoute)
