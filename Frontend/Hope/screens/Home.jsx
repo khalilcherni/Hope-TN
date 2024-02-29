@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 import { ScrollView } from "react-native-gesture-handler";
 
-const HomeRE = () => {
+const Home = () => {
   const navigation = useNavigation();
 
   return (
@@ -19,9 +19,9 @@ const HomeRE = () => {
           style={[styles.icon, styles.iconLayout3]}
           contentFit="cover"
 
-          source={require("../assets/poor1.jpg")}
+          // source={require("../assets/poor1.jpg")}
 
-        
+          source={require("../assets/profile-circle.webp")}
 
         />
       </Pressable>
@@ -30,9 +30,9 @@ const HomeRE = () => {
         style={styles.menuIcon}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
 
-        
+        source={require("../assets/menu.webp")}
 
       />
       <Image
@@ -47,18 +47,17 @@ const HomeRE = () => {
         style={[styles.homeReItem, styles.homePosition]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
 
-        
+        source={require("../assets/Ellipse.webp")}
 
       />
       <Image
         style={[styles.dropIcon, styles.iconPosition]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
-
-
+        // source={require("../assets/poor1.jpg")
+        source={require("../assets/drop.webp")}
       />
       <Pressable
         style={[styles.wrapper, styles.homePosition]}
@@ -68,9 +67,9 @@ const HomeRE = () => {
           style={styles.iconLayout3}
           contentFit="cover"
 
-          source={require("../assets/poor1.jpg")}
+          // source={require("../assets/poor1.jpg")}
 
-
+          source={require("../assets/Ellipse.webp")}
 
         />
       </Pressable>
@@ -78,52 +77,54 @@ const HomeRE = () => {
         style={[styles.dollarCircleIcon, styles.iconPosition]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
 
-    
+        source={require("../assets/dollar-circle.webp")}
 
       />
       <Image
         style={[styles.homeReInner, styles.homePosition]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
 
-        
+        source={require("../assets/Ellipse.webp")}
 
       />
       <Image
         style={[styles.downloadRemovebgPreview1Icon, styles.iconLayout2]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/4.webp")}
 
       />
       <Image
         style={[styles.ellipseIcon, styles.ellipseIconLayout]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
 
-    
+        source={require("../assets/Ellipse.webp")}
 
       />
       <Image
         style={[styles.depositphotos105691240StockIcon, styles.iconLayout2]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
 
-        
+        source={require("../assets/3.webp")}
 
       />
       <Image
         style={[styles.homeReChild1, styles.homePosition]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
 
-        
+        source={require("../assets/Ellipse.webp")}
 
       />
       <Image style={styles.seniorCitizenLogoPngSeniorIcon} contentFit="cover" />
@@ -132,16 +133,17 @@ const HomeRE = () => {
         style={[styles.demt1Icon, styles.iconLayout1]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
-        
+        // source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/DEMT_1.webp")}
 
       />
       <Image
         style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
-        
+        // source={require("../assets/poor1.jpg")}
+        source={require("../assets/covid.jpg")}
 
       />
       <Text style={[styles.povertyInTunisia, styles.categoriesTypo]}>
@@ -151,18 +153,18 @@ const HomeRE = () => {
         style={styles.jpgRemovebgPreview1Icon}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
 
-    
+        source={require("../assets/remove.webp")}
 
       />
       <Image
         style={styles.rectangleIcon}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
 
-    
+        source={require("../assets/Rect.webp")}
 
       />
       <Pressable
@@ -173,9 +175,9 @@ const HomeRE = () => {
           style={[styles.icon2, styles.iconLayout]}
           contentFit="cover"
 
-          source={require("../assets/poor1.jpg")}
+          // source={require("../assets/poor1.jpg")}
 
-        
+          source={require("../assets/message-text.webp")}
 
         />
       </Pressable>
@@ -183,9 +185,9 @@ const HomeRE = () => {
         style={[styles.houseIcon, styles.iconLayout]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
 
-        
+        source={require("../assets/house.webp")}
 
       />
       <Pressable
@@ -196,7 +198,7 @@ const HomeRE = () => {
           style={[styles.icon2, styles.iconLayout]}
           contentFit="cover"
 
-          source={require("../assets/poor1.jpg")}
+          // source={require("../assets/poor1.jpg")}
 
           // source={require("../assets/chart.png")}
 
@@ -407,4 +409,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeRE
+export default Home
