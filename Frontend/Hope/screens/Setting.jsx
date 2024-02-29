@@ -22,7 +22,7 @@ const Setting = () => {
       <Image
         style={styles.unsplashjmurdhtm7ngIcon}
         contentFit="cover"
-        source={require("../assets/profile.png")}
+        source={require("../assets/logo.png")}
       />
       <Pressable
         style={[styles.arrowLeft, styles.notchIconLayout]}
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
   },
   settingChild: {
     backgroundColor: Color.colorDarkcyan,
-    height: 188,
+    height:267,
     left: 0,
     top: 0,
   },
