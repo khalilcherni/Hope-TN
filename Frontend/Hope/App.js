@@ -3,12 +3,6 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
-import BottomAppBar from './screens/Messages';
-import Voluntarywork from './screens/Voluntarywork';
-import Home from './screens/Home';
-
-
 import StartingPage from './screens/StartingPage';
 import SignUp from './screens/signup';
 import OnboardingPage1 from './screens/onboardingPage1';
@@ -18,19 +12,20 @@ import Example from './screens/Palestine';
 // import Home from './screens/Home';
 // import Example from './screens/Example';
 import AndroidLarge2 from './screens/donation';
-// 
+import Gaza from './screens/Palestine';
+
 // import StartingPage from './screens/StartingPage';
 // import SignUp from './screens/signup';
 // import OnboardingPage1 from './screens/onboardingPage1';
 // import OnboardingPage2 from './screens/OnboardingPage2';
 // import SignIn from './screens/signin';
 // import Home from './screens/Home';
+import Home from './screens/Home';
 // import Setting from './screens/Setting';
+import Chatroom from './screens/ChatRoom';
+import ChatroomContainer from './screens/ChatrommContainer';
 // import ProfileEdit from "./screens/EditProfile"
-// import Home from "./screens/Home"
-// import MessageCard from './screens/Messages'
-import Frame from "./screens/categoriePeopleWhoNeedWater"
-import Frame3 from './screens/Palestine';
+
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -53,9 +48,19 @@ export default function App() {
  {/* <AndroidLarge2/> */}
  {/* <Example/> */}
 
-<Frame3/>
-      {/* <Poor/> */}
-{/* <Frame2/> */}
+{/* <Frame3/> */}
+      {/* <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}> */}
+        {/* <Stack.Screen name="StartingPage" component={StartingPage} /> /}
+        {/ <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} /> /}
+        {/ <Stack.Screen name="OnboardingPage2" component={OnboardingPage2} /> /}
+        {/ <Stack.Screen name="SignUp" component={SignUp} /> /}
+        {/ <Stack.Screen name="SignIn" component={SignIn} /> /}
+        {/ <Stack.Screen name="Home" component={Home} /> */}
+        {/* <Stack.Screen name="Setting" component={Setting}/>
+        <Stack.Screen name="ProfileEdit" component={ProfileEdit}/> */}
+        {/* <Stack.Screen name ="Home" component={Home}/> */}
+      {/* </Stack.Navigator> */}
+<Gaza/>
     </NavigationContainer>
   );
 }
