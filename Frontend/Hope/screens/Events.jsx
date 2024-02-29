@@ -60,9 +60,9 @@ export default function Events() {
       
           <Text style={styles.description}>{event.description}</Text>
           <TouchableOpacity onPress={() => handleMapNavigation(event.location)}>
-            <View style={styles.locationContainer}>
-              <Text style={styles.details}>Location: {event.location}</Text>
-              {/* <Ionicons name="md-map" size={24} color="blue" /> */}
+            <View style={styles.dateContainer}>
+              <Ionicons name="location-outline" size={24} color="blue" />
+              <Text style={styles.details}> {event.location}</Text>
             </View>
           </TouchableOpacity>
           <View style={styles.dateContainer}>
