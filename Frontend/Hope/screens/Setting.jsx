@@ -15,12 +15,20 @@ const Setting = () => {
         <Image
           style={[styles.notchIcon, styles.notchIconLayout]}
           contentFit="cover"
+<<<<<<< HEAD
           source={require("../assets/profile.png")}
+=======
+          source={require("../assets/aaa.jpg")}
+>>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
         />
         <Image
           style={styles.indicatorIcon}
           contentFit="cover"
+<<<<<<< HEAD
           source={require("../assets/indicators.png")}
+=======
+          source={require("../assets/aaa.jpg")}
+>>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
         />
         <Image
           style={styles.timeLight}
@@ -31,7 +39,11 @@ const Setting = () => {
       <Image
         style={styles.unsplashjmurdhtm7ngIcon}
         contentFit="cover"
+<<<<<<< HEAD
         source={require("../assets/profile.png")}
+=======
+        source={require("../assets/aaa.jpg")}
+>>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
       />
       <Pressable
         style={[styles.arrowLeft, styles.notchIconLayout]}
@@ -40,13 +52,21 @@ const Setting = () => {
         <Image
           style={styles.icon}
           contentFit="cover"
+<<<<<<< HEAD
           source={require("../assets/backleft.png")}
+=======
+          source={require("../assets/aaa.jpg")}
+>>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
         />
       </Pressable>
       <Image
         style={[styles.bellIcon, styles.iconLayout1]}
         contentFit="cover"
+<<<<<<< HEAD
         source={require("../assets/bell.webp")}
+=======
+        source={require("../assets/aaa.jpg")}
+>>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
       />
       <Text style={[styles.favorites, styles.eventsFlexBox]}>Favorites</Text>
       <Text style={[styles.preferences, styles.eventsTypo]}>Preferences</Text>
@@ -67,7 +87,11 @@ const Setting = () => {
         <Image
           style={styles.rightIcon}
           contentFit="cover"
+<<<<<<< HEAD
           source={require("../assets/right.png")}
+=======
+          source={require("../assets/aaa.jpg")}
+>>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
         />
       </View>
       <View style={[styles.rectangle36Copy5Container, styles.groupLayout]}>
@@ -75,7 +99,11 @@ const Setting = () => {
         <Image
           style={styles.rightIcon}
           contentFit="cover"
+<<<<<<< HEAD
           source={require("../assets/right.png")}
+=======
+          source={require("../assets/aaa.jpg")}
+>>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
         />
       </View>
       <Pressable
@@ -87,12 +115,20 @@ const Setting = () => {
       <Image
         style={[styles.umoonIcon, styles.iconLayout]}
         contentFit="cover"
+<<<<<<< HEAD
         source={require("../assets/moon.png")}
+=======
+        source={require("../assets/aaa.jpg")}
+>>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
       />
       <Image
         style={[styles.heartIcon, styles.favouritePosition]}
         contentFit="cover"
+<<<<<<< HEAD
         source={require("../assets/heart.png")}
+=======
+        source={require("../assets/aaa.jpg")}
+>>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
       />
       <Text style={[styles.profile, styles.profileClr]}>Profile</Text>
       <View style={[styles.rectangleView, styles.settingLayout]} />
@@ -100,7 +136,11 @@ const Setting = () => {
       <Image
         style={[styles.editDuotoneIcon, styles.iconLayout]}
         contentFit="cover"
+<<<<<<< HEAD
         source={require("../assets/edit.png")}
+=======
+        source={require("../assets/aaa.jpg")}
+>>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
       />
       <Text style={[styles.editProfile1, styles.settingInnerLayout]}>
         Edit Profile
@@ -110,7 +150,11 @@ const Setting = () => {
         <Image
           style={styles.rightIcon}
           contentFit="cover"
+<<<<<<< HEAD
           source={require("../assets/right.png")}
+=======
+          source={require("../assets/aaa.jpg")}
+>>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
         />
       </View>
     </View>

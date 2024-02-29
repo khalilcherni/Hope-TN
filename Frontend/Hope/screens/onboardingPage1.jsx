@@ -60,7 +60,11 @@ const OnboardingPage = () => {
         <Image
           style={styles.icon}
           contentFit="cover"
+<<<<<<< HEAD
           source={require("../assets/right-arrow.png")}
+=======
+          source={require("../assets/aaa.jpg")}
+>>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
         />
       </Pressable>
       {/* <Text style={[styles.httpswwwfigcomponentscom, styles.whenWeGiveTypo]}>
