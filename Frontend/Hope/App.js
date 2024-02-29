@@ -3,21 +3,13 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
- import Frame from './screens/categoriePeopleWhoNeedWater';
-// import BottomAppBar from './screens/Messages';
-// import Voluntarywork from './screens/Voluntarywork';
-// import Home from './screens/Home';
-// import AndroidLarge2 from './screens/donation';
-
-
-
-// import StartingPage from './screens/StartingPage';
-// import SignUp from './screens/signup';
-// import OnboardingPage1 from './screens/onboardingPage1';
-// import OnboardingPage2 from './screens/OnboardingPage2';
-// import SignIn from './screens/signin';
-import HomeRE from './screens/Home';
-import Setting from './screens/Setting';
+import StartingPage from './screens/StartingPage';
+import SignUp from './screens/signup';
+import OnboardingPage1 from './screens/onboardingPage1';
+import OnboardingPage2 from './screens/OnboardingPage2';
+import SignIn from './screens/signin';
+import Home from './screens/Home';
+// import Setting from './screens/Setting';
 import Chatroom from './screens/ChatRoom';
 import ChatroomContainer from './screens/ChatrommContainer';
 // import ProfileEdit from "./screens/EditProfile"
