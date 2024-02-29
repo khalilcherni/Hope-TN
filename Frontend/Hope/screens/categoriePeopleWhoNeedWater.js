@@ -14,21 +14,22 @@ const Frame = () => {
       <Image
         style={styles.frameChild}
         contentFit="cover"
-        source={require("../assets/water4.jpg")}
+        source={require("../assets/poor11.jpg")}
       />
       <Image
         style={styles.needwater21Icon}
         contentFit="cover"
-        source={require("../assets/needWater.jpg")}
+        source={require("../assets/poor11.jpg")}
       />
       <Image
         style={[styles.needwater22Icon, styles.iconPosition]}
         contentFit="cover"
-        source={require("../assets/needWater2.jpg")}
+        source={require("../assets/poor11.jpg")}
       />
       <Image
         style={styles.needwater31Icon}
         contentFit="cover"
+
         source={require("../assets/needWater2.jpg")}
       />
       <Text
@@ -68,7 +69,7 @@ About 300,000 of Tunisia's 12 million people have no drinking water in their hom
       <Image
         style={styles.captureDcran20240227113}
         contentFit="cover"
-        source={require("../assets/Capture d’écran.png")}
+        source={require("../assets/poor11.jpg")}
       />
       <Text
         style={[styles.theSouthernRegion, styles.donateTypo]}
