@@ -4,7 +4,7 @@ import { StyleSheet, Text, Pressable, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Border, FontFamily, FontSize, Color } from "../GlobalStyles";
 
-const OnboardingPage1 = () => {
+const OnboardingPage = () => {
   const navigation = useNavigation();
 
   return (
@@ -12,42 +12,42 @@ const OnboardingPage1 = () => {
       <Image
         style={[styles.poor91Icon, styles.iconLayout3]}
         contentFit="cover"
-        // source={require("../assets/poor1.jpg")}
+        source={require("../assets/poor1.jpg")}
       />
       <Image
         style={[styles.poor111Icon, styles.iconLayout2]}
         contentFit="cover"
-        // source={require("../assets/poor2.jpg")}
+        source={require("../assets/poor2.jpg")}
       />
       <Image
         style={[styles.poor121Icon, styles.iconLayout4]}
         contentFit="cover"
-        // source={require("../assets/poor3.jpg")}
+        source={require("../assets/poor3.jpg")}
       />
       <Image
         style={[styles.poor101Icon, styles.iconLayout1]}
         contentFit="cover"
-        // source={require("../assets/poor11.jpg")}
+        source={require("../assets/poor11.webp")}
       />
       <Image
         style={[styles.poor31Icon, styles.iconLayout]}
         contentFit="cover"
-        // source={require("../assets/poor10.jpg")}
+        source={require("../assets/poor10.jpg")}
       />
       <Image
         style={[styles.poor21Icon, styles.iconLayout1]}
         contentFit="cover"
-        // source={require("../assets/poor13.jpg")}
+        source={require("../assets/poor13.jpg")}
       />
       <Image
         style={[styles.poor11Icon, styles.iconLayout]}
         contentFit="cover"
-        // source={require("../assets/aaa.jpg")}
+        source={require("../assets/child.jpg")}
       />
       <Image
         style={[styles.poo3131Icon, styles.iconLayout2]}
         contentFit="cover"
-        // source={require("../assets/aaa.jpg")}
+        source={require("../assets/child.jpg")}
       />
       <Text style={styles.letsHelpEach}>Let’s help each others</Text>
       <Text style={[styles.whenWeGive, styles.whenWeGiveTypo]}>
@@ -60,10 +60,12 @@ const OnboardingPage1 = () => {
         <Image
           style={styles.icon}
           contentFit="cover"
-          // source={require("../assets/aaa.jpg")}
+          source={require("../assets/right-arrow.png")}
         />
       </Pressable>
-      
+      {/* <Text style={[styles.httpswwwfigcomponentscom, styles.whenWeGiveTypo]}>
+        next
+      </Text> */}
     </View>
   );
 };
@@ -96,10 +98,11 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   whenWeGiveTypo: {
-    height: 40,
-    lineHeight: 17,
+    fontFamily: FontFamily.kalamRegular,
+    lineHeight: 30,
+    fontSize: FontSize.iOSHeadlineBold_size,
     textAlign: "center",
-    // fontFamily: FontFamily.kalamRegular,
+    color: Color.lightBlack,
     position: "absolute",
   },
   poor91Icon: {
@@ -144,25 +147,26 @@ const styles = StyleSheet.create({
   },
   letsHelpEach: {
     top: 443,
-    left: 65,
-    fontSize: FontSize.size_16xl,
-    lineHeight: 34,
+    left: 60,
+    fontSize:30,
+    lineHeight: 40,
     fontWeight: "700",
-    // fontFamily: FontFamily.kalamRegular,
+    fontFamily: FontFamily.kalamRegular,
     width: 273,
-    height: 340,
+    height: 34,
     textAlign: "center",
     color: Color.lightBlack,
     position: "absolute",
   },
   whenWeGive: {
     top: 580,
-    left: 70,
+    left: 60,
     width: 272,
-    height: 20, 
-    fontSize: FontSize.size_mini,
-   
-    fontWeight:'700', // Assuming regular is a valid font weight value
+    height: 20,
+    fontFamily: 'Kalam', // Set your desired font family
+    fontSize: 16,
+    lineHeight: 30,
+    fontWeight: 'regular', // Assuming regular is a valid font weight value
   },
   
   icon: {
@@ -176,7 +180,7 @@ const styles = StyleSheet.create({
     borderRadius: 37, // Half of the width to make it a circle
     position: 'absolute',
     top: 700,
-    left: 175,
+    left: 155,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -199,4 +203,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OnboardingPage1;
+export default OnboardingPage;
