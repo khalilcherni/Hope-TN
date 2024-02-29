@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Linking } from 'react-native';
 import axios from 'axios';
 import { Ionicons } from '@expo/vector-icons';
 import moment from 'moment';
-import { Linking } from 'react-native';
+
 export default function Events() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -27,16 +27,7 @@ export default function Events() {
   };
 
   const renderCountdown = (deadline) => {
-    const now = moment();
-    const end = moment(deadline);
-    const diff = end.diff(now);
-    const duration = moment.duration(diff);
-    const days = duration.days();
-    const hours = duration.hours();
-    const minutes = duration.minutes();
-    const seconds = duration.seconds();
-
-  
+    // Implement your countdown rendering logic here
   };
 
   if (loading) {
@@ -51,14 +42,17 @@ export default function Events() {
     <ScrollView style={styles.container}>
       {data.map(event => (
         <View style={styles.eventContainer} key={event.id}>
-                <Text style={styles.title}>{event.name}</Text>
+          <Text style={styles.title}>{event.name}</Text>
           {event.image ? (
             <Image style={styles.image} source={{ uri: event.image }} />
           ) : (
             <Text>No Image Available</Text>
           )}
-      
-          <Text style={styles.description}>{event.description}</Text>
+
+          <View style={styles.card}>
+            <Text style={styles.cardText}>{event.description}</Text>
+          </View>
+
           <TouchableOpacity onPress={() => handleMapNavigation(event.location)}>
             <View style={styles.dateContainer}>
               <Ionicons name="location-outline" size={24} color="blue" />
@@ -73,10 +67,11 @@ export default function Events() {
             <Ionicons name="calendar-outline" size={24} color="red" />
             <Text style={styles.details}>End Date: {(event.enddate)}</Text>
           </View>
-       
-         
           <View style={styles.deadlineContainer}>
-            <Text style={styles.details}>Registration Deadline: {(event.registrationdeadline)}</Text>
+            <View style={styles.registrationDeadline}>
+              <Ionicons name="calendar-outline" size={24} color="purple" />
+              <Text style={styles.details}>Registration Deadline: {(event.registrationdeadline)}</Text>
+            </View>
             <TouchableOpacity style={styles.button}>
               <Text style={styles.buttonText}>Register</Text>
             </TouchableOpacity>
@@ -113,6 +108,16 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 5,
+    textAlign:'center'
+  },
+  card: {
+    backgroundColor: '#f0f0f0',
+    padding: 10,
+    borderRadius: 5,
+    marginBottom: 10,
+  },
+  cardText: {
+    fontSize: 16,
   },
   description: {
     fontSize: 16,
@@ -122,16 +127,24 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginBottom: 3,
   },
-  locationContainer: {
+  dateContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 5,
+  },
+  deadlineContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     marginBottom: 5,
   },
-  dateContainer: {
+  registrationDeadline: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 5,
+  },
+  countdownContainer: {
+    alignItems: 'center',
+    marginTop: 10,
   },
   button: {
     backgroundColor: 'blue',
@@ -143,15 +156,5 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontWeight: 'bold',
-  },
-  deadlineContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 5,
-  },
-  countdownContainer: {
-    alignItems: 'center',
-    marginTop: 10,
   },
 });
