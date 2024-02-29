@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Image } from "expo-image";
-import { StyleSheet, Pressable, Text, View } from "react-native";
+import { StyleSheet, Pressable, Text, View ,ScrollView,TouchableOpacity} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
-import { ScrollView } from "react-native-gesture-handler";
+// import { ScrollView } from "react-native-gesture-handler";
 
 const Home = () => {
   const navigation = useNavigation();
@@ -43,26 +43,20 @@ const Home = () => {
       <Text style={[styles.categories, styles.categoriesTypo]}>
         Categories:
       </Text>
-      <Image
-        style={[styles.homeReItem, styles.homePosition]}
-        contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-        
-
-      />
+      <Pressable onPress={() => navigation.navigate('categoriePeopleWhoNeedWater')}>
       <Image
         style={[styles.dropIcon, styles.iconPosition]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        source={require("../assets/pp.jpg")}
 
 
       />
+    </Pressable>
+      
       <Pressable
         style={[styles.wrapper, styles.homePosition]}
-        onPress={() => navigation.navigate("Details")}
+        onPress={() => navigation.navigate("categoriePeopleWhoNeedWater")}
       >
         <Image
           style={styles.iconLayout3}

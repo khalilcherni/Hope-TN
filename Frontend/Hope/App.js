@@ -18,7 +18,7 @@ import Example from './screens/Palestine';
 // import Home from './screens/Home';
 // import Example from './screens/Example';
 import AndroidLarge2 from './screens/donation';
-
+import MessageCard from './screens/Messages'
 // import StartingPage from './screens/StartingPage';
 // import SignUp from './screens/signup';
 // import OnboardingPage1 from './screens/onboardingPage1';
@@ -29,8 +29,9 @@ import AndroidLarge2 from './screens/donation';
 // import ProfileEdit from "./screens/EditProfile"
 // import Home from "./screens/Home"
 // import MessageCard from './screens/Messages'
-import Frame from "./screens/categoriePeopleWhoNeedWater"
-import Frame3 from './screens/Palestine';
+import categoriePeopleWhoNeedWater from "./screens/categoriePeopleWhoNeedWater"
+import Frame2 from './screens/Elderly';
+import Events from './screens/Events';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -44,15 +45,18 @@ export default function App() {
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="Home" component={Home} />  */}
-   {/* <Stack.Screen name="Palestine" component={Frame3} />
-   <Stack.Screen name="donation" component={AndroidLarge2}/> */}
-   {/* </Stack.Navigator>  */}
+   {/* <Stack.Screen name="Home" component={Home} /> */}
+   {/* <Stack.Screen name="categoriePeopleWhoNeedWater" component={categoriePeopleWhoNeedWater}/> */}
+   {/* <Stack.Screen name="Elderly" component={Frame2} /> 
+   <Stack.Screen name="donation" component={AndroidLarge2} />  */}
+      {/* </Stack.Navigator>  */}
       {/* <Example/> */}
-      <BottomAppBar/>
+      {/* <Home/> */}
 
  {/* <AndroidLarge2/> */}
  {/* <Example/> */}
-
+{/* <MessageCard/> */}
+<Events/>
 {/* <Frame3/> */}
       {/* <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}> */}
         {/* <Stack.Screen name="StartingPage" component={StartingPage} /> /}
