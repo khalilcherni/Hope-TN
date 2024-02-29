@@ -22,6 +22,7 @@ const SignIn = () => {
       }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
       const loginResponse = await axios.post('http://192.168.1.201:4000/users/login', {
 
@@ -29,6 +30,12 @@ const SignIn = () => {
 =======
       const loginResponse = await axios.post('http://192.168.72.231:4000/users/login', {
 >>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
+=======
+
+      
+
+      const loginResponse = await axios.post('http://192.168.137.198:4000/users/login', {
+>>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
 
         email,
         password,
@@ -130,6 +137,7 @@ const SignIn = () => {
     
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     marginTop: 10,

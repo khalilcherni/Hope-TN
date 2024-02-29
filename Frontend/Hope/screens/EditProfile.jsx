@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text, Pressable, TextInput, Alert } from "react-native";
+import { StyleSheet, View, Text, Pressable, TextInput, Alert, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import axios from 'axios'; // Import Axios
 
 const ProfileEdit = () => {
   const navigation = useNavigation();
-  const [profileId, setProfileId] = useState(1); // Assuming the default profile ID is 1
+  const [profileId, setProfileId] = useState(""); // Assuming the default profile ID is 1
   const [profileData, setProfileData] = useState({
     firstName: "",
     lastName: "",
@@ -54,83 +54,86 @@ const ProfileEdit = () => {
 
   return (
     <View style={styles.profileEdit}>
-      <View style={styles.profileEditChild} />
-      <View style={styles.statusBar}>
-        {/* Your status bar icons */}
-      </View>
-      <View style={styles.profileLayout}>
-        {/* Profile layout */}
-      </View>
-      <Text style={[styles.emailIdTypo, styles.username]}>Username</Text>
-      <Text style={[styles.updateTypo, styles.editProfile]}>Edit Profile</Text>
-      <TextInput
-        style={[styles.input, styles.emailId]}
-        placeholder="Enter your email"
-        value={profileData.email}
-        onChangeText={(text) => setProfileData({...profileData, email: text})}
-      />
-      <TextInput
-        style={[styles.input, styles.password]}
-        placeholder="Enter your password"
-        secureTextEntry
-        value={profileData.password}
-        onChangeText={(text) => setProfileData({...profileData, password: text})}
-      />
-      <Pressable style={styles.button} onPress={handleUpdate}>
-        <Text style={styles.buttonText}>Update</Text>
+      <View style={styles.background} />
+      <Pressable
+        style={styles.arrowLeft}
+        onPress={() => navigation.navigate("Setting")}
+      >
+        <Image
+          style={styles.icon}
+          contentFit="cover"
+          source={require("../assets/backleft.png")}
+        />
       </Pressable>
+      <View style={styles.formContainer}>
+        <Text style={styles.headerText}>Edit Profile</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="First Name"
+          value={profileData.firstName}
+          onChangeText={(text) => setProfileData({...profileData, firstName: text})}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Last Name"
+          value={profileData.lastName}
+          onChangeText={(text) => setProfileData({...profileData, lastName: text})}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          value={profileData.email}
+          onChangeText={(text) => setProfileData({...profileData, email: text})}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          secureTextEntry
+          value={profileData.password}
+          onChangeText={(text) => setProfileData({...profileData, password: text})}
+        />
+        <Pressable style={styles.button} onPress={handleUpdate}>
+          <Text style={styles.buttonText}>Update</Text>
+        </Pressable>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   profileEdit: {
-    backgroundColor: "#F0F0F0",
     flex: 1,
-    padding: 20,
+    alignItems: "center",
+    justifyContent: "center",
   },
-  profileEditChild: {
+  background: {
+    ...StyleSheet.absoluteFillObject,
     backgroundColor: "#008080",
-    width: 390,
-    height: 188,
-    position: "absolute",
-    top: 0,
-    left: -24,
+    opacity: 0.5,
   },
-  statusBar: {
-    backgroundColor: "#F0F0F0",
-    height: 44,
+  arrowLeft: {
     position: "absolute",
-    top: 0,
-    left: -15,
-    right: 4,
-    overflow: "hidden",
-  },
-  profileLayout: {
-    backgroundColor: "#F0F0F0",
-    height: 40,
-    position: "absolute",
-    top: 0,
-    left: 0,
-  },
-  emailIdTypo: {
-    color: "#333333",
-    fontFamily: "Arial",
-    fontSize: 18,
-    fontWeight: "bold",
-    position: "absolute",
-    textAlign: "left",
     top: 20,
-    left: 17,
+    left: 20,
+    width: 26,
+    height: 26,
   },
-  updateTypo: {
-    color: "#FFFFFF",
+  icon: {
+    height: "100%",
+    width: "100%",
+  },
+  formContainer: {
+    backgroundColor: "#FFFFFF",
+    padding: 20,
+    borderRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    width: "80%",
+  },
+  headerText: {
     fontSize: 24,
     fontWeight: "bold",
-    position: "absolute",
-    textAlign: "left",
-    top: 20,
-    left: 17,
+    marginBottom: 20,
   },
   input: {
     borderColor: "#CCCCCC",
@@ -140,6 +143,7 @@ const styles = StyleSheet.create({
     height: 40,
     marginBottom: 20,
     paddingHorizontal: 10,
+    width: "100%",
   },
   button: {
     alignItems: "center",
@@ -147,23 +151,11 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     justifyContent: "center",
     height: 40,
+    width: "100%",
   },
   buttonText: {
     color: "#FFFFFF",
     fontWeight: "bold",
-  },
-  username: {
-    fontWeight: "bold",
-    fontSize: 20,
-    marginBottom: 10,
-  },
-  editProfile: {
-    color: "#FFFFFF",
-    fontSize: 24,
-    marginBottom: 20,
-  },
-  password: {
-    marginBottom: 0,
   },
 });
 

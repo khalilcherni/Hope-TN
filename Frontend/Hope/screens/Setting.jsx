@@ -16,6 +16,7 @@ const Setting = () => {
           style={[styles.notchIcon, styles.notchIconLayout]}
           contentFit="cover"
 <<<<<<< HEAD
+<<<<<<< HEAD
           source={require("../assets/profile.png")}
 =======
           source={require("../assets/aaa.jpg")}
@@ -34,41 +35,58 @@ const Setting = () => {
           style={styles.timeLight}
           contentFit="cover"
         //   source={require("../assets/time--light.png")}
+=======
+          // source={require("../assets/notch.png")}
+>>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
         />
+       
       </View>
       <Image
         style={styles.unsplashjmurdhtm7ngIcon}
         contentFit="cover"
 <<<<<<< HEAD
+<<<<<<< HEAD
         source={require("../assets/profile.png")}
 =======
         source={require("../assets/aaa.jpg")}
 >>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
+=======
+        source={require("../assets/logo.png")}
+>>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
       />
       <Pressable
         style={[styles.arrowLeft, styles.notchIconLayout]}
-        onPress={() => navigation.navigate("ProfileEdit")}
+        onPress={() => navigation.navigate("Home")}
       >
         <Image
           style={styles.icon}
           contentFit="cover"
 <<<<<<< HEAD
+<<<<<<< HEAD
           source={require("../assets/backleft.png")}
 =======
           source={require("../assets/aaa.jpg")}
 >>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
+=======
+          source={require("../assets/backleft.png")}
+>>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
         />
       </Pressable>
       <Image
         style={[styles.bellIcon, styles.iconLayout1]}
         contentFit="cover"
 <<<<<<< HEAD
+<<<<<<< HEAD
         source={require("../assets/bell.webp")}
 =======
         source={require("../assets/aaa.jpg")}
 >>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
+=======
+        source={require("../assets/bell.webp")}
+>>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
       />
       <Text style={[styles.favorites, styles.eventsFlexBox]}>Favorites</Text>
+      <Text style={[styles.language, styles.eventsFlexBox]}>Language</Text>
       <Text style={[styles.preferences, styles.eventsTypo]}>Preferences</Text>
       <Text style={[styles.favourite, styles.favouritePosition]}>
         Favourite
@@ -77,9 +95,9 @@ const Setting = () => {
       <View style={[styles.rectangle36Copy5Parent, styles.groupLayout]}>
         <View style={styles.rectangle36Copy5} />
         <Image
-          // style={styles.rightIcon}
-          // contentFit="cover"
-          // source={require("../assets/right.png")}
+          style={styles.rightIcon}
+          contentFit="cover"
+          source={require("../assets/right.png")}
         />
       </View>
       <View style={[styles.rectangle36Copy5Group, styles.groupLayout]}>
@@ -88,10 +106,14 @@ const Setting = () => {
           style={styles.rightIcon}
           contentFit="cover"
 <<<<<<< HEAD
+<<<<<<< HEAD
           source={require("../assets/right.png")}
 =======
           source={require("../assets/aaa.jpg")}
 >>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
+=======
+          source={require("../assets/right.png")}
+>>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
         />
       </View>
       <View style={[styles.rectangle36Copy5Container, styles.groupLayout]}>
@@ -100,67 +122,67 @@ const Setting = () => {
           style={styles.rightIcon}
           contentFit="cover"
 <<<<<<< HEAD
+<<<<<<< HEAD
           source={require("../assets/right.png")}
 =======
           source={require("../assets/aaa.jpg")}
 >>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
+=======
+          source={require("../assets/right.png")}
+>>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
         />
       </View>
       <Pressable
         style={[styles.settingInner, styles.settingInnerLayout]}
         onPress={() => navigation.navigate("ProfileEdit")}
-      >
-        <Text style={[styles.editProfile, styles.profileClr]}>Edit Profile</Text>
-      </Pressable>
+      />
+      <Text style={[styles.editProfile, styles.profileClr]}>Edit Profile</Text>
+      <Image
+        style={styles.translateIcon}
+        contentFit="cover"
+        // source={require("../assets/translate.png")}
+      />
       <Image
         style={[styles.umoonIcon, styles.iconLayout]}
         contentFit="cover"
-<<<<<<< HEAD
-        source={require("../assets/moon.png")}
-=======
+        // source={require("../assets/moon.png")}
         source={require("../assets/aaa.jpg")}
->>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
+        {/* source={require("../assets/moon.png")} */}
       />
       <Image
         style={[styles.heartIcon, styles.favouritePosition]}
         contentFit="cover"
-<<<<<<< HEAD
-        source={require("../assets/heart.png")}
-=======
+        // source={require("../assets/heart.png")}
         source={require("../assets/aaa.jpg")}
->>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
-      />
+        // source={require("../assets/heart.png")}      
+        />
       <Text style={[styles.profile, styles.profileClr]}>Profile</Text>
       <View style={[styles.rectangleView, styles.settingLayout]} />
       <Text style={[styles.events, styles.eventsTypo]}>Events</Text>
       <Image
         style={[styles.editDuotoneIcon, styles.iconLayout]}
         contentFit="cover"
-<<<<<<< HEAD
         source={require("../assets/edit.png")}
-=======
-        source={require("../assets/aaa.jpg")}
->>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
+        // source={require("../assets/aaa.jpg")}
+        // source={require("../assets/edit-duotone.png")}
       />
       <Text style={[styles.editProfile1, styles.settingInnerLayout]}>
-        Edit Profile
+        {/* Edit Profile */}
       </Text>
       <View style={[styles.groupView, styles.groupLayout]}>
         <View style={styles.rectangle36Copy5} />
         <Image
           style={styles.rightIcon}
           contentFit="cover"
-<<<<<<< HEAD
           source={require("../assets/right.png")}
-=======
-          source={require("../assets/aaa.jpg")}
->>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
+          // source={require("../assets/aaa.jpg")}
+ 
+          // source={require("../assets/right.png")}
         />
       </View>
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   setting: {
     backgroundColor: Color.lightWhite,
@@ -216,7 +238,7 @@ const styles = StyleSheet.create({
   },
   settingChild: {
     backgroundColor: Color.colorDarkcyan,
-    height: 188,
+    height:267,
     left: 0,
     top: 0,
   },
@@ -267,6 +289,14 @@ const styles = StyleSheet.create({
     top: 464,
     left: 60,
     display: "none",
+    fontFamily: FontFamily.poppinsMedium,
+    fontWeight: "500",
+    fontSize: FontSize.size_mini,
+    position: "absolute",
+  },
+  language: {
+    top: 399,
+    left: 47,
     fontFamily: FontFamily.poppinsMedium,
     fontWeight: "500",
     fontSize: FontSize.size_mini,
@@ -337,6 +367,13 @@ const styles = StyleSheet.create({
     fontSize: FontSize.unifiedDesignDeprecatedFootnote_size,
     fontFamily: FontFamily.poppinsMedium,
     fontWeight: "500",
+  },
+  translateIcon: {
+    top: 400,
+    width: 22,
+    height: 22,
+    left: 17,
+    position: "absolute",
   },
   umoonIcon: {
     top: 428,

@@ -143,18 +143,6 @@ const BottomAppBar = () => {
 
   return (
     <View style={styles.container}>
-<<<<<<< HEAD
-      <ScrollView style={styles.messageContainer}>
-        {messages.map(message => (
-          <MessageCard
-            key={message.id}
-            {...message}
-            onDelete={handleDeleteMessage}
-            onComment={handleComment}
-          />
-        ))}
-      </ScrollView>
-=======
   <ScrollView style={styles.messageContainer}>
   {messages.map(message => (
     <MessageCard
@@ -165,7 +153,6 @@ const BottomAppBar = () => {
     />
   ))}
 </ScrollView>
->>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
       <View style={styles.inputContainer}>
         <TouchableOpacity style={styles.choosePhotoButton} onPress={handleChoosePhoto}>
           <Text style={styles.choosePhotoButtonText}>Choose Photo</Text>
@@ -187,27 +174,17 @@ const BottomAppBar = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-<<<<<<< HEAD
-  },
-  messageContainer: {
-    flex: 1,
-=======
     
   },
   messageContainer: {
     flex: 1,
     marginTop:50
->>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
   },
   messageCard: {
     flexDirection: 'row',
     alignItems: 'center',
     padding: 20,
-<<<<<<< HEAD
-    marginBottom: 20,
-=======
     marginBottom: 40,
->>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
     backgroundColor: '#f0f0f0',
   },
   avatar: {

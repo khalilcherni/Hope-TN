@@ -6,7 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 import { ScrollView } from "react-native-gesture-handler";
 
-const HomeRE = () => {
+const Home = () => {
   const navigation = useNavigation();
 
   return (
@@ -20,8 +20,9 @@ const HomeRE = () => {
           style={[styles.icon, styles.iconLayout3]}
           contentFit="cover"
 
-          source={require("../assets/poor1.jpg")}
+          // source={require("../assets/poor1.jpg")}
 
+<<<<<<< HEAD
           // source={require("../assets/profile-circle.webp")}
 
         />
@@ -39,6 +40,9 @@ const HomeRE = () => {
           source={require("../assets/poor1.jpg")}
 
         
+=======
+          source={require("../assets/profile-circle.webp")}
+>>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
 
         />
       </Pressable>
@@ -47,17 +51,47 @@ const HomeRE = () => {
         style={styles.menuIcon}
         style={styles.menuIcon}
         contentFit="cover"
+<<<<<<< HEAD
         source={require("../assets/111.jpg")}
+=======
+
+        // source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/menu.webp")}
+
+>>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
       />
       <Image
         style={[styles.menuIcon, styles.menuIconPosition]}
         contentFit="cover"
+<<<<<<< HEAD
         source={require("../assets/menu.png")}
+=======
+        source={require("../assets/poor1.jpg")}
+      />
+      <Text style={[styles.categories, styles.categoriesTypo]}>
+        Categories:
+      </Text>
+      <Image
+        style={[styles.homeReItem, styles.homePosition]}
+        contentFit="cover"
+
+        // source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/Ellipse.webp")}
+
+>>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
       />
       <Image
         style={[styles.dropIcon, styles.iconPosition]}
         contentFit="cover"
+<<<<<<< HEAD
         source={require("../assets/Rectangle.png")}
+=======
+
+        // source={require("../assets/poor1.jpg")
+        source={require("../assets/drop.webp")}
+>>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
       />
       <Pressable
         style={[styles.wrapper, styles.homePosition]}
@@ -66,16 +100,99 @@ const HomeRE = () => {
         <Image
           style={styles.iconLayout3}
           contentFit="cover"
+<<<<<<< HEAD
           source={require("../assets/profile-circle.png")}
+=======
+
+          // source={require("../assets/poor1.jpg")}
+
+          source={require("../assets/Ellipse.webp")}
+
+>>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
         />
       </Pressable>
       <Image
         style={[styles.homeItem, styles.homeItemPosition]}
         contentFit="cover"
+<<<<<<< HEAD
         source={require("../assets/Frame 495.png")}
       />
       <Text style={[styles.somePhotos, styles.somePhotosTypo]}>
         Some Photos :
+=======
+
+        // source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/dollar-circle.webp")}
+
+      />
+      <Image
+        style={[styles.homeReInner, styles.homePosition]}
+        contentFit="cover"
+
+        // source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/Ellipse.webp")}
+
+      />
+      <Image
+        style={[styles.downloadRemovebgPreview1Icon, styles.iconLayout2]}
+        contentFit="cover"
+
+        // source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/4.webp")}
+
+      />
+      <Image
+        style={[styles.ellipseIcon, styles.ellipseIconLayout]}
+        contentFit="cover"
+
+        // source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/Ellipse.webp")}
+
+      />
+      <Image
+        style={[styles.depositphotos105691240StockIcon, styles.iconLayout2]}
+        contentFit="cover"
+
+        // source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/3.webp")}
+
+      />
+      <Image
+        style={[styles.homeReChild1, styles.homePosition]}
+        contentFit="cover"
+
+        // source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/Ellipse.webp")}
+
+      />
+      <Image style={styles.seniorCitizenLogoPngSeniorIcon} contentFit="cover" />
+      <Text style={[styles.ourWork, styles.welcomeTypo]}>Our Work :</Text>
+      <Image
+        style={[styles.demt1Icon, styles.iconLayout1]}
+        contentFit="cover"
+
+        // source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/DEMT_1.webp")}
+
+      />
+      <Image
+        style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
+        contentFit="cover"
+
+        // source={require("../assets/poor1.jpg")}
+        source={require("../assets/covid.jpg")}
+
+      />
+      <Text style={[styles.povertyInTunisia, styles.categoriesTypo]}>
+        Poverty in Tunisia :
+>>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
       </Text>
       <Text style={[styles.categories, styles.somePhotosTypo]}>
         Categories :
@@ -110,7 +227,15 @@ const HomeRE = () => {
       <Image
         style={styles.jpgRemovebgPreview1Icon}
         contentFit="cover"
+<<<<<<< HEAD
         source={require("../assets/jpg-removebg-preview 1.png")}
+=======
+
+        // source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/remove.webp")}
+
+>>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
       />
       <Text style={[styles.povertyRatesIn, styles.somePhotosTypo]}>
         Poverty rates in Tunisia :
@@ -118,7 +243,15 @@ const HomeRE = () => {
       <Image
         style={[styles.homeInner, styles.demt1IconPosition]}
         contentFit="cover"
+<<<<<<< HEAD
         source={require("../assets/Rect.png")}
+=======
+
+        // source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/Rect.webp")}
+
+>>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
       />
       <Pressable
         style={[styles.vuesaxbrokenmessageText, styles.houseIconLayout]}
@@ -127,13 +260,29 @@ const HomeRE = () => {
         <Image
           style={[styles.icon1, styles.iconLayout]}
           contentFit="cover"
+<<<<<<< HEAD
           source={require("../assets/drop.png")}
+=======
+
+          // source={require("../assets/poor1.jpg")}
+
+          source={require("../assets/message-text.webp")}
+
+>>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
         />
       </Pressable>
       <Image
         style={[styles.houseIcon, styles.iconLayout]}
         contentFit="cover"
+<<<<<<< HEAD
         source={require("../assets/house.png")}
+=======
+
+        // source={require("../assets/poor1.jpg")}
+
+        source={require("../assets/house.webp")}
+
+>>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
       />
       <Pressable
         style={[styles.vuesaxboldchart, styles.houseIconLayout]}
@@ -142,7 +291,15 @@ const HomeRE = () => {
         <Image
           style={[styles.icon1, styles.iconLayout]}
           contentFit="cover"
+<<<<<<< HEAD
           source={require("../assets/message-text.png")}
+=======
+
+          // source={require("../assets/poor1.jpg")}
+
+          // source={require("../assets/chart.png")}
+
+>>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
         />
       </Pressable>
     </View>
@@ -324,4 +481,8 @@ const styles = StyleSheet.create({
   },
 });
 
+<<<<<<< HEAD
 export default HomeRE
+=======
+export default Home
+>>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
