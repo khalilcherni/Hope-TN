@@ -3,7 +3,7 @@ import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'rea
 import axios from 'axios';
 import { Ionicons } from '@expo/vector-icons';
 import moment from 'moment';
-
+import { Linking } from 'react-native';
 export default function Events() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -22,8 +22,8 @@ export default function Events() {
   }, []);
 
   const handleMapNavigation = (location) => {
-    // Implement your map navigation logic here
-    console.log("Navigate to map for location:", location);
+    const mapsUrl = `https://www.google.com/maps/place/${location}`;
+    Linking.openURL(mapsUrl);
   };
 
   const renderCountdown = (deadline) => {
@@ -71,16 +71,12 @@ export default function Events() {
           </View>
           <View style={styles.dateContainer}>
             <Ionicons name="calendar-outline" size={24} color="red" />
-            <Text style={styles.details}>End Date: {moment(event.enddate).format('MMMM Do YYYY, h:mm:ss a')}</Text>
+            <Text style={styles.details}>End Date: {(event.enddate)}</Text>
           </View>
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Take me to map</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Register</Text>
-          </TouchableOpacity>
+       
+         
           <View style={styles.deadlineContainer}>
-            <Text style={styles.details}>Registration Deadline: {moment(event.registrationdeadline).format('MMMM Do YYYY, h:mm:ss a')}</Text>
+            <Text style={styles.details}>Registration Deadline: {(event.registrationdeadline)}</Text>
             <TouchableOpacity style={styles.button}>
               <Text style={styles.buttonText}>Register</Text>
             </TouchableOpacity>
