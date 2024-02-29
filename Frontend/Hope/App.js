@@ -8,7 +8,7 @@ import BottomAppBar from './screens/Messages';
 import Voluntarywork from './screens/Voluntarywork';
 import Home from './screens/Home';
 
-
+import Register from './screens/Registration'
 import StartingPage from './screens/StartingPage';
 import SignUp from './screens/signup';
 import OnboardingPage1 from './screens/onboardingPage1';
@@ -56,8 +56,9 @@ export default function App() {
  {/* <AndroidLarge2/> */}
  {/* <Example/> */}
 {/* <MessageCard/> */}
-<Events/>
+{/* <Events/> */}
 {/* <Frame3/> */}
+<Register/>
       {/* <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}> */}
         {/* <Stack.Screen name="StartingPage" component={StartingPage} /> /}
         {/ <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} /> /}

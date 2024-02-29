@@ -72,7 +72,9 @@ export default function Events() {
               <Ionicons name="calendar-outline" size={24} color="purple" />
               <Text style={styles.details}>Registration Deadline: {(event.registrationdeadline)}</Text>
             </View>
+            
             <TouchableOpacity style={styles.button}>
+            
               <Text style={styles.buttonText}>Register</Text>
             </TouchableOpacity>
           </View>
