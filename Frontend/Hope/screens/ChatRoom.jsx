@@ -48,6 +48,7 @@ const Chatroom = ({ userId }) => {
           _id: userId,
           name: 'Anonymous',
         }}
+        style={styles.giftedChat}
       />
     </View>
   );
@@ -58,8 +59,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   backgroundContainer: {
-    flex: 1,
+    ...StyleSheet.absoluteFillObject,
     backgroundColor: '#209FA6',
+  },
+  giftedChat: {
+    flex: 1,
   },
 });
 
