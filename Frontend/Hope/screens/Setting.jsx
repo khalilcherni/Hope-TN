@@ -15,18 +15,9 @@ const Setting = () => {
         <Image
           style={[styles.notchIcon, styles.notchIconLayout]}
           contentFit="cover"
-          source={require("../assets/profile.png")}
+          // source={require("../assets/notch.png")}
         />
-        <Image
-          style={styles.indicatorIcon}
-          contentFit="cover"
-          source={require("../assets/indicators.png")}
-        />
-        <Image
-          style={styles.timeLight}
-          contentFit="cover"
-        //   source={require("../assets/time--light.png")}
-        />
+       
       </View>
       <Image
         style={styles.unsplashjmurdhtm7ngIcon}
@@ -35,7 +26,7 @@ const Setting = () => {
       />
       <Pressable
         style={[styles.arrowLeft, styles.notchIconLayout]}
-        onPress={() => navigation.navigate("ProfileEdit")}
+        onPress={() => navigation.navigate("Home")}
       >
         <Image
           style={styles.icon}
@@ -49,6 +40,7 @@ const Setting = () => {
         source={require("../assets/bell.webp")}
       />
       <Text style={[styles.favorites, styles.eventsFlexBox]}>Favorites</Text>
+      <Text style={[styles.language, styles.eventsFlexBox]}>Language</Text>
       <Text style={[styles.preferences, styles.eventsTypo]}>Preferences</Text>
       <Text style={[styles.favourite, styles.favouritePosition]}>
         Favourite
@@ -57,9 +49,9 @@ const Setting = () => {
       <View style={[styles.rectangle36Copy5Parent, styles.groupLayout]}>
         <View style={styles.rectangle36Copy5} />
         <Image
-          // style={styles.rightIcon}
-          // contentFit="cover"
-          // source={require("../assets/right.png")}
+          style={styles.rightIcon}
+          contentFit="cover"
+          source={require("../assets/right.png")}
         />
       </View>
       <View style={[styles.rectangle36Copy5Group, styles.groupLayout]}>
@@ -81,9 +73,13 @@ const Setting = () => {
       <Pressable
         style={[styles.settingInner, styles.settingInnerLayout]}
         onPress={() => navigation.navigate("ProfileEdit")}
-      >
-        <Text style={[styles.editProfile, styles.profileClr]}>Edit Profile</Text>
-      </Pressable>
+      />
+      <Text style={[styles.editProfile, styles.profileClr]}>Edit Profile</Text>
+      <Image
+        style={styles.translateIcon}
+        contentFit="cover"
+        source={require("../assets/translate.png")}
+      />
       <Image
         style={[styles.umoonIcon, styles.iconLayout]}
         contentFit="cover"
@@ -100,23 +96,22 @@ const Setting = () => {
       <Image
         style={[styles.editDuotoneIcon, styles.iconLayout]}
         contentFit="cover"
-        source={require("../assets/edit.png")}
+        // source={require("../assets/edit-duotone.png")}
       />
       <Text style={[styles.editProfile1, styles.settingInnerLayout]}>
-        Edit Profile
+        {/* Edit Profile */}
       </Text>
       <View style={[styles.groupView, styles.groupLayout]}>
         <View style={styles.rectangle36Copy5} />
         <Image
           style={styles.rightIcon}
           contentFit="cover"
-          source={require("../assets/right.png")}
+          // source={require("../assets/right.png")}
         />
       </View>
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   setting: {
     backgroundColor: Color.lightWhite,
@@ -228,6 +223,14 @@ const styles = StyleSheet.create({
     fontSize: FontSize.size_mini,
     position: "absolute",
   },
+  language: {
+    top: 399,
+    left: 47,
+    fontFamily: FontFamily.poppinsMedium,
+    fontWeight: "500",
+    fontSize: FontSize.size_mini,
+    position: "absolute",
+  },
   preferences: {
     top: 366,
     fontSize: FontSize.unifiedDesignDeprecatedFootnote_size,
@@ -293,6 +296,13 @@ const styles = StyleSheet.create({
     fontSize: FontSize.unifiedDesignDeprecatedFootnote_size,
     fontFamily: FontFamily.poppinsMedium,
     fontWeight: "500",
+  },
+  translateIcon: {
+    top: 400,
+    width: 22,
+    height: 22,
+    left: 17,
+    position: "absolute",
   },
   umoonIcon: {
     top: 428,

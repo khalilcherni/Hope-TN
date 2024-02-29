@@ -19,7 +19,7 @@ const Home = () => {
           style={[styles.icon, styles.iconLayout3]}
           contentFit="cover"
 
-          source={require("../assets/poor1.jpg")}
+          // source={require("../assets/poor1.jpg")}
 
           source={require("../assets/profile-circle.webp")}
 
@@ -30,7 +30,7 @@ const Home = () => {
         style={styles.menuIcon}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
 
         source={require("../assets/menu.webp")}
 
@@ -47,7 +47,7 @@ const Home = () => {
         style={[styles.homeReItem, styles.homePosition]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
 
         source={require("../assets/Ellipse.webp")}
 
@@ -56,9 +56,8 @@ const Home = () => {
         style={[styles.dropIcon, styles.iconPosition]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")
+        // source={require("../assets/poor1.jpg")
         source={require("../assets/drop.webp")}
-
       />
       <Pressable
         style={[styles.wrapper, styles.homePosition]}
@@ -68,7 +67,7 @@ const Home = () => {
           style={styles.iconLayout3}
           contentFit="cover"
 
-          source={require("../assets/poor1.jpg")}
+          // source={require("../assets/poor1.jpg")}
 
           source={require("../assets/Ellipse.webp")}
 
@@ -78,7 +77,7 @@ const Home = () => {
         style={[styles.dollarCircleIcon, styles.iconPosition]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
 
         source={require("../assets/dollar-circle.webp")}
 
@@ -87,7 +86,7 @@ const Home = () => {
         style={[styles.homeReInner, styles.homePosition]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
 
         source={require("../assets/Ellipse.webp")}
 
@@ -96,7 +95,7 @@ const Home = () => {
         style={[styles.downloadRemovebgPreview1Icon, styles.iconLayout2]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
 
         source={require("../assets/4.webp")}
 
@@ -105,7 +104,7 @@ const Home = () => {
         style={[styles.ellipseIcon, styles.ellipseIconLayout]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
 
         source={require("../assets/Ellipse.webp")}
 
@@ -114,7 +113,7 @@ const Home = () => {
         style={[styles.depositphotos105691240StockIcon, styles.iconLayout2]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
 
         source={require("../assets/3.webp")}
 
@@ -123,7 +122,7 @@ const Home = () => {
         style={[styles.homeReChild1, styles.homePosition]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
 
         source={require("../assets/Ellipse.webp")}
 
@@ -134,7 +133,7 @@ const Home = () => {
         style={[styles.demt1Icon, styles.iconLayout1]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
 
         source={require("../assets/DEMT_1.webp")}
 
@@ -143,7 +142,7 @@ const Home = () => {
         style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
         source={require("../assets/covid.jpg")}
 
       />
@@ -154,7 +153,7 @@ const Home = () => {
         style={styles.jpgRemovebgPreview1Icon}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
 
         source={require("../assets/remove.webp")}
 
@@ -163,7 +162,7 @@ const Home = () => {
         style={styles.rectangleIcon}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
 
         source={require("../assets/Rect.webp")}
 
@@ -176,7 +175,7 @@ const Home = () => {
           style={[styles.icon2, styles.iconLayout]}
           contentFit="cover"
 
-          source={require("../assets/poor1.jpg")}
+          // source={require("../assets/poor1.jpg")}
 
           source={require("../assets/message-text.webp")}
 
@@ -186,7 +185,7 @@ const Home = () => {
         style={[styles.houseIcon, styles.iconLayout]}
         contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
 
         source={require("../assets/house.webp")}
 
@@ -199,7 +198,7 @@ const Home = () => {
           style={[styles.icon2, styles.iconLayout]}
           contentFit="cover"
 
-          source={require("../assets/poor1.jpg")}
+          // source={require("../assets/poor1.jpg")}
 
           // source={require("../assets/chart.png")}
 
