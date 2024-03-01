@@ -34,6 +34,11 @@ export default function School() {
     Linking.openURL('https://meet.google.com/');
   };
 
+  const handleImagePress = () => {
+    // Navigate to the EnglishCourseScreen when image is pressed
+    navigation.navigate('EnglishCourseScreen');
+  };
+
   const renderCountdown = (deadline) => {
     // Implement your countdown rendering logic here
   };
@@ -50,40 +55,42 @@ export default function School() {
     <View style={styles.container}>
       <ScrollView style={styles.scrollView}>
         {data.map(event => (
-          <View style={styles.eventContainer} key={event.id}>
-            <Text style={styles.title}>{event.name}</Text>
-            <Text style={styles.title}>{event.nameodteacher}</Text>
-            {event.image ? (
-              <Image style={styles.image} source={{ uri: event.image }} />
-            ) : (
-              <Text>No Image Available</Text>
-            )}
+          <TouchableOpacity key={event.id} onPress={handleImagePress}>
+            <View style={styles.eventContainer}>
+              <Text style={styles.title}>{event.name}</Text>
+              <Text style={styles.title}>{event.nameodteacher}</Text>
+              {event.image ? (
+                <Image source={{ uri: event.image }} style={styles.image} />
+              ) : (
+                <Text>No Image Available</Text>
+              )}
 
-            <View style={styles.card}>
-              <Text style={styles.cardText}>{event.description}</Text>
-            </View>
-
-        
-            <View style={styles.dateContainer}>
-              <Ionicons name="calendar-outline" size={24} color="green" />
-              <Text style={styles.details}>Start Date: {(event.start)}</Text>
-            </View>
-            <View style={styles.dateContainer}>
-              <Ionicons name="calendar-outline" size={24} color="red" />
-              <Text style={styles.details}>End Date: {(event.end)}</Text>
-            </View>
-            <View style={styles.deadlineContainer}>
-              <View style={styles.registrationDeadline}>
-                <Ionicons name="calendar-outline" size={24} color="purple" />
-                <Text style={styles.details}>Duration: {(event.duration)}</Text>
+              <View style={styles.card}>
+                <Text style={styles.cardText}>{event.description}</Text>
               </View>
 
-              <TouchableOpacity style={styles.button} onPress={handleRegistration}>
-                <Text style={styles.buttonText}>Join</Text>
-              </TouchableOpacity>
-            </View>
             
-          </View>
+              <View style={styles.dateContainer}>
+                <Ionicons name="calendar-outline" size={24} color="green" />
+                <Text style={styles.details}>Start Date: {(event.start)}</Text>
+              </View>
+              <View style={styles.dateContainer}>
+                <Ionicons name="calendar-outline" size={24} color="red" />
+                <Text style={styles.details}>End Date: {(event.end)}</Text>
+              </View>
+              <View style={styles.deadlineContainer}>
+                <View style={styles.dateContainer}>
+                  <Ionicons name="calendar-outline" size={24} color="purple" />
+                  <Text style={styles.details}>Duration: {(event.duration)}</Text>
+                </View>
+
+                <TouchableOpacity style={styles.button} onPress={handleRegistration}>
+                  <Text style={styles.buttonText}>Join</Text>
+                </TouchableOpacity>
+              </View>
+              
+            </View>
+          </TouchableOpacity>
         ))}
       </ScrollView>
       {/* <View style={styles.tabbar}>
@@ -149,7 +156,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 5,
+    marginBottom: -5,
   },
   registrationDeadline: {
     flexDirection: 'row',
