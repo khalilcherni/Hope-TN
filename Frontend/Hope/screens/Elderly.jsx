@@ -4,9 +4,29 @@ import { StyleSheet, Text, View, Pressable, ScrollView, Dimensions ,TouchableOpa
 import { FontFamily, Color, FontSize } from "../GlobalStyles";
 import { WebView } from 'react-native-webview';
 import { useNavigation } from "@react-navigation/native"; 
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 const Frame2 = () => {
   const videoUrl = 'https://youtu.be/Qro0Rb7XJjI?si=dA1H-KkCa_u-RL-g';
   const navigation = useNavigation();
+  const handleHomeNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('Home');
+  };
+  const handleChatNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('ChatRoom');
+  };
+  const handleSchoolNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('School');
+  };
+  const handleMESNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('Messages');
+  };
+
   return (
     <ScrollView>
       <View style={styles.vectorParent}>
@@ -65,6 +85,12 @@ const Frame2 = () => {
         >
           <Text style={styles.donate}>Donate</Text>
         </TouchableOpacity>
+      </View>
+      <View style={styles.tabbar}>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={24} color="black" /></TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -206,6 +232,17 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 2353,
     overflow: "hidden",
+  },
+  tabbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+    paddingVertical: 10,
+  },
+  tabItem: {
+    flex: 1,
+    alignItems: 'center',
   },
 });
 

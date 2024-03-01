@@ -8,7 +8,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 const Chatroom = ({ userId }) => {
   const [messages, setMessages] = useState([]);
-  const navigation = useNavigation();
+  const navigation = useNavigation(); 
   useEffect(() => {
     loadMessages();
   }, []);
