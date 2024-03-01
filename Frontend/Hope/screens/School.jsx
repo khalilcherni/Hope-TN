@@ -58,7 +58,7 @@ export default function School() {
           <TouchableOpacity key={event.id} onPress={handleImagePress}>
             <View style={styles.eventContainer}>
               <Text style={styles.title}>{event.name}</Text>
-              <Text style={styles.title}>{event.nameodteacher}</Text>
+              <Text style={styles.aa} > Teacher:{event.nameodteacher}</Text>
               {event.image ? (
                 <Image source={{ uri: event.image }} style={styles.image} />
               ) : (
@@ -188,4 +188,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
+  aa:{
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  }
 });
