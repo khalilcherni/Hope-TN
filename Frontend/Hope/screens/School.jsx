@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Linking, TextInput } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Linking, TextInput, Dimensions } from 'react-native'; // Import Dimensions
 import axios from 'axios';
 import { Ionicons } from '@expo/vector-icons';
 import moment from 'moment';
@@ -12,6 +12,7 @@ export default function School() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const screenWidth = Dimensions.get('window').width; // Get Screen Width
 
   useEffect(() => {
     axios.get('http://192.168.72.231:4000/api/school/get')
@@ -25,7 +26,6 @@ export default function School() {
       });
   }, []);
 
-  
   const handleMapNavigation = (location) => {
     const mapsUrl = `https://www.google.com/maps/place/${location}`;
     Linking.openURL(mapsUrl);
@@ -56,7 +56,7 @@ export default function School() {
     <View style={styles.container}>
       <View style={styles.searchContainer}>
         <TextInput
-          style={styles.searchInput}
+          style={[styles.searchInput, { width: screenWidth * 0.8 }]} // Use percentage for width
           placeholder="Search..."
           onChangeText={text => setSearchQuery(text)}
           value={searchQuery}
@@ -69,7 +69,7 @@ export default function School() {
               <Text style={styles.title}>{event.name}</Text>
               <Text style={styles.aa}>{event.nameodteacher}</Text>
               {event.image ? (
-                <Image source={{ uri: event.image }} style={styles.image} />
+                <Image source={{ uri: event.image }} style={[styles.image, { width: screenWidth - 30 }]} /> // Adjust width according to screen
               ) : (
                 <Text>No Image Available</Text>
               )}
@@ -122,10 +122,10 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   image: {
-    width: '100%',
     height: 200,
     borderRadius: 10,
     marginBottom: 10,
+    marginRight:80
   },
   title: {
     fontSize: 20,
@@ -200,12 +200,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginLeft:20,
-    marginRight:20,
-    borderRadius:50,
-    height:50,
- 
-    marginTop:50
+    marginLeft: 20,
+    marginRight: 20,
+    borderRadius: 50,
+    height: 50,
+    marginTop: 50
   },
   searchInput: {
     borderWidth: 1,
