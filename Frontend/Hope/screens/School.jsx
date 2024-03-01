@@ -69,7 +69,7 @@ export default function School() {
               <Text style={styles.title}>{event.name}</Text>
               <Text style={styles.aa}>{event.nameodteacher}</Text>
               {event.image ? (
-                <Image source={{ uri: event.image }} style={[styles.image, { width: screenWidth - 30 }]} /> // Adjust width according to screen
+                <Image source={{ uri: event.image }} style={[styles.image, { width: screenWidth - 60 }]} /> // Adjust width according to screen
               ) : (
                 <Text>No Image Available</Text>
               )}
