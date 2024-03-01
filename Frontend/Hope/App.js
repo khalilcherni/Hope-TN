@@ -12,13 +12,23 @@ import Example from './screens/Palestine';
 // import Home from './screens/Home';
 // import Example from './screens/Example';
 import AndroidLarge2 from './screens/donation';
+
 import BottomAppBar from './screens/Messages.jsx'
+
+import Gaza from './screens/Palestine';
+
+
 // import StartingPage from './screens/StartingPage';
 // import SignUp from './screens/signup';
 // import OnboardingPage1 from './screens/onboardingPage1';
 // import OnboardingPage2 from './screens/OnboardingPage2';
 // import SignIn from './screens/signin';
+
 import HomeRE from './screens/Home.jsx'
+
+// import Home from './screens/Home';
+import Home from './screens/Home';
+
 // import Setting from './screens/Setting';
 import Chatroom from './screens/ChatRoom';
 import ChatroomContainer from './screens/ChatrommContainer';
@@ -37,6 +47,7 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
+
       <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}>
          {/* <Stack.Screen name="StartingPage" component={StartingPage} /> 
          <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} /> 
@@ -67,6 +78,38 @@ export default function App() {
       {/* <Register/> */}
       {/* <School/> */}
       {/* <EnglishCourseScreen/> */}
+
+ 
+      {/* <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}>  */}
+         {/* <Stack.Screen name="StartingPage" component={StartingPage} />
+        <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} />
+        <Stack.Screen name="OnboardingPage2" component={OnboardingPage2} />
+        <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="SignIn" component={SignIn} />
+        <Stack.Screen name="Home" component={Home} />  */}
+   {/* <Stack.Screen name="Palestine" component={Frame3} />
+   <Stack.Screen name="donation" component={AndroidLarge2}/> */}
+   {/* </Stack.Navigator>  */}
+      {/* <Example/> */}
+      {/* <BottomAppBar/> */}
+
+ {/* <AndroidLarge2/> */}
+ {/* <Example/> */}
+
+{/* <Frame3/> */}
+      {/* <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}> */}
+        {/* <Stack.Screen name="StartingPage" component={StartingPage} /> /}
+        {/ <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} /> /}
+        {/ <Stack.Screen name="OnboardingPage2" component={OnboardingPage2} /> /}
+        {/ <Stack.Screen name="SignUp" component={SignUp} /> /}
+        {/ <Stack.Screen name="SignIn" component={SignIn} /> /}
+        {/ <Stack.Screen name="Home" component={Home} /> */}
+        {/* <Stack.Screen name="Setting" component={Setting}/>
+        <Stack.Screen name="ProfileEdit" component={ProfileEdit}/> */}
+        {/* <Stack.Screen name ="Home" component={Home}/> */}
+      {/* </Stack.Navigator> */}
+<Gaza/>
+
     </NavigationContainer>
   );
 }
