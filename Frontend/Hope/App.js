@@ -33,6 +33,7 @@ import School from './screens/School.jsx';
 import EnglishCourseScreen from './screens/EnglishCourseScreen.jsx';
 import Contact from './screens/Contactus.jsx';
 import Elderly from "./screens/Elderly.jsx"
+import categoriePeopleWhoNeedWater from './screens/categoriePeopleWhoNeedWater.js'
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -57,6 +58,7 @@ export default function App() {
         <Stack.Screen name="EnglishCourseScreen" component={EnglishCourseScreen}/> */}
         {/* <Stack.Screen name="Events" component={Events}/> 
         <Stack.Screen name="Registration" component={Register}/> */}
+          <Stack.Screen name="categoriePeopleWhoNeedWater" component={categoriePeopleWhoNeedWater} /> 
          <Stack.Screen name="Elderly" component={Elderly} /> 
       <Stack.Screen name="Events" component={Events}/> 
             <Stack.Screen name="Home" component={HomeRE}/>   
