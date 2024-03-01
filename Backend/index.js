@@ -13,7 +13,7 @@ const supporterRoute = require('./routes/supporters.js');
 const whatTheyNeedRoute = require('./routes/whattheyneed.js');
 const Voluntarywork = require('./routes/voluntarywork.js');
 const profileRoute = require('./routes/ProfileRoutes.js');
-
+const events=require('./routes/events.js')
 const app = express();
 const PORT = 4000;
 
@@ -35,7 +35,7 @@ app.use('/whatTheyNeed', whatTheyNeedRoute);
 app.use('/help', helpRoute);
 app.use('/palestine', palestineRoute);
 app.use('/profile', profileRoute);
-
+app.use('/events',events)
 // Socket.IO integration
 const http = require('http').Server(app);
 const io = require('socket.io')(http);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { GiftedChat } from 'react-native-gifted-chat';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet,TouchableOpacity,Text } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Chatroom = ({ userId }) => {
@@ -50,6 +50,14 @@ const Chatroom = ({ userId }) => {
         }}
         style={styles.giftedChat}
       />
+       <View style={styles.tabbar}>
+          <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Home')}><Text>Home</Text></TouchableOpacity>
+          <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('ChatRoom')}><Text>ChatRoom</Text></TouchableOpacity>
+          <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Messages')}><Text>Messages</Text></TouchableOpacity>
+          <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Setting')}><Text>Setting</Text></TouchableOpacity>
+          <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Setting')}><Text>Setting</Text></TouchableOpacity>
+          
+        </View>
     </View>
   );
 };
@@ -64,6 +72,21 @@ const styles = StyleSheet.create({
   },
   giftedChat: {
     flex: 1,
+  },
+  tabbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+    paddingVertical: 10,
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
+  tabItem: {
+    flex: 1,
+    alignItems: 'center',
   },
 });
 

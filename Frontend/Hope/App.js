@@ -18,32 +18,42 @@ import BottomAppBar from './screens/Messages.jsx'
 // import OnboardingPage1 from './screens/onboardingPage1';
 // import OnboardingPage2 from './screens/OnboardingPage2';
 // import SignIn from './screens/signin';
-// import Home from './screens/Home';
+import HomeRE from './screens/Home.jsx'
 // import Setting from './screens/Setting';
 import Chatroom from './screens/ChatRoom';
 import ChatroomContainer from './screens/ChatrommContainer';
 // import ProfileEdit from "./screens/EditProfile"
 import Register from './screens/Registration'
+import Events from './screens/Events.jsx'
+import ChatRoom from './screens/ChatRoom.jsx'
+// import HomeRE from './screens/Home.jsx';
+import Messages from './screens/Messages.jsx'
+import Setting from './screens/Setting.jsx'
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      {/* <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}> */}
-        {/* <Stack.Screen name="StartingPage" component={StartingPage} /> /}
-        {/ <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} /> /}
-        {/ <Stack.Screen name="OnboardingPage2" component={OnboardingPage2} /> /}
-        {/ <Stack.Screen name="SignUp" component={SignUp} /> /}
-        {/ <Stack.Screen name="SignIn" component={SignIn} /> /}
-        {/ <Stack.Screen name="Home" component={Home} /> */}
-         {/* <Stack.Screen name="ChatrommContainer" component={ChatroomContainer}/>
-        <Stack.Screen name="ChatRoom" component={Chatroom}/>  */}
- 
-
-      {/* </Stack.Navigator> */}
-      
+      <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}>
+         {/* <Stack.Screen name="StartingPage" component={StartingPage} /> 
+         <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} /> 
+         <Stack.Screen name="OnboardingPage2" component={OnboardingPage2} /> 
+         <Stack.Screen name="SignUp" component={SignUp} /> 
+         <Stack.Screen name="SignIn" component={SignIn} /> 
+         <Stack.Screen name="Home" component={Home} /> 
+         <Stack.Screen name="Events" component={Events}/>
+         <Stack.Screen name="Messages" component={BottomAppBar}/>
+        <Stack.Screen name="Registration" component={Register}/> 
+        
+  */}
+  <Stack.Screen name="Home" component={HomeRE}/>
+        <Stack.Screen name="ChatRoom" component={ChatRoom}/> 
+        <Stack.Screen name="Messages" component={Messages}/> 
+        <Stack.Screen name="Setting" component={Setting}/> 
+      </Stack.Navigator>
+      {/* <HomeRE/> */}
       {/* <ChatroomContainer/> */}
-      <Register/>
+      {/* <Register/> */}
     </NavigationContainer>
   );
 }
