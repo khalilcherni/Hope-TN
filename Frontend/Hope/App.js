@@ -52,9 +52,13 @@ export default function App() {
   {/* <Stack.Screen name="Home" component={HomeRE}/> */}
         {/* <Stack.Screen name="ChatRoom" component={ChatRoom}/> 
         <Stack.Screen name="Messages" component={Messages}/> 
-        <Stack.Screen name="Setting" component={Setting}/>  */}
-           <Stack.Screen name="School" component={School}/> 
-        <Stack.Screen name="EnglishCourseScreen" component={EnglishCourseScreen}/>
+      
+        <Stack.Screen name="EnglishCourseScreen" component={EnglishCourseScreen}/> */}
+        {/* <Stack.Screen name="Events" component={Events}/> 
+        <Stack.Screen name="Registration" component={Register}/> */}
+       
+            <Stack.Screen name="School" component={School}/> 
+            <Stack.Screen name="EnglishCourseScreen" component={EnglishCourseScreen}/>  
       </Stack.Navigator>
 
 

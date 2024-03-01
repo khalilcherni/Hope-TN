@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {get,deleted,put,posted} =require  ('../controller/schoolcourses')
+const {get,deleted,put,posted,getOnecourse} =require  ('../controller/schoolcourses')
 
 
 
@@ -8,5 +8,5 @@ const {get,deleted,put,posted} =require  ('../controller/schoolcourses')
   router.post('/school',posted)
   router.delete('/school/:id',deleted)
   router.put('/school/:id',put)
-
+  router.get('/get/:name',getOnecourse)
   module.exports=router

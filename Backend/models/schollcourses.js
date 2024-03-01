@@ -31,5 +31,12 @@ module.exports = {
       const values = [updatedacc, id];
       connection.query(sql, values, function (error, results, fields) {
         callback(error, results);
-      })} 
+      })},
+      getOne: function (name,callback) {
+        const sql=  'SELECT * FROM schoolcourses WHERE `name`=?'
+        connection.query(sql,[name],function(error,results){
+          callback(error, results);
+        })
+  
+        }
 }

@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Linking } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Linking, TextInput } from 'react-native';
 import axios from 'axios';
 import { Ionicons } from '@expo/vector-icons';
 import moment from 'moment';
-import { useNavigation } from '@react-navigation/native'; // Import the necessary module
+import { useNavigation } from '@react-navigation/native';
 
 export default function School() {
-  const navigation = useNavigation(); // Initialize navigation
+  const navigation = useNavigation();
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     axios.get('http://192.168.72.231:4000/api/school/get')
@@ -24,24 +25,24 @@ export default function School() {
       });
   }, []);
 
+  
   const handleMapNavigation = (location) => {
     const mapsUrl = `https://www.google.com/maps/place/${location}`;
     Linking.openURL(mapsUrl);
   };
 
   const handleRegistration = () => {
-    // Open the Google Meet link in the browser or the app
     Linking.openURL('https://meet.google.com/');
   };
 
   const handleImagePress = () => {
-    // Navigate to the EnglishCourseScreen when image is pressed
     navigation.navigate('EnglishCourseScreen');
   };
 
-  const renderCountdown = (deadline) => {
-    // Implement your countdown rendering logic here
-  };
+  const filteredData = data.filter(event => {
+    return event.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+           event.nameodteacher.toLowerCase().includes(searchQuery.toLowerCase());
+  });
 
   if (loading) {
     return <Text>Loading...</Text>;
@@ -53,12 +54,20 @@ export default function School() {
 
   return (
     <View style={styles.container}>
+      <View style={styles.searchContainer}>
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search..."
+          onChangeText={text => setSearchQuery(text)}
+          value={searchQuery}
+        />
+      </View>
       <ScrollView style={styles.scrollView}>
-        {data.map(event => (
+        {filteredData.map(event => (
           <TouchableOpacity key={event.id} onPress={handleImagePress}>
             <View style={styles.eventContainer}>
               <Text style={styles.title}>{event.name}</Text>
-              <Text style={styles.aa} > Teacher:{event.nameodteacher}</Text>
+              <Text style={styles.aa}>{event.nameodteacher}</Text>
               {event.image ? (
                 <Image source={{ uri: event.image }} style={styles.image} />
               ) : (
@@ -69,19 +78,18 @@ export default function School() {
                 <Text style={styles.cardText}>{event.description}</Text>
               </View>
 
-            
               <View style={styles.dateContainer}>
                 <Ionicons name="calendar-outline" size={24} color="green" />
-                <Text style={styles.details}>Start Date: {(event.start)}</Text>
+                <Text style={styles.details}>Start Date: {event.start}</Text>
               </View>
               <View style={styles.dateContainer}>
                 <Ionicons name="calendar-outline" size={24} color="red" />
-                <Text style={styles.details}>End Date: {(event.end)}</Text>
+                <Text style={styles.details}>End Date: {event.end}</Text>
               </View>
               <View style={styles.deadlineContainer}>
                 <View style={styles.dateContainer}>
                   <Ionicons name="calendar-outline" size={24} color="purple" />
-                  <Text style={styles.details}>Duration: {(event.duration)}</Text>
+                  <Text style={styles.details}>Duration: {event.duration}</Text>
                 </View>
 
                 <TouchableOpacity style={styles.button} onPress={handleRegistration}>
@@ -93,11 +101,6 @@ export default function School() {
           </TouchableOpacity>
         ))}
       </ScrollView>
-      {/* <View style={styles.tabbar}>
-        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Home')}><Text>Home</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('ChatRoom')}><Text>ChatRoom</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Messages')}><Text>Messages</Text></TouchableOpacity>
-      </View> */}
     </View>
   );
 }
@@ -192,5 +195,25 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 5,
-  }
+  },
+  searchContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft:20,
+    marginRight:20,
+    borderRadius:50,
+    height:50,
+ 
+    marginTop:50
+  },
+  searchInput: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 15,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    flex: 1,
+    marginRight: 10,
+  },
 });
