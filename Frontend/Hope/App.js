@@ -34,6 +34,7 @@ import EnglishCourseScreen from './screens/EnglishCourseScreen.jsx';
 import Contact from './screens/Contactus.jsx';
 import Elderly from "./screens/Elderly.jsx"
 import Donation from './screens/donation.jsx'
+import Voluntarywork from './screens/Voluntarywork.jsx'
 import categoriePeopleWhoNeedWater from './screens/categoriePeopleWhoNeedWater.js'
 const Stack = createStackNavigator();
 
@@ -59,6 +60,7 @@ export default function App() {
         <Stack.Screen name="EnglishCourseScreen" component={EnglishCourseScreen}/> */}
         {/* <Stack.Screen name="Events" component={Events}/> 
         <Stack.Screen name="Registration" component={Register}/> */}
+           <Stack.Screen name="Voluntarywork" component={Voluntarywork}/> 
            <Stack.Screen name="Registration" component={Register}/> 
          <Stack.Screen name="donation" component={Donation} /> 
           <Stack.Screen name="categoriePeopleWhoNeedWater" component={categoriePeopleWhoNeedWater} /> 
