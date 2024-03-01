@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import moment from 'moment';
 import { useNavigation } from '@react-navigation/native'; // Import the necessary module
 
-export default function Events() {
+export default function School() {
   const navigation = useNavigation(); // Initialize navigation
 
   const [data, setData] = useState([]);
@@ -13,7 +13,7 @@ export default function Events() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get('http://192.168.100.44:4000/events/get')
+    axios.get('http://192.168.72.231:4000/api/school/get')
       .then(res => {
         setData(res.data);
         setLoading(false);
@@ -30,8 +30,8 @@ export default function Events() {
   };
 
   const handleRegistration = () => {
-    // Navigate to the registration screen when Register button is pressed
-    navigation.navigate('Registration');
+    // Open the Google Meet link in the browser or the app
+    Linking.openURL('https://meet.google.com/');
   };
 
   const renderCountdown = (deadline) => {
@@ -52,6 +52,7 @@ export default function Events() {
         {data.map(event => (
           <View style={styles.eventContainer} key={event.id}>
             <Text style={styles.title}>{event.name}</Text>
+            <Text style={styles.title}>{event.nameodteacher}</Text>
             {event.image ? (
               <Image style={styles.image} source={{ uri: event.image }} />
             ) : (
@@ -62,41 +63,34 @@ export default function Events() {
               <Text style={styles.cardText}>{event.description}</Text>
             </View>
 
-            <TouchableOpacity onPress={() => handleMapNavigation(event.location)}>
-              <View style={styles.dateContainer}>
-                <Ionicons name="location-outline" size={24} color="blue" />
-                <Text style={styles.details}> {event.location}</Text>
-              </View>
-            </TouchableOpacity>
+        
             <View style={styles.dateContainer}>
               <Ionicons name="calendar-outline" size={24} color="green" />
-              <Text style={styles.details}>Start Date: {(event.startdate)}</Text>
+              <Text style={styles.details}>Start Date: {(event.start)}</Text>
             </View>
             <View style={styles.dateContainer}>
               <Ionicons name="calendar-outline" size={24} color="red" />
-              <Text style={styles.details}>End Date: {(event.enddate)}</Text>
+              <Text style={styles.details}>End Date: {(event.end)}</Text>
             </View>
             <View style={styles.deadlineContainer}>
               <View style={styles.registrationDeadline}>
                 <Ionicons name="calendar-outline" size={24} color="purple" />
-                <Text style={styles.details}>Registration Deadline: {(event.registrationdeadline)}</Text>
+                <Text style={styles.details}>Duration: {(event.duration)}</Text>
               </View>
 
               <TouchableOpacity style={styles.button} onPress={handleRegistration}>
-                <Text style={styles.buttonText}>Register</Text>
+                <Text style={styles.buttonText}>Join</Text>
               </TouchableOpacity>
             </View>
-            <View style={styles.countdownContainer}>
-              {renderCountdown(event.registrationdeadline)}
-            </View>
+            
           </View>
         ))}
       </ScrollView>
-      <View style={styles.tabbar}>
+      {/* <View style={styles.tabbar}>
         <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Home')}><Text>Home</Text></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('ChatRoom')}><Text>ChatRoom</Text></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Messages')}><Text>Messages</Text></TouchableOpacity>
-      </View>
+      </View> */}
     </View>
   );
 }
