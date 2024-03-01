@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ScrollView, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // var ImagePicker = require('react-native-image-picker');
-
-
+import { useNavigation } from '@react-navigation/native'; 
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 const MessageCard = ({ id, primary, secondary, person, imageUrl, comments, onDelete, onComment }) => {
   const [newComment, setNewComment] = useState('');
 
@@ -50,7 +52,7 @@ const BottomAppBar = () => {
   const [ratingValue, setRatingValue] = useState(0);
   const [imageUrl, setImageUrl] = useState('');
   const [messages, setMessages] = useState([]);
-
+  const navigation = useNavigation(); 
   // Load messages from AsyncStorage when component mounts
   useEffect(() => {
     const loadMessages = async () => {
@@ -81,7 +83,22 @@ const BottomAppBar = () => {
   const handleInputChange = (text) => {
     setInputValue(text);
   };
-
+  const handleHomeNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('Home');
+  };
+  const handleChatNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('ChatRoom');
+  };
+  const handleSchoolNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('School');
+  };
+  const handleMESNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('Messages');
+  };
   const handlePostMessage = () => {
     if (inputValue.trim() !== '') {
       const newMessage = {
@@ -166,6 +183,12 @@ const BottomAppBar = () => {
         <TouchableOpacity style={styles.postButton} onPress={handlePostMessage}>
           <Text style={styles.postButtonText}>Post Message</Text>
         </TouchableOpacity>
+      </View>
+      <View style={styles.tabbar}>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={24} color="black" /></TouchableOpacity>
       </View>
     </View>
   );
@@ -305,6 +328,17 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 16,
+  },
+  tabbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+    paddingVertical: 10,
+  },
+  tabItem: {
+    flex: 1,
+    alignItems: 'center',
   },
 });
 export default BottomAppBar;

@@ -18,7 +18,7 @@ import BottomAppBar from './screens/Messages.jsx'
 // import OnboardingPage1 from './screens/onboardingPage1';
 // import OnboardingPage2 from './screens/OnboardingPage2';
 // import SignIn from './screens/signin';
-import HomeRE from './screens/Home.jsx'
+// import HomeRE from './screens/Home.jsx'
 // import Setting from './screens/Setting';
 import Chatroom from './screens/ChatRoom';
 import ChatroomContainer from './screens/ChatrommContainer';
@@ -26,7 +26,7 @@ import ChatroomContainer from './screens/ChatrommContainer';
 import Register from './screens/Registration'
 import Events from './screens/Events.jsx'
 import ChatRoom from './screens/ChatRoom.jsx'
-// import HomeRE from './screens/Home.jsx';
+import HomeRE from './screens/Home.jsx';
 import Messages from './screens/Messages.jsx'
 import Setting from './screens/Setting.jsx'
 import School from './screens/School.jsx';
@@ -38,7 +38,7 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      {/* <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}> */}
+      <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}>
          {/* <Stack.Screen name="StartingPage" component={StartingPage} /> 
          <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} /> 
          <Stack.Screen name="OnboardingPage2" component={OnboardingPage2} /> 
@@ -58,10 +58,13 @@ export default function App() {
         {/* <Stack.Screen name="Events" component={Events}/> 
         <Stack.Screen name="Registration" component={Register}/> */}
        
-            {/* <Stack.Screen name="School" component={School}/> 
-            <Stack.Screen name="EnglishCourseScreen" component={EnglishCourseScreen}/>   */}
-      {/* </Stack.Navigator> */}
-<Contact/>
+      <Stack.Screen name="Events" component={Events}/> 
+            <Stack.Screen name="Home" component={HomeRE}/>   
+            <Stack.Screen name="ChatRoom" component={ChatRoom}/>   
+            <Stack.Screen name="School" component={School}/>   
+            <Stack.Screen name="Messages" component={Messages}/>   
+      </Stack.Navigator>
+{/* <Events/> */}
 
       {/* <HomeRE/> */}
       {/* <ChatroomContainer/> */}

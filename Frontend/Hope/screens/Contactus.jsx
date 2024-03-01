@@ -1,6 +1,7 @@
-import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Linking, Image } from "react-native";
+import React, { useEffect } from "react";
+import { View, Text, StyleSheet, TouchableOpacity, Linking, Animated, Easing } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { Accelerometer } from 'expo-sensors';
 
 const Contact = () => {
   const openLinkedIn = () => {
@@ -16,21 +17,41 @@ const Contact = () => {
   };
 
   const openWhatsApp = () => {
-    Linking.openURL("https://wa.me/your-whatsapp-number");
+    Linking.openURL("https://wa.me/21655331742");
   };
+  
 
   const openFacebook = () => {
-    Linking.openURL("https://www.facebook.com/your-facebook-page");
+    Linking.openURL("fb://profile/khalil.cherni.338");
+  };
+  
+  const shakeAnimation = new Animated.Value(0);
+
+  useEffect(() => {
+    const subscription = Accelerometer.addListener(({ x, y, z }) => {
+      const acceleration = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));
+      if (acceleration > 2) { // Adjust the threshold for sensitivity
+        Animated.sequence([
+          Animated.timing(shakeAnimation, { toValue: 10, duration: 100, easing: Easing.linear, useNativeDriver: true }),
+          Animated.timing(shakeAnimation, { toValue: -10, duration: 100, easing: Easing.linear, useNativeDriver: true }),
+          Animated.timing(shakeAnimation, { toValue: 0, duration: 100, easing: Easing.linear, useNativeDriver: true })
+        ]).start();
+      }
+    });
+    return () => subscription.remove();
+  }, []);
+
+  const animatedStyle = {
+    transform: [{ translateX: shakeAnimation }]
   };
 
   return (
     <View style={styles.container}>
-        <Text>ueufbbbfuebf</Text>
-      <Text style={styles.description}>
-        If you would like to get involved or support our charity efforts, please feel free to contact us through any of the following methods:
-      </Text>
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Contact:</Text>
+      <Animated.View style={[styles.card, animatedStyle]}>
+        <Text style={styles.title}>Contact Us</Text>
+        <Text style={styles.description}>
+          If you would like to get involved or support our charity efforts, please feel free to contact us through any of the following methods. We welcome your contributions and look forward to hearing from you. You can email us, call us, or reach out through WhatsApp, Facebook, or LinkedIn.
+        </Text>
         <View style={styles.contactContainer}>
           <TouchableOpacity onPress={openEmail} style={styles.contactItem}>
             <Ionicons name="mail" size={24} color="#007bff" />
@@ -53,6 +74,13 @@ const Contact = () => {
             <Text style={styles.contactText}>LinkedIn</Text>
           </TouchableOpacity>
         </View>
+      </Animated.View>
+      <View style={styles.tabbar}>
+        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Home')}><Text>Home</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('ChatRoom')}><Text>ChatRoom</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Messages')}><Text>Messages</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Setting')}><Text>Setting</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Setting')}><Text>Setting</Text></TouchableOpacity>
       </View>
     </View>
   );
@@ -61,22 +89,33 @@ const Contact = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#ffffff",
+    marginTop:300
+  },
+  card: {
+    borderRadius: 10,
     padding: 20,
- 
-    marginTop:50
+    marginBottom: 20,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 10,
+    color: "#333",
   },
   description: {
     fontSize: 16,
     marginBottom: 20,
-    lineHeight: 22,
-  },
-  section: {
-    marginBottom: 20,
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 10,
+    color: "#666",
+    lineHeight: 24, // Adjust line height for better readability
   },
   contactContainer: {
     flexDirection: "row",
@@ -93,6 +132,17 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     color: "#007bff",
     textDecorationLine: "underline",
+  },
+  tabbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+    paddingVertical: 10,
+  },
+  tabItem: {
+    flex: 1,
+    alignItems: 'center',
   },
 });
 
