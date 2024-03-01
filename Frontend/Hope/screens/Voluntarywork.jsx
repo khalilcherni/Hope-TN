@@ -14,7 +14,7 @@ const SignUp = () => {
       phone: phone,
       job: job
     };
-    axios.post("http://192.168.100.42:4000/api/voluntary/add", obj)
+    axios.post("http://192.168.100.44:4000/api/voluntary/add", obj)
       .then((res) => {
         console.log(res.data);
         setName('');
