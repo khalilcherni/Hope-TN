@@ -1,34 +1,48 @@
 import React, { useState } from 'react';
 import { View, TextInput, TouchableOpacity, Text, StyleSheet, Alert, ScrollView } from 'react-native';
-import { Icon, Input, Button } from 'react-native-elements';
+import { Input, Button } from 'react-native-elements';
 import axios from 'axios';
 import FontFamily from './FontFamily';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { ReCaptcha } from 'react-native-recaptcha-v3'; // Make sure this import is correct and 'react-native-recaptcha-v3' is installed
 
-const Voluntary = () => {
+const Voluntarywork = () => {
   const navigation = useNavigation(); 
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState(0);
+  const [phone, setPhone] = useState('');
   const [job, setJob] = useState('');
+  const [reCaptchaToken, setReCaptchaToken] = useState('');
 
   const handlePost = () => {
+    // Check if reCaptcha token is present
+    if (!reCaptchaToken) {
+      Alert.alert('reCAPTCHA Required', 'Please complete the reCAPTCHA verification.');
+      return;
+    }
+
     const obj = {
       name: name,
       phone: phone,
-      job: job
+      job: job,
+      reCaptchaToken: reCaptchaToken
     };
+
+    // Make a POST request with the data
     axios.post("http://192.168.100.44:4000/api/voluntary/add", obj)
       .then((res) => {
         console.log(res.data);
         setName('');
-        setPhone(0);
+        setPhone('');
         setJob('');
-        Alert.alert("Thank you for posting", "Rabi yberklk");
+        Alert.alert("Thank you for posting", "Your submission was successful.");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        Alert.alert("Error", "There was an error submitting your information. Please try again later.");
+      });
   };
 
   const handleHomeNavigation = () => {
@@ -47,6 +61,10 @@ const Voluntary = () => {
     navigation.navigate('Messages');
   };
 
+  const onReCaptchaVerify = (token) => {
+    setReCaptchaToken(token);
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.container}>
@@ -54,21 +72,21 @@ const Voluntary = () => {
         <Text style={styles.subtitle}>If you are willing to take matters into your own hands, feel free to join us here</Text>
         <Input
           placeholder="Name"
-          leftIcon={<Icon name="user" type="font-awesome" color="#209FA6" />}
+          leftIcon={<AntDesign name="user" size={24} color="#209FA6" />}
           value={name}
           onChangeText={setName}
           inputStyle={styles.input}
         />
         <Input
           placeholder="Phone"
-          leftIcon={<Icon name="phone" type="font-awesome" color="#209FA6" />}
+          leftIcon={<Ionicons name="ios-call" size={24} color="#209FA6" />}
           value={phone}
           onChangeText={setPhone}
           inputStyle={styles.input}
         />
         <Input
           placeholder="Job"
-          leftIcon={<Icon name="briefcase" type="font-awesome" color="#209FA6" />}
+          leftIcon={<MaterialCommunityIcons name="briefcase" size={24} color="#209FA6" />}
           value={job}
           onChangeText={setJob}
           inputStyle={styles.input}
@@ -78,6 +96,11 @@ const Voluntary = () => {
           onPress={handlePost}
           buttonStyle={styles.button}
           titleStyle={styles.buttonText}
+        />
+        <ReCaptcha
+          siteKey="6Lf5YoYpAAAAAG0LH3aGk5sqCMru47clIcnrW_Ki"
+          onVerify={onReCaptchaVerify}
+          style={styles.recaptcha}
         />
       </View>
 
@@ -131,6 +154,10 @@ const styles = StyleSheet.create({
     color: 'black',
     fontFamily: FontFamily.kanit,
   },
+  recaptcha: {
+    alignSelf: 'center',
+    marginTop: 10,
+  },
   tabbar: {
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -148,4 +175,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Voluntary;
+export default Voluntarywork;

@@ -11,7 +11,7 @@ import SignIn from './screens/signin';
 import Example from './screens/Palestine';
 // import Home from './screens/Home';
 // import Example from './screens/Example';
-import AndroidLarge2 from './screens/donation';
+import AndroidLarge2 from './screens/donation.jsx';
 import BottomAppBar from './screens/Messages.jsx'
 // import StartingPage from './screens/StartingPage';
 // import SignUp from './screens/signup';
@@ -34,8 +34,11 @@ import EnglishCourseScreen from './screens/EnglishCourseScreen.jsx';
 import Contact from './screens/Contactus.jsx';
 import Elderly from "./screens/Elderly.jsx"
 import Donation from './screens/donation.jsx'
-import Voluntarywork from './screens/Voluntarywork.jsx'
+// import Voluntarywork from './screens/Voluntarywork.jsx'
 import categoriePeopleWhoNeedWater from './screens/categoriePeopleWhoNeedWater.js'
+import Azert from './screens/Azert.jsx';
+import CharityScreen from './screens/Helping.jsx'
+import Donation1 from './screens/Donation1.jsx'
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -48,7 +51,7 @@ export default function App() {
          <Stack.Screen name="SignUp" component={SignUp} /> 
          <Stack.Screen name="SignIn" component={SignIn} /> 
          <Stack.Screen name="Home" component={HomeRE}/>  
-    
+  
         
         <Stack.Screen name="Registration" component={Register}/>  */}
       
@@ -60,8 +63,8 @@ export default function App() {
         <Stack.Screen name="EnglishCourseScreen" component={EnglishCourseScreen}/> */}
         {/* <Stack.Screen name="Events" component={Events}/> 
         <Stack.Screen name="Registration" component={Register}/> */}
-           <Stack.Screen name="Voluntarywork" component={Voluntarywork}/> 
-           <Stack.Screen name="Registration" component={Register}/> 
+       
+           {/* <Stack.Screen name="Registration" component={Register}/> 
          <Stack.Screen name="donation" component={Donation} /> 
           <Stack.Screen name="categoriePeopleWhoNeedWater" component={categoriePeopleWhoNeedWater} /> 
          <Stack.Screen name="Elderly" component={Elderly} /> 
@@ -69,15 +72,18 @@ export default function App() {
          
             <Stack.Screen name="ChatRoom" component={ChatRoom}/>   
             <Stack.Screen name="School" component={School}/>   
-            <Stack.Screen name="Messages" component={Messages}/>   
+            <Stack.Screen name="Messages" component={Messages}/>    */}
+             <Stack.Screen name="Helping" component={CharityScreen}/>   
+            <Stack.Screen name="Donation1" component={Donation1}/>   
       </Stack.Navigator>
 {/* <Events/> */}
-
+{/* <Azert/> */}
       {/* <HomeRE/> */}
       {/* <ChatroomContainer/> */}
       {/* <Register/> */}
       {/* <School/> */}
       {/* <EnglishCourseScreen/> */}
+      {/* <CharityScreen/> */}
     </NavigationContainer>
   );
 }
