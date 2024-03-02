@@ -131,8 +131,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   progress: {
-    fontSize: 14,
-    marginBottom: 5,
+    fontSize: 17,
+    marginBottom: 10,
     textAlign: 'center',
   },
   donateButton: {
