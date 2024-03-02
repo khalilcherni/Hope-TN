@@ -1,46 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage'; // Import AsyncStorage
+import { useNavigation } from '@react-navigation/native'; // Import the useNavigation hook
 
 const DonationScreen = ({ route }) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation(); // Initialize the useNavigation hook
   const { cardId, handleDonate } = route.params;
 
-  const [enteredAmount, setEnteredAmount] = useState('');
+  const [enteredAmount, setEnteredAmount] = React.useState('');
 
-  useEffect(() => {
-    // Load the donation amount from AsyncStorage when the component mounts
-    loadDonationAmount();
-  }, []);
-
-  const loadDonationAmount = async () => {
-    try {
-      const storedAmount = await AsyncStorage.getItem(`donation_${cardId}`);
-      if (storedAmount !== null) {
-        setEnteredAmount(storedAmount);
-      }
-    } catch (error) {
-      console.error('Error loading donation amount: ', error);
-    }
-  };
-
-  const handleDonateAmount = async () => {
+  const handleDonateAmount = () => {
     if (enteredAmount) {
       const amount = parseInt(enteredAmount);
       handleDonate(amount, cardId);
-      try {
-        // Store the donation amount in AsyncStorage
-        await AsyncStorage.setItem(`donation_${cardId}`, enteredAmount);
-        Alert.alert("Donation done", "Rabi ykather khirk", [
-          {
-            text: "OK",
-            onPress: () => navigation.goBack(),
-          },
-        ]);
-      } catch (error) {
-        console.error('Error storing donation amount: ', error);
-      }
+      Alert.alert("Donation done", "Rabi ykather khirk", [
+        {
+          text: "OK",
+          onPress: () => navigation.goBack(), // Navigate back to the CharityScreen
+        },
+      ]);
     } else {
       Alert.alert("Please enter a donation amount");
     }
@@ -50,8 +27,28 @@ const DonationScreen = ({ route }) => {
     <View style={styles.container}>
       <Text style={styles.heading}>Donation</Text>
       <TextInput
-        placeholder="Enter amount here"
-        placeholderTextColor="white"
+      placeholder='Name'
+      style={styles.input}
+      />
+       <TextInput
+      placeholder='City'
+      style={styles.input}
+      />
+       <TextInput
+      placeholder='phone'
+      style={styles.input}
+      />
+        <TextInput
+      placeholder='Card'
+      style={styles.input}
+      />
+        <TextInput
+      placeholder='Card Number'
+      style={styles.input}
+      />
+      <TextInput
+        placeholder="amount"
+    
         style={styles.input}
         keyboardType="numeric"
         value={enteredAmount}
