@@ -40,7 +40,7 @@ const Setting = () => {
       <Image
         style={styles.unsplashjmurdhtm7ngIcon}
         contentFit="cover"
-        source={require("../assets/logo.png")}
+        source={require("../assets/aaa.jpg")}
       />
       <Pressable
         style={[styles.arrowLeft, styles.notchIconLayout]}

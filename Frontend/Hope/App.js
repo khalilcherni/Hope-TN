@@ -57,7 +57,7 @@ export default function App() {
          <Stack.Screen name="signin" component={SignIn} /> 
          <Stack.Screen name="Home" component={HomeRE}/>  
          <Stack.Screen name="ChatrommContainer" component={ChatroomContainer}/>  
-         <Stack.Screen name="ChatRoom" component={ChatRoom}/>  
+         <Stack.Screen name="ChatRoom" component={Chatroom}/>  
          <Stack.Screen name="Helping" component={CharityScreen}/> 
          <Stack.Screen name="Donation1" component={Donation1}/> 
         <Stack.Screen name="Registration" component={Register}/> 
