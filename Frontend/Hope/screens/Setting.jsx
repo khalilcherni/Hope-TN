@@ -2,12 +2,31 @@ import * as React from "react";
 import { StyleSheet, View, Pressable, Text } from "react-native";
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Color, FontFamily, Border, FontSize } from "../GlobalStyles";
 
 const Setting = () => {
   const navigation = useNavigation();
+  const [userEmail, setUserEmail] = React.useState('');
+
+  React.useEffect(() => {
+    const fetchUserEmail = async () => {
+      try {
+        const userData = await AsyncStorage.getItem('user');
+        if (userData) {
+          const { email } = JSON.parse(userData);
+          setUserEmail(email);
+        }
+      } catch (error) {
+        console.error('Error fetching user email:', error);
+      }
+    };
+
+    fetchUserEmail();
+  }, []);
 
   return (
+    
     <View style={styles.setting}>
       <View style={[styles.settingChild, styles.settingLayout]} />
       <View style={[styles.settingItem, styles.settingLayout]} />
@@ -17,12 +36,11 @@ const Setting = () => {
           contentFit="cover"
           // source={require("../assets/notch.png")}
         />
-       
       </View>
       <Image
         style={styles.unsplashjmurdhtm7ngIcon}
         contentFit="cover"
-        source={require("../assets/aaa.jpg")}
+        source={require("../assets/logo.png")}
       />
       <Pressable
         style={[styles.arrowLeft, styles.notchIconLayout]}
@@ -90,7 +108,7 @@ const Setting = () => {
         contentFit="cover"
         source={require("../assets/aaa.jpg")}
       />
-      <Text style={[styles.profile, styles.profileClr]}>Profile</Text>
+      <Text style={[styles.profile, styles.profileClr]}>{userEmail}</Text>
       <View style={[styles.rectangleView, styles.settingLayout]} />
       <Text style={[styles.events, styles.eventsTypo]}>Events</Text>
       <Image
@@ -112,13 +130,13 @@ const Setting = () => {
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   setting: {
     backgroundColor: Color.lightWhite,
     flex: 1,
-    height: 800,
-    overflow: "hidden",
-    width: "100%",
+    justifyContent: 'center', // Center items vertically
+    alignItems: 'center', // Center items horizontally
   },
   settingLayout: {
     width: 390,
@@ -316,11 +334,12 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   profile: {
-    left: 158,
     fontFamily: FontFamily.poppinsSemiBold,
     fontWeight: "600",
     fontSize: FontSize.size_mini,
-    top: 50,
+    textAlign: 'center', // Center text horizontally
+    position: 'absolute',
+    top: 50, // Adjust top position as needed
   },
   rectangleView: {
     top: 266,
