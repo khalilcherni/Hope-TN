@@ -143,16 +143,16 @@ const BottomAppBar = () => {
 
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.messageContainer}>
-        {messages.map(message => (
-          <MessageCard
-            key={message.id}
-            {...message}
-            onDelete={handleDeleteMessage}
-            onComment={handleComment}
-          />
-        ))}
-      </ScrollView>
+  <ScrollView style={styles.messageContainer}>
+  {messages.map(message => (
+    <MessageCard
+      key={`message_${message.id}`} // Ensure each MessageCard has a unique key based on its id
+      {...message}
+      onDelete={handleDeleteMessage}
+      onComment={handleComment}
+    />
+  ))}
+</ScrollView>
       <View style={styles.inputContainer}>
         <TouchableOpacity style={styles.choosePhotoButton} onPress={handleChoosePhoto}>
           <Text style={styles.choosePhotoButtonText}>Choose Photo</Text>
@@ -174,16 +174,25 @@ const BottomAppBar = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  messageContainer: {
-    flex: 1,
+    backgroundColor: '#f0f0f0',
+    paddingHorizontal: 10,
+    paddingTop: 40,
   },
   messageCard: {
     flexDirection: 'row',
     alignItems: 'center',
     padding: 20,
     marginBottom: 20,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   avatar: {
     width: 50,
@@ -197,26 +206,32 @@ const styles = StyleSheet.create({
   primaryText: {
     fontWeight: 'bold',
     marginBottom: 5,
+    fontSize: 18,
   },
   secondaryText: {
-    marginBottom: 5,
+    marginBottom: 10,
+    fontSize: 16,
   },
   messageImage: {
     width: '100%',
     height: 200,
-    marginBottom: 5,
+    marginBottom: 10,
+    borderRadius: 10,
   },
   commentsText: {
     marginTop: 10,
+    marginBottom: 5,
     fontWeight: 'bold',
+    fontSize: 16,
   },
   commentText: {
     marginBottom: 5,
+    fontSize: 14,
   },
   commentInputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 5,
+    marginTop: 10,
   },
   commentInput: {
     flex: 1,
@@ -225,17 +240,31 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
     height: 40,
+    marginRight: 10,
+    fontSize: 14,
   },
   addCommentButton: {
-    backgroundColor: 'blue',
-    marginLeft: 10,
+    backgroundColor: '#007bff',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
   },
   addCommentButtonText: {
-    color: 'white',
+    color: '#fff',
     fontWeight: 'bold',
+    fontSize: 14,
+  },
+  deleteButton: {
+    marginLeft: 'auto',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    backgroundColor: '#dc3545',
+    borderRadius: 5,
+  },
+  deleteButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 14,
   },
   inputContainer: {
     flexDirection: 'row',
@@ -243,6 +272,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderTopWidth: 1,
     borderTopColor: '#ccc',
+    backgroundColor: '#fff',
   },
   input: {
     flex: 1,
@@ -252,27 +282,29 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
     marginRight: 10,
-  },
-  postButton: {
-    backgroundColor: 'blue',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
-  },
-  postButtonText: {
-    color: 'white',
-    fontWeight: 'bold',
+    fontSize: 16,
   },
   choosePhotoButton: {
-    backgroundColor: 'green',
+    backgroundColor: '#28a745',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
   },
   choosePhotoButtonText: {
-    color: 'white',
+    color: '#fff',
     fontWeight: 'bold',
+    fontSize: 16,
+  },
+  postButton: {
+    backgroundColor: '#007bff',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+  },
+  postButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16,
   },
 });
-
 export default BottomAppBar;
