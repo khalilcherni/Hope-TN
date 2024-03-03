@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image, ProgressBarAndroid, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage'; // Import AsyncStorage
-
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 const CharityScreen = () => {
   const navigation = useNavigation();
   const [donationCards, setDonationCards] = useState([
@@ -22,6 +25,13 @@ const CharityScreen = () => {
     },
     {
       id: 3,
+      image: require('../assets/needWater.jpg'),
+      description: 'Help Jebreel and his family to escape from death. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id consequat turpis, eget tincidunt lectus.',
+      currentAmount: 0, // Initialize currentAmount to 0
+      goalAmount: 10000,
+    },
+    {
+      id: 4,
       image: require('../assets/needWater.jpg'),
       description: 'Help Jebreel and his family to escape from death. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id consequat turpis, eget tincidunt lectus.',
       currentAmount: 0, // Initialize currentAmount to 0
@@ -53,7 +63,25 @@ const CharityScreen = () => {
       console.error('Error loading donation amounts: ', error);
     }
   };
-
+  const handleHomeNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('Home');
+  };
+  const handleChatNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('ChatRoom');
+  };
+  const handleSchoolNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('School');
+  };
+  const handleMESNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('Messages');
+  };
+const handleHelpnavigation=()=>{
+  navigation.navigate('Helping'); 
+}
   const handleDonate = async (donationAmount, cardId) => {
     const updatedCards = donationCards.map(card => {
       if (card.id === cardId) {
@@ -94,6 +122,13 @@ const CharityScreen = () => {
           </View>
         ))}
       </View>
+      <View style={styles.tabbar}>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHelpnavigation}><FontAwesome5 name="hands-helping" size={24} color="black" /></TouchableOpacity>
+      </View>
     </ScrollView>
   );
 };
@@ -112,7 +147,7 @@ const styles = StyleSheet.create({
   },
   card: {
     width: Dimensions.get('window').width - 40,
-    marginBottom: 20,
+    marginBottom: 40,
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 10,
@@ -148,6 +183,22 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
+  tabbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: 18,
+    left: 0,
+    right: 0,
+    backgroundColor: '#f0f0f0',
+    paddingVertical: 10,
+  },
+  tabItem: {
+    flex: 1,
+    alignItems: 'center',
+  },
+
 });
 
 export default CharityScreen;

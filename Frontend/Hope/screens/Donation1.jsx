@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native'; // Import the useNavig
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 const windowWidth = Dimensions.get('window').width;
 
 const DonationScreen = ({ route }) => {
@@ -42,7 +43,9 @@ const DonationScreen = ({ route }) => {
     // Navigate to the Home screen
     navigation.navigate('Messages');
   };
-
+  const handleHelpnavigation=()=>{
+    navigation.navigate('Helping'); 
+  }
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
@@ -86,6 +89,7 @@ const DonationScreen = ({ route }) => {
         <TouchableOpacity style={styles.tabItem} onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={24} color="black" /></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={24} color="black" /></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHelpnavigation}><FontAwesome5 name="hands-helping" size={24} color="black" /></TouchableOpacity>
       </View>
     </View>
   );
@@ -105,7 +109,7 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: 'black',
+    color: '#209FA6',
     marginBottom: 20,
   },
   input: {

@@ -4,6 +4,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { FontAwesome5 } from '@expo/vector-icons';
 const AndroidLarge2 = () => {
   const [donationAmount, setDonationAmount] = React.useState('');
   const [enteredAmount, setEnteredAmount] = React.useState('');
@@ -36,6 +37,9 @@ const AndroidLarge2 = () => {
     // Navigate to the Home screen
     navigation.navigate('Messages');
   };
+  const handleHelpnavigation=()=>{
+    navigation.navigate('Helping'); 
+  }
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Donation</Text>
@@ -84,6 +88,7 @@ const AndroidLarge2 = () => {
         <TouchableOpacity style={styles.tabItem}onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={24} color="black" /></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={24} color="black" /></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem}onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHelpnavigation}><FontAwesome5 name="hands-helping" size={24} color="black" /></TouchableOpacity>
       </View>
     </View>
   );
