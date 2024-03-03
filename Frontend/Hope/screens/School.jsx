@@ -4,6 +4,9 @@ import axios from 'axios';
 import { Ionicons } from '@expo/vector-icons';
 import moment from 'moment';
 import { useNavigation } from '@react-navigation/native';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 export default function School() {
   const navigation = useNavigation();
@@ -15,7 +18,7 @@ export default function School() {
   const screenWidth = Dimensions.get('window').width; // Get Screen Width
 
   useEffect(() => {
-    axios.get('http://192.168.72.231:4000/api/school/get')
+    axios.get('http://192.168.1.201:4000/api/school/get')
       .then(res => {
         setData(res.data);
         setLoading(false);
@@ -51,7 +54,25 @@ export default function School() {
   if (error) {
     return <Text>Error: {error.message}</Text>;
   }
-
+  const handleHomeNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('Home');
+  };
+  const handleChatNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('ChatRoom');
+  };
+  const handleSchoolNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('School');
+  };
+  const handleMESNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('Messages');
+  };
+  const handleHelpnavigation=()=>{
+    navigation.navigate('Helping'); 
+  }
   return (
     <View style={styles.container}>
       <View style={styles.searchContainer}>
@@ -69,7 +90,7 @@ export default function School() {
               <Text style={styles.title}>{event.name}</Text>
               <Text style={styles.aa}>{event.nameodteacher}</Text>
               {event.image ? (
-                <Image source={{ uri: event.image }} style={[styles.image, { width: screenWidth - 30 }]} /> // Adjust width according to screen
+                <Image source={{ uri: event.image }} style={[styles.image, { width: screenWidth - 60 }]} /> // Adjust width according to screen
               ) : (
                 <Text>No Image Available</Text>
               )}
@@ -101,6 +122,13 @@ export default function School() {
           </TouchableOpacity>
         ))}
       </ScrollView>
+      <View style={styles.tabbar}>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHelpnavigation}><FontAwesome5 name="hands-helping" size={24} color="black" /></TouchableOpacity>
+      </View>
     </View>
   );
 }

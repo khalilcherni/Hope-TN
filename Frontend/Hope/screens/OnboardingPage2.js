@@ -35,7 +35,7 @@ const OnboardingPage2 = () => {
       </Text>
       <Pressable
         style={styles.onboardingPage2Inner}
-        onPress={() => navigation.navigate("SignIn")}
+        onPress={() => navigation.navigate("signin")}
       >
         <View style={styles.getPosition}>
           <View style={styles.getPosition}>
