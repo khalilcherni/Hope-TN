@@ -4,7 +4,10 @@ import axios from 'axios';
 import { Ionicons } from '@expo/vector-icons';
 import moment from 'moment';
 import { useNavigation } from '@react-navigation/native';
-
+import { FontAwesome5 } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 export default function School() {
   const navigation = useNavigation();
 
@@ -15,7 +18,7 @@ export default function School() {
   const screenWidth = Dimensions.get('window').width; // Get Screen Width
 
   useEffect(() => {
-    axios.get('http://192.168.72.231:4000/api/school/get')
+    axios.get('http://192.168.1.201:4000/api/school/get')
       .then(res => {
         setData(res.data);
         setLoading(false);

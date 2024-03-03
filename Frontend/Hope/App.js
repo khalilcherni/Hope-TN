@@ -49,12 +49,14 @@ export default function App() {
          <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} /> 
          <Stack.Screen name="OnboardingPage2" component={OnboardingPage2} /> 
          <Stack.Screen name="SignUp" component={SignUp} /> 
-         <Stack.Screen name="SignIn" component={SignIn} /> 
+         <Stack.Screen name="signin" component={SignIn} /> 
          <Stack.Screen name="Home" component={HomeRE}/>  
-  
-        
+         <Stack.Screen name="ChatrommContainer" component={ChatroomContainer}/>  
+         <Stack.Screen name="ChatRoom" component={ChatRoom}/>  
+         <Stack.Screen name="Helping" component={CharityScreen}/> 
+         <Stack.Screen name="Donation1" component={Donation1}/> 
         <Stack.Screen name="Registration" component={Register}/> 
-      
+        <Stack.Screen name="School" component={School}/> 
  
   {/* <Stack.Screen name="Home" component={HomeRE}/> */}
         {/* <Stack.Screen name="ChatRoom" component={ChatRoom}/> 
