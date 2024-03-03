@@ -1,10 +1,39 @@
 import * as React from "react";
-import { StyleSheet, View, Pressable, Text, TextInput, Alert } from "react-native";
-import { MaterialIcons } from '@expo/vector-icons'; // Import MaterialIcons from Expo
-import { Image } from "expo-image";
-import { useNavigation } from "@react-navigation/native";
+import { StyleSheet, View, Pressable, Text, TextInput, Image } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Color, FontFamily, Border, FontSize } from "../GlobalStyles";
+import { useNavigation } from "@react-navigation/native";
+import { Alert } from 'react-native';
+
+const PasswordInput = ({ value, onChangeText }) => {
+  const [isPasswordVisible, setPasswordVisible] = React.useState(false);
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!isPasswordVisible);
+  };
+
+  return (
+    <View style={styles.passwordInputContainer}>
+      <TextInput
+        style={styles.passwordInput}
+        placeholder="Password"
+        value={value}
+        onChangeText={onChangeText}
+        secureTextEntry={!isPasswordVisible}
+      />
+      <Pressable
+        style={styles.visibilityButton}
+        onPress={togglePasswordVisibility}
+      >
+        <Ionicons
+          name={isPasswordVisible ? "eye-off" : "eye"}
+          size={24}
+          color="#777"
+        />
+      </Pressable>
+    </View>
+  );
+};
 
 const ProfileEdit = () => {
   const navigation = useNavigation();
@@ -12,20 +41,19 @@ const ProfileEdit = () => {
   const [lastName, setLastName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [isPasswordVisible, setPasswordVisible] = React.useState(false);
-
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!isPasswordVisible);
-  };
 
   const updateUserEmail = async () => {
     try {
-      // Code to update the user's email in AsyncStorage
-      await AsyncStorage.setItem('userEmail', email);
-      Alert.alert('Success', 'Email updated successfully!');
+      const userData = await AsyncStorage.getItem('user');
+      if (userData) {
+        const userDataParsed = JSON.parse(userData);
+        userDataParsed.email = email;
+        await AsyncStorage.setItem('user', JSON.stringify(userDataParsed));
+        Alert.alert("Success", "Email updated successfully!");
+      }
     } catch (error) {
-      console.error('Error updating email:', error);
-      Alert.alert('Error', 'Failed to update email.');
+      console.error('Error updating user email:', error);
+      Alert.alert("Error", "Failed to update email. Please try again.");
     }
   };
 
@@ -33,7 +61,6 @@ const ProfileEdit = () => {
     <View style={styles.container}>
       <Image
         style={styles.logo}
-        contentFit="cover"
         source={require("../assets/logo.png")}
       />
       <View style={styles.editProfileContainer}>
@@ -56,18 +83,10 @@ const ProfileEdit = () => {
           value={email}
           onChangeText={setEmail}
         />
-        <View style={styles.passwordInputContainer}>
-          <TextInput
-            style={[styles.input, styles.passwordInput]}
-            placeholder="Password"
-            value={password}
-            onChangeText={setPassword}
-            secureTextEntry={!isPasswordVisible}
-          />
-          <Pressable style={styles.passwordVisibilityButton} onPress={togglePasswordVisibility}>
-            <MaterialIcons name={isPasswordVisible ? 'visibility-off' : 'visibility'} size={24} color="#209FA6" />
-          </Pressable>
-        </View>
+        <PasswordInput
+          value={password}
+          onChangeText={setPassword}
+        />
         <Pressable style={styles.updateButton} onPress={updateUserEmail}>
           <Text style={styles.updateButtonText}>Update</Text>
         </Pressable>
@@ -75,13 +94,11 @@ const ProfileEdit = () => {
       <Pressable style={styles.backIcon} onPress={() => navigation.navigate("Setting")}>
         <Image
           style={styles.icon}
-          contentFit="cover"
           source={require("../assets/backleft.png")}
         />
       </Pressable>
       <Image
         style={styles.shareIcon}
-        contentFit="cover"
         source={require("../assets/share.png")}
       />
     </View>
@@ -116,7 +133,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#209FA6",
     marginBottom: 15,
-    fontFamily: FontFamily.poppinsSemiBold,
   },
   input: {
     borderWidth: 1,
@@ -125,20 +141,25 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     height: 45,
     width: "100%",
-    marginBottom: 20,
-    fontFamily: FontFamily.poppinsRegular,
+    marginBottom: 40,
   },
   passwordInputContainer: {
-    position: 'relative',
-    width: '100%',
+    position: "relative",
+    width: "100%",
   },
   passwordInput: {
-    paddingRight: 40,
+    borderWidth: 1,
+    borderColor: "#209FA6",
+    borderRadius: 12,
+    paddingHorizontal: 10,
+    height: 45,
+    width: "100%",
+    marginBottom: 40,
   },
-  passwordVisibilityButton: {
-    position: 'absolute',
+  visibilityButton: {
+    position: "absolute",
     right: 10,
-    top: 8,
+    top: "15%",
     zIndex: 1,
   },
   updateButton: {
@@ -152,7 +173,6 @@ const styles = StyleSheet.create({
   updateButtonText: {
     color: "#fff",
     fontSize: 16,
-    fontFamily: FontFamily.poppinsBold,
   },
   backIcon: {
     position: "absolute",
