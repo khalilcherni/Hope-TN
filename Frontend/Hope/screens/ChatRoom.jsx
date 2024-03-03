@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { GiftedChat } from 'react-native-gifted-chat';
 import { View, StyleSheet,TouchableOpacity,Text } from 'react-native';
@@ -106,4 +107,34 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Chatroom;
+//   return (
+//     <View style={styles.container}>
+//       <View style={styles.backgroundContainer} />
+//       <GiftedChat
+//         messages={messages}
+//         onSend={onSend}
+//         user={{
+//           _id: userId,
+//           name: 'Anonymous',
+//         }}
+//         style={styles.giftedChat}
+//       />
+//     </View>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//   },
+//   backgroundContainer: {
+//     ...StyleSheet.absoluteFillObject,
+//     backgroundColor: '#209FA6',
+//   },
+//   giftedChat: {
+//     flex: 1,
+//   },
+// });
+
+
+// export default Chatroom;

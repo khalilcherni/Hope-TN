@@ -95,12 +95,12 @@ About 300,000 of Tunisia's 12 million people have no drinking water in their hom
       >{`The southern region of Tunisia offers a stark illustration of the country’s water crisis. Here, only 7% were satisfied with their water quality -- the lowest total anywhere in the world -- in 2022. This is a rapid drop from 2015, when roughly half (48%) of Tunisians in the south were satisfied with their water.
 
 `}</Text>
-       <TouchableOpacity
+       <Pressable
           style={styles.nextButton}
           onPress={() => navigation.navigate("donation")}
         >
           <Text style={styles.donate}>Donate</Text>
-        </TouchableOpacity>
+        </Pressable>
     </View>
     <View style={styles.tabbar}>
         <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={24} color="black" /></TouchableOpacity>

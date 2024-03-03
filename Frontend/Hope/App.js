@@ -13,6 +13,10 @@ import Example from './screens/Palestine';
 // import Example from './screens/Example';
 import AndroidLarge2 from './screens/donation.jsx';
 import BottomAppBar from './screens/Messages.jsx'
+
+import Gaza from './screens/Palestine';
+
+
 // import StartingPage from './screens/StartingPage';
 // import SignUp from './screens/signup';
 // import OnboardingPage1 from './screens/onboardingPage1';
@@ -44,6 +48,7 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
+
       <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}>
          <Stack.Screen name="StartingPage" component={StartingPage} /> 
          <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} /> 
