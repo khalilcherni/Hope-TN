@@ -43,6 +43,7 @@ import categoriePeopleWhoNeedWater from './screens/categoriePeopleWhoNeedWater.j
 import Azert from './screens/Azert.jsx';
 import CharityScreen from './screens/Helping.jsx'
 import Donation1 from './screens/Donation1.jsx'
+import ProfileEdit from './screens/EditProfile.jsx';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -63,7 +64,10 @@ export default function App() {
         <Stack.Screen name="Registration" component={Register}/> 
         <Stack.Screen name="School" component={School}/> 
         <Stack.Screen name="Messages" component={Messages}/> 
- 
+        <Stack.Screen name="Setting" component={Setting}/> 
+        <Stack.Screen name="EditProfile" component={ProfileEdit}/> 
+        <Stack.Screen name="Events" component={Events}/> 
+        <Stack.Screen name="EnglishCourseScreen" component={EnglishCourseScreen}/> 
   {/* <Stack.Screen name="Home" component={HomeRE}/> */}
         {/* <Stack.Screen name="ChatRoom" component={ChatRoom}/> 
         <Stack.Screen name="Messages" component={Messages}/> 

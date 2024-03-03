@@ -22,7 +22,7 @@ const StartingPage = () => {
             source={require("../assets/donnation.png")}
           />
         </View>
-        <Text style={styles.logoText}> Click here to Start </Text>
+        {/* <Text style={styles.logoText}> Click here to Start </Text> */}
       </TouchableOpacity>
     </View>
   );

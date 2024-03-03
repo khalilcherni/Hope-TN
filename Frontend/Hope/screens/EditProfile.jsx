@@ -61,7 +61,7 @@ const ProfileEdit = () => {
     <View style={styles.container}>
       <Image
         style={styles.logo}
-        source={require("../assets/logo.png")}
+        source={require("../assets/aaa.jpg")}
       />
       <View style={styles.editProfileContainer}>
         <Text style={styles.editProfile}>Edit Profile</Text>
@@ -94,12 +94,12 @@ const ProfileEdit = () => {
       <Pressable style={styles.backIcon} onPress={() => navigation.navigate("Setting")}>
         <Image
           style={styles.icon}
-          source={require("../assets/backleft.png")}
+          source={require("../assets/aaa.jpg")}
         />
       </Pressable>
       <Image
         style={styles.shareIcon}
-        source={require("../assets/share.png")}
+        source={require("../assets/aaa.jpg")}
       />
     </View>
   );

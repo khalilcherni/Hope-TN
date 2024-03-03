@@ -6,6 +6,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 const CharityScreen = () => {
   const navigation = useNavigation();
   const [donationCards, setDonationCards] = useState([
@@ -82,6 +83,9 @@ const CharityScreen = () => {
 const handleHelpnavigation=()=>{
   navigation.navigate('Helping'); 
 }
+const handleEventsavigation=()=>{
+  navigation.navigate('Events'); 
+}
   const handleDonate = async (donationAmount, cardId) => {
     const updatedCards = donationCards.map(card => {
       if (card.id === cardId) {
@@ -128,6 +132,7 @@ const handleHelpnavigation=()=>{
         <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={24} color="black" /></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={24} color="black" /></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={handleHelpnavigation}><FontAwesome5 name="hands-helping" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleEventsavigation}><MaterialIcons name="event" size={24} color="black" /></TouchableOpacity>
       </View>
     </ScrollView>
   );
