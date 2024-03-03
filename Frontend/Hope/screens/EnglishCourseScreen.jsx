@@ -7,37 +7,37 @@ const CourseScreen = () => {
       id: 1,
       title: 'Basic English Grammar',
       description: 'Learn the fundamentals of English grammar.',
-      image: require('../assets/bb.jpg'),
+      image: require('../assets/moon.png'),
     },
     {
       id: 2,
       title: 'Intermediate English Speaking',
       description: 'Improve your speaking skills with practical exercises.',
-      image: require('../assets/english_course_2.jpg'),
+      image: require('../assets/moon.png'),
     },
     {
       id: 3,
       title: 'Advanced English Writing',
       description: 'Enhance your writing abilities with advanced techniques.',
-      image: require('../assets/english_course_2.jpg'),
+      image: require('../assets/moon.png'),
     },
     {
       id: 4,
       title: 'القواعد الأساسية للغة العربية',
       description: 'تعلم القواعد الأساسية للغة العربية.',
-      image: require('../assets/bb.jpg'),
+      image: require('../assets/moon.png'),
     },
     {
       id: 5,
       title: 'المحادثة العربية المتوسطة',
       description: 'تحسين مهارات المحادثة العربية مع التمارين العملية.',
-      image: require('../assets/bb.jpg'),
+      image: require('../assets/moon.png'),
     },
     {
       id: 6,
       title: 'دروس اللغة الألمانية',
       description: 'تعلم اللغة الألمانية مع دروس متقدمة.',
-      image: require('../assets/bb.jpg'),
+      image: require('../assets/moon.png'),
     },
   ]);
 

@@ -13,12 +13,12 @@ const Frame2 = () => {
         <Image
           style={styles.frameChild}
           contentFit="cover"
-          source={require("../assets/orphan1.jpg")}
+          // source={require("../assets/orphan1.jpg")}
         />
         <Image
           style={styles.needwater21Icon}
           contentFit="cover"
-          source={require("../assets/pp.jpg")}
+          // source={require("../assets/pp.jpg")}
         />
         <Image
           style={[styles.needwater22Icon, styles.iconPosition]}
@@ -54,7 +54,7 @@ const Frame2 = () => {
         <Image
           style={styles.captureDcran20240227113}
           contentFit="cover"
-          source={require("../assets/khhh.jpg")}
+          // source={require("../assets/khhh.jpg")}
         />
         <Text style={[styles.theSouthernRegion, styles.donateTypo]}>
           The 2014 Tunisia Country report on Out-of-school children showed that while pre-primary out-of-school rates decreased, and primary rates fell to nearly zero, there had been no improvement at the lower secondary level. Poor children, children in rural areas, disabled children and children with uneducated parents were facing particular risk of being excluded from school. The report argued that poverty, poor school conditions, difference of language of instruction and low quality of education were among key barriers to education access.

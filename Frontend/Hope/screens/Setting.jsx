@@ -49,13 +49,13 @@ const Setting = () => {
         <Image
           style={styles.icon}
           contentFit="cover"
-          source={require("../assets/aaa.jpg")}
+          source={require("../assets/backleft.png")}
         />
       </Pressable>
       <Image
         style={[styles.bellIcon, styles.iconLayout1]}
         contentFit="cover"
-        source={require("../assets/aaa.jpg")}
+        source={require("../assets/bell.webp")}
       />
       <Text style={[styles.favorites, styles.eventsFlexBox]}>Favorites</Text>
       <Text style={[styles.language, styles.eventsFlexBox]}>Language</Text>
@@ -69,7 +69,7 @@ const Setting = () => {
         <Image
           style={styles.rightIcon}
           contentFit="cover"
-          source={require("../assets/aaa.jpg")}
+          source={require("../assets/right.png")}
         />
       </View>
       <View style={[styles.rectangle36Copy5Group, styles.groupLayout]}>
@@ -77,7 +77,7 @@ const Setting = () => {
         <Image
           style={styles.rightIcon}
           contentFit="cover"
-          source={require("../assets/aaa.jpg")}
+          source={require("../assets/right.png")}
         />
       </View>
       <View style={[styles.rectangle36Copy5Container, styles.groupLayout]}>
@@ -85,7 +85,7 @@ const Setting = () => {
         <Image
           style={styles.rightIcon}
           contentFit="cover"
-          source={require("../assets/aaa.jpg")}
+          source={require("../assets/right.png")}
         />
       </View>
       <Pressable
@@ -96,17 +96,17 @@ const Setting = () => {
       <Image
         style={styles.translateIcon}
         contentFit="cover"
-        source={require("../assets/aaa.jpg")}
+        source={require("../assets/translate.png")}
       />
       <Image
         style={[styles.umoonIcon, styles.iconLayout]}
         contentFit="cover"
-        source={require("../assets/aaa.jpg")}
+        source={require("../assets/moon.png")}
       />
       <Image
         style={[styles.heartIcon, styles.favouritePosition]}
         contentFit="cover"
-        source={require("../assets/aaa.jpg")}
+        source={require("../assets/heart.png")}
       />
       <Text style={[styles.profile, styles.profileClr]}>{userEmail}</Text>
       <View style={[styles.rectangleView, styles.settingLayout]} />

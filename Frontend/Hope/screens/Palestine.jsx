@@ -20,7 +20,7 @@ More than 100 children have been killed every day since Israel started bombing
       <Image
         style={styles.image1Icon}
         contentFit="cover"
-        source={require("../assets/palestine1.jpg")}
+        // source={require("../assets/palestine1.jpg")}
       />
       <Text
         style={[styles.gazaChildrenDizzy, styles.donateTypo]}
