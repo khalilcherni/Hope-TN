@@ -7,10 +7,11 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { firebaseAuth } from '../firebase/config';
-
+import { FontAwesome } from '@expo/vector-icons';
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const navigation = useNavigation();
 
   const handleSignIn = async () => {
@@ -20,7 +21,7 @@ const SignIn = () => {
         return;
       }
 
-      const loginResponse = await axios.post('http:/192.168.100.48:4000/users/login', {
+      const loginResponse = await axios.post('http://192.168.1.201:4000/users/login', {
         email,
         password,
       });
@@ -55,25 +56,36 @@ const SignIn = () => {
     }
   };
   
-
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
   return (
     <ScrollView contentContainerStyle={styles.scrollView}>
       <View style={styles.container}>
         <Text style={styles.title}>HOPE TN</Text>
         <Text style={styles.subtitle}>SIGN IN</Text>
+        <View style={styles.inputContainer}>
+        <FontAwesome name="envelope" size={24} color="#209FA6" style={styles.icon} />
         <TextInput
           placeholder="Email"
           value={email}
           onChangeText={setEmail}
           style={styles.input}
         />
+      </View>
+      <View style={styles.inputContainer}>
+        <FontAwesome name="lock" size={24} color="#209FA6" style={styles.icon} />
         <TextInput
           placeholder="Password"
           value={password}
           onChangeText={setPassword}
-          secureTextEntry={true}
+          secureTextEntry={!showPassword}
           style={styles.input}
         />
+        <TouchableOpacity onPress={togglePasswordVisibility}>
+          <FontAwesome name={showPassword ? "eye" : "eye-slash"} size={24} color="#209FA6" style={styles.icon} />
+        </TouchableOpacity>
+      </View>
         <TouchableOpacity 
           style={styles.button}
           onPress={handleSignIn}
@@ -124,6 +136,18 @@ const styles = StyleSheet.create({
     marginBottom: 80,
     marginRight:190
   },
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+    paddingHorizontal: 10,
+    backgroundColor: '#D9D9D9',
+    width: '100%',
+    borderRadius: 30,
+  },
+  icon: {
+    marginRight: 10,
+  },
   subtitle: {
     fontSize: 24,
     fontWeight: 'bold',
@@ -131,15 +155,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   input: {
+    flex: 1,
     height: 55,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 10,
-    paddingHorizontal: 10,
-    backgroundColor: '#D9D9D9',
-    width: '100%',
-    borderRadius: 30,
-    textAlign: 'center',
+    fontSize: 16,
   },
   button: {
     height: 55,
