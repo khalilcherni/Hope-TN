@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ScrollView, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-// var ImagePicker = require('react-native-image-picker');
-
+import ImageUploadTwo from './ImageUploadTwo';
 
 const MessageCard = ({ id, primary, secondary, person, imageUrl, comments, onDelete, onComment }) => {
   const [newComment, setNewComment] = useState('');
@@ -20,8 +19,7 @@ const MessageCard = ({ id, primary, secondary, person, imageUrl, comments, onDel
       <View style={styles.messageContent}>
         <Text style={styles.primaryText}>{primary}</Text>
         <Text style={styles.secondaryText}>{secondary}</Text>
-        {imageUrl && <Image source={{ uri: imageUrl }} style={styles.messageImage} />}
-     
+        {imageUrl && <Image source={{ uri: imageUrl }} style={styles.messageImage} />} 
         <Text style={styles.commentsText}>Comments:</Text>
         {comments.map((comment, index) => (
           <Text key={`${id}_${index}`} style={styles.commentText}>{comment}</Text>
@@ -47,11 +45,9 @@ const MessageCard = ({ id, primary, secondary, person, imageUrl, comments, onDel
 
 const BottomAppBar = () => {
   const [inputValue, setInputValue] = useState('');
-  const [ratingValue, setRatingValue] = useState(0);
   const [imageUrl, setImageUrl] = useState('');
   const [messages, setMessages] = useState([]);
 
-  // Load messages from AsyncStorage when component mounts
   useEffect(() => {
     const loadMessages = async () => {
       try {
@@ -66,7 +62,6 @@ const BottomAppBar = () => {
     loadMessages();
   }, []);
 
-  // Save messages to AsyncStorage whenever messages state changes
   useEffect(() => {
     const saveMessages = async () => {
       try {
@@ -88,19 +83,17 @@ const BottomAppBar = () => {
         id: messages.length + 1,
         primary: inputValue,
         secondary: 'New message',
-        person: 'https://example.com/avatar.jpg', // Replace with actual avatar URL
-        imageUrl: imageUrl,
-        rating: ratingValue,
-        comments: [], // Initialize comments array for each new message
+        imageUrl: imageUrl, // Include the selected image URL here
+        comments: [],
       };
       const updatedMessages = [...messages, newMessage];
       setMessages(updatedMessages);
       setInputValue('');
-      setRatingValue(0);
       setImageUrl('');
       Alert.alert('Message Posted', 'Your message has been posted successfully.');
     }
   };
+  
 
   const handleDeleteMessage = (id) => {
     const updatedMessages = messages.filter(message => message.id !== id);
@@ -120,43 +113,24 @@ const BottomAppBar = () => {
     setMessages(updatedMessages);
   };
 
-  const handleChoosePhoto = () => {
-    const options = {
-      title: 'Select Photo',
-      storageOptions: {
-        skipBackup: true,
-        path: 'images',
-      },
-    };
-
-    ImagePicker.showImagePicker(options, (response) => {
-      if (response.didCancel) {
-        console.log('User cancelled image picker');
-      } else if (response.error) {
-        console.log('ImagePicker Error: ', response.error);
-      } else {
-        const source = response.uri;
-        setImageUrl(source);
-      }
-    });
+  const handleChangeImage = (url) => {
+    setImageUrl(url);
   };
 
   return (
     <View style={styles.container}>
-  <ScrollView style={styles.messageContainer}>
-  {messages.map(message => (
-    <MessageCard
-      key={`message_${message.id}`} // Ensure each MessageCard has a unique key based on its id
-      {...message}
-      onDelete={handleDeleteMessage}
-      onComment={handleComment}
-    />
-  ))}
-</ScrollView>
+      <ScrollView style={styles.messageContainer}>
+        {messages.map(message => (
+          <MessageCard
+            key={message.id}
+            {...message}
+            onDelete={handleDeleteMessage}
+            onComment={handleComment}
+          />
+        ))}
+      </ScrollView>
       <View style={styles.inputContainer}>
-        <TouchableOpacity style={styles.choosePhotoButton} onPress={handleChoosePhoto}>
-          <Text style={styles.choosePhotoButtonText}>Choose Photo</Text>
-        </TouchableOpacity>
+        <ImageUploadTwo changeImage={handleChangeImage} />
         <TextInput
           style={styles.input}
           placeholder="Type your message here..."
@@ -174,17 +148,15 @@ const BottomAppBar = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    
   },
   messageContainer: {
     flex: 1,
-    marginTop:50
   },
   messageCard: {
     flexDirection: 'row',
     alignItems: 'center',
     padding: 20,
-    marginBottom: 40,
+    marginBottom: 20,
     backgroundColor: '#f0f0f0',
   },
   avatar: {
@@ -227,16 +199,16 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
     height: 40,
+    marginRight: 10,
   },
   addCommentButton: {
-    backgroundColor: 'blue',
-    marginLeft: 10,
+    backgroundColor: '#007bff',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
   },
   addCommentButtonText: {
-    color: 'white',
+    color: '#fff',
     fontWeight: 'bold',
   },
   inputContainer: {
@@ -245,6 +217,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderTopWidth: 1,
     borderTopColor: '#ccc',
+    backgroundColor: '#fff',
   },
   input: {
     flex: 1,
@@ -256,23 +229,13 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   postButton: {
-    backgroundColor: 'blue',
+    backgroundColor: '#007bff',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
   },
   postButtonText: {
-    color: 'white',
-    fontWeight: 'bold',
-  },
-  choosePhotoButton: {
-    backgroundColor: 'green',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
-  },
-  choosePhotoButtonText: {
-    color: 'white',
+    color: '#fff',
     fontWeight: 'bold',
   },
 });

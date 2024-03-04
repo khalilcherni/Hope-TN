@@ -15,44 +15,32 @@ const Setting = () => {
         <Image
           style={[styles.notchIcon, styles.notchIconLayout]}
           contentFit="cover"
-<<<<<<< HEAD
-<<<<<<< HEAD
-          source={require("../assets/profile.png")}
-=======
-          source={require("../assets/aaa.jpg")}
->>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
+          // source={require("../assets/profile.png")}
+          // source={require("../assets/aaa.jpg")}
+
         />
         <Image
           style={styles.indicatorIcon}
           contentFit="cover"
-<<<<<<< HEAD
-          source={require("../assets/indicators.png")}
-=======
-          source={require("../assets/aaa.jpg")}
->>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
+          // source={require("../assets/indicators.png")}
+          // source={require("../assets/aaa.jpg")}
+
         />
         <Image
           style={styles.timeLight}
           contentFit="cover"
         //   source={require("../assets/time--light.png")}
-=======
           // source={require("../assets/notch.png")}
->>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
         />
        
       </View>
       <Image
         style={styles.unsplashjmurdhtm7ngIcon}
         contentFit="cover"
-<<<<<<< HEAD
-<<<<<<< HEAD
-        source={require("../assets/profile.png")}
-=======
-        source={require("../assets/aaa.jpg")}
->>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
-=======
-        source={require("../assets/logo.png")}
->>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
+        // source={require("../assets/profile.png")}
+        // source={require("../assets/aaa.jpg")}
+
+        // source={require("../assets/logo.png")}
       />
       <Pressable
         style={[styles.arrowLeft, styles.notchIconLayout]}
@@ -61,29 +49,19 @@ const Setting = () => {
         <Image
           style={styles.icon}
           contentFit="cover"
-<<<<<<< HEAD
-<<<<<<< HEAD
-          source={require("../assets/backleft.png")}
-=======
-          source={require("../assets/aaa.jpg")}
->>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
-=======
-          source={require("../assets/backleft.png")}
->>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
+          // source={require("../assets/backleft.png")}
+          // source={require("../assets/aaa.jpg")}
+
+          // source={require("../assets/backleft.png")}
         />
       </Pressable>
       <Image
         style={[styles.bellIcon, styles.iconLayout1]}
         contentFit="cover"
-<<<<<<< HEAD
-<<<<<<< HEAD
-        source={require("../assets/bell.webp")}
-=======
-        source={require("../assets/aaa.jpg")}
->>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
-=======
-        source={require("../assets/bell.webp")}
->>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
+        // source={require("../assets/bell.webp")}
+        // source={require("../assets/aaa.jpg")}
+
+        // source={require("../assets/bell.webp")}
       />
       <Text style={[styles.favorites, styles.eventsFlexBox]}>Favorites</Text>
       <Text style={[styles.language, styles.eventsFlexBox]}>Language</Text>
@@ -97,7 +75,7 @@ const Setting = () => {
         <Image
           style={styles.rightIcon}
           contentFit="cover"
-          source={require("../assets/right.png")}
+          // source={require("../assets/right.png")}
         />
       </View>
       <View style={[styles.rectangle36Copy5Group, styles.groupLayout]}>
@@ -105,15 +83,10 @@ const Setting = () => {
         <Image
           style={styles.rightIcon}
           contentFit="cover"
-<<<<<<< HEAD
-<<<<<<< HEAD
-          source={require("../assets/right.png")}
-=======
-          source={require("../assets/aaa.jpg")}
->>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
-=======
-          source={require("../assets/right.png")}
->>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
+          // source={require("../assets/right.png")}
+          // source={require("../assets/aaa.jpg")}
+
+          // source={require("../assets/right.png")}
         />
       </View>
       <View style={[styles.rectangle36Copy5Container, styles.groupLayout]}>
@@ -121,15 +94,10 @@ const Setting = () => {
         <Image
           style={styles.rightIcon}
           contentFit="cover"
-<<<<<<< HEAD
-<<<<<<< HEAD
-          source={require("../assets/right.png")}
-=======
-          source={require("../assets/aaa.jpg")}
->>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
-=======
-          source={require("../assets/right.png")}
->>>>>>> 74ceca7558c11c5cb80ae555362d4f92cf5bdfea
+          // source={require("../assets/right.png")}
+          // source={require("../assets/aaa.jpg")}
+
+          // source={require("../assets/right.png")}
         />
       </View>
       <Pressable
@@ -146,14 +114,14 @@ const Setting = () => {
         style={[styles.umoonIcon, styles.iconLayout]}
         contentFit="cover"
         // source={require("../assets/moon.png")}
-        source={require("../assets/aaa.jpg")}
-        {/* source={require("../assets/moon.png")} */}
+        // source={require("../assets/aaa.jpg")}
+        // source={require("../assets/moon.png")}
       />
       <Image
         style={[styles.heartIcon, styles.favouritePosition]}
         contentFit="cover"
         // source={require("../assets/heart.png")}
-        source={require("../assets/aaa.jpg")}
+        // source={require("../assets/aaa.jpg")}
         // source={require("../assets/heart.png")}      
         />
       <Text style={[styles.profile, styles.profileClr]}>Profile</Text>
@@ -162,7 +130,7 @@ const Setting = () => {
       <Image
         style={[styles.editDuotoneIcon, styles.iconLayout]}
         contentFit="cover"
-        source={require("../assets/edit.png")}
+        // source={require("../assets/edit.png")}
         // source={require("../assets/aaa.jpg")}
         // source={require("../assets/edit-duotone.png")}
       />
@@ -174,7 +142,7 @@ const Setting = () => {
         <Image
           style={styles.rightIcon}
           contentFit="cover"
-          source={require("../assets/right.png")}
+          // source={require("../assets/right.png")}
           // source={require("../assets/aaa.jpg")}
  
           // source={require("../assets/right.png")}

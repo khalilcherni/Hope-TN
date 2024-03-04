@@ -12,42 +12,42 @@ const OnboardingPage = () => {
       <Image
         style={[styles.poor91Icon, styles.iconLayout3]}
         contentFit="cover"
-        source={require("../assets/poor1.jpg")}
+        // source={require("../assets/poor1.jpg")}
       />
       <Image
         style={[styles.poor111Icon, styles.iconLayout2]}
         contentFit="cover"
-        source={require("../assets/poor2.jpg")}
+        // source={require("../assets/poor2.jpg")}
       />
       <Image
         style={[styles.poor121Icon, styles.iconLayout4]}
         contentFit="cover"
-        source={require("../assets/poor3.jpg")}
+        // source={require("../assets/poor3.jpg")}
       />
       <Image
         style={[styles.poor101Icon, styles.iconLayout1]}
         contentFit="cover"
-        source={require("../assets/poor11.webp")}
+        // source={require("../assets/poor11.webp")}
       />
       <Image
         style={[styles.poor31Icon, styles.iconLayout]}
         contentFit="cover"
-        source={require("../assets/poor10.jpg")}
+        // source={require("../assets/poor10.jpg")}
       />
       <Image
         style={[styles.poor21Icon, styles.iconLayout1]}
         contentFit="cover"
-        source={require("../assets/poor13.jpg")}
+        // source={require("../assets/poor13.jpg")}
       />
       <Image
         style={[styles.poor11Icon, styles.iconLayout]}
         contentFit="cover"
-        source={require("../assets/child.jpg")}
+        // source={require("../assets/wifi.jpg")}
       />
       <Image
         style={[styles.poo3131Icon, styles.iconLayout2]}
         contentFit="cover"
-        source={require("../assets/child.jpg")}
+        // source={require("../assets/wifi.jpg")}
       />
       <Text style={styles.letsHelpEach}>Let’s help each others</Text>
       <Text style={[styles.whenWeGive, styles.whenWeGiveTypo]}>
@@ -60,11 +60,7 @@ const OnboardingPage = () => {
         <Image
           style={styles.icon}
           contentFit="cover"
-<<<<<<< HEAD
-          source={require("../assets/right-arrow.png")}
-=======
-          source={require("../assets/aaa.jpg")}
->>>>>>> 1b49454fa91048add8e02ac3654b54632fb40b30
+          // source={require("../assets/aaa.jpg")}
         />
       </Pressable>
       {/* <Text style={[styles.httpswwwfigcomponentscom, styles.whenWeGiveTypo]}>
