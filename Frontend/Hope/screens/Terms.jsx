@@ -1,7 +1,20 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const TermsAndPrivacy = ({ onAccept, onDecline }) => {
+const TermsAndPrivacy = () => {
+  const navigation = useNavigation();
+
+  const handleAccept = () => {
+    // Navigate to Home screen when terms accepted
+    navigation.navigate('Home');
+  };
+
+  const handleDecline = () => {
+    // Navigate back to Sign Up screen when terms declined
+    navigation.goBack();
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Terms & Privacy</Text>
@@ -10,18 +23,16 @@ const TermsAndPrivacy = ({ onAccept, onDecline }) => {
         Sed in ante sed libero rutrum consectetur vel et justo. Sed in ante sed libero rutrum consectetur vel et justo.
       </Text>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={[styles.button, styles.acceptButton]} onPress={onAccept}>
+        <TouchableOpacity style={[styles.button, styles.acceptButton]} onPress={handleAccept}>
           <Text style={styles.buttonText}>Accept</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, styles.declineButton]} onPress={onDecline}>
+        <TouchableOpacity style={[styles.button, styles.declineButton]} onPress={handleDecline}>
           <Text style={styles.buttonText}>Decline</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 };
-
-const windowWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
   container: {
