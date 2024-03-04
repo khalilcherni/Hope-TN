@@ -17,12 +17,16 @@ const TermsAndPrivacy = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Terms & Privacy</Text>
-      <Text style={styles.description}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla justo nec dictum faucibus. 
-        Sed in ante sed libero rutrum consectetur vel et justo. Sed in ante sed libero rutrum consectetur vel et justo.
-        We are not responsible for any fraudulent activities carried out by users on this platform. By using this app, you agree to comply with our terms and conditions.
-      </Text>
+      <View>
+        <Text style={styles.title}>Terms & Privacy</Text>
+        <Text style={styles.description}>
+        At our charity organization, we prioritize integrity and transparency. We strive to ensure that every donation and contribution goes directly toward making a positive impact on those in need. However, it's essential to acknowledge that, despite our best efforts, fraudulent activities may occur. We remain vigilant in our efforts to prevent scams and misuse of funds, but we cannot guarantee complete immunity from such incidents. By choosing to support our cause, you acknowledge and accept this inherent risk. 
+        Your trust and cooperation are invaluable as we work together to create a better world for those less fortunate.
+        At our charity organization, we prioritize integrity and transparency. We strive to ensure that every donation and contribution goes directly toward making a positive impact on those in need. However, it's essential to acknowledge that, despite our best efforts, fraudulent activities may occur. We remain vigilant in our efforts to prevent scams and misuse of funds, but we cannot guarantee complete immunity from such incidents. By choosing to support our cause, you acknowledge and accept this inherent risk. 
+        Your trust and cooperation are invaluable as we work together to create a better world for those less fortunate.
+         
+        </Text>
+      </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={[styles.button, styles.acceptButton]} onPress={handleAccept}>
           <Text style={styles.buttonText}>Accept</Text>
@@ -38,13 +42,14 @@ const TermsAndPrivacy = () => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: '#f0f0f0',
     borderRadius: 10,
     elevation: 5,
-    marginTop: 250,
-    flexGrow: 1, 
-    marginLeft:10,
-    marginRight:10// Added to enable scrolling
+    marginTop: 40,
+    marginBottom:80,
+    flexGrow: 1,
+    marginRight:10,
+    marginLeft:10
   },
   title: {
     fontSize: 20,
@@ -70,6 +75,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#fff',
+    
   },
   acceptButton: {
     marginRight: 10,
@@ -77,7 +83,7 @@ const styles = StyleSheet.create({
   },
   declineButton: {
     marginLeft: 10,
-    backgroundColor: '#FF6347',
+    backgroundColor: '#209FA6',
   },
 });
 

@@ -17,7 +17,7 @@ export default function Events() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get('http://192.168.100.48:4000/events/get')
+    axios.get('http://192.168.72.231:4000/events/get')
       .then(res => {
         setData(res.data);
         setLoading(false);

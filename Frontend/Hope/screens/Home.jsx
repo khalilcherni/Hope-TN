@@ -1,14 +1,36 @@
 import React from "react";
-import { Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, ScrollView, StyleSheet, Text, View,TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { Color, FontFamily, FontSize } from "../GlobalStyles";
-
+import { FontAwesome5 } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+// Import styles and other assets
+import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
+import { Ionicons } from '@expo/vector-icons';
 const HomeRE = () => {
   const navigation = useNavigation();
 
   // Generate a random number of points
   const randomPoints = Math.floor(Math.random() * 1000) + 1;
-
+  const handleHomeNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('Home');
+  };
+  const handleChatNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('ChatRoom');
+  };
+  const handleSchoolNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('School');
+  };
+  const handleMESNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('Messages');
+  };
+  const handleHelpnavigation=()=>{
+    navigation.navigate('Helping'); 
+  }
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* Profile Icon */}
@@ -23,6 +45,14 @@ const HomeRE = () => {
         />
       </Pressable>
 
+      {/* Welcome Text */}
+      <Text style={styles.welcomeText}>Welcome</Text>
+
+      <Image
+        style={styles.rectangleImage}
+        resizeMode="cover"
+        source={require("../assets/Rectangle.png")}
+      />
       {/* Menu Icon */}
       <Pressable
         style={styles.menuIcon}
@@ -37,26 +67,21 @@ const HomeRE = () => {
 
       {/* Rectangle with points */}
       <View style={styles.rectangleContainer}>
-        <Image
-          style={styles.rectangleImage}
-          resizeMode="cover"
-          source={require("../assets/donnation.png")}
-        />
+        <View style={styles.rectangleWithPoints}>
+          <Image
+            style={styles.rectangleImage}
+            resizeMode="cover"
+            source={require("../assets/Rectangle.png")}
+          />
+          <Text style={styles.pointsText}>{randomPoints} points</Text>
+        </View>
       </View>
-
-      {/* Welcome Text */}
-      <Text style={styles.welcomeText}>
-        Welcome to our Charity App! We're thrilled to have you here.
-        🌟 Together, let's make a positive impact on the world.
-        Explore, donate, and get involved in meaningful causes.
-        Your support means the world to us. Thank you for joining
-        our mission to spread kindness and create a brighter future.
-      </Text>
 
       {/* Categories */}
       <Text style={styles.categoriesText}>Categories:</Text>
       <View style={styles.categoriesContainer}>
-      <Pressable onPress={() => navigation.navigate("categoriePeopleWhoNeedWater")}>
+        {/* Add more categories here */}
+        <Pressable onPress={() => navigation.navigate("categoriePeopleWhoNeedWater")}>
           <View style={styles.categoryCircle}>
             <Image
               style={styles.categoryImage}
@@ -102,21 +127,54 @@ const HomeRE = () => {
             />
           </View>
         </Pressable>
-        {/* Add more categories here */}
-        {/* Your category Pressables */}
       </View>
 
       {/* Our Work */}
       <View style={styles.ourWorkContainer}>
-        <View style={styles.azCard}>
-          <Text style={styles.azText}>
-            Charity Work: Making a Difference in the World
-            Charity work is more than just giving; it's about making a meaningful impact on the lives of others and creating positive change in the world. Whether it's volunteering time, donating resources, or advocating for a cause, charity work embodies the spirit of compassion and generosity. One of the greatest benefits of engaging in charity work is the profound sense of fulfillment it brings. Knowing that you have contributed to the well-being of others, even in a small way, can provide a deep sense of purpose and satisfaction. Charity work allows individuals to connect with their communities, build meaningful relationships, and foster a sense of belonging.
-          </Text>
-        </View>
+        <Text style={styles.ourWorkText}>Our Work :</Text>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+          <View style={[styles.ourWorkImagesContainer, { flexGrow: 1 }]}>
+            <Image
+              style={styles.ourWorkImage}
+              resizeMode="cover"
+              source={require("../assets/DEMT_1.png")}
+            />
+            <Image
+              style={styles.ourWorkImage}
+              resizeMode="cover"
+              source={require("../assets/tunisia-covid-station-767_1_1.png")}
+            />
+            <Image
+              style={styles.ourWorkImage}
+              resizeMode="cover"
+              source={require("../assets/jeune-mere-enfants-remplit-bidons-eau-potable-tunisie_1.png")}
+            />
+            <Image
+              style={styles.ourWorkImage}
+              resizeMode="cover"
+              source={require("../assets/jeune-mere-enfants-remplit-bidons-eau-potable-tunisie_1.png")}
+            />
+            <Image
+              style={styles.ourWorkImage}
+              resizeMode="cover"
+              source={require("../assets/jeune-mere-enfants-remplit-bidons-eau-potable-tunisie_1.png")}
+            />
+            <Image
+              style={styles.ourWorkImage}
+              resizeMode="cover"
+              source={require("../assets/jeune-mere-enfants-remplit-bidons-eau-potable-tunisie_1.png")}
+            />
+            {/* Add more images here */}
+          </View>
+        </ScrollView>
       </View>
-
-      <Text>ifefiobf</Text>
+      <View style={styles.tabbar}>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHelpnavigation}><FontAwesome5 name="hands-helping" size={24} color="black" /></TouchableOpacity>
+      </View>
     </ScrollView>
   );
 };
@@ -124,24 +182,22 @@ const HomeRE = () => {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: Color.lightWhite,
     padding: 20,
+    justifyContent: "center",
     alignItems: "center",
-    marginTop: 30,
   },
   iconContainer: {
     position: "absolute",
     borderRadius: 30,
     borderWidth: 1,
     borderColor: Color.lightBlack,
+    alignItems: "center",
+    justifyContent: "center",
     top: 20,
     right: 20,
     width: 60,
     height: 60,
-    zIndex: 1,
-  },
-  profileCircle: {
-    zIndex: 2,
   },
   icon: {
     width: "100%",
@@ -149,10 +205,10 @@ const styles = StyleSheet.create({
   },
   welcomeText: {
     textAlign: "center",
-    color: "black",
+    color: Color.lightBlack,
     fontFamily: FontFamily.kalamRegular,
-    fontSize: 16,
-    marginTop: 20,
+    fontSize: FontSize.size_xl,
+    marginTop: 10, // Decreased marginTop value
   },
   menuIcon: {
     position: "absolute",
@@ -160,28 +216,27 @@ const styles = StyleSheet.create({
     left: 20,
     width: 27,
     height: 30,
-    zIndex: 1,
   },
   rectangleContainer: {
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 70,
+    marginTop: 500, // Adjusted marginTop value
+  },
+  rectangleWithPoints: {
+    position: "relative",
   },
   rectangleImage: {
     width: 300,
     height: 150,
-    backgroundColor: '#209FA6',
   },
   pointsText: {
     position: "absolute",
-    top: "70%",
-    left: "45%",
-    transform: [{ translateX: -50 }, { translateY: -50 }],
+    top: "70%", // Position the text vertically centered
+    left: "45%", // Position the text horizontally centered
+    transform: [{ translateX: -50 }, { translateY: -50 }], // Center the text within its container
     color: Color.lightBlack,
     fontFamily: FontFamily.kalamRegular,
     fontSize: FontSize.size_l,
-    marginLeft: -50,
-    fontSize: 20,
   },
   categoriesText: {
     textAlign: "left",
@@ -197,8 +252,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   categoryCircle: {
-    backgroundColor: Color.lightGray,
-    borderRadius: 50,
+    backgroundColor: Color.lightGray, // Greyish background color
+    borderRadius: 50, // Circular shape
     marginHorizontal: 10,
     padding: 10,
     alignItems: "center",
@@ -208,26 +263,37 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
   },
+  ourWorkText: {
+    textAlign: "center",
+    color: Color.lightBlack,
+    fontFamily: FontFamily.kalamRegular,
+    fontSize: FontSize.size_xl,
+    marginTop: 20,
+  },
   ourWorkContainer: {
     marginTop: 20,
   },
-  azCard: {
-    backgroundColor: '#f0f0f0',
-    padding: 20,
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+  ourWorkImagesContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
-  azText: {
-    textAlign: 'center',
-    color: 'black',
-    fontSize: 15,
+  ourWorkImage: {
+    width: 100,
+    height: 100,
+    marginHorizontal: 10,
+    marginBottom:50
+  },
+  tabbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+    paddingVertical: 10,
+  },
+  tabItem: {
+    flex: 1,
+    alignItems: 'center',
   },
 });
 
