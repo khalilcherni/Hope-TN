@@ -24,7 +24,7 @@ const SignUp = () => {
 
   const handleSignUp = async () => {
     try {
-      navigation.navigate('signin');
+      navigation.navigate('Terms');
       Alert.alert("jbvjvbjj");
       const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/;
       if (!passwordRegex.test(password)) {
@@ -32,7 +32,7 @@ const SignUp = () => {
         return;
       }
 
-      const registerResponse = await axios.post('http://192.168.1.201:4000/users/register', {
+      const registerResponse = await axios.post('http://192.168.100.48:4000/users/register', {
         firstName,
         lastName,
         birth,

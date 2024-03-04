@@ -1,436 +1,295 @@
-import * as React from "react";
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-
-import { Image } from "expo-image";
-import { StyleSheet, Pressable, Text, View,TouchableOpacity } from "react-native";
+import React from "react";
+import { Image, Pressable, ScrollView, StyleSheet, Text, View,TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { FontAwesome5 } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+// Import styles and other assets
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
-import { ScrollView } from "react-native-gesture-handler";
-
+import { Ionicons } from '@expo/vector-icons';
 const HomeRE = () => {
   const navigation = useNavigation();
-  const handleTabPress = (screenName) => {
-    navigation.navigate(screenName);
+
+  // Generate a random number of points
+  const randomPoints = Math.floor(Math.random() * 1000) + 1;
+  const handleHomeNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('Home');
   };
+  const handleChatNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('ChatRoom');
+  };
+  const handleSchoolNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('School');
+  };
+  const handleMESNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('Messages');
+  };
+  const handleHelpnavigation=()=>{
+    navigation.navigate('Helping'); 
+  }
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-    <ScrollView>
-    <View  style={styles.homeRe}>
+    <ScrollView contentContainerStyle={styles.container}>
+      {/* Profile Icon */}
       <Pressable
-        style={[styles.profileCircle, styles.ellipseIconLayout]}
+        style={[styles.iconContainer, styles.profileCircle]}
         onPress={() => navigation.navigate("Setting")}
       >
         <Image
-          style={[styles.icon, styles.iconLayout3]}
-          contentFit="cover"
-
-          source={require("../assets/poor1.jpg")}
-
-        
-
+          style={styles.icon}
+          resizeMode="cover"
+          source={require("../assets/profile-circle.png")}
         />
       </Pressable>
-      <Text style={[styles.welcome, styles.welcomeTypo]}>Welcome</Text>
+
+      {/* Welcome Text */}
+      <Text style={styles.welcomeText}>Welcome</Text>
+
       <Image
+        style={styles.rectangleImage}
+        resizeMode="cover"
+        source={require("../assets/Rectangle.png")}
+      />
+      {/* Menu Icon */}
+      <Pressable
         style={styles.menuIcon}
-        contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-        
-
-      />
-      <Image
-        style={styles.homeReChild}
-        contentFit="cover"
-        source={require("../assets/poor1.jpg")}
-      />
-      <Text style={[styles.categories, styles.categoriesTypo]}>
-        Categories:
-      </Text>
-      <Image
-        style={[styles.homeReItem, styles.homePosition]}
-        contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-        
-
-      />
-      <Image
-        style={[styles.dropIcon, styles.iconPosition]}
-        contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-
-      />
-      <Pressable
-        style={[styles.wrapper, styles.homePosition]}
-        onPress={() => navigation.navigate("Details")}
+        onPress={() => console.log("Menu pressed")} // Placeholder onPress action
       >
         <Image
-          style={styles.iconLayout3}
-          contentFit="cover"
-
-         source={require("../assets/poor1.jpg")}
-
-
-
+          style={styles.menuIcon}
+          resizeMode="cover"
+          source={require("../assets/menu.png")}
         />
       </Pressable>
-      <Image
-        style={[styles.dollarCircleIcon, styles.iconPosition]}
-        contentFit="cover"
 
-        source={require("../assets/poor1.jpg")}
-
-    
-
-      />
-      <Image
-        style={[styles.homeReInner, styles.homePosition]}
-        contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-        
-
-      />
-      <Image
-        style={[styles.downloadRemovebgPreview1Icon, styles.iconLayout2]}
-        contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-      />
-      <Image
-        style={[styles.ellipseIcon, styles.ellipseIconLayout]}
-        contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-    
-
-      />
-      <Image
-        style={[styles.depositphotos105691240StockIcon, styles.iconLayout2]}
-        contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-        
-
-      />
-      <Image
-        style={[styles.homeReChild1, styles.homePosition]}
-        contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-        
-
-      />
-      <Image style={styles.seniorCitizenLogoPngSeniorIcon} contentFit="cover" />
-      <Text style={[styles.ourWork, styles.welcomeTypo]}>Our Work :</Text>
-      <Image
-        style={[styles.demt1Icon, styles.iconLayout1]}
-        contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-        
-
-      />
-      <Image
-        style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
-        contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-        
-
-      />
-      <Text style={[styles.povertyInTunisia, styles.categoriesTypo]}>
-        Poverty in Tunisia :
-      </Text>
-      <Image
-        style={styles.jpgRemovebgPreview1Icon}
-        contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-    
-
-      />
-      <Image
-        style={styles.rectangleIcon}
-        contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-    
-
-      />
-      <Pressable
-        style={[styles.vuesaxbrokenmessageText, styles.houseIconLayout]}
-        onPress={() => navigation.navigate("ChannelList")}
-      >
-        <Image
-          style={[styles.icon2, styles.iconLayout]}
-          contentFit="cover"
-
-          source={require("../assets/poor1.jpg")}
-
-        
-
-        />
-      </Pressable>
-      <Image
-        style={[styles.houseIcon, styles.iconLayout]}
-        contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-        
-
-      />
-      <Pressable
-        style={[styles.vuesaxboldchart, styles.houseIconLayout]}
-        onPress={() => navigation.navigate("LeaderBoard")}
-      >
-        <Image
-          style={[styles.icon2, styles.iconLayout]}
-          contentFit="cover"
-
-          source={require("../assets/poor1.jpg")}
-
-          // source={require("../assets/chart.png")}
-
-        />
-      </Pressable>
-    </View>
-    <View style={styles.tabbar}>
-          <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Home')}><Text>Home</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('ChatRoom')}><Text>ChatRoom</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Messages')}><Text>Messages</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Setting')}><Text>Setting</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Setting')}><Text>Setting</Text></TouchableOpacity>
-          
+      {/* Rectangle with points */}
+      <View style={styles.rectangleContainer}>
+        <View style={styles.rectangleWithPoints}>
+          <Image
+            style={styles.rectangleImage}
+            resizeMode="cover"
+            source={require("../assets/Rectangle.png")}
+          />
+          <Text style={styles.pointsText}>{randomPoints} points</Text>
         </View>
-    </ScrollView>
+      </View>
 
-    </GestureHandlerRootView>
+      {/* Categories */}
+      <Text style={styles.categoriesText}>Categories:</Text>
+      <View style={styles.categoriesContainer}>
+        {/* Add more categories here */}
+        <Pressable onPress={() => navigation.navigate("categoriePeopleWhoNeedWater")}>
+          <View style={styles.categoryCircle}>
+            <Image
+              style={styles.categoryImage}
+              resizeMode="cover"
+              source={require("../assets/3.png")}
+            />
+          </View>
+        </Pressable>
+        <Pressable onPress={() => navigation.navigate("poorPeople")}>
+          <View style={styles.categoryCircle}>
+            <Image
+              style={styles.categoryImage}
+              resizeMode="cover"
+              source={require("../assets/4.png")}
+            />
+          </View>
+        </Pressable>
+        <Pressable onPress={() => navigation.navigate("Palestine")}>
+          <View style={styles.categoryCircle}>
+            <Image
+              style={styles.categoryImage}
+              resizeMode="cover"
+              source={require("../assets/drop.png")}
+            />
+          </View>
+        </Pressable>
+        {/* Add more categories here */}
+        <Pressable onPress={() => navigation.navigate("Category4")}>
+          <View style={styles.categoryCircle}>
+            <Image
+              style={styles.categoryImage}
+              resizeMode="cover"
+              source={require("../assets/drop.png")}
+            />
+          </View>
+        </Pressable>
+        <Pressable onPress={() => navigation.navigate("Category5")}>
+          <View style={styles.categoryCircle}>
+            <Image
+              style={styles.categoryImage}
+              resizeMode="cover"
+              source={require("../assets/drop.png")}
+            />
+          </View>
+        </Pressable>
+      </View>
+
+      {/* Our Work */}
+      <View style={styles.ourWorkContainer}>
+        <Text style={styles.ourWorkText}>Our Work :</Text>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+          <View style={[styles.ourWorkImagesContainer, { flexGrow: 1 }]}>
+            <Image
+              style={styles.ourWorkImage}
+              resizeMode="cover"
+              source={require("../assets/DEMT_1.png")}
+            />
+            <Image
+              style={styles.ourWorkImage}
+              resizeMode="cover"
+              source={require("../assets/tunisia-covid-station-767_1_1.png")}
+            />
+            <Image
+              style={styles.ourWorkImage}
+              resizeMode="cover"
+              source={require("../assets/jeune-mere-enfants-remplit-bidons-eau-potable-tunisie_1.png")}
+            />
+            <Image
+              style={styles.ourWorkImage}
+              resizeMode="cover"
+              source={require("../assets/jeune-mere-enfants-remplit-bidons-eau-potable-tunisie_1.png")}
+            />
+            <Image
+              style={styles.ourWorkImage}
+              resizeMode="cover"
+              source={require("../assets/jeune-mere-enfants-remplit-bidons-eau-potable-tunisie_1.png")}
+            />
+            <Image
+              style={styles.ourWorkImage}
+              resizeMode="cover"
+              source={require("../assets/jeune-mere-enfants-remplit-bidons-eau-potable-tunisie_1.png")}
+            />
+            {/* Add more images here */}
+          </View>
+        </ScrollView>
+      </View>
+      <View style={styles.tabbar}>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHelpnavigation}><FontAwesome5 name="hands-helping" size={24} color="black" /></TouchableOpacity>
+      </View>
+    </ScrollView>
   );
-  
 };
 
 const styles = StyleSheet.create({
-  ellipseIconLayout: {
-    height: 60,
+  container: {
+    flexGrow: 1,
+    backgroundColor: Color.lightWhite,
+    padding: 20,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  iconContainer: {
+    position: "absolute",
+    borderRadius: 30,
+    borderWidth: 1,
+    borderColor: Color.lightBlack,
+    alignItems: "center",
+    justifyContent: "center",
+    top: 20,
+    right: 20,
     width: 60,
-    position: "absolute",
-  },
-  iconLayout3: {
-    height: "100%",
-    width: "100%",
-  },
-  welcomeTypo: {
-    textAlign: "left",
-    color: Color.lightBlack,
-    fontFamily: FontFamily.kalam,
-    fontSize: FontSize.size_xl,
-    position: "absolute",
-  },
-  categoriesTypo: {
-    left: 9,
-    textAlign: "left",
-    color: Color.lightBlack,
-    fontFamily: FontFamily.kalam,
-    fontSize: FontSize.size_xl,
-    position: "absolute",
-  },
-  homePosition: {
-    top: 270,
     height: 60,
-    width: 60,
-    position: "absolute",
-  },
-  iconPosition: {
-    top: 288,
-    position: "absolute",
-  },
-  iconLayout2: {
-    width: 47,
-    position: "absolute",
-  },
-  iconLayout1: {
-    height: 159,
-    width: 159,
-    borderRadius: Border.br_3xs,
-    position: "absolute",
-  },
-  houseIconLayout: {
-    height: "2.92%",
-    width: "11.94%",
-    position: "absolute",
-  },
-  iconLayout: {
-    maxHeight: "100%",
-    maxWidth: "100%",
-    overflow: "hidden",
   },
   icon: {
-    marginLeft: 122,
+    width: "100%",
+    height: "100%",
   },
-  profileCircle: {
-    bottom: 1310,
-    left: "50%",
-  },
-  welcome: {
-    top: 9,
-    left: 140,
-    width: 181,
-    height: 22,
+  welcomeText: {
+    textAlign: "center",
+    color: Color.lightBlack,
+    fontFamily: FontFamily.kalamRegular,
+    fontSize: FontSize.size_xl,
+    marginTop: 10, // Decreased marginTop value
   },
   menuIcon: {
-    marginLeft: -174,
-    bottom: 1331,
+    position: "absolute",
+    top: 20,
+    left: 20,
     width: 27,
     height: 30,
-    left: "50%",
+  },
+  rectangleContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 500, // Adjusted marginTop value
+  },
+  rectangleWithPoints: {
+    position: "relative",
+  },
+  rectangleImage: {
+    width: 300,
+    height: 150,
+  },
+  pointsText: {
     position: "absolute",
-    overflow: "hidden",
+    top: "70%", // Position the text vertically centered
+    left: "45%", // Position the text horizontally centered
+    transform: [{ translateX: -50 }, { translateY: -50 }], // Center the text within its container
+    color: Color.lightBlack,
+    fontFamily: FontFamily.kalamRegular,
+    fontSize: FontSize.size_l,
   },
-  homeReChild: {
-    marginLeft: -165,
-    bottom: 1146,
-    width: 330,
-    height: 160,
-    left: "50%",
-    position: "absolute",
+  categoriesText: {
+    textAlign: "left",
+    color: Color.lightBlack,
+    fontFamily: FontFamily.kalamRegular,
+    fontSize: FontSize.size_xl,
+    marginTop: 20,
   },
-  categories: {
-    top: 237,
-    width: 155,
-    height: 25,
+  categoriesContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 10,
   },
-  homeReItem: {
-    left: 6,
+  categoryCircle: {
+    backgroundColor: Color.lightGray, // Greyish background color
+    borderRadius: 50, // Circular shape
+    marginHorizontal: 10,
+    padding: 10,
+    alignItems: "center",
+    justifyContent: "center",
   },
-  dropIcon: {
-    left: 24,
-    width: 25,
-    height: 25,
+  categoryImage: {
+    width: 40,
+    height: 40,
   },
-  wrapper: {
-    left: 73,
+  ourWorkText: {
+    textAlign: "center",
+    color: Color.lightBlack,
+    fontFamily: FontFamily.kalamRegular,
+    fontSize: FontSize.size_xl,
+    marginTop: 20,
   },
-  dollarCircleIcon: {
-    left: 91,
-    width: 24,
-    height: 24,
+  ourWorkContainer: {
+    marginTop: 20,
   },
-  homeReInner: {
-    left: 143,
+  ourWorkImagesContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
-  downloadRemovebgPreview1Icon: {
-    top: 282,
-    left: 149,
-    height: 36,
-  },
-  ellipseIcon: {
-    top: 267,
-    left: 207,
-  },
-  depositphotos105691240StockIcon: {
-    top: 265,
-    left: 213,
-    height: 64,
-  },
-  homeReChild1: {
-    left: 279,
-  },
-  seniorCitizenLogoPngSeniorIcon: {
-    top: 283,
-    left: 287,
-    width: 43,
-    height: 33,
-    position: "absolute",
-  },
-  ourWork: {
-    top: 345,
-    left: 12,
-    width: 128,
-    height: 25,
-  },
-  demt1Icon: {
-    top: 370,
-    left: 7,
-  },
-  tunisiaCovidStation7671Icon: {
-    top: 372,
-    left: 190,
-  },
-  povertyInTunisia: {
-    top: 542,
-    width: 194,
-    height: 23,
-  },
-  jpgRemovebgPreview1Icon: {
-    top: 586,
-    left: -15,
-    width: 375,
-    height: 569,
-    position: "absolute",
-  },
-  rectangleIcon: {
-    top: 1132,
-    left: 0,
-    width: 470,
-    height: 238,
-    position: "absolute",
-  },
-  icon2: {
-    height: "100%",
-    width: "100%",
-  },
-  vuesaxbrokenmessageText: {
-    left: "86.11%",
-    top: "95.99%",
-    right: "1.94%",
-    bottom: "1.09%",
-  },
-  houseIcon: {
-    top: "95.77%",
-    right: "43.61%",
-    bottom: "1.31%",
-    left: "44.44%",
-    height: "2.92%",
-    width: "11.94%",
-    position: "absolute",
-  },
-  vuesaxboldchart: {
-    left: "2.78%",
-    top: "96.06%",
-    right: "85.28%",
-    bottom: "1.02%",
-  },
-  homeRe: {
-    backgroundColor: Color.lightWhite,
-    flex: 1,
-    height: 1370,
-    overflow: "hidden",
-    width: "100%",
+  ourWorkImage: {
+    width: 100,
+    height: 100,
+    marginHorizontal: 10,
+    marginBottom:50
   },
   tabbar: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#f0f0f0',
+    backgroundColor: 'black',
     paddingVertical: 10,
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
   },
   tabItem: {
     flex: 1,
@@ -438,4 +297,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeRE
+export default HomeRE;

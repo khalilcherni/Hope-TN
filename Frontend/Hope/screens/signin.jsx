@@ -20,7 +20,7 @@ const SignIn = () => {
         return;
       }
 
-      const loginResponse = await axios.post('http://192.168.1.201:4000/users/login', {
+      const loginResponse = await axios.post('http:/192.168.100.48:4000/users/login', {
         email,
         password,
       });
@@ -36,7 +36,7 @@ const SignIn = () => {
 
       setEmail('');
       setPassword('');
-      navigation.navigate('Helping');
+      navigation.navigate('Home');
       Alert.alert("Sign in successful");
     } catch (e) {
       console.error(e);

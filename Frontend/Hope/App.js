@@ -44,6 +44,9 @@ import Azert from './screens/Azert.jsx';
 import CharityScreen from './screens/Helping.jsx'
 import Donation1 from './screens/Donation1.jsx'
 import ProfileEdit from './screens/EditProfile.jsx';
+import Frame from './screens/categoriePeopleWhoNeedWater.js';
+import Poor from './screens/poorPeople.js';
+import TermsAndPrivacy from './screens/Terms.jsx';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -68,6 +71,11 @@ export default function App() {
         <Stack.Screen name="EditProfile" component={ProfileEdit}/> 
         <Stack.Screen name="Events" component={Events}/> 
         <Stack.Screen name="EnglishCourseScreen" component={EnglishCourseScreen}/> 
+        <Stack.Screen name="categoriePeopleWhoNeedWater" component={Frame}/> 
+        <Stack.Screen name="poorPeople" component={Poor}/> 
+        <Stack.Screen name="donation" component={Donation}/> 
+        <Stack.Screen name="Palestine" component={Gaza}/> 
+        <Stack.Screen name="Terms" component={TermsAndPrivacy}/> 
   {/* <Stack.Screen name="Home" component={HomeRE}/> */}
         {/* <Stack.Screen name="ChatRoom" component={ChatRoom}/> 
         <Stack.Screen name="Messages" component={Messages}/> 
