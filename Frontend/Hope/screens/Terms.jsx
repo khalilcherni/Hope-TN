@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const TermsAndPrivacy = () => {
@@ -16,11 +16,12 @@ const TermsAndPrivacy = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Terms & Privacy</Text>
       <Text style={styles.description}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla justo nec dictum faucibus. 
         Sed in ante sed libero rutrum consectetur vel et justo. Sed in ante sed libero rutrum consectetur vel et justo.
+        We are not responsible for any fraudulent activities carried out by users on this platform. By using this app, you agree to comply with our terms and conditions.
       </Text>
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={[styles.button, styles.acceptButton]} onPress={handleAccept}>
@@ -30,7 +31,7 @@ const TermsAndPrivacy = () => {
           <Text style={styles.buttonText}>Decline</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -40,8 +41,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 10,
     elevation: 5,
-    marginHorizontal: 20,
-    marginBottom: 20,
+    marginTop: 250,
+    flexGrow: 1, 
+    marginLeft:10,
+    marginRight:10// Added to enable scrolling
   },
   title: {
     fontSize: 20,
