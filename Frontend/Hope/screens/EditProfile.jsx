@@ -50,6 +50,7 @@ const ProfileEdit = () => {
         userDataParsed.email = email;
         await AsyncStorage.setItem('user', JSON.stringify(userDataParsed));
         Alert.alert("Success", "Email updated successfully!");
+        navigation.navigate("Setting"); // Navigate back to Setting screen after updating email
       }
     } catch (error) {
       console.error('Error updating user email:', error);
@@ -99,7 +100,7 @@ const ProfileEdit = () => {
       </Pressable>
       <Image
         style={styles.shareIcon}
-        source={require("../assets/share.png")}
+        // source={require("../assets/share.png")}
       />
     </View>
   );

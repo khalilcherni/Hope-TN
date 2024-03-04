@@ -1,12 +1,14 @@
 import * as React from "react";
 import { StyleSheet, View, Pressable, Text } from "react-native";
 import { Image } from "expo-image";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useIsFocused } from "@react-navigation/native"; // Import useIsFocused hook
+// import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Color, FontFamily, Border, FontSize } from "../GlobalStyles";
 
 const Setting = () => {
   const navigation = useNavigation();
+  const isFocused = useIsFocused(); // Hook to check if the screen is focused
   const [userEmail, setUserEmail] = React.useState('');
 
   React.useEffect(() => {
@@ -23,7 +25,7 @@ const Setting = () => {
     };
 
     fetchUserEmail();
-  }, []);
+  }, [isFocused]);
 
   return (
     
@@ -57,6 +59,13 @@ const Setting = () => {
         contentFit="cover"
         source={require("../assets/bell.webp")}
       />
+      {/* Share Icon */}
+      <Image
+        style={[styles.shareIcon, styles.iconLayout]}
+        contentFit="cover"
+        source={require("../assets/share.png")}
+      />
+      {/* End of Share Icon */}
       <Text style={[styles.favorites, styles.eventsFlexBox]}>Favorites</Text>
       <Text style={[styles.language, styles.eventsFlexBox]}>Language</Text>
       <Text style={[styles.preferences, styles.eventsTypo]}>Preferences</Text>
@@ -227,9 +236,11 @@ const styles = StyleSheet.create({
     top: 50,
   },
   bellIcon: {
+    transform: [{ scale: 1.5 }], // Adjust the scale value as needed
     top: 58,
-    left: 319,
-    height: 19,
+    left: 325,
+    height: 16, // Adjust the height to make the icon smaller
+    width: 16, // Adjust the width to make the icon smaller
     position: "absolute",
   },
   favorites: {
@@ -374,6 +385,14 @@ const styles = StyleSheet.create({
   groupView: {
     top: 472,
     left: 341,
+  },
+
+  shareIcon: {
+    width: 20, 
+    height: 20, 
+    position: "absolute",
+    top: 55, 
+    right: 55, 
   },
 });
 
