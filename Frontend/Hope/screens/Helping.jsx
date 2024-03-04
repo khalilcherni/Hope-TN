@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image, ProgressBarAndroid, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage'; // Import AsyncStorage
+import AsyncStorage from '@react-native-async-storage/async-storage'; 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
+
 const CharityScreen = () => {
   const navigation = useNavigation();
   const [donationCards, setDonationCards] = useState([
@@ -14,35 +15,33 @@ const CharityScreen = () => {
       id: 1,
       image: require('../assets/poor1.jpg'),
       description: 'Help Jebreel and his family to escape from death. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id consequat turpis, eget tincidunt lectus.',
-      currentAmount: 0, // Initialize currentAmount to 0
+      currentAmount: 0,
       goalAmount: 10000,
     },
     {
       id: 2,
       image: require('../assets/orphan1.jpg'),
       description: 'Help Jebreel and his family to escape from death. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id consequat turpis, eget tincidunt lectus.',
-      currentAmount: 0, // Initialize currentAmount to 0
+      currentAmount: 0,
       goalAmount: 10000,
     },
     {
       id: 3,
       image: require('../assets/needWater.jpg'),
       description: 'Help Jebreel and his family to escape from death. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id consequat turpis, eget tincidunt lectus.',
-      currentAmount: 0, // Initialize currentAmount to 0
+      currentAmount: 0,
       goalAmount: 10000,
     },
     {
       id: 4,
       image: require('../assets/needWater.jpg'),
       description: 'Help Jebreel and his family to escape from death. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id consequat turpis, eget tincidunt lectus.',
-      currentAmount: 0, // Initialize currentAmount to 0
+      currentAmount: 0,
       goalAmount: 10000,
     },
-    // Add more donation cards here
   ]);
 
   useEffect(() => {
-    // Load donation amounts for each card from AsyncStorage
     loadDonationAmounts();
   }, []);
 
@@ -64,28 +63,31 @@ const CharityScreen = () => {
       console.error('Error loading donation amounts: ', error);
     }
   };
+
   const handleHomeNavigation = () => {
-    // Navigate to the Home screen
     navigation.navigate('Home');
   };
+
   const handleChatNavigation = () => {
-    // Navigate to the Home screen
     navigation.navigate('ChatRoom');
   };
+
   const handleSchoolNavigation = () => {
-    // Navigate to the Home screen
     navigation.navigate('School');
   };
+
   const handleMESNavigation = () => {
-    // Navigate to the Home screen
     navigation.navigate('Messages');
   };
-const handleHelpnavigation=()=>{
-  navigation.navigate('Helping'); 
-}
-const handleEventsavigation=()=>{
-  navigation.navigate('Events'); 
-}
+
+  const handleHelpnavigation = () => {
+    navigation.navigate('Helping'); 
+  };
+
+  const handleEventsnavigation = () => {
+    navigation.navigate('Events'); 
+  };
+
   const handleDonate = async (donationAmount, cardId) => {
     const updatedCards = donationCards.map(card => {
       if (card.id === cardId) {
@@ -98,7 +100,6 @@ const handleEventsavigation=()=>{
     });
     setDonationCards(updatedCards);
     try {
-      // Store the updated donation amount in AsyncStorage
       await AsyncStorage.setItem(`donation_${cardId}`, (updatedCards.find(card => card.id === cardId).currentAmount).toString());
     } catch (error) {
       console.error('Error storing donation amount: ', error);
@@ -132,7 +133,7 @@ const handleEventsavigation=()=>{
         <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={24} color="black" /></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={24} color="black" /></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={handleHelpnavigation}><FontAwesome5 name="hands-helping" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleEventsavigation}><MaterialIcons name="event" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleEventsnavigation}><MaterialIcons name="event" size={24} color="black" /></TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -149,6 +150,7 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingVertical: 20,
     alignItems: 'center',
+    backgroundColor: '#f0f0f0',
   },
   card: {
     width: Dimensions.get('window').width - 40,
@@ -157,6 +159,13 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderRadius: 10,
     padding: 10,
+    backgroundColor: '#f0f0f0', // Add background color
+    shadowColor: '#000', // Add shadow color
+    shadowOffset: { width: 0, height: 2 }, // Add shadow offset
+    shadowOpacity: 0.25, // Add shadow opacity
+    shadowRadius: 3.84, // Add shadow radius
+    elevation: 5, // Add elevation
+    color: '#f0f0f0',
   },
   image: {
     width: '100%',
@@ -203,7 +212,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
-
 });
 
 export default CharityScreen;
