@@ -4,14 +4,14 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase/config';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { firebaseAuth } from '../firebase/config';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
-  const [signInWithGoogle] = useSignInWithGoogle(auth);
 
   const handleSignIn = async () => {
     try {
@@ -44,18 +44,17 @@ const SignIn = () => {
     }
   };
 
-  const handleGoogleSignUp = async () => {
+  const handleSignInWithGoogle = async () => {
     try {
-      const res = await signInWithGoogle(GoogleProvider);
-      console.log({ res });
-
-      await AsyncStorage.setItem('user', JSON.stringify(res.user));
-
-      navigation.navigate('Home');
-    } catch (e) {
-      console.error(e);
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+  
+      console.log('Google Sign-In successful:', result.user);
+    } catch (error) {
+      console.error('Google Sign-In error:', error.message);
     }
   };
+  
 
   return (
     <ScrollView contentContainerStyle={styles.scrollView}>
@@ -81,7 +80,7 @@ const SignIn = () => {
         >
           <Text style={styles.buttonText}>Sign In</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleGoogleSignUp}>
+        <TouchableOpacity onPress={handleSignInWithGoogle}>
           <View style={styles.socialButton}>
             <Image
               style={styles.socialIcon}
@@ -90,7 +89,7 @@ const SignIn = () => {
             <Text style={styles.socialText}>Sign in with Google</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleGoogleSignUp}>
+        <TouchableOpacity onPress={handleSignInWithGoogle}>
           <View style={styles.socialButton}>
             <Image
               style={styles.socialIcon}

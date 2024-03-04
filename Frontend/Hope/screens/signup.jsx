@@ -31,7 +31,12 @@ const SignUp = () => {
         Alert.alert("Password must contain at least one capital letter, one number, and one symbol (!@#$%^&*)");
         return;
       }
+ const res = await createUserWithEmailAndPassword(email, password);
 
+      if (!res || !res.user) {
+        alert("User creation failed. Please try again.");
+        return;
+      }
       const registerResponse = await axios.post('http://192.168.100.48:4000/users/register', {
         firstName,
         lastName,
