@@ -83,7 +83,7 @@ const BottomAppBar = () => {
         id: messages.length + 1,
         primary: inputValue,
         secondary: 'New message',
-        imageUrl: imageUrl, // Include the selected image URL here
+        imageUrl: imageUrl,
         comments: [],
       };
       const updatedMessages = [...messages, newMessage];
@@ -93,7 +93,6 @@ const BottomAppBar = () => {
       Alert.alert('Message Posted', 'Your message has been posted successfully.');
     }
   };
-  
 
   const handleDeleteMessage = (id) => {
     const updatedMessages = messages.filter(message => message.id !== id);
@@ -229,13 +228,23 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   postButton: {
-    backgroundColor: '#007bff',
+    backgroundColor: 'blue',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
   },
   postButtonText: {
-    color: '#fff',
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  choosePhotoButton: {
+    backgroundColor: 'green',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+  },
+  choosePhotoButtonText: {
+    color: 'white',
     fontWeight: 'bold',
   },
 });

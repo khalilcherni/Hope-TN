@@ -1,4 +1,4 @@
-const   {getAll,post,deleteacc,updateacc} =require  ('../models/schollcourses')
+const   {getAll,post,deleteacc,updateacc,getOne} =require  ('../models/schollcourses')
 
 
 const get = function(req, res) {
@@ -42,6 +42,19 @@ const get = function(req, res) {
       }
     });
   }); 
+   const getOnecourse=( function(req, res) {
+    var w=req.params.name
+    getOne(w,(err,results)=>{
+        if(err)
+            res.status(500).send(err)
+        
+    
+        else
+           { res.status(201).json(results)}
+        
+    })
+}    )
+
   module.exports={
-    get,deleted,put,posted
+    get,deleted,put,posted,getOnecourse
   }

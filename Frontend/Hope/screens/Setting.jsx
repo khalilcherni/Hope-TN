@@ -2,12 +2,31 @@ import * as React from "react";
 import { StyleSheet, View, Pressable, Text } from "react-native";
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Color, FontFamily, Border, FontSize } from "../GlobalStyles";
 
 const Setting = () => {
   const navigation = useNavigation();
+  const [userEmail, setUserEmail] = React.useState('');
+
+  React.useEffect(() => {
+    const fetchUserEmail = async () => {
+      try {
+        const userData = await AsyncStorage.getItem('user');
+        if (userData) {
+          const { email } = JSON.parse(userData);
+          setUserEmail(email);
+        }
+      } catch (error) {
+        console.error('Error fetching user email:', error);
+      }
+    };
+
+    fetchUserEmail();
+  }, []);
 
   return (
+    
     <View style={styles.setting}>
       <View style={[styles.settingChild, styles.settingLayout]} />
       <View style={[styles.settingItem, styles.settingLayout]} />
@@ -32,15 +51,11 @@ const Setting = () => {
         //   source={require("../assets/time--light.png")}
           // source={require("../assets/notch.png")}
         />
-       
       </View>
       <Image
         style={styles.unsplashjmurdhtm7ngIcon}
         contentFit="cover"
-        // source={require("../assets/profile.png")}
-        // source={require("../assets/aaa.jpg")}
-
-        // source={require("../assets/logo.png")}
+        source={require("../assets/aaa.jpg")}
       />
       <Pressable
         style={[styles.arrowLeft, styles.notchIconLayout]}
@@ -49,19 +64,13 @@ const Setting = () => {
         <Image
           style={styles.icon}
           contentFit="cover"
-          // source={require("../assets/backleft.png")}
-          // source={require("../assets/aaa.jpg")}
-
-          // source={require("../assets/backleft.png")}
+          source={require("../assets/aaa.jpg")}
         />
       </Pressable>
       <Image
         style={[styles.bellIcon, styles.iconLayout1]}
         contentFit="cover"
-        // source={require("../assets/bell.webp")}
-        // source={require("../assets/aaa.jpg")}
-
-        // source={require("../assets/bell.webp")}
+        source={require("../assets/aaa.jpg")}
       />
       <Text style={[styles.favorites, styles.eventsFlexBox]}>Favorites</Text>
       <Text style={[styles.language, styles.eventsFlexBox]}>Language</Text>
@@ -75,7 +84,7 @@ const Setting = () => {
         <Image
           style={styles.rightIcon}
           contentFit="cover"
-          // source={require("../assets/right.png")}
+          source={require("../assets/aaa.jpg")}
         />
       </View>
       <View style={[styles.rectangle36Copy5Group, styles.groupLayout]}>
@@ -83,10 +92,7 @@ const Setting = () => {
         <Image
           style={styles.rightIcon}
           contentFit="cover"
-          // source={require("../assets/right.png")}
-          // source={require("../assets/aaa.jpg")}
-
-          // source={require("../assets/right.png")}
+          source={require("../assets/aaa.jpg")}
         />
       </View>
       <View style={[styles.rectangle36Copy5Container, styles.groupLayout]}>
@@ -94,10 +100,7 @@ const Setting = () => {
         <Image
           style={styles.rightIcon}
           contentFit="cover"
-          // source={require("../assets/right.png")}
-          // source={require("../assets/aaa.jpg")}
-
-          // source={require("../assets/right.png")}
+          source={require("../assets/aaa.jpg")}
         />
       </View>
       <Pressable
@@ -108,23 +111,19 @@ const Setting = () => {
       <Image
         style={styles.translateIcon}
         contentFit="cover"
-        // source={require("../assets/translate.png")}
+        source={require("../assets/aaa.jpg")}
       />
       <Image
         style={[styles.umoonIcon, styles.iconLayout]}
         contentFit="cover"
-        // source={require("../assets/moon.png")}
-        // source={require("../assets/aaa.jpg")}
-        // source={require("../assets/moon.png")}
+        source={require("../assets/aaa.jpg")}
       />
       <Image
         style={[styles.heartIcon, styles.favouritePosition]}
         contentFit="cover"
-        // source={require("../assets/heart.png")}
-        // source={require("../assets/aaa.jpg")}
-        // source={require("../assets/heart.png")}      
-        />
-      <Text style={[styles.profile, styles.profileClr]}>Profile</Text>
+        source={require("../assets/aaa.jpg")}
+      />
+      <Text style={[styles.profile, styles.profileClr]}>{userEmail}</Text>
       <View style={[styles.rectangleView, styles.settingLayout]} />
       <Text style={[styles.events, styles.eventsTypo]}>Events</Text>
       <Image
@@ -151,13 +150,13 @@ const Setting = () => {
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   setting: {
     backgroundColor: Color.lightWhite,
     flex: 1,
-    height: 800,
-    overflow: "hidden",
-    width: "100%",
+    justifyContent: 'center', // Center items vertically
+    alignItems: 'center', // Center items horizontally
   },
   settingLayout: {
     width: 390,
@@ -355,11 +354,12 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   profile: {
-    left: 158,
     fontFamily: FontFamily.poppinsSemiBold,
     fontWeight: "600",
     fontSize: FontSize.size_mini,
-    top: 50,
+    textAlign: 'center', // Center text horizontally
+    position: 'absolute',
+    top: 50, // Adjust top position as needed
   },
   rectangleView: {
     top: 266,

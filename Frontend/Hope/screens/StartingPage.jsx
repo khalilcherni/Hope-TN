@@ -1,5 +1,4 @@
-// startingPage.jsx
-import React from "react";
+import React, { useEffect } from "react";
 import { Image, TouchableOpacity, Text, View, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import LeaderBoard from "./LeaderBoard";
@@ -7,13 +6,17 @@ import LeaderBoard from "./LeaderBoard";
 const StartingPage = () => {
   const navigation = useNavigation();
 
-  const handleStart = () => {
-    navigation.navigate("OnboardingPage1");
-  };
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      navigation.navigate("OnboardingPage1");
+    }, 3000); // Adjust the delay time as needed (3000 milliseconds = 3 seconds)
+
+    return () => clearTimeout(timeout); // Clear the timeout on component unmount
+  }, [navigation]);
 
   return (
     <View style={styles.startingPage}>
-      {/* <TouchableOpacity onPress={handleStart} style={styles.container}>
+      <TouchableOpacity onPress={() => navigation.navigate("OnboardingPage1")} style={styles.container}>
         <View style={styles.logoContainer}>
           <Image
             style={styles.removebg1Icon}
