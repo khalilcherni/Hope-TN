@@ -12,6 +12,9 @@ import Home from './screens/Home';
 // import Setting from './screens/Setting';
 import Chatroom from './screens/ChatRoom';
 import ChatroomContainer from './screens/ChatrommContainer';
+import HomeRE from './screens/Home';
+import ChatScreen from './screens/ChatScreen';
+import Chatbot from './screens/ChatBot';
 // import ProfileEdit from "./screens/EditProfile"
 
 const Stack = createStackNavigator();
@@ -26,8 +29,8 @@ export default function App() {
         {/ <Stack.Screen name="SignUp" component={SignUp} /> /}
         {/ <Stack.Screen name="SignIn" component={SignIn} /> /}
         {/ <Stack.Screen name="Home" component={Home} /> */}
-         <Stack.Screen name="ChatrommContainer" component={ChatroomContainer}/>
-        <Stack.Screen name="ChatRoom" component={Chatroom}/> 
+          <Stack.Screen name="ChatrommContainer" component={ChatScreen}/>
+        <Stack.Screen name="ChatRoom" component={Chatbot}/>  
  
 
       </Stack.Navigator>
