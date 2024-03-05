@@ -25,10 +25,18 @@ const PasswordInput = ({ value, onChangeText }) => {
         style={styles.visibilityButton}
         onPress={togglePasswordVisibility}
       >
+<<<<<<< HEAD
+        <Image
+          style={styles.icon}
+          contentFit="cover"
+          // source={require("../assets/backleft.png")}
+          // source={require("../assets/iyess.png")}
+=======
         <Ionicons
           name={isPasswordVisible ? "eye-off" : "eye"}
           size={24}
           color="#777"
+>>>>>>> 79d60fd769fb3006dde532d992734aed80953141
         />
       </Pressable>
     </View>

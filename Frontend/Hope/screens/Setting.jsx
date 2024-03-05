@@ -34,6 +34,21 @@ const Setting = () => {
         <Image
           style={[styles.notchIcon, styles.notchIconLayout]}
           contentFit="cover"
+          // source={require("../assets/profile.png")}
+          // source={require("../assets/aaa.jpg")}
+
+        />
+        <Image
+          style={styles.indicatorIcon}
+          contentFit="cover"
+          // source={require("../assets/indicators.png")}
+          // source={require("../assets/aaa.jpg")}
+
+        />
+        <Image
+          style={styles.timeLight}
+          contentFit="cover"
+        //   source={require("../assets/time--light.png")}
           // source={require("../assets/notch.png")}
         />
       </View>
@@ -114,6 +129,8 @@ const Setting = () => {
       <Image
         style={[styles.editDuotoneIcon, styles.iconLayout]}
         contentFit="cover"
+        // source={require("../assets/edit.png")}
+        // source={require("../assets/aaa.jpg")}
         // source={require("../assets/edit-duotone.png")}
       />
       <Text style={[styles.editProfile1, styles.settingInnerLayout]}>
@@ -124,6 +141,9 @@ const Setting = () => {
         <Image
           style={styles.rightIcon}
           contentFit="cover"
+          // source={require("../assets/right.png")}
+          // source={require("../assets/aaa.jpg")}
+ 
           // source={require("../assets/right.png")}
         />
       </View>

@@ -28,38 +28,45 @@ const HomeRE = () => {
 
         
 
-        />
-      </Pressable>
-      <Text style={[styles.welcome, styles.welcomeTypo]}>Welcome</Text>
-      <Image
-        style={styles.menuIcon}
-        contentFit="cover"
+//         />
+//       </Pressable>
+//       <Text style={[styles.welcome, styles.welcomeTypo]}>Welcome</Text>
+//       <Image
+//         style={styles.menuIcon}
+//         style={styles.menuIcon}
+//         contentFit="cover"
 
         source={require("../assets/poor1.jpg")}
 
         
+//         // source={require("../assets/poor1.jpg")}
 
-      />
-      <Image
-        style={styles.homeReChild}
-        contentFit="cover"
-        source={require("../assets/poor1.jpg")}
-      />
-      <Text style={[styles.categories, styles.categoriesTypo]}>
-        Categories:
-      </Text>
-      <Image
-        style={[styles.homeReItem, styles.homePosition]}
-        contentFit="cover"
+//         source={require("../assets/menu.webp")}
+
+//       />
+//       <Image
+//         style={[styles.menuIcon, styles.menuIconPosition]}
+//         contentFit="cover"
+//         source={require("../assets/poor1.jpg")}
+//       />
+//       <Text style={[styles.categories, styles.categoriesTypo]}>
+//         Categories:
+//       </Text>
+//       <Image
+//         style={[styles.homeReItem, styles.homePosition]}
+//         contentFit="cover"
 
         source={require("../assets/poor1.jpg")}
 
         
+//         // source={require("../assets/poor1.jpg")}
 
-      />
-      <Image
-        style={[styles.dropIcon, styles.iconPosition]}
-        contentFit="cover"
+//         source={require("../assets/Ellipse.webp")}
+
+//       />
+//       <Image
+//         style={[styles.dropIcon, styles.iconPosition]}
+//         contentFit="cover"
 
         source={require("../assets/poor1.jpg")}
 
@@ -73,92 +80,147 @@ const HomeRE = () => {
           style={styles.iconLayout3}
           contentFit="cover"
 
-         source={require("../assets/poor1.jpg")}
+//          source={require("../assets/poor1.jpg")}
 
 
+//           source={require("../assets/Ellipse.webp")}
 
-        />
-      </Pressable>
-      <Image
-        style={[styles.dollarCircleIcon, styles.iconPosition]}
-        contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-    
-
-      />
-      <Image
-        style={[styles.homeReInner, styles.homePosition]}
-        contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-        
-
-      />
-      <Image
-        style={[styles.downloadRemovebgPreview1Icon, styles.iconLayout2]}
-        contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-      />
-      <Image
-        style={[styles.ellipseIcon, styles.ellipseIconLayout]}
-        contentFit="cover"
+//         />
+//       </Pressable>
+//       <Image
+//         style={[styles.homeItem, styles.homeItemPosition]}
+//         contentFit="cover"
 
         source={require("../assets/poor1.jpg")}
 
     
+//         // source={require("../assets/poor1.jpg")}
 
-      />
-      <Image
-        style={[styles.depositphotos105691240StockIcon, styles.iconLayout2]}
-        contentFit="cover"
+//         source={require("../assets/dollar-circle.webp")}
 
-        source={require("../assets/poor1.jpg")}
-
-        
-
-      />
-      <Image
-        style={[styles.homeReChild1, styles.homePosition]}
-        contentFit="cover"
+//       />
+//       <Image
+//         style={[styles.homeReInner, styles.homePosition]}
+//         contentFit="cover"
 
         source={require("../assets/poor1.jpg")}
 
         
+//         // source={require("../assets/poor1.jpg")}
 
-      />
-      <Image style={styles.seniorCitizenLogoPngSeniorIcon} contentFit="cover" />
-      <Text style={[styles.ourWork, styles.welcomeTypo]}>Our Work :</Text>
-      <Image
-        style={[styles.demt1Icon, styles.iconLayout1]}
-        contentFit="cover"
+//         source={require("../assets/Ellipse.webp")}
 
-        source={require("../assets/poor1.jpg")}
-        
-
-      />
-      <Image
-        style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
-        contentFit="cover"
+//       />
+//       <Image
+//         style={[styles.downloadRemovebgPreview1Icon, styles.iconLayout2]}
+//         contentFit="cover"
 
         source={require("../assets/poor1.jpg")}
-        
+//         // source={require("../assets/poor1.jpg")}
 
-      />
-      <Text style={[styles.povertyInTunisia, styles.categoriesTypo]}>
-        Poverty in Tunisia :
-      </Text>
-      <Image
-        style={styles.jpgRemovebgPreview1Icon}
-        contentFit="cover"
+//         source={require("../assets/4.webp")}
+
+//       />
+//       <Image
+//         style={[styles.ellipseIcon, styles.ellipseIconLayout]}
+//         contentFit="cover"
 
         source={require("../assets/poor1.jpg")}
 
     
+//         // source={require("../assets/poor1.jpg")}
+
+//         source={require("../assets/Ellipse.webp")}
+
+//       />
+//       <Image
+//         style={[styles.depositphotos105691240StockIcon, styles.iconLayout2]}
+//         contentFit="cover"
+
+        source={require("../assets/poor1.jpg")}
+
+        
+//         // source={require("../assets/poor1.jpg")}
+
+//         source={require("../assets/3.webp")}
+
+//       />
+//       <Image
+//         style={[styles.homeReChild1, styles.homePosition]}
+//         contentFit="cover"
+
+        source={require("../assets/poor1.jpg")}
+
+        
+//         // source={require("../assets/poor1.jpg")}
+
+//         source={require("../assets/Ellipse.webp")}
+
+//       />
+//       <Image style={styles.seniorCitizenLogoPngSeniorIcon} contentFit="cover" />
+//       <Text style={[styles.ourWork, styles.welcomeTypo]}>Our Work :</Text>
+//       <Image
+//         style={[styles.demt1Icon, styles.iconLayout1]}
+//         contentFit="cover"
+
+        source={require("../assets/poor1.jpg")}
+        
+//         // source={require("../assets/poor1.jpg")}
+
+//         source={require("../assets/DEMT_1.webp")}
+
+//       />
+//       <Image
+//         style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
+//         contentFit="cover"
+
+//         source={require("../assets/poor1.jpg")}
+//         
+
+//       />
+//       <Text style={[styles.povertyInTunisia, styles.categoriesTypo]}>
+//         Poverty in Tunisia :
+//       </Text>
+//       <Text style={[styles.categories, styles.somePhotosTypo]}>
+//         Categories :
+//       </Text>
+//       <View
+//         style={[
+//           styles.jeuneMereEnfantsRemplitBidParent,
+//           styles.homeItemPosition,
+//         ]}
+//       >
+//         <Image
+//           style={[styles.jeuneMereEnfantsRemplitBidIcon, styles.iconLayout2]}
+//           contentFit="cover"
+//           source={require("../assets/jeune-mere-enfants-remplit-bidons-eau-potable-tunisie 1.png")}
+//         />
+//         <Image
+//           style={[styles.fediMejriTunisiaWarmMeUpIcon, styles.iconLayout2]}
+//           contentFit="cover"
+//           source={require("../assets/Fedi-Mejri-Tunisia-Warm-Me-Up-project-1 1.png")}
+//         />
+//         <Image
+//           style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
+//           contentFit="cover"
+//           source={require("../assets/tunisia-covid-station-767 1 (1).png")}
+//         />
+//         <Image
+//           style={[styles.demt1Icon, styles.demt1IconPosition]}
+//           contentFit="cover"
+//           source={require("../assets/DEMT 1.png")}
+//         />
+//       </View>
+//       <Image
+//         style={styles.jpgRemovebgPreview1Icon}
+//         contentFit="cover"
+
+        source={require("../assets/poor1.jpg")}
+
+    
+//         // source={require("../assets/poor1.jpg")}
+
+//         source={require("../assets/remove.webp")}
 
       />
       <Image
@@ -168,38 +230,55 @@ const HomeRE = () => {
         source={require("../assets/poor1.jpg")}
 
     
+//       />
+//       <Text style={[styles.povertyRatesIn, styles.somePhotosTypo]}>
+//         Poverty rates in Tunisia :
+//       </Text>
+//       <Image
+//         style={[styles.homeInner, styles.demt1IconPosition]}
+//         contentFit="cover"
 
-      />
-      <Pressable
-        style={[styles.vuesaxbrokenmessageText, styles.houseIconLayout]}
-        onPress={() => navigation.navigate("ChannelList")}
-      >
-        <Image
-          style={[styles.icon2, styles.iconLayout]}
-          contentFit="cover"
+//         // source={require("../assets/poor1.jpg")}
+
+//         source={require("../assets/Rect.webp")}
+
+//       />
+//       <Pressable
+//         style={[styles.vuesaxbrokenmessageText, styles.houseIconLayout]}
+//         onPress={() => navigation.navigate("ChannelList")}
+//       >
+//         <Image
+//           style={[styles.icon1, styles.iconLayout]}
+//           contentFit="cover"
 
           source={require("../assets/poor1.jpg")}
 
         
+//           // source={require("../assets/poor1.jpg")}
 
-        />
-      </Pressable>
-      <Image
-        style={[styles.houseIcon, styles.iconLayout]}
-        contentFit="cover"
+//           source={require("../assets/message-text.webp")}
+
+//         />
+//       </Pressable>
+//       <Image
+//         style={[styles.houseIcon, styles.iconLayout]}
+//         contentFit="cover"
 
         source={require("../assets/poor1.jpg")}
 
         
+//         // source={require("../assets/poor1.jpg")}
 
-      />
-      <Pressable
-        style={[styles.vuesaxboldchart, styles.houseIconLayout]}
-        onPress={() => navigation.navigate("LeaderBoard")}
-      >
-        <Image
-          style={[styles.icon2, styles.iconLayout]}
-          contentFit="cover"
+//         source={require("../assets/house.webp")}
+
+//       />
+//       <Pressable
+//         style={[styles.vuesaxboldchart, styles.houseIconLayout]}
+//         onPress={() => navigation.navigate("LeaderBoard")}
+//       >
+//         <Image
+//           style={[styles.icon1, styles.iconLayout]}
+//           contentFit="cover"
 
           source={require("../assets/poor1.jpg")}
 
@@ -438,4 +517,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeRE
+// export default Home
+RE
