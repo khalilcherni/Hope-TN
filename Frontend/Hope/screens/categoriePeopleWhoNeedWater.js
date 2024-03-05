@@ -1,13 +1,32 @@
 import * as React from "react";
 import { Image } from "expo-image";
 // import {Video} from 'react-native-video';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 import { StyleSheet, Text, View,Pressable , ScrollView,Dimensions,TouchableOpacity } from "react-native";
 import { FontFamily, Color, FontSize } from "../GlobalStyles";
 import { useNavigation } from "@react-navigation/native"; 
 import { WebView } from 'react-native-webview';
+import { Ionicons } from '@expo/vector-icons';
 const Frame = () => {
   const videoUrl = 'https://www.youtube.com/embed/Tg8FDNYkEIQ';
   const navigation = useNavigation();
+  const handleHomeNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('Home');
+  };
+  const handleChatNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('ChatRoom');
+  };
+  const handleSchoolNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('School');
+  };
+  const handleMESNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('Messages');
+  };
   return (
     <ScrollView>
     <  View style={styles.vectorParent}>
@@ -76,13 +95,19 @@ About 300,000 of Tunisia's 12 million people have no drinking water in their hom
       >{`The southern region of Tunisia offers a stark illustration of the country’s water crisis. Here, only 7% were satisfied with their water quality -- the lowest total anywhere in the world -- in 2022. This is a rapid drop from 2015, when roughly half (48%) of Tunisians in the south were satisfied with their water.
 
 `}</Text>
-       <TouchableOpacity
+       <Pressable
           style={styles.nextButton}
           onPress={() => navigation.navigate("donation")}
         >
           <Text style={styles.donate}>Donate</Text>
-        </TouchableOpacity>
+        </Pressable>
     </View>
+    <View style={styles.tabbar}>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={24} color="black" /></TouchableOpacity>
+      </View>
     </ScrollView>
   );
 };
@@ -243,6 +268,17 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 2353,
     overflow: "hidden",
+  },
+  tabbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+    paddingVertical: 10,
+  },
+  tabItem: {
+    flex: 1,
+    alignItems: 'center',
   },
 });
 

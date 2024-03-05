@@ -1,14 +1,15 @@
+
 import React, { useState, useEffect } from 'react';
 import { GiftedChat } from 'react-native-gifted-chat';
-import { View, StyleSheet, Button } from 'react-native';
+import { View, StyleSheet,TouchableOpacity,Text } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import io from 'socket.io-client';
-
+import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 const Chatroom = ({ userId }) => {
   const [messages, setMessages] = useState([]);
-  const [invitedUserId, setInvitedUserId] = useState('');
-  const socket = io('http://192.168.202.196:4000'); // Connect to the WebSocket server
-
+  const navigation = useNavigation(); 
   useEffect(() => {
     loadMessages();
     joinChatroom('Room 1'); // Initial join when component mounts
@@ -53,7 +54,22 @@ const Chatroom = ({ userId }) => {
     // Emit "inviteUser" event with the invited user's ID to the server
     socket.emit('inviteUser', invitedUserId);
   };
-
+  const handleHomeNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('Home');
+  };
+  const handleChatNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('ChatRoom');
+  };
+  const handleSchoolNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('School');
+  };
+  const handleMESNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('Messages');
+  };
   return (
     <View style={styles.container}>
       <View style={styles.backgroundContainer} />
@@ -66,7 +82,16 @@ const Chatroom = ({ userId }) => {
         }}
         style={styles.giftedChat}
       />
+<<<<<<< HEAD
       <Button title="Invite User" onPress={inviteUser} />
+=======
+       <View style={styles.tabbar}>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={24} color="black" /></TouchableOpacity>
+      </View>
+>>>>>>> 6a6a243fbdbfa5669ddd322271689a56b2cc9556
     </View>
   );
 };
@@ -82,6 +107,51 @@ const styles = StyleSheet.create({
   giftedChat: {
     flex: 1,
   },
+  tabbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+    paddingVertical: 10,
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
+  tabItem: {
+    flex: 1,
+    alignItems: 'center',
+  },
 });
+
+//   return (
+//     <View style={styles.container}>
+//       <View style={styles.backgroundContainer} />
+//       <GiftedChat
+//         messages={messages}
+//         onSend={onSend}
+//         user={{
+//           _id: userId,
+//           name: 'Anonymous',
+//         }}
+//         style={styles.giftedChat}
+//       />
+//     </View>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//   },
+//   backgroundContainer: {
+//     ...StyleSheet.absoluteFillObject,
+//     backgroundColor: '#209FA6',
+//   },
+//   giftedChat: {
+//     flex: 1,
+//   },
+// });
+
 
 export default Chatroom;

@@ -1,161 +1,202 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text, Pressable, TextInput, Alert, Image } from "react-native";
+import * as React from "react";
+import { StyleSheet, View, Pressable, Text, TextInput, Image } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from "@react-navigation/native";
-import axios from 'axios'; // Import Axios
+import { Alert } from 'react-native';
 
-const ProfileEdit = () => {
-  const navigation = useNavigation();
-  const [profileId, setProfileId] = useState(""); // Assuming the default profile ID is 1
-  const [profileData, setProfileData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: ""
-  });
+const PasswordInput = ({ value, onChangeText }) => {
+  const [isPasswordVisible, setPasswordVisible] = React.useState(false);
 
-  useEffect(() => {
-    // Fetch profile data from the server using Axios when the component mounts
-    fetchProfileData();
-  }, []);
-
-  const fetchProfileData = () => {
-    axios.get("http://localhost:4000/profile/getAll") // Assuming this endpoint returns profile data
-      .then(response => {
-        // For simplicity, let's assume the first profile is fetched
-        setProfileId(response.data[0].id);
-        setProfileData(response.data[0]);
-      })
-      .catch(error => {
-        console.error("Error fetching profile data:", error);
-      });
-  };
-
-  const handleUpdate = () => {
-    // Prepare the data to send to the backend
-    const updatedProfile = {
-      ...profileData,
-      firstName: profileData.firstName,
-      lastName: profileData.lastName,
-      email: profileData.email,
-      password: profileData.password
-    };
-
-    // Send a PUT request to update the profile
-    axios.put(`http://localhost:4000/profile/${profileId}`, updatedProfile)
-      .then(response => {
-        Alert.alert("Profile updated successfully");
-        navigation.goBack();
-      })
-      .catch(error => {
-        console.error("Error updating profile:", error);
-        Alert.alert("Error updating profile");
-      });
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!isPasswordVisible);
   };
 
   return (
-    <View style={styles.profileEdit}>
-      <View style={styles.background} />
+    <View style={styles.passwordInputContainer}>
+      <TextInput
+        style={styles.passwordInput}
+        placeholder="Password"
+        value={value}
+        onChangeText={onChangeText}
+        secureTextEntry={!isPasswordVisible}
+      />
       <Pressable
-        style={styles.arrowLeft}
-        onPress={() => navigation.navigate("Setting")}
+        style={styles.visibilityButton}
+        onPress={togglePasswordVisibility}
       >
+<<<<<<< HEAD
         <Image
           style={styles.icon}
           contentFit="cover"
-          source={require("../assets/backleft.png")}
+          // source={require("../assets/backleft.png")}
+          // source={require("../assets/iyess.png")}
+=======
+        <Ionicons
+          name={isPasswordVisible ? "eye-off" : "eye"}
+          size={24}
+          color="#777"
+>>>>>>> 79d60fd769fb3006dde532d992734aed80953141
         />
       </Pressable>
-      <View style={styles.formContainer}>
-        <Text style={styles.headerText}>Edit Profile</Text>
+    </View>
+  );
+};
+
+const ProfileEdit = () => {
+  const navigation = useNavigation();
+  const [firstName, setFirstName] = React.useState("");
+  const [lastName, setLastName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
+  const updateUserEmail = async () => {
+    try {
+      const userData = await AsyncStorage.getItem('user');
+      if (userData) {
+        const userDataParsed = JSON.parse(userData);
+        userDataParsed.email = email;
+        await AsyncStorage.setItem('user', JSON.stringify(userDataParsed));
+        Alert.alert("Success", "Email updated successfully!");
+      }
+    } catch (error) {
+      console.error('Error updating user email:', error);
+      Alert.alert("Error", "Failed to update email. Please try again.");
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <Image
+        style={styles.logo}
+        source={require("../assets/logo.png")}
+      />
+      <View style={styles.editProfileContainer}>
+        <Text style={styles.editProfile}>Edit Profile</Text>
         <TextInput
           style={styles.input}
           placeholder="First Name"
-          value={profileData.firstName}
-          onChangeText={(text) => setProfileData({...profileData, firstName: text})}
+          value={firstName}
+          onChangeText={setFirstName}
         />
         <TextInput
           style={styles.input}
           placeholder="Last Name"
-          value={profileData.lastName}
-          onChangeText={(text) => setProfileData({...profileData, lastName: text})}
+          value={lastName}
+          onChangeText={setLastName}
         />
         <TextInput
           style={styles.input}
           placeholder="Email"
-          value={profileData.email}
-          onChangeText={(text) => setProfileData({...profileData, email: text})}
+          value={email}
+          onChangeText={setEmail}
         />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          secureTextEntry
-          value={profileData.password}
-          onChangeText={(text) => setProfileData({...profileData, password: text})}
+        <PasswordInput
+          value={password}
+          onChangeText={setPassword}
         />
-        <Pressable style={styles.button} onPress={handleUpdate}>
-          <Text style={styles.buttonText}>Update</Text>
+        <Pressable style={styles.updateButton} onPress={updateUserEmail}>
+          <Text style={styles.updateButtonText}>Update</Text>
         </Pressable>
       </View>
+      <Pressable style={styles.backIcon} onPress={() => navigation.navigate("Setting")}>
+        <Image
+          style={styles.icon}
+          source={require("../assets/backleft.png")}
+        />
+      </Pressable>
+      <Image
+        style={styles.shareIcon}
+        source={require("../assets/share.png")}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  profileEdit: {
+  container: {
     flex: 1,
+    backgroundColor: "#209FA6",
     alignItems: "center",
-    justifyContent: "center",
   },
-  background: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: "#008080",
-    opacity: 0.5,
+  logo: {
+    marginTop: 20,
+    width: 150,
+    height: 155,
   },
-  arrowLeft: {
-    position: "absolute",
-    top: 20,
-    left: 20,
-    width: 26,
-    height: 26,
-  },
-  icon: {
-    height: "100%",
+  editProfileContainer: {
+    backgroundColor: "#fff",
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    alignItems: "center",
+    paddingTop: 30,
+    paddingHorizontal: 20,
+    paddingBottom: 250,
     width: "100%",
+    flex: 1,
   },
-  formContainer: {
-    backgroundColor: "#FFFFFF",
-    padding: 20,
-    borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "center",
-    width: "80%",
-  },
-  headerText: {
-    fontSize: 24,
+  editProfile: {
+    textAlign: "center",
+    fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 20,
+    color: "#209FA6",
+    marginBottom: 15,
   },
   input: {
-    borderColor: "#CCCCCC",
-    borderRadius: 5,
     borderWidth: 1,
-    color: "#333333",
-    height: 40,
-    marginBottom: 20,
+    borderColor: "#209FA6",
+    borderRadius: 12,
     paddingHorizontal: 10,
+    height: 45,
+    width: "100%",
+    marginBottom: 40,
+  },
+  passwordInputContainer: {
+    position: "relative",
     width: "100%",
   },
-  button: {
-    alignItems: "center",
-    backgroundColor: "#007BFF",
-    borderRadius: 5,
+  passwordInput: {
+    borderWidth: 1,
+    borderColor: "#209FA6",
+    borderRadius: 12,
+    paddingHorizontal: 10,
+    height: 45,
+    width: "100%",
+    marginBottom: 40,
+  },
+  visibilityButton: {
+    position: "absolute",
+    right: 10,
+    top: "15%",
+    zIndex: 1,
+  },
+  updateButton: {
+    backgroundColor: "#209FA6",
+    borderRadius: 12,
+    height: 45,
+    width: "100%",
     justifyContent: "center",
-    height: 40,
-    width: "100%",
+    alignItems: "center",
   },
-  buttonText: {
-    color: "#FFFFFF",
-    fontWeight: "bold",
+  updateButtonText: {
+    color: "#fff",
+    fontSize: 16,
+  },
+  backIcon: {
+    position: "absolute",
+    top: 40,
+    left: 20,
+  },
+  icon: {
+    height: 26,
+    width: 26,
+  },
+  shareIcon: {
+    position: "absolute",
+    top: 40,
+    right: 20,
+    height: 26,
+    width: 25,
   },
 });
 
