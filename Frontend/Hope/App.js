@@ -26,6 +26,9 @@ import Gaza from './screens/Palestine';
 // import Setting from './screens/Setting';
 import Chatroom from './screens/ChatRoom';
 import ChatroomContainer from './screens/ChatrommContainer';
+import HomeRE from './screens/Home';
+import ChatScreen from './screens/ChatScreen';
+import Chatbot from './screens/ChatBot';
 // import ProfileEdit from "./screens/EditProfile"
 import Register from './screens/Registration'
 import Events from './screens/Events.jsx'
