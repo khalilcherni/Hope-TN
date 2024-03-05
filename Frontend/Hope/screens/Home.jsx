@@ -1,16 +1,15 @@
 import * as React from "react";
 import { Image } from "expo-image";
-import { StyleSheet, Pressable, Text, View } from "react-native";
+import { StyleSheet, Pressable, Text, View,ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
-import { ScrollView } from "react-native-gesture-handler";
 
 const HomeRE = () => {
   const navigation = useNavigation();
 
   return (
     <ScrollView>
-    <View  style={styles.homeRe}>
+    <View style={styles.homeRe}>
       <Pressable
         style={[styles.profileCircle, styles.ellipseIconLayout]}
         onPress={() => navigation.navigate("Setting")}
@@ -18,47 +17,29 @@ const HomeRE = () => {
         <Image
           style={[styles.icon, styles.iconLayout3]}
           contentFit="cover"
-
-          source={require("../assets/poor1.jpg")}
-
-        
-
+          source={require("../assets/profile-circle.png")}
         />
       </Pressable>
       <Text style={[styles.welcome, styles.welcomeTypo]}>Welcome</Text>
-      <Image
-        style={styles.menuIcon}
-        contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-        
-
-      />
+    
       <Image
         style={styles.homeReChild}
         contentFit="cover"
-        source={require("../assets/poor1.jpg")}
+        source={require("../assets/Rectangle.png")}
       />
       <Text style={[styles.categories, styles.categoriesTypo]}>
         Categories:
       </Text>
+      
       <Image
         style={[styles.homeReItem, styles.homePosition]}
         contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-        
-
+        source={require("../assets/Ellipse_52.png")}
       />
       <Image
         style={[styles.dropIcon, styles.iconPosition]}
         contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-
+        source={require("../assets/drop.png")}
       />
       <Pressable
         style={[styles.wrapper, styles.homePosition]}
@@ -67,82 +48,56 @@ const HomeRE = () => {
         <Image
           style={styles.iconLayout3}
           contentFit="cover"
-
-          source={require("../assets/poor1.jpg")}
-
-
-
+          source={require("../assets/Ellipse_52.png")}
         />
       </Pressable>
       <Image
         style={[styles.dollarCircleIcon, styles.iconPosition]}
         contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-    
-
+        source={require("../assets/dollar-circle.png")}
       />
       <Image
         style={[styles.homeReInner, styles.homePosition]}
         contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-        
-
+        source={require("../assets/Ellipse_52.png")}
       />
       <Image
         style={[styles.downloadRemovebgPreview1Icon, styles.iconLayout2]}
         contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
+        source={require("../assets/download-removebg-preview.png")}
       />
       <Image
         style={[styles.ellipseIcon, styles.ellipseIconLayout]}
         contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-    
-
+        source={require("../assets/Ellipse_52.png")}
       />
       <Image
         style={[styles.depositphotos105691240StockIcon, styles.iconLayout2]}
         contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-        
-
+        source={require("../assets/depositphotos_105691240-stock-illustration-isolated-vector-hands-logo-orphanage-removebg-preview.png")}
       />
       <Image
         style={[styles.homeReChild1, styles.homePosition]}
         contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-        
-
+        source={require("../assets/Ellipse_52.png")}
       />
-      <Image style={styles.seniorCitizenLogoPngSeniorIcon} contentFit="cover" />
+      <Image
+        style={styles.seniorCitizenLogoPngSeniorIcon}
+        contentFit="cover"
+        source={require("../assets/download-removebg-preview.png")}
+      />
+      
+
       <Text style={[styles.ourWork, styles.welcomeTypo]}>Our Work :</Text>
       <Image
         style={[styles.demt1Icon, styles.iconLayout1]}
         contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-        
-
+        source={require("../assets/tunisia-covid-station-767_1_1.png")}
       />
       <Image
         style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
         contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-        
-
+        source={require("../assets/charity-work.jpg")}
       />
       <Text style={[styles.povertyInTunisia, styles.categoriesTypo]}>
         Poverty in Tunisia :
@@ -150,62 +105,26 @@ const HomeRE = () => {
       <Image
         style={styles.jpgRemovebgPreview1Icon}
         contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-    
-
+        source={require("../assets/jpg-removebg-preview_1.png")}
       />
-      <Image
-        style={styles.rectangleIcon}
-        contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-    
-
-      />
+     
       <Pressable
         style={[styles.vuesaxbrokenmessageText, styles.houseIconLayout]}
         onPress={() => navigation.navigate("ChannelList")}
       >
-        <Image
-          style={[styles.icon2, styles.iconLayout]}
-          contentFit="cover"
-
-          source={require("../assets/poor1.jpg")}
-
-        
-
-        />
+       
       </Pressable>
-      <Image
-        style={[styles.houseIcon, styles.iconLayout]}
-        contentFit="cover"
-
-        source={require("../assets/poor1.jpg")}
-
-        
-
-      />
+     
       <Pressable
         style={[styles.vuesaxboldchart, styles.houseIconLayout]}
         onPress={() => navigation.navigate("LeaderBoard")}
       >
-        <Image
-          style={[styles.icon2, styles.iconLayout]}
-          contentFit="cover"
-
-          source={require("../assets/poor1.jpg")}
-
-          // source={require("../assets/chart.png")}
-
-        />
+       
       </Pressable>
     </View>
     </ScrollView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   ellipseIconLayout: {
@@ -220,7 +139,7 @@ const styles = StyleSheet.create({
   welcomeTypo: {
     textAlign: "left",
     color: Color.lightBlack,
-    fontFamily: FontFamily.kalam,
+    // fontFamily: FontFamily.kalamRegular,
     fontSize: FontSize.size_xl,
     position: "absolute",
   },
@@ -228,7 +147,7 @@ const styles = StyleSheet.create({
     left: 9,
     textAlign: "left",
     color: Color.lightBlack,
-    fontFamily: FontFamily.kalam,
+    fontFamily: FontFamily.kalamRegular,
     fontSize: FontSize.size_xl,
     position: "absolute",
   },
@@ -273,7 +192,7 @@ const styles = StyleSheet.create({
     top: 9,
     left: 140,
     width: 181,
-    height: 22,
+    height: 80,
   },
   menuIcon: {
     marginLeft: -174,
@@ -285,17 +204,17 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   homeReChild: {
-    marginLeft: -165,
+    // marginLeft: -165,
     bottom: 1146,
-    width: 330,
+    width: 350,
     height: 160,
-    left: "50%",
+    left: 15,
     position: "absolute",
   },
   categories: {
     top: 237,
     width: 155,
-    height: 25,
+    height: 55,
   },
   homeReItem: {
     left: 6,
@@ -341,10 +260,10 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   ourWork: {
-    top: 345,
+    top: 335,
     left: 12,
     width: 128,
-    height: 25,
+    height: 55,
   },
   demt1Icon: {
     top: 370,
@@ -357,20 +276,20 @@ const styles = StyleSheet.create({
   povertyInTunisia: {
     top: 542,
     width: 194,
-    height: 23,
+    height: 63,
   },
   jpgRemovebgPreview1Icon: {
-    top: 586,
+    top: 593,
     left: -15,
     width: 375,
-    height: 569,
+    height: 680,
     position: "absolute",
   },
   rectangleIcon: {
-    top: 1132,
-    left: 0,
+    top: 1072,
+    left: 9,
     width: 470,
-    height: 238,
+    height: 248,
     position: "absolute",
   },
   icon2: {
@@ -401,10 +320,12 @@ const styles = StyleSheet.create({
   homeRe: {
     backgroundColor: Color.lightWhite,
     flex: 1,
+    top:50,
     height: 1370,
     overflow: "hidden",
-    width: "100%",
+    width: 360,
+    left:21
   },
 });
 
-export default HomeRE
+export default HomeRE;
