@@ -1,10 +1,13 @@
 
 import * as React from "react";
 import { Image } from "expo-image";
-import { StyleSheet, Pressable, Text, View,ScrollView,TouchableOpacity } from "react-native";
+import { StyleSheet, Pressable, Text, View,ScrollView,TouchableOpacity,Dimensions } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
-
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+const { width, height } = Dimensions.get('window');
 const HomeRE = () => {
   const navigation = useNavigation();
   const images = [
@@ -36,6 +39,18 @@ const HomeRE = () => {
       );
     }
     return pages;
+  };
+  const handleHomeNavigation = () => {
+    navigation.navigate('Home');
+  };
+  const handleChatNavigation = () => {
+    navigation.navigate('ChatRoom');
+  };
+  const handleSchoolNavigation = () => {
+    navigation.navigate('School');
+  };
+  const handleMESNavigation = () => {
+    navigation.navigate('Messages');
   };
   return (
     <ScrollView>
@@ -153,6 +168,12 @@ const HomeRE = () => {
         <Text style={styles.buttonText}>Learn More</Text>
       </TouchableOpacity>
     </View>
+    <View style={styles.tabbar}>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={width * 0.06} color="black" /></TouchableOpacity>
+      </View>
     </ScrollView>
   );
 }
@@ -390,6 +411,17 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     width: 360,
     left:21
+  },
+  tabbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+    paddingVertical: height * 0.02,
+  },
+  tabItem: {
+    flex: 1,
+    alignItems: 'center',
   },
 });
 
