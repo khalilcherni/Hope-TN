@@ -79,10 +79,10 @@ const ImageUploadTwo = ({ changeImage }) => {
       {uploading && <ActivityIndicator size="large" color="#4CAF50" />}
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.customButtonFolder} onPress={openImagePicker}>
-          <Image source={require('../assets/my gallery.jpg')} style={styles.buttonImage} />
+          <Image source={require('../assets/gaa.png')} style={styles.buttonImage} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.customButtonCamera} onPress={handleCameraLaunch}>
-          <Image source={require('../assets/my camera.png')} style={styles.buttonImage} />
+          <Image source={require('../assets/qz.png')} style={styles.buttonImage} />
         </TouchableOpacity>
       </View>
     </View>
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginTop: 5,
+    marginTop: 3,
     alignItems: "center"
   },
   customButtonCamera: {
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#0000', // Button background color
     borderRadius: 10,
-    width: 40, // Adjust button width as needed
+    width: 50, // Adjust button width as needed
     height: 40,
     paddingHorizontal: 10,
     marginLeft: 20
@@ -110,9 +110,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#0000', // Button background color
-    borderRadius: 10,
-    width: 40, // Adjust button width as needed
-    height: 40,
+    borderRadius: 30,
+    width: 1, // Adjust button width as needed
+    height:1,
     paddingHorizontal: 10
   },
   buttonImage: {

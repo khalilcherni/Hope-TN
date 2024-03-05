@@ -82,16 +82,7 @@ const Chatroom = ({ userId }) => {
         }}
         style={styles.giftedChat}
       />
-<<<<<<< HEAD
       <Button title="Invite User" onPress={inviteUser} />
-=======
-       <View style={styles.tabbar}>
-        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem}onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem}onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={24} color="black" /></TouchableOpacity>
-      </View>
->>>>>>> 6a6a243fbdbfa5669ddd322271689a56b2cc9556
     </View>
   );
 };

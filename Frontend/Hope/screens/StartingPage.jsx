@@ -20,7 +20,7 @@ const StartingPage = () => {
         <View style={styles.logoContainer}>
           <Image
             style={styles.removebg1Icon}
-            // source={require("../assets/donnation.png")}
+            source={require("../assets/donnation.png")}
           />
         </View>
         {/* <Text style={styles.logoText}> Click here to Start </Text> */}

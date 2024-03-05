@@ -84,7 +84,7 @@ const HomeRE = () => {
       <Text style={[styles.categories, styles.categoriesTypo]}>
         Categories:
       </Text>
-      
+      <View  style={styles.images}>
       <Pressable onPress={navigateToPeopleWhoNeedWater}>
         <Image
           style={[styles.homeReItem, styles.homePosition]}
@@ -148,9 +148,10 @@ const HomeRE = () => {
         contentFit="cover"
         source={require("../assets/funeral.png")}
       />
-      
+      </View> 
 
       <Text style={[styles.ourWork, styles.welcomeTypo]}>Our Work :</Text>
+      <View   style={styles.imageWork}>
       <Image
         style={[styles.demt1Icon, styles.iconLayout1]}
         contentFit="cover"
@@ -166,6 +167,7 @@ const HomeRE = () => {
         contentFit="cover"
         source={require("../assets/charity-work.png")}
       />
+      </View>
       <Text style={[styles.povertyInTunisia, styles.categoriesTypo]}>
         Poverty in Tunisia :
       </Text>
@@ -212,7 +214,8 @@ const styles = StyleSheet.create({
     // fontFamily: FontFamily.kalamRegular,
     fontSize: FontSize.size_xl,
     position: "absolute",
-    marginTop:15
+    marginTop:15,
+    fontWeight: "700",
   },
   categoriesTypo: {
     left: 9,
@@ -258,10 +261,10 @@ const styles = StyleSheet.create({
   },
   profileCircle: {
     bottom: 1310,
-    left: "50%",
+    left: 180,
   },
   welcome: {
-    top: 9,
+    top: 5,
     left: 140,
     width: 181,
     height: 80,
@@ -285,9 +288,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#209FA6',
   },
   categories: {
-    top: 237,
+    top: 230,
     width: 155,
     height: 55,
+    fontWeight: "700",
   },
   homeReItem: {
     left: 6,
@@ -363,10 +367,11 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   ourWork: {
-    top: 335,
+    top: 325,
     left: 12,
     width: 128,
     height: 55,
+    fontWeight: "700",
   },
   demt1Icon: {
     top: 370,
@@ -377,13 +382,14 @@ const styles = StyleSheet.create({
     left: 190,
   },
   povertyInTunisia: {
-    top: 542,
+    top: 548,
     width: 194,
     height: 63,
+    fontWeight: "700",
   },
   jpgRemovebgPreview1Icon: {
     top: 593,
-    left: -15,
+    left: 15,
     width: 375,
     height: 680,
     position: "absolute",
@@ -430,6 +436,12 @@ const styles = StyleSheet.create({
     width: 360,
     left:21
   },
+  images:{
+    left:15
+  },
+  imageWork: {
+    left:10
+  },
   tabbar: {
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -441,6 +453,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
+  text:{
+    width:350
+  }
 });
 
 export default HomeRE;

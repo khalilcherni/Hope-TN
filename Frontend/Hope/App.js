@@ -26,9 +26,6 @@ import Gaza from './screens/Palestine';
 // import Setting from './screens/Setting';
 import Chatroom from './screens/ChatRoom';
 import ChatroomContainer from './screens/ChatrommContainer';
-import HomeRE from './screens/Home';
-import ChatScreen from './screens/ChatScreen';
-import Chatbot from './screens/ChatBot';
 // import ProfileEdit from "./screens/EditProfile"
 import Register from './screens/Registration'
 import Events from './screens/Events.jsx'
@@ -50,6 +47,7 @@ import ProfileEdit from './screens/EditProfile.jsx';
 import Frame from './screens/categoriePeopleWhoNeedWater.js';
 import Poor from './screens/poorPeople.js';
 import TermsAndPrivacy from './screens/Terms.jsx';
+import ImageUploadTwo from './screens/ImageUploadTwo.jsx';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -57,7 +55,7 @@ export default function App() {
     <NavigationContainer>
 
       <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}>
-         <Stack.Screen name="StartingPage" component={StartingPage} /> 
+         {/* <Stack.Screen name="StartingPage" component={StartingPage} /> 
          <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} /> 
          <Stack.Screen name="OnboardingPage2" component={OnboardingPage2} /> 
          <Stack.Screen name="SignUp" component={SignUp} /> 
@@ -79,8 +77,8 @@ export default function App() {
         <Stack.Screen name="donation" component={Donation}/> 
         <Stack.Screen name="Palestine" component={Gaza}/> 
         <Stack.Screen name="Terms" component={TermsAndPrivacy}/> 
-         <Stack.Screen name="Contactus" component={Contact}/> 
-  {/* <Stack.Screen name="Home" component={HomeRE}/> */}
+         <Stack.Screen name="Contactus" component={Contact}/>  */}
+  <Stack.Screen name="Messages" component={Messages}/>
         {/* <Stack.Screen name="ChatRoom" component={ChatRoom}/> 
         <Stack.Screen name="Messages" component={Messages}/> 
       
