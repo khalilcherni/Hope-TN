@@ -3,11 +3,13 @@ import { StyleSheet, View, Pressable, Text, Image, Share } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation, useIsFocused } from "@react-navigation/native";
 import { Color, FontFamily, FontSize } from "../GlobalStyles";
+import { useTranslation } from 'react-i18next'; // Import useTranslation hook
 
 const Setting = () => {
   const navigation = useNavigation();
   const isFocused = useIsFocused();
   const [userEmail, setUserEmail] = React.useState('');
+  const { t } = useTranslation(); // Initialize translation function
 
   React.useEffect(() => {
     const fetchUserEmail = async () => {
@@ -44,6 +46,10 @@ const Setting = () => {
     } catch (error) {
       console.log(error.message);
     }
+  };
+
+  const handleLanguagePress = () => {
+    navigation.navigate('Language');
   };
 
   return (
@@ -87,12 +93,12 @@ const Setting = () => {
       </Pressable>
       {/* End of Share Icon */}
       <Text style={[styles.favorites, styles.eventsFlexBox]}>Favorites</Text>
-      <Text style={[styles.language, styles.eventsFlexBox]}>Language</Text>
+      <Text style={[styles.language, styles.eventsFlexBox]} onPress={handleLanguagePress}>{t('Language')}</Text>
       <Text style={[styles.preferences, styles.eventsTypo]}>Preferences</Text>
       <Text style={[styles.favourite, styles.favouritePosition]}>
-        Favourite
+        {t('Favourite')}
       </Text>
-      <Text style={[styles.darkmode, styles.eventsFlexBox]}>Darkmode</Text>
+      <Text style={[styles.darkmode, styles.eventsFlexBox]}>{t('Darkmode')}</Text>
       <View style={[styles.rectangle36Copy5Parent, styles.groupLayout]}>
         <View style={styles.rectangle36Copy5} />
         <Image
@@ -121,7 +127,7 @@ const Setting = () => {
         style={[styles.settingInner, styles.settingInnerLayout]}
         onPress={() => navigation.navigate("ProfileEdit")}
       />
-      <Text style={[styles.editProfile, styles.profileClr]}>Edit Profile</Text>
+      <Text style={[styles.editProfile, styles.profileClr]}>{t('Edit Profile')}</Text>
       <Image
         style={styles.translateIcon}
         contentFit="cover"

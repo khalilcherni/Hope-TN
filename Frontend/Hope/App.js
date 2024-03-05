@@ -10,7 +10,8 @@ import OnboardingPage2 from './screens/OnboardingPage2';
 import SignIn from './screens/signin';
 // import Home from './screens/Home';
 import Setting from './screens/Setting';
-import ProfileEdit from "./screens/EditProfile"
+// import ProfileEdit from "./screens/EditProfile"
+import Language from './screens/Language';
 
 const Stack = createStackNavigator();
 
@@ -25,7 +26,9 @@ export default function App() {
         {/ <Stack.Screen name="SignIn" component={SignIn} /> /}
         {/ <Stack.Screen name="Home" component={Home} /> */}
         <Stack.Screen name="Setting" component={Setting}/>
-        <Stack.Screen name="ProfileEdit" component={ProfileEdit}/>
+        {/* <Stack.Screen name="ProfileEdit" component={ProfileEdit}/> */}
+        <Stack.Screen name="Language" component={Language}/>
+
       </Stack.Navigator>
     </NavigationContainer>
   );
