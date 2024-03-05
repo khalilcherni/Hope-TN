@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { ActivityIndicator, TouchableOpacity, Image, View, Text, StyleSheet } from "react-native"
 import * as ImagePicker from "expo-image-picker"
 import axios from "axios"
-
+import { FontAwesome } from '@expo/vector-icons';
 const cloudName = "db2yjlbsw"
 const uploadPreset = "lzoc60oh"
 
@@ -79,10 +79,11 @@ const ImageUploadTwo = ({ changeImage }) => {
       {uploading && <ActivityIndicator size="large" color="#4CAF50" />}
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.customButtonFolder} onPress={openImagePicker}>
+            
           <Image source={require('../assets/gaa.png')} style={styles.buttonImage} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.customButtonCamera} onPress={handleCameraLaunch}>
-          <Image source={require('../assets/qz.png')} style={styles.buttonImage} />
+          <Image source={require('../assets/camera.png')} style={styles.buttonImage} />
         </TouchableOpacity>
       </View>
     </View>
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10
   },
   buttonImage: {
-    width: 100, // Adjust image width as needed
+    width: 40, // Adjust image width as needed
     height: 60, // Adjust image height as needed
     resizeMode: 'contain',
   },

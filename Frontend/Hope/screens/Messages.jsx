@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ScrollView,
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ImageUploadTwo from './ImageUploadTwo';
 import { Feather } from '@expo/vector-icons';
-
+import { FontAwesome } from '@expo/vector-icons';
 const MessageCard = ({ id, primary, secondary, person, imageUrl, comments, onDelete, onComment }) => {
   const [newComment, setNewComment] = useState('');
 
@@ -16,7 +16,7 @@ const MessageCard = ({ id, primary, secondary, person, imageUrl, comments, onDel
 
   return (
     <View style={styles.messageCard}>
-      <Image source={{ uri: person }} style={styles.avatar} />
+      <Image source={{ uri: "https://cdn-icons-png.flaticon.com/128/3177/3177440.png" }} style={styles.avatar} />
       <View style={styles.messageContent}>
         <Text style={styles.primaryText}>{primary}</Text>
         <Text style={styles.secondaryText}>{secondary}</Text>
@@ -27,6 +27,7 @@ const MessageCard = ({ id, primary, secondary, person, imageUrl, comments, onDel
         )}
         <View style={styles.commentsContainer}>
           <Text style={styles.commentsText}>Comments:</Text>
+
           {comments.map((comment, index) => (
             <Text key={`${id}_${index}`} style={styles.commentText}>{comment}</Text>
           ))}
@@ -38,7 +39,7 @@ const MessageCard = ({ id, primary, secondary, person, imageUrl, comments, onDel
               onChangeText={setNewComment}
             />
             <TouchableOpacity style={styles.addCommentButton} onPress={handleAddComment}>
-              <Feather name="send" size={20} color="#fff" />
+              <Feather name="send" size={20} color="#fff"  />
             </TouchableOpacity>
           </View>
         </View>
@@ -182,6 +183,7 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 25,
     marginRight: 10,
+    marginTop:-280
   },
   messageContent: {
     flex: 1,
@@ -236,7 +238,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   addCommentButton: {
-    backgroundColor: '#007bff',
+    backgroundColor:'#209FA6',
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
@@ -263,7 +265,7 @@ marginRight:30,
     width:10
   },
   postButton: {
-    backgroundColor: 'blue',
+    backgroundColor: '#209FA6',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
