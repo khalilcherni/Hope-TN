@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ScrollView, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ScrollView, Alert,Dimensions } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ImageUploadTwo from './ImageUploadTwo';
 import { Feather } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+const { width, height } = Dimensions.get('window');
+
 const MessageCard = ({ id, primary, secondary, person, imageUrl, comments, onDelete, onComment }) => {
   const [newComment, setNewComment] = useState('');
-
+  
   const handleAddComment = () => {
     if (newComment.trim() !== '') {
       onComment(id, newComment.trim());
@@ -55,7 +61,7 @@ const BottomAppBar = () => {
   const [inputValue, setInputValue] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [messages, setMessages] = useState([]);
-
+  const navigation = useNavigation();
   useEffect(() => {
     const loadMessages = async () => {
       try {
@@ -123,7 +129,18 @@ const BottomAppBar = () => {
   const handleChangeImage = (url) => {
     setImageUrl(url);
   };
-
+  const handleHomeNavigation = () => {
+    navigation.navigate('Home');
+  };
+  const handleChatNavigation = () => {
+    navigation.navigate('ChatRoom');
+  };
+  const handleSchoolNavigation = () => {
+    navigation.navigate('School');
+  };
+  const handleMESNavigation = () => {
+    navigation.navigate('Messages');
+  };
   return (
     <View style={styles.container}>
       <ScrollView style={styles.messageContainer}>
@@ -148,6 +165,12 @@ const BottomAppBar = () => {
   
          < Feather name="send" size={20} color="#fff" />
         </TouchableOpacity>
+      </View>
+      <View style={styles.tabbar}>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={width * 0.06} color="black" /></TouchableOpacity>
       </View>
     </View>
   );
@@ -248,11 +271,11 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 10,
+    padding: 15,
 marginRight:30,
 
     borderTopColor: '#ccc',
-    backgroundColor: '#f0f0f0',
+    backgroundColor: 'rgba(240, 240, 240, 0.5)'
   },
   input: {
     flex: 1,
@@ -275,6 +298,20 @@ marginRight:30,
   postButtonText: {
     color: 'white',
     fontWeight: 'bold',
+  },
+  tabbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+    paddingVertical: 10,
+    width: '100%',
+    position: 'absolute',
+    bottom: 0,
+  },
+  tabItem: {
+    flex: 1,
+    alignItems: 'center',
   },
 });
 

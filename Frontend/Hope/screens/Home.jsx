@@ -1,5 +1,6 @@
 
-import * as React from "react";
+// import * as React from "react";
+import React, { useState } from 'react';
 import { Image } from "expo-image";
 import { StyleSheet, Pressable, Text, View,ScrollView,TouchableOpacity,Dimensions } from "react-native";
 import { useNavigation } from "@react-navigation/native";
@@ -10,6 +11,7 @@ import { AntDesign } from '@expo/vector-icons';
 const { width, height } = Dimensions.get('window');
 const HomeRE = () => {
   const navigation = useNavigation();
+  const [isClicked, setIsClicked] = useState(false);
   const images = [
     require("../assets/tunisia-covid-station-767_1_1.png"),
     require("../assets/charity-work.png"),
@@ -42,24 +44,31 @@ const HomeRE = () => {
   };
   const handleHomeNavigation = () => {
     navigation.navigate('Home');
+    setIsClicked(true);
   };
   const handleChatNavigation = () => {
     navigation.navigate('ChatRoom');
+    setIsClicked(true);
   };
   const handleSchoolNavigation = () => {
     navigation.navigate('School');
+    setIsClicked(true);
   };
   const handleMESNavigation = () => {
     navigation.navigate('Messages');
+    setIsClicked(true);
   };
   const navigateToPeopleWhoNeedWater = () => {
     navigation.navigate("categoriePeopleWhoNeedWater");
+    setIsClicked(true);
   };
   const navigateToPoor = () => {
     navigation.navigate("poorPeople");
+    setIsClicked(true);
   };
   const navigateToPalestine = () => {
     navigation.navigate("Palestine");
+    setIsClicked(true);
   };
   return (
     <ScrollView>
@@ -86,12 +95,12 @@ const HomeRE = () => {
       </Text>
       <View  style={styles.images}>
       <Pressable onPress={navigateToPeopleWhoNeedWater}>
-        <Image
-          style={[styles.homeReItem, styles.homePosition]}
-          contentFit="cover"
-          source={require("../assets/Ellipse_52.png")}
-        />
-      </Pressable>
+            <Image
+              style={[styles.homeReItem, styles.homePosition, isClicked && styles.clickedIcon]}
+              contentFit="cover"
+              source={require("../assets/Ellipse_52.png")}
+            />
+          </Pressable>
       <Pressable onPress={navigateToPeopleWhoNeedWater}>
         <Image
           style={[styles.dropIcon, styles.iconPosition]}
@@ -207,6 +216,14 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
   
+  },
+  images: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  clickedIcon: {
+    tintColor: '#209FA6', // Change the color to blue when clicked
   },
   welcomeTypo: {
     textAlign: "left",
