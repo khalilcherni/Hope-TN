@@ -52,6 +52,15 @@ const HomeRE = () => {
   const handleMESNavigation = () => {
     navigation.navigate('Messages');
   };
+  const navigateToPeopleWhoNeedWater = () => {
+    navigation.navigate("categoriePeopleWhoNeedWater");
+  };
+  const navigateToPoor = () => {
+    navigation.navigate("poorPeople");
+  };
+  const navigateToPalestine = () => {
+    navigation.navigate("Palestine");
+  };
   return (
     <ScrollView>
     <View style={styles.homeRe}>
@@ -76,19 +85,23 @@ const HomeRE = () => {
         Categories:
       </Text>
       
-      <Image
-        style={[styles.homeReItem, styles.homePosition]}
-        contentFit="cover"
-        source={require("../assets/Ellipse_52.png")}
-      />
-      <Image
-        style={[styles.dropIcon, styles.iconPosition]}
-        contentFit="cover"
-        source={require("../assets/drop .png")}
-      />
+      <Pressable onPress={navigateToPeopleWhoNeedWater}>
+        <Image
+          style={[styles.homeReItem, styles.homePosition]}
+          contentFit="cover"
+          source={require("../assets/Ellipse_52.png")}
+        />
+      </Pressable>
+      <Pressable onPress={navigateToPeopleWhoNeedWater}>
+        <Image
+          style={[styles.dropIcon, styles.iconPosition]}
+          contentFit="cover"
+          source={require("../assets/drop .png")}
+        />
+      </Pressable>
       <Pressable
         style={[styles.wrapper, styles.homePosition]}
-        onPress={() => navigation.navigate("Details")}
+        onPress={() => navigation.navigate("poorPeople")}
       >
         <Image
           style={styles.iconLayout3}
@@ -96,6 +109,7 @@ const HomeRE = () => {
           source={require("../assets/Ellipse_52.png")}
         />
       </Pressable>
+      <Pressable onPress={navigateToPoor}>
       <Image
         style={[styles.dollarCircleIcon, styles.iconPosition]}
         contentFit="cover"
@@ -106,11 +120,13 @@ const HomeRE = () => {
         contentFit="cover"
         source={require("../assets/Ellipse_52.png")}
       />
+         </Pressable>
       <Image
         style={[styles.downloadRemovebgPreview1Icon, styles.iconLayout2]}
         contentFit="cover"
         source={require("../assets/eld.png")}
       />
+        <Pressable onPress={navigateToPalestine}>
       <Image
         style={[styles.ellipseIcon, styles.ellipseIconLayout]}
         contentFit="cover"
@@ -121,6 +137,7 @@ const HomeRE = () => {
         contentFit="cover"
         source={require("../assets/mosque.png")}
       />
+      </Pressable>
       <Image
         style={[styles.homeReChild1, styles.homePosition]}
         contentFit="cover"
@@ -187,6 +204,7 @@ const styles = StyleSheet.create({
   iconLayout3: {
     height: "100%",
     width: "100%",
+  
   },
   welcomeTypo: {
     textAlign: "left",
@@ -309,7 +327,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   button: {
-    backgroundColor: "#4CAF50",
+    backgroundColor: "#209FA6",
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
