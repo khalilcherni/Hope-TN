@@ -1,14 +1,12 @@
 import * as React from "react";
-import { StyleSheet, View, Pressable, Text } from "react-native";
-import { Image } from "expo-image";
-import { useNavigation, useIsFocused } from "@react-navigation/native"; // Import useIsFocused hook
-// import { useNavigation } from "@react-navigation/native";
+import { StyleSheet, View, Pressable, Text, Image, Share } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Color, FontFamily, Border, FontSize } from "../GlobalStyles";
+import { useNavigation, useIsFocused } from "@react-navigation/native";
+import { Color, FontFamily, FontSize } from "../GlobalStyles";
 
 const Setting = () => {
   const navigation = useNavigation();
-  const isFocused = useIsFocused(); // Hook to check if the screen is focused
+  const isFocused = useIsFocused();
   const [userEmail, setUserEmail] = React.useState('');
 
   React.useEffect(() => {
@@ -27,8 +25,28 @@ const Setting = () => {
     fetchUserEmail();
   }, [isFocused]);
 
+  const url = 'https://www.youtube.com/@BugNinza';
+
+  const onShare = async () => {
+    try {
+      const result = await Share.share({
+        message: 'Bug Ninza: \n' + url,
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          console.log('Shared with activity type of:', result.activityType);
+        } else {
+          console.log("Shared");
+        }
+      } else if (result.action === Share.dismissedAction) {
+        console.log('Dismissed');
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
-    
     <View style={styles.setting}>
       <View style={[styles.settingChild, styles.settingLayout]} />
       <View style={[styles.settingItem, styles.settingLayout]} />
@@ -60,11 +78,13 @@ const Setting = () => {
         source={require("../assets/bell.webp")}
       />
       {/* Share Icon */}
-      <Image
-        style={[styles.shareIcon, styles.iconLayout]}
-        contentFit="cover"
-        source={require("../assets/share.png")}
-      />
+      <Pressable onPress={onShare}>
+        <Image
+          style={[styles.shareIcon, styles.iconLayout]}
+          contentFit="cover"
+          source={require("../assets/share.png")}
+        />
+      </Pressable>
       {/* End of Share Icon */}
       <Text style={[styles.favorites, styles.eventsFlexBox]}>Favorites</Text>
       <Text style={[styles.language, styles.eventsFlexBox]}>Language</Text>
@@ -386,13 +406,13 @@ const styles = StyleSheet.create({
     top: 472,
     left: 341,
   },
-
   shareIcon: {
     width: 20, 
     height: 20, 
     position: "absolute",
-    top: 55, 
-    right: 55, 
+    top: -322, 
+    right: -125, // Adjust the right position to position the icon between the bell icon and the favorites text
+    zIndex: 1,
   },
 });
 
