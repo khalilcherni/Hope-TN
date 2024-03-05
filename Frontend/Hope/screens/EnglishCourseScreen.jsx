@@ -1,7 +1,32 @@
 import React from 'react';
-import { View, Text, ScrollView, StyleSheet, Image } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, Image,TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
+import { FontAwesome5 } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 const MixedCourseScreen = () => {
+  const navigation = useNavigation();
+  const handleHomeNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('Home');
+  };
+  const handleChatNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('ChatRoom');
+  };
+  const handleSchoolNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('School');
+  };
+  const handleMESNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('Messages');
+  };
+  const handleHelpnavigation=()=>{
+    navigation.navigate('Helping'); 
+  }
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Courses</Text>
@@ -82,12 +107,7 @@ const MixedCourseScreen = () => {
             <Text style={styles.courseDescription}>تحسين مهارات الكتابة باللغة العربية باستخدام التقنيات المتقدمة.</Text>
           </View>
         </View>
-        <View style={styles.tabbar}>
-        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem}onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem}onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={24} color="black" /></TouchableOpacity>
-      </View>
+    
       </View>
    
     </ScrollView>
@@ -142,6 +162,17 @@ const styles = StyleSheet.create({
   },
   courseDescription: {
     fontSize: 14,
+  },
+  tabbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+    paddingVertical: 10,
+  },
+  tabItem: {
+    flex: 1,
+    alignItems: 'center',
   },
 });
 
