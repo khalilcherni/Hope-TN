@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, TextInput, FlatList, StyleSheet, Image } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, FlatList, StyleSheet, Image,Dimensions } from 'react-native';
 import { FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+const { width, height } = Dimensions.get('window');
 const ChatBubble = ({ onPress }) => {
 
   return (
@@ -17,7 +20,22 @@ const ChatBubble = ({ onPress }) => {
 
 const ChatInterface = ({ onClose, onSendMessage, messages, input, setInput }) => {
   const navigation = useNavigation();
-
+  const handleHomeNavigation = () => {
+    navigation.navigate('Home');
+    setIsClicked(true);
+  };
+  const handleChatNavigation = () => {
+    navigation.navigate('ChatRoom');
+    setIsClicked(true);
+  };
+  const handleSchoolNavigation = () => {
+    navigation.navigate('School');
+    setIsClicked(true);
+  };
+  const handleMESNavigation = () => {
+    navigation.navigate('Messages');
+    setIsClicked(true);
+  };
   const renderMessage = ({ item }) => {
     return (
       <View style={styles.messageContainer}>
@@ -79,6 +97,12 @@ const ChatInterface = ({ onClose, onSendMessage, messages, input, setInput }) =>
       <TouchableOpacity style={styles.closeButton} onPress={onClose}>
         <MaterialIcons name="close" size={18} color="black" />
       </TouchableOpacity>
+      <View style={styles.tabbar}>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={width * 0.06} color="black" /></TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -205,6 +229,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 40,
+    marginBottom:40
   },
   input: {
     flex: 1,
@@ -231,12 +256,28 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 20,
-    marginTop: 10,
+    marginTop: -30,
     alignSelf: 'flex-end',
+    marginBottom:20
   },
   closeButtonText: {
     color: '#333',
     fontSize: 16,
+  },
+  tabbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  
+    paddingVertical: height * 0.02,
+    position: 'absolute',
+    bottom: -15,
+    left: 0,
+    right: 0,
+  },
+  tabItem: {
+    flex: 1,
+    alignItems: 'center',
   },
 });
 

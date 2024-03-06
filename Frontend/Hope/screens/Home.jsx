@@ -10,7 +10,7 @@ import { AntDesign } from '@expo/vector-icons';
 const { width, height } = Dimensions.get('window');
 const HomeRE = () => {
   const navigation = useNavigation();
-  const [isClicked, setIsClicked] = useState(false);
+  // const [isClicked, setIsClicked] = useState(false);
   const images = [
     require("../assets/tunisia-covid-station-767_1_1.png"),
     require("../assets/charity-work.png"),
@@ -43,35 +43,35 @@ const HomeRE = () => {
   };
   const handleHomeNavigation = () => {
     navigation.navigate('Home');
-    setIsClicked(true);
+  
   };
   const handleChatNavigation = () => {
     navigation.navigate('ChatRoom');
-    setIsClicked(true);
+  
   };
   const handleSchoolNavigation = () => {
     navigation.navigate('School');
-    setIsClicked(true);
+  
   };
   const handleMESNavigation = () => {
     navigation.navigate('Messages');
-    setIsClicked(true);
+  
   };
   const navigateToPeopleWhoNeedWater = () => {
     navigation.navigate("categoriePeopleWhoNeedWater");
-    setIsClicked(true);
+  
   };
   const navigateToPoor = () => {
     navigation.navigate("poorPeople");
-    setIsClicked(true);
+  
   };
   const navigateToPalestine = () => {
     navigation.navigate("Palestine");
-    setIsClicked(true);
+  
   };
   const navigateToElde = () => {
     navigation.navigate("Elders");
-    setIsClicked(true);
+  
   };
   const handlePress = () => {
     navigation.navigate('ChatScreen');
@@ -202,14 +202,7 @@ const HomeRE = () => {
     
      
     </View>
-    <View style={styles.card}>
-      <Text style={styles.text}>
-        In today's world, poverty remains a harsh reality for millions, depriving individuals of basic necessities and dignity. Among the most vulnerable are the homeless, struggling to find shelter and stability amidst societal neglect. For orphans, the absence of familial support compounds their challenges, leaving them adrift in a world of uncertainty. Access to clean water, a fundamental human right, eludes many, exacerbating health crises and perpetuating cycles of deprivation. Moreover, the elderly, often overlooked, face isolation and neglect, despite their invaluable wisdom and experience. Together, we must advocate for change, extending a compassionate hand to those in need.
-      </Text>
-      <TouchableOpacity style={styles.button} onPress={handlePress}>
-        <Text style={styles.buttonText}>Learn More</Text>
-      </TouchableOpacity>
-    </View>
+    
 
     <View style={styles.card}>
   <Text> If you are an ally of our cause and you have something you want to donate, your contribution can make a real difference. Your support helps us continue our mission and reach those in need. Please press the button below to make a donation: </Text>
@@ -217,6 +210,18 @@ const HomeRE = () => {
         <Text style={styles.buttonText}>press here </Text>
         </TouchableOpacity>
   </View>
+  <View style={styles.card}>
+      <Text style={styles.text}>
+       If you want to get more information 
+      </Text>
+      <TouchableOpacity onPress={handlePress}>
+    
+        <Image
+         source={{ uri: "https://i.pinimg.com/originals/8e/0e/2d/8e0e2d6ee6d87f6ebd9107bbfb3b2332.gif" }}
+        style={styles.map}
+        />
+      </TouchableOpacity>
+    </View>
     </ScrollView>
     <View style={styles.tabbar}>
         <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={width * 0.06} color="black" /></TouchableOpacity>
@@ -243,6 +248,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  map:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+ 
+    height: 50,
+    width: 80,
+    borderRadius: Border.br_3xs,
+    position: "absolute",
+    marginTop:-40,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+marginLeft:280
+    
   },
   clickedIcon: {
     tintColor: '#209FA6', // Change the color to blue when clicked
@@ -356,10 +376,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 20,
     margin: 10,
+    marginBottom:40,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 1,
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
@@ -488,7 +509,7 @@ const styles = StyleSheet.create({
   
     paddingVertical: height * 0.02,
     position: 'absolute',
-    bottom: -15,
+    bottom: -22,
     left: 0,
     right: 0,
   },
@@ -501,6 +522,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    
     
   }
 });
