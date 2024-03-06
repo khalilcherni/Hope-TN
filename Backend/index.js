@@ -39,16 +39,9 @@ app.use('/whatTheyNeed', whatTheyNeedRoute);
 app.use('/help', helpRoute);
 app.use('/palestine', palestineRoute);
 app.use('/profile', profileRoute);
-<<<<<<< HEAD
 
 // Create the HTTP server
 const server = http.createServer(app);
-=======
-app.use('/events',events)
-// Socket.IO integration
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
->>>>>>> 6a6a243fbdbfa5669ddd322271689a56b2cc9556
 
 // Initialize Socket.IO
 const io = socketIO(server);

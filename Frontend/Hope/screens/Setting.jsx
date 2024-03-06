@@ -1,13 +1,15 @@
 import * as React from "react";
-import { StyleSheet, View, Pressable, Text } from "react-native";
-import { Image } from "expo-image";
-import { useNavigation } from "@react-navigation/native";
+import { StyleSheet, View, Pressable, Text, Image, Share } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Color, FontFamily, Border, FontSize } from "../GlobalStyles";
+import { useNavigation, useIsFocused } from "@react-navigation/native";
+import { Color, FontFamily, FontSize } from "../GlobalStyles";
+import { useTranslation } from 'react-i18next'; // Import useTranslation hook
 
 const Setting = () => {
   const navigation = useNavigation();
+  const isFocused = useIsFocused();
   const [userEmail, setUserEmail] = React.useState('');
+  const { t } = useTranslation(); // Initialize translation function
 
   React.useEffect(() => {
     const fetchUserEmail = async () => {
@@ -23,10 +25,34 @@ const Setting = () => {
     };
 
     fetchUserEmail();
-  }, []);
+  }, [isFocused]);
+
+  const url = 'https://www.youtube.com/@BugNinza';
+
+  const onShare = async () => {
+    try {
+      const result = await Share.share({
+        message: 'Bug Ninza: \n' + url,
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          console.log('Shared with activity type of:', result.activityType);
+        } else {
+          console.log("Shared");
+        }
+      } else if (result.action === Share.dismissedAction) {
+        console.log('Dismissed');
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const handleLanguagePress = () => {
+    navigation.navigate('Language');
+  };
 
   return (
-    
     <View style={styles.setting}>
       <View style={[styles.settingChild, styles.settingLayout]} />
       <View style={[styles.settingItem, styles.settingLayout]} />
@@ -34,28 +60,13 @@ const Setting = () => {
         <Image
           style={[styles.notchIcon, styles.notchIconLayout]}
           contentFit="cover"
-          // source={require("../assets/profile.png")}
-          // source={require("../assets/aaa.jpg")}
-
-        />
-        <Image
-          style={styles.indicatorIcon}
-          contentFit="cover"
-          // source={require("../assets/indicators.png")}
-          // source={require("../assets/aaa.jpg")}
-
-        />
-        <Image
-          style={styles.timeLight}
-          contentFit="cover"
-        //   source={require("../assets/time--light.png")}
           // source={require("../assets/notch.png")}
         />
       </View>
       <Image
         style={styles.unsplashjmurdhtm7ngIcon}
         contentFit="cover"
-        source={require("../assets/aaa.jpg")}
+        source={require("../assets/logo.png")}
       />
       <Pressable
         style={[styles.arrowLeft, styles.notchIconLayout]}
@@ -64,27 +75,36 @@ const Setting = () => {
         <Image
           style={styles.icon}
           contentFit="cover"
-          source={require("../assets/aaa.jpg")}
+          source={require("../assets/backleft.png")}
         />
       </Pressable>
       <Image
         style={[styles.bellIcon, styles.iconLayout1]}
         contentFit="cover"
-        source={require("../assets/aaa.jpg")}
+        source={require("../assets/bell.webp")}
       />
+      {/* Share Icon */}
+      <Pressable onPress={onShare}>
+        <Image
+          style={[styles.shareIcon, styles.iconLayout]}
+          contentFit="cover"
+          source={require("../assets/share.png")}
+        />
+      </Pressable>
+      {/* End of Share Icon */}
       <Text style={[styles.favorites, styles.eventsFlexBox]}>Favorites</Text>
-      <Text style={[styles.language, styles.eventsFlexBox]}>Language</Text>
+      <Text style={[styles.language, styles.eventsFlexBox]} onPress={handleLanguagePress}>{t('Language')}</Text>
       <Text style={[styles.preferences, styles.eventsTypo]}>Preferences</Text>
       <Text style={[styles.favourite, styles.favouritePosition]}>
-        Favourite
+        {t('Favourite')}
       </Text>
-      <Text style={[styles.darkmode, styles.eventsFlexBox]}>Darkmode</Text>
+      <Text style={[styles.darkmode, styles.eventsFlexBox]}>{t('Darkmode')}</Text>
       <View style={[styles.rectangle36Copy5Parent, styles.groupLayout]}>
         <View style={styles.rectangle36Copy5} />
         <Image
           style={styles.rightIcon}
           contentFit="cover"
-          source={require("../assets/aaa.jpg")}
+          source={require("../assets/right.png")}
         />
       </View>
       <View style={[styles.rectangle36Copy5Group, styles.groupLayout]}>
@@ -92,7 +112,7 @@ const Setting = () => {
         <Image
           style={styles.rightIcon}
           contentFit="cover"
-          source={require("../assets/aaa.jpg")}
+          source={require("../assets/right.png")}
         />
       </View>
       <View style={[styles.rectangle36Copy5Container, styles.groupLayout]}>
@@ -100,28 +120,28 @@ const Setting = () => {
         <Image
           style={styles.rightIcon}
           contentFit="cover"
-          source={require("../assets/aaa.jpg")}
+          source={require("../assets/right.png")}
         />
       </View>
       <Pressable
         style={[styles.settingInner, styles.settingInnerLayout]}
-        onPress={() => navigation.navigate("ProfileEdit")}
+        onPress={() => navigation.navigate("EditProfile")}
       />
-      <Text style={[styles.editProfile, styles.profileClr]}>Edit Profile</Text>
+      <Text style={[styles.editProfile, styles.profileClr]}>{t('Edit Profile')}</Text>
       <Image
         style={styles.translateIcon}
         contentFit="cover"
-        source={require("../assets/aaa.jpg")}
+        source={require("../assets/translate.png")}
       />
       <Image
         style={[styles.umoonIcon, styles.iconLayout]}
         contentFit="cover"
-        source={require("../assets/aaa.jpg")}
+        source={require("../assets/moon.png")}
       />
       <Image
         style={[styles.heartIcon, styles.favouritePosition]}
         contentFit="cover"
-        source={require("../assets/aaa.jpg")}
+        source={require("../assets/heart.png")}
       />
       <Text style={[styles.profile, styles.profileClr]}>{userEmail}</Text>
       <View style={[styles.rectangleView, styles.settingLayout]} />
@@ -129,8 +149,6 @@ const Setting = () => {
       <Image
         style={[styles.editDuotoneIcon, styles.iconLayout]}
         contentFit="cover"
-        // source={require("../assets/edit.png")}
-        // source={require("../assets/aaa.jpg")}
         // source={require("../assets/edit-duotone.png")}
       />
       <Text style={[styles.editProfile1, styles.settingInnerLayout]}>
@@ -141,9 +159,6 @@ const Setting = () => {
         <Image
           style={styles.rightIcon}
           contentFit="cover"
-          // source={require("../assets/right.png")}
-          // source={require("../assets/aaa.jpg")}
- 
           // source={require("../assets/right.png")}
         />
       </View>
@@ -247,9 +262,11 @@ const styles = StyleSheet.create({
     top: 50,
   },
   bellIcon: {
+    transform: [{ scale: 1.5 }], // Adjust the scale value as needed
     top: 58,
-    left: 319,
-    height: 19,
+    left: 325,
+    height: 16, // Adjust the height to make the icon smaller
+    width: 16, // Adjust the width to make the icon smaller
     position: "absolute",
   },
   favorites: {
@@ -394,6 +411,14 @@ const styles = StyleSheet.create({
   groupView: {
     top: 472,
     left: 341,
+  },
+  shareIcon: {
+    width: 20, 
+    height: 20, 
+    position: "absolute",
+    top: -322, 
+    right: -125, // Adjust the right position to position the icon between the bell icon and the favorites text
+    zIndex: 1,
   },
 });
 

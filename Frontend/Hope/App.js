@@ -13,13 +13,19 @@ import Example from './screens/Palestine';
 // import Example from './screens/Example';
 import AndroidLarge2 from './screens/donation.jsx';
 import BottomAppBar from './screens/Messages.jsx'
+
 import Gaza from './screens/Palestine';
+
+
+// import StartingPage from './screens/StartingPage';
+// import SignUp from './screens/signup';
+// import OnboardingPage1 from './screens/onboardingPage1';
+// import OnboardingPage2 from './screens/OnboardingPage2';
+// import SignIn from './screens/signin';
+// import HomeRE from './screens/Home.jsx'
 // import Setting from './screens/Setting';
 import Chatroom from './screens/ChatRoom';
 import ChatroomContainer from './screens/ChatrommContainer';
-import HomeRE from './screens/Home';
-import ChatScreen from './screens/ChatScreen';
-import Chatbot from './screens/ChatBot';
 // import ProfileEdit from "./screens/EditProfile"
 import Register from './screens/Registration'
 import Events from './screens/Events.jsx'
@@ -37,13 +43,20 @@ import categoriePeopleWhoNeedWater from './screens/categoriePeopleWhoNeedWater.j
 import Azert from './screens/Azert.jsx';
 import CharityScreen from './screens/Helping.jsx'
 import Donation1 from './screens/Donation1.jsx'
-import Elders from './screens/Elders.jsx'
+import ProfileEdit from './screens/EditProfile.jsx';
+import Frame from './screens/categoriePeopleWhoNeedWater.js';
+import Poor from './screens/poorPeople.js';
+import TermsAndPrivacy from './screens/Terms.jsx';
+import ImageUploadTwo from './screens/ImageUploadTwo.jsx';
+import Chatbot from './screens/ChatBot.jsx';
+import ChatScreen from './screens/ChatScreen.jsx';
+import Frame2 from './screens/Elders.jsx';
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-{/* 
+
       <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}>
          <Stack.Screen name="StartingPage" component={StartingPage} /> 
          <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} /> 
@@ -57,9 +70,21 @@ export default function App() {
          <Stack.Screen name="Donation1" component={Donation1}/> 
         <Stack.Screen name="Registration" component={Register}/> 
         <Stack.Screen name="School" component={School}/> 
-        <Stack.Screen name="Messages" component={Messages}/>  */}
- 
-  {/* <Stack.Screen name="Home" component={HomeRE}/> */}
+        <Stack.Screen name="Messages" component={Messages}/> 
+        <Stack.Screen name="Setting" component={Setting}/> 
+        <Stack.Screen name="EditProfile" component={ProfileEdit}/> 
+        <Stack.Screen name="Events" component={Events}/> 
+        <Stack.Screen name="EnglishCourseScreen" component={EnglishCourseScreen}/> 
+        <Stack.Screen name="categoriePeopleWhoNeedWater" component={Frame}/> 
+        <Stack.Screen name="poorPeople" component={Poor}/> 
+        <Stack.Screen name="donation" component={Donation}/> 
+        <Stack.Screen name="Palestine" component={Gaza}/> 
+        <Stack.Screen name="Terms" component={TermsAndPrivacy}/> 
+         <Stack.Screen name="Contactus" component={Contact}/> 
+         <Stack.Screen name="ChatScreen" component={ChatScreen}/> 
+         <Stack.Screen name="ChatBot" component={Chatbot}/> 
+         <Stack.Screen name="Elders" component={Frame2}/> 
+  {/* <Stack.Screen name="Messages" component={Messages}/> */}
         {/* <Stack.Screen name="ChatRoom" component={ChatRoom}/> 
         <Stack.Screen name="Messages" component={Messages}/> 
       
@@ -78,7 +103,7 @@ export default function App() {
             <Stack.Screen name="Messages" component={Messages}/>    */}
              {/* <Stack.Screen name="Helping" component={CharityScreen}/>   
             <Stack.Screen name="Donation1" component={Donation1}/>    */}
-      {/* </Stack.Navigator> */}
+      </Stack.Navigator>
 {/* <Events/> */}
 {/* <Azert/> */}
       {/* <HomeRE/> */}
@@ -87,7 +112,6 @@ export default function App() {
       {/* <School/> */}
       {/* <EnglishCourseScreen/> */}
       {/* <CharityScreen/> */}
-      <Elders/>
     </NavigationContainer>
   );
 }

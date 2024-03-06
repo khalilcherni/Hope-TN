@@ -69,6 +69,10 @@ const HomeRE = () => {
     navigation.navigate("Palestine");
     setIsClicked(true);
   };
+  const navigateToElde = () => {
+    navigation.navigate("Elders");
+    setIsClicked(true);
+  };
   const handlePress = () => {
     navigation.navigate('ChatScreen');
   };
@@ -129,17 +133,21 @@ const HomeRE = () => {
         contentFit="cover"
         source={require("../assets/poverty.png")}
       />
+        <Pressable onPress={ navigateToElde}>
       <Image
         style={[styles.homeReInner, styles.homePosition]}
         contentFit="cover"
         source={require("../assets/Ellipse_52.png")}
       />
-         </Pressable>
+      </Pressable>
+         </Pressable >
+         <Pressable onPress={ navigateToElde}>
       <Image
         style={[styles.downloadRemovebgPreview1Icon, styles.iconLayout2]}
         contentFit="cover"
         source={require("../assets/eld.png")}
       />
+        </Pressable >
         <Pressable onPress={navigateToPalestine}>
       <Image
         style={[styles.ellipseIcon, styles.ellipseIconLayout]}

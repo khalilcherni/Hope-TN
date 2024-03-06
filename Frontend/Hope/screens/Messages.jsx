@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ScrollView, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ScrollView, Alert,Dimensions } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ImageUploadTwo from './ImageUploadTwo';
+import { Feather } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+const { width, height } = Dimensions.get('window');
 
 const MessageCard = ({ id, primary, secondary, person, imageUrl, comments, onDelete, onComment }) => {
   const [newComment, setNewComment] = useState('');
-
+  
   const handleAddComment = () => {
     if (newComment.trim() !== '') {
       onComment(id, newComment.trim());
@@ -15,29 +22,36 @@ const MessageCard = ({ id, primary, secondary, person, imageUrl, comments, onDel
 
   return (
     <View style={styles.messageCard}>
-      <Image source={{ uri: person }} style={styles.avatar} />
+      <Image source={{ uri: "https://cdn-icons-png.flaticon.com/128/3177/3177440.png" }} style={styles.avatar} />
       <View style={styles.messageContent}>
         <Text style={styles.primaryText}>{primary}</Text>
         <Text style={styles.secondaryText}>{secondary}</Text>
-        {imageUrl && <Image source={{ uri: imageUrl }} style={styles.messageImage} />} 
-        <Text style={styles.commentsText}>Comments:</Text>
-        {comments.map((comment, index) => (
-          <Text key={`${id}_${index}`} style={styles.commentText}>{comment}</Text>
-        ))}
-        <View style={styles.commentInputContainer}>
-          <TextInput
-            style={styles.commentInput}
-            placeholder="Add a comment..."
-            value={newComment}
-            onChangeText={setNewComment}
-          />
-          <TouchableOpacity style={styles.addCommentButton} onPress={handleAddComment}>
-            <Text style={styles.addCommentButtonText}>Add</Text>
-          </TouchableOpacity>
+        {imageUrl && (
+          <View style={styles.imageContainer}>
+            <Image source={{ uri: imageUrl }} style={styles.messageImage} />
+          </View>
+        )}
+        <View style={styles.commentsContainer}>
+          <Text style={styles.commentsText}>Comments:</Text>
+
+          {comments.map((comment, index) => (
+            <Text key={`${id}_${index}`} style={styles.commentText}>{comment}</Text>
+          ))}
+          <View style={styles.commentInputContainer}>
+            <TextInput
+              style={styles.commentInput}
+              placeholder="Add a comment..."
+              value={newComment}
+              onChangeText={setNewComment}
+            />
+            <TouchableOpacity style={styles.addCommentButton} onPress={handleAddComment}>
+              <Feather name="send" size={20} color="#fff"  />
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
       <TouchableOpacity onPress={() => onDelete(id)}>
-        <Text>Delete</Text>
+        <Feather name="trash" size={24} color="red" />
       </TouchableOpacity>
     </View>
   );
@@ -47,7 +61,7 @@ const BottomAppBar = () => {
   const [inputValue, setInputValue] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [messages, setMessages] = useState([]);
-
+  const navigation = useNavigation();
   useEffect(() => {
     const loadMessages = async () => {
       try {
@@ -115,7 +129,18 @@ const BottomAppBar = () => {
   const handleChangeImage = (url) => {
     setImageUrl(url);
   };
-
+  const handleHomeNavigation = () => {
+    navigation.navigate('Home');
+  };
+  const handleChatNavigation = () => {
+    navigation.navigate('ChatRoom');
+  };
+  const handleSchoolNavigation = () => {
+    navigation.navigate('School');
+  };
+  const handleMESNavigation = () => {
+    navigation.navigate('Messages');
+  };
   return (
     <View style={styles.container}>
       <ScrollView style={styles.messageContainer}>
@@ -137,8 +162,15 @@ const BottomAppBar = () => {
           onChangeText={handleInputChange}
         />
         <TouchableOpacity style={styles.postButton} onPress={handlePostMessage}>
-          <Text style={styles.postButtonText}>Post Message</Text>
+  
+         < Feather name="send" size={20} color="#fff" />
         </TouchableOpacity>
+      </View>
+      <View style={styles.tabbar}>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={width * 0.06} color="black" /></TouchableOpacity>
       </View>
     </View>
   );
@@ -147,9 +179,11 @@ const BottomAppBar = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#f0f0f0',
   },
   messageContainer: {
     flex: 1,
+  marginTop:60
   },
   messageCard: {
     flexDirection: 'row',
@@ -157,12 +191,22 @@ const styles = StyleSheet.create({
     padding: 20,
     marginBottom: 20,
     backgroundColor: '#f0f0f0',
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   avatar: {
     width: 50,
     height: 50,
     borderRadius: 25,
     marginRight: 10,
+    marginTop:-280
   },
   messageContent: {
     flex: 1,
@@ -170,21 +214,37 @@ const styles = StyleSheet.create({
   primaryText: {
     fontWeight: 'bold',
     marginBottom: 5,
+    fontSize: 16,
+    color: '#333',
   },
   secondaryText: {
     marginBottom: 5,
+    fontSize: 14,
+    color: '#666',
+  },
+  imageContainer: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 10,
+    overflow: 'hidden',
+    marginBottom: 10,
   },
   messageImage: {
     width: '100%',
     height: 200,
-    marginBottom: 5,
+  },
+  commentsContainer: {
+    marginTop: 10,
   },
   commentsText: {
-    marginTop: 10,
     fontWeight: 'bold',
+    fontSize: 14,
+    color: '#333',
   },
   commentText: {
     marginBottom: 5,
+    fontSize: 12,
+    color: '#666',
   },
   commentInputContainer: {
     flexDirection: 'row',
@@ -201,22 +261,21 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   addCommentButton: {
-    backgroundColor: '#007bff',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
+    backgroundColor:'#209FA6',
     borderRadius: 5,
-  },
-  addCommentButtonText: {
-    color: '#fff',
-    fontWeight: 'bold',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 40,
+    height: 40,
   },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 10,
-    borderTopWidth: 1,
+    padding: 15,
+marginRight:30,
+
     borderTopColor: '#ccc',
-    backgroundColor: '#fff',
+    backgroundColor: 'rgba(240, 240, 240, 0.5)'
   },
   input: {
     flex: 1,
@@ -226,26 +285,33 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
     marginRight: 10,
+    width:10
   },
   postButton: {
-    backgroundColor: 'blue',
+    backgroundColor: '#209FA6',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   postButtonText: {
     color: 'white',
     fontWeight: 'bold',
   },
-  choosePhotoButton: {
-    backgroundColor: 'green',
+  tabbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
     paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
+    width: '100%',
+    position: 'absolute',
+    bottom: 0,
   },
-  choosePhotoButtonText: {
-    color: 'white',
-    fontWeight: 'bold',
+  tabItem: {
+    flex: 1,
+    alignItems: 'center',
   },
 });
 

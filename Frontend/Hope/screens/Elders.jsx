@@ -114,7 +114,7 @@ const Frame1 = () => {
           style={[styles.groupChild, styles.groupChildLayout]}
           contentFit="cover"
           onPress={() => navigation.navigate("donation")}
-          source={require("../assets/Group 3040.png")}
+          source={require("../assets/Group_3040.png")}
         />
         <Text style={styles.donate}></Text>
         </TouchableOpacity>

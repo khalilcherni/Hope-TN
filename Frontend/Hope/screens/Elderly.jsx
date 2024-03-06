@@ -7,7 +7,7 @@ import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
-const Frame2 = () => {
+const aaaa = () => {
   const videoUrl = 'https://youtu.be/Qro0Rb7XJjI?si=dA1H-KkCa_u-RL-g';
   const navigation = useNavigation();
   const handleHomeNavigation = () => {
@@ -252,4 +252,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Frame2;
+export default aaaa;

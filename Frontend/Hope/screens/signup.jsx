@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, Text, StyleSheet, Image, Alert, Dimensions } from 'react-native';
+import { View, TextInput, TouchableOpacity, Text, StyleSheet, Alert, Dimensions } from 'react-native';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import { auth, GoogleProvider } from '../firebase/config'; // Import Firebase auth
-
+import { FontAwesome } from '@expo/vector-icons';
 import FontFamily from './FontFamily';
+import { MaterialCommunityIcons, Ionicons, AntDesign } from '@expo/vector-icons';
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -13,6 +15,8 @@ const SignUp = () => {
   const [firstName, setFirst] = useState('');
   const [lastName, setLast] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
   const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
   const [signInWithGoogle] = useSignInWithGoogle(auth);
@@ -24,14 +28,20 @@ const SignUp = () => {
 
   const handleSignUp = async () => {
     try {
-      navigation.navigate('signin');
+   
       Alert.alert("jbvjvbjj");
       const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/;
       if (!passwordRegex.test(password)) {
         Alert.alert("Password must contain at least one capital letter, one number, and one symbol (!@#$%^&*)");
         return;
       }
+      navigation.navigate('Terms');
+      // const res = await createUserWithEmailAndPassword(email, password);
 
+      // if (!res || !res.user) {
+      //   alert("User creation failed. Please try again.");
+      //   return;
+      // }
       const registerResponse = await axios.post('http://192.168.1.201:4000/users/register', {
         firstName,
         lastName,
@@ -68,61 +78,89 @@ const SignUp = () => {
     }
   }
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleConfirm = (date) => {
+    setBirth(date.toISOString().split('T')[0]);
+    hideDatePicker();
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.logo}>HOPE TN</Text>
       <Text style={styles.title}>SIGN UP</Text>
-      <TextInput
-        placeholder="First Name"
-        value={firstName}
-        onChangeText={setFirst}
-        style={styles.input}
-      />
-      <TextInput
-        placeholder="Last Name"
-        value={lastName}
-        onChangeText={setLast}
-        style={styles.input}
-      />
-      <TextInput
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-        style={styles.input}
-      />
-      <TextInput
-        placeholder="Birth"
-        value={birth}
-        onChangeText={setBirth}
-        style={styles.input}
-      />
-      <TextInput
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry={true}
-        style={styles.input}
-      />
+      <View style={styles.inputContainer}>
+        <FontAwesome name="user" size={24} color="#209FA6" style={styles.icon} />
+        <TextInput
+          placeholder="First Name"
+          value={firstName}
+          onChangeText={setFirst}
+          style={styles.input}
+        />
+      </View>
+      <View style={styles.inputContainer}>
+        <FontAwesome name="user" size={24} color="#209FA6" style={styles.icon} />
+        <TextInput
+          placeholder="Last Name"
+          value={lastName}
+          onChangeText={setLast}
+          style={styles.input}
+        />
+      </View>
+      <View style={styles.inputContainer}>
+        <FontAwesome name="envelope" size={24} color="#209FA6" style={styles.icon} />
+        <TextInput
+          placeholder="Email"
+          value={email}
+          onChangeText={setEmail}
+          style={styles.input}
+        />
+      </View>
+      <View style={styles.inputContainer}>
+        <TouchableOpacity onPress={showDatePicker}>
+          <FontAwesome name="calendar" size={24} color="#209FA6" style={styles.icon} />
+        </TouchableOpacity>
+        <TextInput
+          placeholder="Birth"
+          value={birth}
+          onChangeText={setBirth}
+          style={styles.input}
+        />
+        <DateTimePickerModal
+          isVisible={isDatePickerVisible}
+          mode="date"
+          onConfirm={handleConfirm}
+          onCancel={hideDatePicker}
+        />
+      </View>
+      <View style={styles.inputContainer}>
+        <FontAwesome name="lock" size={24} color="#209FA6" style={styles.icon} />
+        <TextInput
+          placeholder="Password"
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry={!showPassword}
+          style={styles.input}
+        />
+        <TouchableOpacity onPress={togglePasswordVisibility}>
+          <FontAwesome name={showPassword ? "eye" : "eye-slash"} size={24} color="#209FA6" style={styles.icon} />
+        </TouchableOpacity>
+      </View>
       <TouchableOpacity
         style={styles.button}
         onPress={handleSignUp}
       >
         <Text style={styles.buttonText}>Sign Up</Text>
-      </TouchableOpacity>
-      <Text style={styles.orText}> or continue with</Text>
-      <TouchableOpacity style={styles.socialButton} onPress={handleGoogleSignUp}>
-        <Image
-          style={styles.socialIcon}
-          source={{ uri: 'https://cdn-icons-png.flaticon.com/512/270/270014.png' }}
-        />
-        <Text style={styles.socialText}>Sign up with Google</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.socialButton} onPress={handleGoogleSignUp}>
-        <Image
-          style={styles.socialIcon}
-          source={{ uri: 'https://cdn-icons-png.flaticon.com/128/5968/5968764.png' }}
-        />
-        <Text style={styles.socialText}>Sign up with Facebook</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={handleSignIn}>
         <Text style={styles.haveAccountText}>Have an account? <Text style={styles.signInText}>Sign In</Text></Text>
@@ -139,52 +177,48 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: '#f0f0f0',
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+    paddingHorizontal: 10,
+    backgroundColor: '#D9D9D9',
+    width: '80%',
+    borderRadius: 30,
+  },
+  icon: {
+    marginRight: 10,
   },
   logo: {
-    height: 26,
-    fontSize: 20,
+    fontSize: 28,
     fontWeight: 'bold',
     color: '#209FA6',
-    marginBottom: 60,
-    textAlign: 'center',
+    marginBottom: 30,
     fontFamily: FontFamily.smallNormalBold,
-    width: 101,
-    marginLeft: 10
   },
   title: {
-    height: 66,
     fontSize: 24,
     fontWeight: 'bold',
     color: 'black',
-    marginBottom: 10,
-    textAlign: 'center',
-    fontFamily: FontFamily.kanit
+    marginBottom: 20,
+    fontFamily: FontFamily.kanit,
   },
   input: {
+    flex: 1,
     height: 55,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 10,
-    paddingHorizontal: 10,
-    backgroundColor: '#D9D9D9',
-    width: 290,
-    borderRadius: 30,
-    marginLeft: 15,
-    textAlign: 'center'
+    fontSize: 16,
   },
   button: {
     height: 55,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 10,
+    marginBottom: 20,
     paddingHorizontal: 10,
     backgroundColor: '#209FA6',
-    width: 290,
+    width: '80%',
     borderRadius: 30,
-    marginLeft: 15,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   buttonText: {
     fontSize: 18,
@@ -192,37 +226,14 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center',
   },
-  orText: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    color: 'black',
-    textAlign: 'center',
-  },
-  socialButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 10
-  },
-  socialIcon: {
-    width: 50,
-    height: 50,
-    marginRight: 10
-  },
-  socialText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#0085FF',
-    textAlign: 'center'
-  },
   haveAccountText: {
     color: 'black',
-    marginTop: 2,
-    marginLeft: -100,
-    marginBottom: 10
+    marginTop: 10,
+    marginBottom: 20
   },
   signInText: {
-    color: '#0085FF'
+    color: '#0085FF',
+    fontWeight: 'bold',
   }
 });
 
