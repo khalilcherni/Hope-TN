@@ -196,7 +196,7 @@ const HomeRE = () => {
       <Image
         style={styles.jpgRemovebgPreview1Icon}
         contentFit="cover"
-        source={require("../assets/jpg-removebg-preview_1.png")}
+        source={require("../assets/map.png")}
       />
     
      

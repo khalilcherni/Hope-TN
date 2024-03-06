@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, FlatList, StyleSheet,Image } from 'react-native';
 import { FontAwesome5, MaterialIcons } from '@expo/vector-icons'; 
+
 const ChatBubble = ({ onPress }) => {
+
   return (
     <TouchableOpacity style={styles.fullScreenContainer} onPress={onPress}>
     <Image
@@ -37,11 +39,11 @@ const ChatInterface = ({ onClose, onSendMessage, messages, input, setInput }) =>
           onSubmitEditing={sendMessage}
         />
         <TouchableOpacity style={styles.sendButton} onPress={sendMessage}>
-          <FontAwesome5 name="paper-plane" size={24} color="white" />
+          <FontAwesome5 name="paper-plane" size={18} color="white" />
         </TouchableOpacity>
       </View>
       <TouchableOpacity style={styles.closeButton} onPress={onClose}>
-        <MaterialIcons name="close" size={24} color="black" />
+        <MaterialIcons name="close" size={18} color="black" />
       </TouchableOpacity>
     </View>
   );
@@ -168,7 +170,8 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     padding: 20,
-    width: '100%',
+    width: '107%',
+    
   },
   messageContainer: {
     backgroundColor: '#f0f0f0',
@@ -182,18 +185,21 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 40,
   },
   input: {
     flex: 1,
     borderWidth: 1,
     borderColor: '#ccc',
-    borderRadius: 10,
-    paddingHorizontal: 10,
+    borderRadius: 30,
+    paddingHorizontal: 80,
     marginRight: 10,
+    height:50,
+    marginBottom:-40
+
   },
   sendButton: {
-    backgroundColor: '#007bff',
+    backgroundColor: '#209FA6',
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 20,
