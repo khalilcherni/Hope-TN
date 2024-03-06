@@ -62,6 +62,12 @@ const AndroidLarge2 = () => {
         >
           <Text style={styles.amountButtonText}>50tnd</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.amountButton}
+          onPress={() => handleSelectAmount("100tnd")}
+        >
+          <Text style={styles.amountButtonText}>100tnd</Text>
+        </TouchableOpacity>
         {/* Add more amount buttons as needed */}
       </View>
       <Text style={styles.orText}>or</Text>
@@ -102,6 +108,16 @@ const AndroidLarge2 = () => {
             <TouchableOpacity onPress={() => handleCategorySelect("Orphaned")}>
               <Text style={styles.modalOption}>Orphaned</Text>
             </TouchableOpacity>
+            <TouchableOpacity onPress={() => handleCategorySelect("Need Water")}>
+              <Text style={styles.modalOption}>Need Water</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => handleCategorySelect("Gaza")}>
+              <Text style={styles.modalOption}>Gaza</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => handleCategorySelect("Elderly")}>
+              <Text style={styles.modalOption}>Elderly</Text>
+            </TouchableOpacity>
+         
             {/* Add more category options as needed */}
             <TouchableOpacity onPress={() => setModalVisible(false)}>
               <Text style={styles.modalCancel}>Cancel</Text>
