@@ -18,6 +18,15 @@ const ChatBubble = ({ onPress }) => {
 const ChatInterface = ({ onClose, onSendMessage, messages, input, setInput }) => {
   const navigation = useNavigation();
 
+  const renderMessage = ({ item }) => {
+    return (
+      <View style={styles.messageContainer}>
+        <Text style={styles.messageText}>{`${item.sender}: ${item.text}`}</Text>
+        {item.response && <Text style={styles.messageText}>{`Bot: ${item.response}`}</Text>}
+      </View>
+    );
+  };
+
   const sendMessage = () => {
     if (input.trim() === '') {
       return;
@@ -42,8 +51,8 @@ const ChatInterface = ({ onClose, onSendMessage, messages, input, setInput }) =>
       return;
     }
 
-
-    const userMessage = { id: messages.length, text: input, sender: 'User' };
+    const userIcon = '👤';
+    const userMessage = { id: messages.length, text: input, sender: userIcon};
     onSendMessage(userMessage);
     setInput('');
   };
@@ -52,11 +61,7 @@ const ChatInterface = ({ onClose, onSendMessage, messages, input, setInput }) =>
     <View style={styles.chatInterface}>
       <FlatList
         data={messages}
-        renderItem={({ item }) => (
-          <View style={styles.messageContainer}>
-            <Text style={styles.messageText}>{`${item.sender}: ${item.text}`}</Text>
-          </View>
-        )}
+        renderItem={renderMessage}
         keyExtractor={(item) => item.id.toString()}
       />
       <View style={styles.inputContainer}>
@@ -126,8 +131,8 @@ const ChatScreen = () => {
       } else {
         botMessage = "I'm sorry, I couldn't determine the language of your query. Please try again.";
       }
-
-      const botResponse = { id: messages.length + 1, text: botMessage, sender: 'Bot' };
+      const botIcon = '🤖';
+      const botResponse = { id: messages.length + 1, text: botMessage, sender: botIcon};
       setMessages([...messages, botResponse]);
     }, 1000);
   };
