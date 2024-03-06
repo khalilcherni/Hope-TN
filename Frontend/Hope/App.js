@@ -13,16 +13,7 @@ import Example from './screens/Palestine';
 // import Example from './screens/Example';
 import AndroidLarge2 from './screens/donation.jsx';
 import BottomAppBar from './screens/Messages.jsx'
-
 import Gaza from './screens/Palestine';
-
-
-// import StartingPage from './screens/StartingPage';
-// import SignUp from './screens/signup';
-// import OnboardingPage1 from './screens/onboardingPage1';
-// import OnboardingPage2 from './screens/OnboardingPage2';
-// import SignIn from './screens/signin';
-// import HomeRE from './screens/Home.jsx'
 // import Setting from './screens/Setting';
 import Chatroom from './screens/ChatRoom';
 import ChatroomContainer from './screens/ChatrommContainer';
@@ -55,7 +46,7 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-
+{/* 
       <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}>
          <Stack.Screen name="StartingPage" component={StartingPage} /> 
          <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} /> 
@@ -101,7 +92,7 @@ export default function App() {
             <Stack.Screen name="Messages" component={Messages}/>    */}
              {/* <Stack.Screen name="Helping" component={CharityScreen}/>   
             <Stack.Screen name="Donation1" component={Donation1}/>    */}
-      </Stack.Navigator>
+      {/* </Stack.Navigator> */}
 {/* <Events/> */}
 {/* <Azert/> */}
       {/* <HomeRE/> */}
@@ -110,6 +101,7 @@ export default function App() {
       {/* <School/> */}
       {/* <EnglishCourseScreen/> */}
       {/* <CharityScreen/> */}
+      <Elders/>
     </NavigationContainer>
   );
 }
