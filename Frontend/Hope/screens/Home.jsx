@@ -80,6 +80,7 @@ const HomeRE = () => {
     navigation.navigate('Messages');
   };
   return (
+    <View style={styles.container}>
     <ScrollView>
     <View style={styles.homeRe}>
       <Pressable
@@ -105,7 +106,7 @@ const HomeRE = () => {
       <View  style={styles.images}>
       <Pressable onPress={navigateToPeopleWhoNeedWater}>
             <Image
-              style={[styles.homeReItem, styles.homePosition, isClicked && styles.clickedIcon]}
+              style={[styles.homeReItem, styles.homePosition]}
               contentFit="cover"
               source={require("../assets/Ellipse_52.png")}
             />
@@ -216,13 +217,14 @@ const HomeRE = () => {
         <Text style={styles.buttonText}>press here </Text>
         </TouchableOpacity>
   </View>
+    </ScrollView>
     <View style={styles.tabbar}>
         <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={width * 0.06} color="black" /></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={width * 0.06} color="black" /></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={width * 0.06} color="black" /></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={width * 0.06} color="black" /></TouchableOpacity>
       </View>
-    </ScrollView>
+    </View>
   );
 }
 
@@ -483,8 +485,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#f0f0f0',
+  
     paddingVertical: height * 0.02,
+    position: 'absolute',
+    bottom: -15,
+    left: 0,
+    right: 0,
   },
   tabItem: {
     flex: 1,
@@ -492,6 +498,10 @@ const styles = StyleSheet.create({
   },
   text:{
     width:350
+  },
+  container: {
+    flex: 1,
+    
   }
 });
 

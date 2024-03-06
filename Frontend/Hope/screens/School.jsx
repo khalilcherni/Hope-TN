@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
-
+const { width, height } = Dimensions.get('window');
 export default function School() {
   const navigation = useNavigation();
 
@@ -218,8 +218,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#f0f0f0',
-    paddingVertical: 10,
+  
+    paddingVertical: height * 0.02,
+    position: 'absolute',
+    bottom: -15,
+    left: 0,
+    right: 0,
   },
   tabItem: {
     flex: 1,

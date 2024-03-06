@@ -1,22 +1,39 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, TextInput, FlatList, StyleSheet,Image } from 'react-native';
-import { FontAwesome5, MaterialIcons } from '@expo/vector-icons'; 
+import { View, Text, TouchableOpacity, TextInput, FlatList, StyleSheet, Image } from 'react-native';
+import { FontAwesome5, MaterialIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native'; // Import the necessary navigation hook
 
 const ChatBubble = ({ onPress }) => {
 
   return (
     <TouchableOpacity style={styles.fullScreenContainer} onPress={onPress}>
-    <Image
-      source={{ uri: "https://i.pinimg.com/originals/4b/cb/1f/4bcb1fb72d1d08efa44efa5ceb712ec7.gif" }} // Replace with your chat bot icon
-      style={styles.chatIcon}
-    />
-  </TouchableOpacity>
+      <Image
+        source={{ uri: "https://i.pinimg.com/originals/4b/cb/1f/4bcb1fb72d1d08efa44efa5ceb712ec7.gif" }} // Replace with your chat bot icon
+        style={styles.chatIcon}
+      />
+    </TouchableOpacity>
   );
 };
 
 const ChatInterface = ({ onClose, onSendMessage, messages, input, setInput }) => {
+  const navigation = useNavigation(); // Get the navigation object
+
   const sendMessage = () => {
-    onSendMessage();
+    if (input.trim() === '') {
+      return;
+    }
+
+    // If user inputs 'Home', navigate to Home screen
+    if (input.trim().toLowerCase() === 'home') {
+      navigation.navigate('Home');
+      setInput(''); // Clear input after navigation
+      return;
+    }
+
+    // Add user message to the chat
+    const userMessage = { id: messages.length, text: input, sender: 'User' };
+    onSendMessage(userMessage);
+    setInput('');
   };
 
   return (
@@ -50,6 +67,8 @@ const ChatInterface = ({ onClose, onSendMessage, messages, input, setInput }) =>
 };
 
 const ChatScreen = () => {
+  const navigation = useNavigation(); // Get the navigation object
+
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([]);
@@ -58,25 +77,19 @@ const ChatScreen = () => {
     setIsChatOpen(!isChatOpen);
   };
 
-  const sendMessage = () => {
-    if (input.trim() === '') {
-      return;
-    }
-  
+  const sendMessage = (message) => {
     // Add user message to the chat
-    const userMessage = { id: messages.length, text: input, sender: 'User' };
-    setMessages([...messages, userMessage]);
-    setInput('');
-  
+    setMessages([...messages, message]);
+
     // Simulate bot response
     setTimeout(() => {
       let botMessage = '';
-      const userInput = input.trim();
-  
+      const userInput = message.text.trim();
+
       // Detect language based on characters
       const isArabic = /[\u0600-\u06FF]/.test(userInput); // Check if input contains Arabic characters
       const isEnglish = /^[a-zA-Z0-9\s,.'!?]*$/.test(userInput); // Check if input contains English characters
-  
+
       // Bot responses based on user queries and detected language
       if (isArabic) {
         // Arabic responses
@@ -108,14 +121,13 @@ const ChatScreen = () => {
         // If language cannot be determined, respond with a generic message
         botMessage = "I'm sorry, I couldn't determine the language of your query. Please try again.";
       }
-  
+
       // Add bot response to the chat
       const botResponse = { id: messages.length + 1, text: botMessage, sender: 'Bot' };
       setMessages([...messages, botResponse]);
     }, 1000); // Simulate delayed response
   };
-  
-  
+
   return (
     <View style={styles.container}>
       {!isChatOpen && <ChatBubble onPress={toggleChat} />}
@@ -149,11 +161,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   chatIcon: {
-    width:500, // Adjust the width as needed
+    width: 500, // Adjust the width as needed
     height: 530,
     alignItems: "center",
-    marginHorizontal:50,
-    marginLeft:50 // Adjust the height as needed
+    marginHorizontal: 50,
+    marginLeft: 50 // Adjust the height as needed
   },
   bubbleContainer: {
     backgroundColor: '#007bff',
@@ -166,12 +178,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   chatInterface: {
-   
+
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     padding: 20,
     width: '107%',
-    
+
   },
   messageContainer: {
     backgroundColor: '#f0f0f0',
@@ -194,8 +206,8 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     paddingHorizontal: 80,
     marginRight: 10,
-    height:50,
-    marginBottom:-40
+    height: 50,
+    marginBottom: -40
 
   },
   sendButton: {
