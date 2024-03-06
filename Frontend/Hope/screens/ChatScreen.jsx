@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, FlatList, StyleSheet,Image } from 'react-native';
-
+import { FontAwesome5, MaterialIcons } from '@expo/vector-icons'; 
 const ChatBubble = ({ onPress }) => {
   return (
     <TouchableOpacity style={styles.fullScreenContainer} onPress={onPress}>
     <Image
-      source={{ uri: "https://i.pinimg.com/originals/84/8c/34/848c342a56e7854dec45b9349c21dfe5.gif" }} // Replace with your chat bot icon
+      source={{ uri: "https://i.pinimg.com/originals/4b/cb/1f/4bcb1fb72d1d08efa44efa5ceb712ec7.gif" }} // Replace with your chat bot icon
       style={styles.chatIcon}
     />
   </TouchableOpacity>
@@ -37,11 +37,11 @@ const ChatInterface = ({ onClose, onSendMessage, messages, input, setInput }) =>
           onSubmitEditing={sendMessage}
         />
         <TouchableOpacity style={styles.sendButton} onPress={sendMessage}>
-          <Text style={styles.sendButtonText}>Send</Text>
+          <FontAwesome5 name="paper-plane" size={24} color="white" />
         </TouchableOpacity>
       </View>
       <TouchableOpacity style={styles.closeButton} onPress={onClose}>
-        <Text style={styles.closeButtonText}>Close</Text>
+        <MaterialIcons name="close" size={24} color="black" />
       </TouchableOpacity>
     </View>
   );
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     height: 530,
     alignItems: "center",
     marginHorizontal:50,
-    marginLeft:-40 // Adjust the height as needed
+    marginLeft:50 // Adjust the height as needed
   },
   bubbleContainer: {
     backgroundColor: '#007bff',
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   chatInterface: {
-    backgroundColor: '#fff',
+   
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     padding: 20,
