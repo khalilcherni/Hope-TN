@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, FlatList, StyleSheet, Image } from 'react-native';
 import { FontAwesome5, MaterialIcons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native'; // Import the necessary navigation hook
+import { useNavigation } from '@react-navigation/native';
 
 const ChatBubble = ({ onPress }) => {
 
   return (
     <TouchableOpacity style={styles.fullScreenContainer} onPress={onPress}>
       <Image
-        source={{ uri: "https://i.pinimg.com/originals/4b/cb/1f/4bcb1fb72d1d08efa44efa5ceb712ec7.gif" }} // Replace with your chat bot icon
+        source={{ uri: "https://i.pinimg.com/originals/4b/cb/1f/4bcb1fb72d1d08efa44efa5ceb712ec7.gif" }}
         style={styles.chatIcon}
       />
     </TouchableOpacity>
@@ -16,21 +16,33 @@ const ChatBubble = ({ onPress }) => {
 };
 
 const ChatInterface = ({ onClose, onSendMessage, messages, input, setInput }) => {
-  const navigation = useNavigation(); // Get the navigation object
+  const navigation = useNavigation();
 
   const sendMessage = () => {
     if (input.trim() === '') {
       return;
     }
 
-    // If user inputs 'Home', navigate to Home screen
     if (input.trim().toLowerCase() === 'home') {
       navigation.navigate('Home');
-      setInput(''); // Clear input after navigation
+      setInput('');
+      return;
+    } else if (input.trim().toLowerCase() === 'help') {
+      navigation.navigate('Helping');
+      setInput('');
+      return;
+    } else if (input.trim().toLowerCase() === 'school') {
+      navigation.navigate('School');
+      setInput('');
+      return;
+    }
+    else if (input.trim().toLowerCase() === 'events') {
+      navigation.navigate('Events');
+      setInput('');
       return;
     }
 
-    // Add user message to the chat
+
     const userMessage = { id: messages.length, text: input, sender: 'User' };
     onSendMessage(userMessage);
     setInput('');
@@ -67,7 +79,7 @@ const ChatInterface = ({ onClose, onSendMessage, messages, input, setInput }) =>
 };
 
 const ChatScreen = () => {
-  const navigation = useNavigation(); // Get the navigation object
+  const navigation = useNavigation();
 
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [input, setInput] = useState('');
@@ -78,21 +90,16 @@ const ChatScreen = () => {
   };
 
   const sendMessage = (message) => {
-    // Add user message to the chat
     setMessages([...messages, message]);
 
-    // Simulate bot response
     setTimeout(() => {
       let botMessage = '';
       const userInput = message.text.trim();
 
-      // Detect language based on characters
-      const isArabic = /[\u0600-\u06FF]/.test(userInput); // Check if input contains Arabic characters
-      const isEnglish = /^[a-zA-Z0-9\s,.'!?]*$/.test(userInput); // Check if input contains English characters
+      const isArabic = /[\u0600-\u06FF]/.test(userInput);
+      const isEnglish = /^[a-zA-Z0-9\s,.'!?]*$/.test(userInput);
 
-      // Bot responses based on user queries and detected language
       if (isArabic) {
-        // Arabic responses
         if (userInput.includes('مرحبا')) {
           botMessage = 'مرحبًا كيف يمكنني مساعدتك اليوم؟';
         } else if (userInput.includes('كيف حالك؟')) {
@@ -105,7 +112,6 @@ const ChatScreen = () => {
           botMessage = "آسف، لا أملك معلومات حول ذلك. هل هناك شيء آخر يمكنني مساعدتك فيه؟";
         }
       } else if (isEnglish) {
-        // English responses
         if (userInput.includes('hello')) {
           botMessage = 'Hi there! How can I assist you today?';
         } else if (userInput.includes('how are you?')) {
@@ -118,14 +124,12 @@ const ChatScreen = () => {
           botMessage = "I'm sorry, I don't have information about that. Is there anything else I can help you with?";
         }
       } else {
-        // If language cannot be determined, respond with a generic message
         botMessage = "I'm sorry, I couldn't determine the language of your query. Please try again.";
       }
 
-      // Add bot response to the chat
       const botResponse = { id: messages.length + 1, text: botMessage, sender: 'Bot' };
       setMessages([...messages, botResponse]);
-    }, 1000); // Simulate delayed response
+    }, 1000);
   };
 
   return (
@@ -161,11 +165,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   chatIcon: {
-    width: 500, // Adjust the width as needed
+    width: 500,
     height: 530,
     alignItems: "center",
     marginHorizontal: 50,
-    marginLeft: 50 // Adjust the height as needed
+    marginLeft: 50
   },
   bubbleContainer: {
     backgroundColor: '#007bff',
@@ -178,12 +182,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   chatInterface: {
-
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     padding: 20,
     width: '107%',
-
   },
   messageContainer: {
     backgroundColor: '#f0f0f0',
@@ -208,7 +210,6 @@ const styles = StyleSheet.create({
     marginRight: 10,
     height: 50,
     marginBottom: -40
-
   },
   sendButton: {
     backgroundColor: '#209FA6',
