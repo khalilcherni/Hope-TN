@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, TextInput, FlatList, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, FlatList, StyleSheet,Image } from 'react-native';
 
 const ChatBubble = ({ onPress }) => {
   return (
-    <TouchableOpacity style={styles.bubbleContainer} onPress={onPress}>
-      <Text style={styles.bubbleText}>Chat</Text>
-    </TouchableOpacity>
+    <TouchableOpacity style={styles.fullScreenContainer} onPress={onPress}>
+    <Image
+      source={{ uri: "https://i.pinimg.com/originals/84/8c/34/848c342a56e7854dec45b9349c21dfe5.gif" }} // Replace with your chat bot icon
+      style={styles.chatIcon}
+    />
+  </TouchableOpacity>
   );
 };
 
@@ -134,13 +137,27 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     padding: 20,
   },
+  fullScreenContainer: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  chatIcon: {
+    width:500, // Adjust the width as needed
+    height: 530,
+    alignItems: "center",
+    marginHorizontal:50,
+    marginLeft:-40 // Adjust the height as needed
+  },
   bubbleContainer: {
     backgroundColor: '#007bff',
     borderRadius: 20,
     paddingHorizontal: 15,
     paddingVertical: 10,
-    marginBottom:380,
-    marginRight:130
   },
   bubbleText: {
     color: '#fff',

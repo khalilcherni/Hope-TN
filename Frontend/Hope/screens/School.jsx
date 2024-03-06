@@ -18,7 +18,7 @@ export default function School() {
   const screenWidth = Dimensions.get('window').width; // Get Screen Width
 
   useEffect(() => {
-    axios.get('http://192.168.1.201:4000/api/school/get')
+    axios.get('http://192.168.72.231:4000/api/school/get')
       .then(res => {
         setData(res.data);
         setLoading(false);

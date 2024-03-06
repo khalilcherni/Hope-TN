@@ -31,7 +31,7 @@ app.use("/api/question", questionsRoute);
 app.use("/api/voluntary", Voluntarywork);
 app.use("/api/people", peopleRoute);
 app.use('/api', donationRoute);
-app.use('/api', eventsRoute);
+app.use('/api', events);
 app.use('/api', schoolRoute);
 app.use('/users', userRoute);
 app.use('/supporters', supporterRoute);
