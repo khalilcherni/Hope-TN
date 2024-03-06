@@ -70,6 +70,12 @@ const HomeRE = () => {
     navigation.navigate("Palestine");
     setIsClicked(true);
   };
+  const handlePress = () => {
+    navigation.navigate('ChatScreen');
+  };
+  const handlePressHelp = () => {
+    navigation.navigate('Messages');
+  };
   return (
     <ScrollView>
     <View style={styles.homeRe}>
@@ -192,10 +198,17 @@ const HomeRE = () => {
       <Text style={styles.text}>
         In today's world, poverty remains a harsh reality for millions, depriving individuals of basic necessities and dignity. Among the most vulnerable are the homeless, struggling to find shelter and stability amidst societal neglect. For orphans, the absence of familial support compounds their challenges, leaving them adrift in a world of uncertainty. Access to clean water, a fundamental human right, eludes many, exacerbating health crises and perpetuating cycles of deprivation. Moreover, the elderly, often overlooked, face isolation and neglect, despite their invaluable wisdom and experience. Together, we must advocate for change, extending a compassionate hand to those in need.
       </Text>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={handlePress}>
         <Text style={styles.buttonText}>Learn More</Text>
       </TouchableOpacity>
     </View>
+
+    <View style={styles.card}>
+  <Text> If you are an ally of our cause and you have something you want to donate, your contribution can make a real difference. Your support helps us continue our mission and reach those in need. Please press the button below to make a donation: </Text>
+  <TouchableOpacity style={styles.button} onPress={handlePressHelp}>
+        <Text style={styles.buttonText}>press here </Text>
+        </TouchableOpacity>
+  </View>
     <View style={styles.tabbar}>
         <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={width * 0.06} color="black" /></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={width * 0.06} color="black" /></TouchableOpacity>

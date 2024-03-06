@@ -48,6 +48,8 @@ import Frame from './screens/categoriePeopleWhoNeedWater.js';
 import Poor from './screens/poorPeople.js';
 import TermsAndPrivacy from './screens/Terms.jsx';
 import ImageUploadTwo from './screens/ImageUploadTwo.jsx';
+import Chatbot from './screens/ChatBot.jsx';
+import ChatScreen from './screens/ChatScreen.jsx';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -78,6 +80,8 @@ export default function App() {
         <Stack.Screen name="Palestine" component={Gaza}/> 
         <Stack.Screen name="Terms" component={TermsAndPrivacy}/> 
          <Stack.Screen name="Contactus" component={Contact}/> 
+         <Stack.Screen name="ChatScreen" component={ChatScreen}/> 
+         <Stack.Screen name="ChatBot" component={Chatbot}/> 
   {/* <Stack.Screen name="Messages" component={Messages}/> */}
         {/* <Stack.Screen name="ChatRoom" component={ChatRoom}/> 
         <Stack.Screen name="Messages" component={Messages}/> 

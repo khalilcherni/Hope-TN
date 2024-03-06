@@ -28,14 +28,14 @@ const SignUp = () => {
 
   const handleSignUp = async () => {
     try {
-      navigation.navigate('Terms');
+   
       Alert.alert("jbvjvbjj");
       const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/;
       if (!passwordRegex.test(password)) {
         Alert.alert("Password must contain at least one capital letter, one number, and one symbol (!@#$%^&*)");
         return;
       }
-
+      navigation.navigate('Terms');
       // const res = await createUserWithEmailAndPassword(email, password);
 
       // if (!res || !res.user) {
