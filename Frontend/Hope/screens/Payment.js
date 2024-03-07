@@ -1,14 +1,18 @@
 import * as React from "react";
-import { Text, TextInput, StyleSheet, View, Pressable, ScrollView,TouchableOpacity , Modal } from "react-native";
+import { Text, TextInput, StyleSheet, View, Pressable, ScrollView, Alert } from "react-native";
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
 import { FontFamily, Color, FontSize, Border } from "../GlobalStyles";
+
 const Payment = () => {
   const navigation = useNavigation();
   const [expiryDate, setExpiryDate] = React.useState('');
+  const [cardNumber, setCardNumber] = React.useState('');
+  const [cvv2, setCVV2] = React.useState('');
+  const [fullName, setFullName] = React.useState('');
+  const [email, setEmail] = React.useState('');
 
   const handleExpiryDateChange = (input) => {
-    // Format MM/YY manually
     if (input.length <= 5) {
       setExpiryDate(input
         .replace(/\D/g, "")
@@ -17,12 +21,12 @@ const Payment = () => {
     }
   };
 
-  const [isModalVisible, setModalVisible] = React.useState(false);
-  const [paymentMethod, setPaymentMethod] = React.useState('');
-
-  const handlePaymentMethodChange = (selectedMethod) => {
-    setPaymentMethod(selectedMethod);
-    setModalVisible(false);
+  const handleDonatePress = () => {
+    if (cvv2.length !== 3 || cardNumber.length !== 16 || expiryDate.length !== 5 || fullName.trim() === '' || email.trim() === '') {
+      Alert.alert('Invalid Input', 'Please check your inputs.');
+    } else {
+      navigation.navigate("AnotherPage");
+    }
   };
 
   return (
@@ -47,7 +51,15 @@ const Payment = () => {
           source={require("../assets/edit-fill-removebg-preview.png")}
         />
         <View style={styles.androidLarge3Child4} />
-        <Text style={[styles.donateNow, styles.backTypo]}>{`Donate Now`}</Text>
+        
+        {/* Modify the existing Text component to be pressable */}
+        <Text
+          style={[styles.donateNow, styles.backTypo]}
+          onPress={handleDonatePress}
+        >
+          {`Donate Now`}
+        </Text>
+        
         <Pressable
           style={styles.signOutCircleDuotone}
           onPress={() => navigation.navigate("AndroidLarge")}
@@ -69,70 +81,32 @@ const Payment = () => {
           <View style={[styles.rectangleView, styles.androidLayout]} />
           <View style={[styles.androidLarge3Child1, styles.androidChildLayout]} />
           <View style={[styles.androidLarge3Child2, styles.androidChildLayout]} />
-          <View style={[styles.androidLarge3Child3, styles.androidLayout]} />
-          <Text style={[styles.paymentMethod, styles.backTypo]}>
-            Payment method
-          </Text>
-          <TouchableOpacity
-            style={[styles.paymentMethod, styles.backTypo]}
-            onPress={() => setModalVisible(true)}
-          >
-            <Text>paymentMethod</Text>
-          </TouchableOpacity>
-
-          {/* Modal for payment method selection */}
-          <Modal
-            animationType="slide"
-            transparent={true}
-            visible={isModalVisible}
-            onRequestClose={() => setModalVisible(false)}
-          >
-            <View  style={[styles.paymentMethod, styles.backTypo]}>
-              <View style={[styles.paymentMethod, styles.backTypo]}>
-                <TouchableOpacity
-                  style={[styles.paymentMethod, styles.backTypo]}
-                  onPress={() => setModalVisible(false)}
-                >
-                  <Text>Close</Text>
-                </TouchableOpacity>
-
-                {/* Payment method options */}
-                <TouchableOpacity
-                  style={[styles.paymentMethod, styles.backTypo]}
-                  onPress={() => handlePaymentMethodChange("Bank Card")}
-                >
-                  <Text>Bank Card</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                 style={[styles.paymentMethod, styles.backTypo]}
-                  onPress={() => handlePaymentMethodChange("Debit Card")}
-                >
-                  <Text>Debit Card</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </Modal>
-
+          
           <TextInput
             style={[styles.cardNumber, styles.backTypo]}
             placeholder="Card number"
             keyboardType="numeric"
             maxLength={16}
+            value={cardNumber}
+            onChangeText={setCardNumber}
           />
 
           <TextInput
             style={[styles.firstAndLast, styles.backTypo]}
             placeholder="First and last name on the card"
+            value={fullName}
+            onChangeText={setFullName}
           />
 
           <TextInput
             style={[styles.email, styles.backTypo]}
             placeholder="Email"
             keyboardType="email-address"
+            value={email}
+            onChangeText={setEmail}
           />
 
-<TextInput
+          <TextInput
             style={[styles.mmyy, styles.mmyyTypo]}
             placeholder="MM/YY"
             keyboardType="numeric"
@@ -145,7 +119,9 @@ const Payment = () => {
             style={[styles.cvv2, styles.mmyyTypo]}
             placeholder="CVV2"
             keyboardType="numeric"
-            maxLength={4}
+            maxLength={3}
+            value={cvv2}
+            onChangeText={setCVV2}
           />
         </View>
       </View>
@@ -156,12 +132,14 @@ const Payment = () => {
 const styles = StyleSheet.create({
   backTypo: {
     textAlign: "center",
-    fontFamily: FontFamily.kalamRegular,
+    
     lineHeight: 30,
     position: "absolute",
   },
+ 
   AMINA:{
-    top:28  },
+    top:28,
+ },
 
     
   textTypo: {
@@ -189,7 +167,7 @@ const styles = StyleSheet.create({
   },
   androidChildLayout: {
     width: 112,
-    top: 468,
+    top: 458,
     height: 43,
     backgroundColor: Color.colorGainsboro_200,
     borderRadius: Border.br_11xl,
@@ -277,11 +255,11 @@ const styles = StyleSheet.create({
     left: 32,
   },
   androidLarge3Inner: {
-    top: 270,
+    top: 280,
     left: 38,
   },
   rectangleView: {
-    top: 399,
+    top: 359,
     left: 30,
   },
   androidLarge3Child1: {
@@ -290,23 +268,10 @@ const styles = StyleSheet.create({
   androidLarge3Child2: {
     left: 204,
   },
-  androidLarge3Child3: {
-    top: 335,
-    left: 34,
-  },
-  paymentMethod: {
-    top: 342,
-    left: 37,
-    width: 140,
-    height: 35,
 
-    fontSize: FontSize.smallNormalBold_size,
-    textAlign: "center",
-    fontFamily: FontFamily.kalamRegular,
-    lineHeight: 30,
-  },
+
   androidLarge3Child4: {
-    top: 671,
+    top: 621,
     left: 54,
     backgroundColor: Color.colorDarkcyan,
     width: 249,
@@ -315,7 +280,7 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   donateNow: {
-    top: 680,
+    top: 629,
     left: 93,
     fontSize: FontSize.smallNormalBold_size,
     color: Color.lightWhite,
@@ -341,48 +306,46 @@ const styles = StyleSheet.create({
     fontSize: FontSize.smallNormalBold_size,
   },
   cardNumber: {
-    top: 401,
-    width: 119,
+    top: 360,
+    width: 229,
     height: 41,
-    left: 30,
+    left: 65,
     color: Color.lightBlack,
     fontSize: FontSize.smallNormalBold_size,
-    textAlign: "center",
-    fontFamily: FontFamily.kalamRegular,
-    lineHeight: 30,
   },
   firstAndLast: {
-    top: 199,
-    left: 35,
-    width: 241,
+    top: 195,
+    left: 55,
+    width: 251,
     height: 59,
     color: Color.lightBlack,
     fontSize: FontSize.smallNormalBold_size  ,
     textAlign: "center",
-    fontFamily: FontFamily.kalamRegular,
-    lineHeight: 30,
+    
   },
-  email: {
-    top: 279,
-    left: -30,
-    width: 191,
-    height: 25,
-    color: Color.lightBlack,
-    fontSize: FontSize.smallNormalBold_size,
-    textAlign: "center",
-    fontFamily: FontFamily.kalamRegular,
   
-  },
+ email: {
+  top: 289,
+  left: 30,
+  width: 291,
+  height: 25,
+  color: Color.lightBlack,
+  fontSize: FontSize.smallNormalBold_size,
+  
+},
+
+  
+ 
   mmyy: {
     fontSize: FontSize.smallNormalBold_size,
     left: 45,
     width: 87,
     height: 62,
-    top: 458,
+    top: 448,
   },
   cvv2: {
     left: 221,
-    top: 475,
+    top: 465,
     width: 75,
     height: 25,
     fontSize: FontSize.smallNormalBold_size
