@@ -10,7 +10,7 @@ import { AntDesign } from '@expo/vector-icons';
 const { width, height } = Dimensions.get('window');
 const HomeRE = () => {
   const navigation = useNavigation();
-  // const [isClicked, setIsClicked] = useState(false);
+
   const images = [
     require("../assets/tunisia-covid-station-767_1_1.png"),
     require("../assets/charity-work.png"),
