@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import { Image } from "expo-image";
 import { StyleSheet, Pressable, Text, View,ScrollView } from "react-native";
@@ -107,7 +108,7 @@ const HomeRE = () => {
         contentFit="cover"
         source={require("../assets/jpg-removebg-preview_1.png")}
       />
-     
+    
       <Pressable
         style={[styles.vuesaxbrokenmessageText, styles.houseIconLayout]}
         onPress={() => navigation.navigate("ChannelList")}
