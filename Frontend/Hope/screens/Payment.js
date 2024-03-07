@@ -1,75 +1,154 @@
 import * as React from "react";
-import { Text, StyleSheet, View, Pressable,ScrollView } from "react-native";
+import { Text, TextInput, StyleSheet, View, Pressable, ScrollView,TouchableOpacity , Modal } from "react-native";
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
 import { FontFamily, Color, FontSize, Border } from "../GlobalStyles";
-
-
 const Payment = () => {
   const navigation = useNavigation();
+  const [expiryDate, setExpiryDate] = React.useState('');
+
+  const handleExpiryDateChange = (input) => {
+    // Format MM/YY manually
+    if (input.length <= 5) {
+      setExpiryDate(input
+        .replace(/\D/g, "")
+        .replace(/(\d{2})(\d{0,2})/, '$1/$2')
+      );
+    }
+  };
+
+  const [isModalVisible, setModalVisible] = React.useState(false);
+  const [paymentMethod, setPaymentMethod] = React.useState('');
+
+  const handlePaymentMethodChange = (selectedMethod) => {
+    setPaymentMethod(selectedMethod);
+    setModalVisible(false);
+  };
 
   return (
     <ScrollView>
-    <View style={styles.androidLarge3}>
-      <View style={styles.backWrapper}>
-        <Text style={[styles.back, styles.backTypo]}>{`back
-`}</Text>
-      </View>
-      <View style={styles.androidLarge3Child} />
-      <Text style={styles.payment}>{`payment
-`}</Text>
-      <Text style={[styles.text, styles.textTypo]}>123</Text>
-      <Text style={styles.text1}>{`4/24
-`}</Text>
-      <Text style={[styles.text2, styles.textTypo]}>156-633-15899</Text>
-      <Image
-        style={styles.mastercardLogo1Icon}
-        contentFit="cover"
-        source={require("../assets/Mastercard_logo 1.png")}
-      />
-      <Image
-        style={[styles.editFillIcon, styles.fillIconLayout]}
-        contentFit="cover"
-        source={require("../assets/edit-fill-removebg-preview.png")}
-      />
-           <View style={styles.androidLarge3Child4} />
-      <Text style={[styles.donateNow, styles.backTypo]}>{`Donate Now
-`}</Text>
-      <Pressable
-        style={styles.signOutCircleDuotone}
-        onPress={() => navigation.navigate("AndroidLarge")}
-      >
+      <View style={styles.androidLarge3}>
+        <View style={styles.backWrapper}>
+          <Text style={[styles.back, styles.backTypo]}>{`back`}</Text>
+        </View>
+        <View style={styles.androidLarge3Child} />
+        <Text style={styles.payment}>{`payment`}</Text>
+        <Text style={[styles.text, styles.textTypo]}>123</Text>
+        <Text style={styles.text1}>{`4/24`}</Text>
+        <Text style={[styles.text2, styles.textTypo]}>156-633-15899</Text>
         <Image
-          style={styles.icon}
+          style={styles.mastercardLogo1Icon}
           contentFit="cover"
-          source={require("../assets/Sign_out_circle_duotone.jpg")}
+          source={require("../assets/Mastercard_logo 1.png")}
         />
-      </Pressable>
-      <Image
-        style={[styles.creditCardFillIcon, styles.fillIconLayout]}
-        contentFit="cover"
-        source={require("../assets/credit-card-fil.png")}
-      />
-     
-      <View style={[styles.androidLarge3Item, styles.androidLayout]} />
-      <View style={[styles.androidLarge3Inner, styles.androidLayout]} />
-      <View style={[styles.rectangleView, styles.androidLayout]} />
-      <View style={[styles.androidLarge3Child1, styles.androidChildLayout]} />
-      <View style={[styles.androidLarge3Child2, styles.androidChildLayout]} />
-      <View style={[styles.androidLarge3Child3, styles.androidLayout]} />
-      <Text style={[styles.paymentMethod, styles.backTypo]}>
-        Payment method
-      </Text>
+        <Image
+          style={[styles.editFillIcon, styles.fillIconLayout]}
+          contentFit="cover"
+          source={require("../assets/edit-fill-removebg-preview.png")}
+        />
+        <View style={styles.androidLarge3Child4} />
+        <Text style={[styles.donateNow, styles.backTypo]}>{`Donate Now`}</Text>
+        <Pressable
+          style={styles.signOutCircleDuotone}
+          onPress={() => navigation.navigate("AndroidLarge")}
+        >
+          <Image
+            style={styles.icon}
+            contentFit="cover"
+            source={require("../assets/Sign_out_circle_duotone.jpg")}
+          />
+        </Pressable>
+        <Image
+          style={[styles.creditCardFillIcon, styles.fillIconLayout]}
+          contentFit="cover"
+          source={require("../assets/credit-card-fil.png")}
+        />
+        <View style={styles.AMINA}>
+          <View style={[styles.androidLarge3Item, styles.androidLayout]} />
+          <View style={[styles.androidLarge3Inner, styles.androidLayout]} />
+          <View style={[styles.rectangleView, styles.androidLayout]} />
+          <View style={[styles.androidLarge3Child1, styles.androidChildLayout]} />
+          <View style={[styles.androidLarge3Child2, styles.androidChildLayout]} />
+          <View style={[styles.androidLarge3Child3, styles.androidLayout]} />
+          <Text style={[styles.paymentMethod, styles.backTypo]}>
+            Payment method
+          </Text>
+          <TouchableOpacity
+            style={[styles.paymentMethod, styles.backTypo]}
+            onPress={() => setModalVisible(true)}
+          >
+            <Text>paymentMethod</Text>
+          </TouchableOpacity>
 
- 
-      <Text style={[styles.cardNumber, styles.backTypo]}>{`card number `}</Text>
-      <Text style={[styles.firstAndLast, styles.backTypo]}>
-        first and last name on the card
-      </Text>
-      <Text style={[styles.email, styles.backTypo]}>email</Text>
-      <Text style={[styles.mmyy, styles.mmyyTypo]}>MM/YY</Text>
-      <Text style={[styles.cvv2, styles.mmyyTypo]}>CVV2</Text>
-    </View>
+          {/* Modal for payment method selection */}
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={isModalVisible}
+            onRequestClose={() => setModalVisible(false)}
+          >
+            <View  style={[styles.paymentMethod, styles.backTypo]}>
+              <View style={[styles.paymentMethod, styles.backTypo]}>
+                <TouchableOpacity
+                  style={[styles.paymentMethod, styles.backTypo]}
+                  onPress={() => setModalVisible(false)}
+                >
+                  <Text>Close</Text>
+                </TouchableOpacity>
+
+                {/* Payment method options */}
+                <TouchableOpacity
+                  style={[styles.paymentMethod, styles.backTypo]}
+                  onPress={() => handlePaymentMethodChange("Bank Card")}
+                >
+                  <Text>Bank Card</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                 style={[styles.paymentMethod, styles.backTypo]}
+                  onPress={() => handlePaymentMethodChange("Debit Card")}
+                >
+                  <Text>Debit Card</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </Modal>
+
+          <TextInput
+            style={[styles.cardNumber, styles.backTypo]}
+            placeholder="Card number"
+            keyboardType="numeric"
+            maxLength={16}
+          />
+
+          <TextInput
+            style={[styles.firstAndLast, styles.backTypo]}
+            placeholder="First and last name on the card"
+          />
+
+          <TextInput
+            style={[styles.email, styles.backTypo]}
+            placeholder="Email"
+            keyboardType="email-address"
+          />
+
+<TextInput
+            style={[styles.mmyy, styles.mmyyTypo]}
+            placeholder="MM/YY"
+            keyboardType="numeric"
+            maxLength={5}
+            value={expiryDate}
+            onChangeText={handleExpiryDateChange}
+          />
+
+          <TextInput
+            style={[styles.cvv2, styles.mmyyTypo]}
+            placeholder="CVV2"
+            keyboardType="numeric"
+            maxLength={4}
+          />
+        </View>
+      </View>
     </ScrollView>
   );
 };
@@ -81,6 +160,10 @@ const styles = StyleSheet.create({
     lineHeight: 30,
     position: "absolute",
   },
+  AMINA:{
+    top:28  },
+
+    
   textTypo: {
     height: 27,
     top: 114,
@@ -98,7 +181,8 @@ const styles = StyleSheet.create({
   },
   androidLayout: {
     height: 43,
-    width: 292,
+    left:10,
+    width: 335,
     backgroundColor: Color.colorGainsboro_200,
     borderRadius: Border.br_11xl,
     position: "absolute",
@@ -112,8 +196,9 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   mmyyTypo: {
-    top: 478,
+    
     textAlign: "center",
+    
     color: Color.lightBlack,
     fontSize: FontSize.smallNormalBold_size,
     position: "absolute",
@@ -259,7 +344,7 @@ const styles = StyleSheet.create({
     top: 401,
     width: 119,
     height: 41,
-    left: 32,
+    left: 30,
     color: Color.lightBlack,
     fontSize: FontSize.smallNormalBold_size,
     textAlign: "center",
@@ -267,8 +352,8 @@ const styles = StyleSheet.create({
     lineHeight: 30,
   },
   firstAndLast: {
-    top: 213,
-    left: 55,
+    top: 199,
+    left: 35,
     width: 241,
     height: 59,
     color: Color.lightBlack,
@@ -278,24 +363,26 @@ const styles = StyleSheet.create({
     lineHeight: 30,
   },
   email: {
-    top: 275,
-    left: -14,
+    top: 279,
+    left: -30,
     width: 191,
     height: 25,
     color: Color.lightBlack,
     fontSize: FontSize.smallNormalBold_size,
     textAlign: "center",
     fontFamily: FontFamily.kalamRegular,
-    lineHeight: 30,
+  
   },
   mmyy: {
     fontSize: FontSize.smallNormalBold_size,
     left: 45,
     width: 87,
     height: 62,
+    top: 458,
   },
   cvv2: {
     left: 221,
+    top: 475,
     width: 75,
     height: 25,
     fontSize: FontSize.smallNormalBold_size
