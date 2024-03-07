@@ -17,17 +17,20 @@ import Gaza from './screens/Palestine';
 // import Setting from './screens/Setting';
 import Chatroom from './screens/ChatRoom';
 import ChatroomContainer from './screens/ChatrommContainer';
+import HomeRE from './screens/Home';
+import ChatScreen from './screens/ChatScreen';
+import Chatbot from './screens/ChatBot';
 // import ProfileEdit from "./screens/EditProfile"
 import Register from './screens/Registration'
 import Events from './screens/Events.jsx'
 import ChatRoom from './screens/ChatRoom.jsx'
-import HomeRE from './screens/Home.jsx';
+// import HomeRE from './screens/Home.jsx';
 import Messages from './screens/Messages.jsx'
 import Setting from './screens/Setting.jsx'
 import School from './screens/School.jsx';
 import EnglishCourseScreen from './screens/EnglishCourseScreen.jsx';
 import Contact from './screens/Contactus.jsx';
-import Elderly from "./screens/Elderly.jsx"
+// import Elderly from "./screens/Orphans.jsx"
 import Donation from './screens/donation.jsx'
 // import Voluntarywork from './screens/Voluntarywork.jsx'
 import categoriePeopleWhoNeedWater from './screens/categoriePeopleWhoNeedWater.js'
@@ -35,6 +38,8 @@ import Azert from './screens/Azert.jsx';
 import CharityScreen from './screens/Helping.jsx'
 import Donation1 from './screens/Donation1.jsx'
 import Elders from './screens/Elders.jsx'
+import Orphan from './screens/Orphan.jsx'
+
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -84,7 +89,7 @@ export default function App() {
       {/* <School/> */}
       {/* <EnglishCourseScreen/> */}
       {/* <CharityScreen/> */}
-      <Elders/>
+      <Orphan/>
     </NavigationContainer>
   );
 }
