@@ -6,8 +6,10 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 
+const { width, height } = Dimensions.get('window');
 const CharityScreen = () => {
   const navigation = useNavigation();
   const [donationCards, setDonationCards] = useState([
@@ -26,22 +28,7 @@ const CharityScreen = () => {
       currentAmount: 0,
       goalAmount: 10000,
     },
-    {
-      id: 3,
-      // image: require('../assets/needWater.jpg'),
-      image: require('../assets/poor1.jpg'),
-      description: 'Help Jebreel and his family to escape from death. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id consequat turpis, eget tincidunt lectus.',
-      currentAmount: 0,
-      goalAmount: 10000,
-    },
-    {
-      id: 4,
-      // image: require('../assets/needWater.jpg'),
-      image: require('../assets/poor1.jpg'),
-      description: 'Help Jebreel and his family to escape from death. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id consequat turpis, eget tincidunt lectus.',
-      currentAmount: 0,
-      goalAmount: 10000,
-    },
+
   ]);
 
   useEffect(() => {
@@ -90,7 +77,15 @@ const CharityScreen = () => {
   const handleEventsnavigation = () => {
     navigation.navigate('Events'); 
   };
-
+  const handledonation = () => {
+    navigation.navigate('donation');
+  };
+  const handlecontact = () => {
+    navigation.navigate('Contactus');
+  };
+  const handlhelp = () => {
+    navigation.navigate('Helping');
+  };
   const handleDonate = async (donationAmount, cardId) => {
     const updatedCards = donationCards.map(card => {
       if (card.id === cardId) {
@@ -110,8 +105,8 @@ const CharityScreen = () => {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.scrollViewContainer}>
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollViewContainer} stickyHeaderIndices={[1]}>
         {donationCards.map((card) => (
           <View key={card.id} style={styles.card}>
             <Image source={card.image} style={styles.image} />
@@ -129,71 +124,69 @@ const CharityScreen = () => {
             </TouchableOpacity>
           </View>
         ))}
-      </View>
+        {/* Empty view to maintain space for the tab bar */}
+        <View style={{ height: height * 0.1 }} />
+      </ScrollView>
       <View style={styles.tabbar}>
-        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleHelpnavigation}><FontAwesome5 name="hands-helping" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleEventsnavigation}><MaterialIcons name="event" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><FontAwesome name="home" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handlhelp}><MaterialCommunityIcons name="charity" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><Ionicons name="school" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handledonation}><FontAwesome5 name="donate" size={width * 0.06}  color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handlecontact}><MaterialIcons name="quick-contacts-dialer" size={width * 0.06}  color="black" /></TouchableOpacity>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f0f0f0',
+  },
   scrollViewContainer: {
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 30,
-  },
-  container: {
-    width: '100%',
-    paddingVertical: 20,
-    alignItems: 'center',
-    backgroundColor: '#f0f0f0',
+    marginTop: 70,
   },
   card: {
     width: Dimensions.get('window').width - 40,
     marginBottom: 40,
     borderWidth: 1,
     borderColor: '#ccc',
-    borderRadius: 10,
-    padding: 10,
-    backgroundColor: '#f0f0f0', // Add background color
-    shadowColor: '#000', // Add shadow color
-    shadowOffset: { width: 0, height: 2 }, // Add shadow offset
-    shadowOpacity: 0.25, // Add shadow opacity
-    shadowRadius: 3.84, // Add shadow radius
-    elevation: 5, // Add elevation
-    color: '#f0f0f0',
+    borderRadius: 20,
+    padding: 20,
+    backgroundColor: '#f0f0f0',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   image: {
     width: '100%',
     height: 200,
-    marginBottom: 10,
-    borderRadius: 10,
+    marginBottom: 20,
+    borderRadius: 20,
     resizeMode: 'cover',
   },
   description: {
     fontSize: 16,
-    marginBottom: 10,
+    marginBottom: 20,
     textAlign: 'center',
   },
   progress: {
     fontSize: 17,
-    marginBottom: 10,
+    marginBottom: 20,
     textAlign: 'center',
   },
   donateButton: {
     backgroundColor: '#209FA6',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
+    paddingVertical: 15,
+    paddingHorizontal: 30,
+    borderRadius: 10,
     alignSelf: 'center',
-    marginTop: 10,
+    marginTop: 20,
   },
   donateButtonText: {
     color: 'white',
@@ -204,12 +197,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
+
+    paddingVertical: height * 0.02,
     position: 'absolute',
-    bottom: 18,
+    bottom: -18,
     left: 0,
     right: 0,
-    backgroundColor: '#f0f0f0',
-    paddingVertical: 10,
   },
   tabItem: {
     flex: 1,
@@ -217,4 +210,4 @@ const styles = StyleSheet.create({
   },
 });
 
-// export default CharityScreen;
+export default CharityScreen;

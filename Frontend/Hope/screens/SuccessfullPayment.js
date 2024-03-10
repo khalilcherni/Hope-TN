@@ -7,7 +7,7 @@ const SendMail = ({ route }) => {
   useEffect(() => {
     const sendConfirmationEmail = async () => {
       try {
-        const response = await fetch('http://192.168.72.131:4000/send-email', {
+        const response = await fetch('http://192.168.1.201:4000/send-email', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

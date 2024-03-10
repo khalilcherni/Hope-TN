@@ -12,17 +12,17 @@ const Poor = () => {
       <Image
         style={[styles.poor13Icon]}
         contentFit="cover"
-        source={require("../assets/poverty1.jpg")}
+        source={require("../assets/poor1.jpg")}
       />
       <Image
         style={styles.poverty51Icon}
         contentFit="cover"
-        source={require("../assets/poverty5.jpg")}
+        source={require("../assets/poor2.jpg")}
       />
       <Image
         style={[styles.poverty31Icon, styles.iconLayout]}
         contentFit="cover"
-        source={require("../assets/poverty3.jpg")}
+        source={require("../assets/poor3.jpg")}
       />
       <Text style={[styles.aTunisianMother, styles.povertyRateByFlexBox]}>
         A Tunisian mother, Jamila Ghuili, 55, looks for plastic in a garbage
@@ -43,7 +43,7 @@ Desperate for better lives, some of Omrane Superieur’s residents are hopeful a
       <Image
         style={[styles.sdf21Icon, styles.iconLayout]}
         contentFit="cover"
-        source={require("../assets/sdf2.webp")}
+        source={require("../assets/poor3.jpg")}
       />
       <Text style={[styles.onHabibBourguiba, styles.onHabibBourguibaTypo]}>
         On Habib Bourguiba street in the capital Tunis, not far from the
@@ -64,7 +64,7 @@ Desperate for better lives, some of Omrane Superieur’s residents are hopeful a
       <Image
         style={styles.captureDcranPoor1}
         contentFit="cover"
-        source={require("../assets/Capture d’écran poor.png")}
+        source={require("../assets/poor3.jpg")}
       />
       <Text style={[styles.preparedByTheContainer, styles.frameChildLayout]}>
         Prepared by the National Institute of Statistics, in collaboration with
@@ -88,8 +88,8 @@ Desperate for better lives, some of Omrane Superieur’s residents are hopeful a
     </View>
     </ScrollView>
   );
-  
-  }
+};
+
 const styles = StyleSheet.create({
   iconPosition: {
     left: 18,

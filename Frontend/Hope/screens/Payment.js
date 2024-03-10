@@ -2,8 +2,7 @@ import * as React from "react";
 import { Text, TextInput, StyleSheet, View, Pressable, ScrollView, Alert } from "react-native";
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
-import {  Color, FontSize, Border } from "../GlobalStyles";
-
+import { Color, FontSize, Border } from "../GlobalStyles";
 
 const Payment = () => {
   const navigation = useNavigation();
@@ -26,9 +25,21 @@ const Payment = () => {
     if (cvv2.length !== 3 || cardNumber.length !== 16 || expiryDate.length !== 5 || fullName.trim() === '' || email.trim() === '') {
       Alert.alert('Invalid Input', 'Please check your inputs.');
     } else {
-      navigation.navigate("SendMail", { email });
+      // Simulate sending a fake email
+      sendFakeEmail();
+      navigation.navigate("SuccessfullPayment", { email });
     }
   };
+
+  const sendFakeEmail = () => {
+    // Simulate sending a fake email
+    console.log(`Fake email sent to ${email}`);
+  };
+
+  const handleDonats = () => {
+    navigation.navigate('SuccessfullPayment');
+  };
+
 
   return (
     <ScrollView>
@@ -44,7 +55,7 @@ const Payment = () => {
         <Image
           style={styles.mastercardLogo1Icon}
           contentFit="cover"
-          source={require("../assets/Mastercard_logo 1.png")}
+          source={require("../assets/Mastercard_logo_1.png")}
         />
         <Image
           style={[styles.editFillIcon, styles.fillIconLayout]}

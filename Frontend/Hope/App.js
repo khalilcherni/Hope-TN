@@ -51,16 +51,15 @@ import ImageUploadTwo from './screens/ImageUploadTwo.jsx';
 import Chatbot from './screens/ChatBot.jsx';
 import ChatScreen from './screens/ChatScreen.jsx';
 import Frame2 from './screens/Elders.jsx';
-// import Payment from './screens/Payment.js'
-import SendMail from './screens/SuccessfullPayment.js';
 import Payment from './screens/Payment.js';
+import SendMail from './screens/SuccessfullPayment.js';
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
 
-      {/* <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName="StartingPage" screenOptions={{ headerShown: false }}>
          <Stack.Screen name="StartingPage" component={StartingPage} /> 
          <Stack.Screen name="OnboardingPage1" component={OnboardingPage1} /> 
          <Stack.Screen name="OnboardingPage2" component={OnboardingPage2} /> 
@@ -86,7 +85,9 @@ export default function App() {
          <Stack.Screen name="Contactus" component={Contact}/> 
          <Stack.Screen name="ChatScreen" component={ChatScreen}/> 
          <Stack.Screen name="ChatBot" component={Chatbot}/> 
-         <Stack.Screen name="Elders" component={Frame2}/>   */}
+         <Stack.Screen name="Elders" component={Frame2}/> 
+         <Stack.Screen name="Payment" component={Payment}/> 
+         <Stack.Screen name="SuccessfullPayment" component={SendMail}/> 
   {/* <Stack.Screen name="Messages" component={Messages}/> */}
         {/* <Stack.Screen name="ChatRoom" component={ChatRoom}/> 
         <Stack.Screen name="Messages" component={Messages}/> 
@@ -105,7 +106,7 @@ export default function App() {
             <Stack.Screen name="School" component={School}/>   
             <Stack.Screen name="Messages" component={Messages}/>    */}
              {/* <Stack.Screen name="Helping" component={CharityScreen}/>   
-            <Stack.Screen name="Donation1" component={Donation1}/>   
+            <Stack.Screen name="Donation1" component={Donation1}/>    */}
       </Stack.Navigator>
 {/* <Events/> */}
 {/* <Azert/> */}
@@ -115,11 +116,6 @@ export default function App() {
       {/* <School/> */}
       {/* <EnglishCourseScreen/> */}
       {/* <CharityScreen/> */}
-      {/* <SuccessfullPayment/> */}
-        <Stack.Navigator initialRouteName="Payment" screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Payment" component={Payment} /> 
-        <Stack.Screen name="SendMail" component={SendMail} />
-        </Stack.Navigator>
     </NavigationContainer>
   );
 }

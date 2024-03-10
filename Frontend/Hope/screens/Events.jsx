@@ -6,7 +6,8 @@ import axios from 'axios';
 import { Ionicons } from '@expo/vector-icons';
 import moment from 'moment';
 import { useNavigation } from '@react-navigation/native';
-
+import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 const { width, height } = Dimensions.get('window');
 
 export default function Events() {
@@ -17,7 +18,7 @@ export default function Events() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get('http://192.168.72.231:4000/events/get')
+    axios.get('http://192.168.72.231:4000/api/get')
       .then(res => {
         setData(res.data);
         setLoading(false);
@@ -52,6 +53,12 @@ export default function Events() {
   };
   const handleMESNavigation = () => {
     navigation.navigate('Messages');
+  };
+  const handlevents = () => {
+    navigation.navigate('Events');
+  };
+  const handledonation = () => {
+    navigation.navigate('donation');
   };
 
   if (loading) {
@@ -109,10 +116,10 @@ export default function Events() {
         ))}
       </ScrollView>
       <View style={styles.tabbar}>
-        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={width * 0.06} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={width * 0.06} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={width * 0.06} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><FontAwesome name="home" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handlevents}><MaterialCommunityIcons name="charity" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><Ionicons name="school" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handledonation}><FontAwesome5 name="donate" size={width * 0.06}  color="black" /></TouchableOpacity>
       </View>
     </View>
   );
@@ -198,8 +205,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#f0f0f0',
+  
     paddingVertical: height * 0.02,
+    position: 'absolute',
+    bottom: -18,
+    left: 0,
+    right: 0,
   },
   tabItem: {
     flex: 1,
