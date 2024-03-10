@@ -217,4 +217,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CharityScreen;
+// export default CharityScreen;

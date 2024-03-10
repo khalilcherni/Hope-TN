@@ -2,6 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const http = require('http');
 const socketIO = require('socket.io');
+const bodyParser = require('body-parser');
+const emailjs = require('emailjs-com');
+
+
 
 // Import your routes
 const categorieRoute = require('./routes/categorie');
@@ -73,6 +77,41 @@ io.on('connection', (socket) => {
   });
 });
 
+
+
+
+app.use(bodyParser.json());
+
+app.post('/send-email', async (req, res) => {
+  try {
+    const { to_email, subject, message } = req.body;
+
+    const templateParams = {
+      to_email,
+      subject,
+      message,
+    };
+
+    // Replace with your actual Email.js service ID, template ID, and user ID
+    const emailjsResult = await emailjs.send(
+      'service_ll9dgys',    // Replace with your Email.js service ID
+      'template_phqrn0s',   // Replace with your Email.js template ID
+      templateParams,
+      'euC6e9oE6ozxavlMB'        // Replace with your Email.js user ID
+    );
+
+    console.log('Email.js Result:', emailjsResult);
+    res.status(200).json({ success: true });
+  } catch (error) {
+    console.error('Error sending confirmation email:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 server.listen(PORT, () => {
   console.log(`Server listening at http://localhost:${PORT}`);
 });
+
+
+
+
