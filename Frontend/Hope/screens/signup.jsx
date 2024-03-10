@@ -35,12 +35,12 @@ const SignUp = () => {
         return;
       }
       navigation.navigate('Terms');
-      const res = await createUserWithEmailAndPassword(email, password);
+      // const res = await createUserWithEmailAndPassword(email, password);
 
-      if (!res || !res.user) {
-        Alert.alert("User creation failed. Please try again.");
-        return;
-      }
+      // if (!res || !res.user) {
+      //   Alert.alert("User creation failed. Please try again.");
+      //   return;
+      // }
 
       const registerResponse = await axios.post('http://192.168.1.201:4000/users/register', {
         firstName,

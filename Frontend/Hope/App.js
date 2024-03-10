@@ -51,6 +51,8 @@ import ImageUploadTwo from './screens/ImageUploadTwo.jsx';
 import Chatbot from './screens/ChatBot.jsx';
 import ChatScreen from './screens/ChatScreen.jsx';
 import Frame2 from './screens/Elders.jsx';
+import Payment from './screens/Payment.js';
+import SendMail from './screens/SuccessfullPayment.js';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -84,6 +86,8 @@ export default function App() {
          <Stack.Screen name="ChatScreen" component={ChatScreen}/> 
          <Stack.Screen name="ChatBot" component={Chatbot}/> 
          <Stack.Screen name="Elders" component={Frame2}/> 
+         <Stack.Screen name="Payment" component={Payment}/> 
+         <Stack.Screen name="SuccessfullPayment" component={SendMail}/> 
   {/* <Stack.Screen name="Messages" component={Messages}/> */}
         {/* <Stack.Screen name="ChatRoom" component={ChatRoom}/> 
         <Stack.Screen name="Messages" component={Messages}/> 

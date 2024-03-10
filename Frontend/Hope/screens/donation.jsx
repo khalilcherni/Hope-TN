@@ -34,7 +34,7 @@ const AndroidLarge = () => {
         `You are going to donate ${enteredAmount} to ${selectedCategory}`,
         [
           { text: "Cancel", onPress: () => console.log("Donation canceled") },
-          { text: "Donate", onPress: () => console.log("Donation confirmed") },
+          { text: "Donate", onPress: () => navigation.navigate('Payment') },
         ]
       );
     } else {
