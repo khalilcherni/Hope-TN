@@ -39,46 +39,11 @@ app.use('/whatTheyNeed', whatTheyNeedRoute);
 app.use('/help', helpRoute);
 app.use('/palestine', palestineRoute);
 app.use('/profile', profileRoute);
-<<<<<<< HEAD
 
 // Create the HTTP server
 const server = http.createServer(app);
-=======
-app.use('/events',events)
-// Socket.IO integration
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
->>>>>>> 6a6a243fbdbfa5669ddd322271689a56b2cc9556
 
-// Initialize Socket.IO
-const io = socketIO(server);
 
-// Handle WebSocket connections
-io.on('connection', (socket) => {
-  console.log('A user connected');
-
-  // Handle chatroom events
-  socket.on('joinChatroom', (room) => {
-    socket.join(room); // Join the specified chatroom
-    console.log(`User joined chatroom: ${room}`);
-  });
-
-  socket.on('createChatroom', (room) => {
-    // Implement logic to create chatroom here
-    console.log(`User created chatroom: ${room}`);
-  });
-
-  socket.on('disconnect', () => {
-    console.log('A user disconnected');
-  });
-
-  // Handle invitation events
-  socket.on('inviteUser', (userId) => {
-    // Emit an event to the invited user to join the chatroom
-    io.to(userId).emit('joinChatroom', 'Room 1');
-    console.log(`Invitation sent to user ${userId}`);
-  });
-});
 
 server.listen(PORT, () => {
   console.log(`Server listening at http://localhost:${PORT}`);

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, TextInput, FlatList, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TouchableOpacity, TextInput, FlatList, StyleSheet, Platform } from 'react-native';
 
 const ChatBubble = ({ onPress }) => {
   return (
     <TouchableOpacity style={styles.bubbleContainer} onPress={onPress}>
-      <Text style={styles.bubbleText}>Chat</Text>
+      <Text style={styles.bubbleText}>Hope Assistant</Text>
     </TouchableOpacity>
   );
 };
@@ -49,6 +49,7 @@ const ChatScreen = () => {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([]);
 
+
   const toggleChat = () => {
     setIsChatOpen(!isChatOpen);
   };
@@ -57,21 +58,21 @@ const ChatScreen = () => {
     if (input.trim() === '') {
       return;
     }
-  
+
     // Add user message to the chat
     const userMessage = { id: messages.length, text: input, sender: 'User' };
     setMessages([...messages, userMessage]);
     setInput('');
-  
+
     // Simulate bot response
     setTimeout(() => {
       let botMessage = '';
       const userInput = input.trim();
-  
+
       // Detect language based on characters
       const isArabic = /[\u0600-\u06FF]/.test(userInput); // Check if input contains Arabic characters
       const isEnglish = /^[a-zA-Z0-9\s,.'!?]*$/.test(userInput); // Check if input contains English characters
-  
+
       // Bot responses based on user queries and detected language
       if (isArabic) {
         // Arabic responses
@@ -103,14 +104,13 @@ const ChatScreen = () => {
         // If language cannot be determined, respond with a generic message
         botMessage = "I'm sorry, I couldn't determine the language of your query. Please try again.";
       }
-  
+
       // Add bot response to the chat
       const botResponse = { id: messages.length + 1, text: botMessage, sender: 'Bot' };
       setMessages([...messages, botResponse]);
     }, 1000); // Simulate delayed response
   };
-  
-  
+
   return (
     <View style={styles.container}>
       {!isChatOpen && <ChatBubble onPress={toggleChat} />}

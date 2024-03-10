@@ -3,7 +3,7 @@ import { View, TextInput, TouchableOpacity, Text, StyleSheet, Image, Alert, Dime
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
-import { auth, GoogleProvider } from '../firebase/config'; // Import Firebase auth
+import { FIREBASE_AUTH, GoogleProvider } from '../firebase/config'; // Correct Firebase auth import
 
 import FontFamily from './FontFamily';
 
@@ -14,8 +14,8 @@ const SignUp = () => {
   const [lastName, setLast] = useState('');
   const [password, setPassword] = useState('');
 
-  const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
-  const [signInWithGoogle] = useSignInWithGoogle(auth);
+  const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(FIREBASE_AUTH); // Correct Firebase auth usage
+  const [signInWithGoogle] = useSignInWithGoogle(FIREBASE_AUTH); // Correct Firebase auth usage
   const navigation = useNavigation();
 
   const handleSignIn = () => {
@@ -32,7 +32,7 @@ const SignUp = () => {
         return;
       }
 
-      const registerResponse = await axios.post('http://192.168.1.201:4000/users/register', {
+      const registerResponse = await axios.post('http://192.168.111.196:4000/users/register', {
         firstName,
         lastName,
         birth,
