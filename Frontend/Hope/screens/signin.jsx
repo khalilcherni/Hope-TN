@@ -1,30 +1,36 @@
 import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, Text, Image, Alert, StyleSheet } from 'react-native';
+import { View, TextInput, TouchableOpacity, Text, Image, Alert, StyleSheet, ScrollView } from 'react-native';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase/config';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { firebaseAuth } from '../firebase/config';
+import { FontAwesome } from '@expo/vector-icons';
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const navigation = useNavigation();
-  const [signInWithGoogle] = useSignInWithGoogle(auth);
 
   const handleSignIn = async () => {
     try {
-      // Validate email and password
       if (!email || !password) {
         Alert.alert("Please enter both email and password.");
         return;
       }
 
 
+
+
+   
+
+
       
 
       const loginResponse = await axios.post('http://192.168.137.198:4000/users/login', {
+
 
         email,
         password,
@@ -37,7 +43,6 @@ const SignIn = () => {
         return;
       }
 
-      // Store user data in AsyncStorage
       await AsyncStorage.setItem('user', JSON.stringify(loginResponse.data.user));
 
       setEmail('');
@@ -50,100 +55,159 @@ const SignIn = () => {
     }
   };
 
-  const handleGoogleSignUp = async () => {
+  const handleSignInWithGoogle = async () => {
     try {
-      const res = await signInWithGoogle(GoogleProvider);
-      console.log({ res });
-
-      // Store user data in AsyncStorage
-      await AsyncStorage.setItem('user', JSON.stringify(res.user));
-
-      navigation.navigate('Home');
-    } catch (e) {
-      console.error(e);
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+  
+      console.log('Google Sign-In successful:', result.user);
+    } catch (error) {
+      console.error('Google Sign-In error:', error.message);
     }
   };
+  
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
-   <View style={{ width: '80%', marginBottom: 20 }}>
-   <Text style={{ height: 26, fontSize: 20, fontWeight: 'bold', color: '#209FA6', marginBottom: 60, textAlign: 'center',  width:101,marginLeft:10}}>HOPE TN</Text>
-   
-   <Text style={{ height: 66, fontSize: 24, fontWeight: 'bold', color: 'black', marginBottom: 10, textAlign: 'center' }}>SIGN IN</Text>
+    <ScrollView contentContainerStyle={styles.scrollView}>
+      <View style={styles.container}>
+        <Text style={styles.title}>HOPE TN</Text>
+        <Text style={styles.subtitle}>SIGN IN</Text>
+        <View style={styles.inputContainer}>
+        <FontAwesome name="envelope" size={24} color="#209FA6" style={styles.icon} />
         <TextInput
           placeholder="Email"
           value={email}
           onChangeText={setEmail}
-          style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
+          style={styles.input}
         />
+      </View>
+      <View style={styles.inputContainer}>
+        <FontAwesome name="lock" size={24} color="#209FA6" style={styles.icon} />
         <TextInput
           placeholder="Password"
           value={password}
           onChangeText={setPassword}
-          secureTextEntry={true}
-          style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#D9D9D9', width: 290, borderRadius: 30, marginLeft: 15, textAlign: 'center' }}
+          secureTextEntry={!showPassword}
+          style={styles.input}
         />
+        <TouchableOpacity onPress={togglePasswordVisibility}>
+          <FontAwesome name={showPassword ? "eye" : "eye-slash"} size={24} color="#209FA6" style={styles.icon} />
+        </TouchableOpacity>
+      </View>
         <TouchableOpacity 
-          style={{ height: 55, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10, backgroundColor: '#209FA6', width: 290, borderRadius: 30, marginLeft: 15, justifyContent: 'center', alignItems: 'center' ,}}
+          style={styles.button}
           onPress={handleSignIn}
         >
-          <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'black', textAlign: 'center',color: 'white' }}>Sign Up</Text>
+          <Text style={styles.buttonText}>Sign In</Text>
         </TouchableOpacity>
-        <View style={styles.container}>
-  <View style={styles.imageContainer}>
-    <Image
-      style={styles.image}
-      source={{ uri: 'https://cdn-icons-png.flaticon.com/512/270/270014.png' }}
-      onPress={handleGoogleSignUp}
-    />
-   
-</View>
-<View>  
-    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0085FF', textAlign: 'center',marginTop:-40 }}>sign up with email</Text></View>
-  </View>
-       < View style={styles.container}>
-  <View style={styles.imageContainer}>
-    <Image
-      style={styles.image}
-      source={{ uri: 'https://cdn-icons-png.flaticon.com/128/5968/5968764.png' }}
-      onPress={handleGoogleSignUp}
-    />
-   
-</View>
-<View>  
-    <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#0085FF', textAlign: 'center',marginTop:-40 }}>sign up with facebook</Text></View>
-  </View>
-      
-    
-   
+        <TouchableOpacity onPress={handleSignInWithGoogle}>
+          <View style={styles.socialButton}>
+            <Image
+              style={styles.socialIcon}
+              source={{ uri: 'https://cdn-icons-png.flaticon.com/512/270/270014.png' }}
+            />
+            <Text style={styles.socialText}>Sign in with Google</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleSignInWithGoogle}>
+          <View style={styles.socialButton}>
+            <Image
+              style={styles.socialIcon}
+              source={{ uri: 'https://cdn-icons-png.flaticon.com/128/5968/5968764.png' }}
+            />
+            <Text style={styles.socialText}>Sign in with Facebook</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+          <Text style={styles.signUpText}>Don't have an account? Sign Up</Text>
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-  <Text style={{ color: 'black', marginTop: 2, marginLeft: -100 }}>Have account?</Text>
-  <Text style={{ color: '#0085FF',marginBottom:10 }}> Sign Up </Text>
-</TouchableOpacity>
-      </View>
-      
-  
-    
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: 10,
-    backgroundColor: '#D9D9D9',
+  scrollView: {
+    flexGrow: 1,
+    backgroundColor: 'white',
+    justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 30,
   },
-  imageContainer: {
+  container: {
+    width: '80%',
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 26,
+    fontWeight: 'bold',
+    color: '#209FA6',
+    marginBottom: 80,
+    marginRight:190
+  },
+  inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginBottom: 20,
+    paddingHorizontal: 10,
+    backgroundColor: '#D9D9D9',
+    width: '100%',
+    borderRadius: 30,
+  },
+  icon: {
+    marginRight: 10,
+  },
+  subtitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'black',
+    marginBottom: 10,
+  },
+  input: {
+    flex: 1,
+    height: 55,
+    fontSize: 16,
+  },
+  button: {
+    height: 55,
+    backgroundColor: '#209FA6',
+    marginBottom: 10,
+    paddingHorizontal: 10,
+    borderRadius: 30,
     justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
   },
-  image: {
-    width: 50,
-    height: 50,
-    marginRight: 270,
+  buttonText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'white',
+    textAlign: 'center',
   },
-
+  socialButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#D9D9D9',
+    borderRadius: 30,
+    marginTop: 10,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+  },
+  socialIcon: {
+    width: 30,
+    height: 30,
+    marginRight: 20,
+  },
+  socialText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#0085FF',
+  },
+  signUpText: {
+    color: '#0085FF',
+    marginBottom: 10,
+  },
 });
+
 export default SignIn;

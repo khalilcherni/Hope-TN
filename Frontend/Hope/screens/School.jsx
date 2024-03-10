@@ -4,6 +4,9 @@ import axios from 'axios';
 import { Ionicons } from '@expo/vector-icons';
 import moment from 'moment';
 import { useNavigation } from '@react-navigation/native';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 export default function School() {
   const navigation = useNavigation();
@@ -15,7 +18,7 @@ export default function School() {
   const screenWidth = Dimensions.get('window').width; // Get Screen Width
 
   useEffect(() => {
-    axios.get('http://192.168.72.231:4000/api/school/get')
+    axios.get('http://192.168.1.201:4000/api/school/get')
       .then(res => {
         setData(res.data);
         setLoading(false);
@@ -51,7 +54,25 @@ export default function School() {
   if (error) {
     return <Text>Error: {error.message}</Text>;
   }
-
+  const handleHomeNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('Home');
+  };
+  const handleChatNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('ChatRoom');
+  };
+  const handleSchoolNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('School');
+  };
+  const handleMESNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('Messages');
+  };
+  const handleHelpnavigation=()=>{
+    navigation.navigate('Helping'); 
+  }
   return (
     <View style={styles.container}>
       <View style={styles.searchContainer}>
@@ -66,10 +87,16 @@ export default function School() {
         {filteredData.map(event => (
           <TouchableOpacity key={event.id} onPress={handleImagePress}>
             <View style={styles.eventContainer}>
-              <Text style={styles.title}>{event.name}</Text>
-              <Text style={styles.aa}>{event.nameodteacher}</Text>
+            <Text style={styles.title}>
+  <FontAwesome5 name="book" size={20} color="black" /> {event.name}
+</Text>
+
+              <View style={styles.teacherContainer}>
+                <AntDesign name="user" size={20} color="black" />
+                <Text style={styles.teacherName}>{event.nameodteacher}</Text>
+              </View>
               {event.image ? (
-                <Image source={{ uri: event.image }} style={[styles.image, { width: screenWidth - 30 }]} /> // Adjust width according to screen
+                <Image source={{ uri: event.image }} style={[styles.image, { width: screenWidth - 60 }]} /> // Adjust width according to screen
               ) : (
                 <Text>No Image Available</Text>
               )}
@@ -101,6 +128,13 @@ export default function School() {
           </TouchableOpacity>
         ))}
       </ScrollView>
+      <View style={styles.tabbar}>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHelpnavigation}><FontAwesome5 name="hands-helping" size={24} color="black" /></TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -170,7 +204,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: '#209FA6',
     padding: 10,
     borderRadius: 5,
     alignItems: 'center',
@@ -214,5 +248,15 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     flex: 1,
     marginRight: 10,
+    backgroundColor: '#0000',
+  },
+  teacherContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 5,
+  },
+  teacherName: {
+    fontSize: 17,
+    marginLeft: 5,
   },
 });

@@ -1,81 +1,59 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import ToggleSwitch from 'toggle-switch-react-native'; // Import the ToggleSwitch component
-import { Color, FontSize, FontFamily } from '../GlobalStyles'; // Import your global styles if needed
 
-const Language = () => {
-  const languages = [
-    { name: 'English (US)', isEnabled: false },
-    { name: 'Arabic', isEnabled: false },
-    { name: 'French', isEnabled: false },
-  ];
-
-  const [selectedLanguages, setSelectedLanguages] = useState(languages);
+const Language = ({ onLanguageChange }) => {
+  const [selectedLanguages, setSelectedLanguages] = useState([
+    { name: 'English', code: 'en', isEnabled: true },
+    { name: 'French', code: 'fr', isEnabled: false },
+    { name: 'Arabic', code: 'ar', isEnabled: false }, // Add Arabic as another language option
+  ]);
 
   const toggleLanguage = (index) => {
-    const updatedLanguages = [...selectedLanguages];
-    updatedLanguages[index].isEnabled = !updatedLanguages[index].isEnabled;
+    const updatedLanguages = selectedLanguages.map((lang, i) => {
+      if (i === index) {
+        return { ...lang, isEnabled: true };
+      } else {
+        return { ...lang, isEnabled: false };
+      }
+    });
     setSelectedLanguages(updatedLanguages);
+    const selectedLanguage = updatedLanguages.find(lang => lang.isEnabled);
+    onLanguageChange(selectedLanguage.code); // Pass the language code to the parent component
   };
 
   return (
     <View style={styles.container}>
-      <View style={styles.topHalf}>
-        <Text style={styles.title}>Languages</Text>
-      </View>
-      <View style={styles.bottomHalf}>
-        {selectedLanguages.map((language, index) => (
-          <View key={index} style={styles.languageContainer}>
-            <Text style={styles.languageText}>{language.name}</Text>
-            <ToggleSwitch
-              isOn={language.isEnabled}
-              onColor="#209FA6"
-              offColor="gray"
-              label=""
-              size="medium"
-              onToggle={() => toggleLanguage(index)}
-            />
-          </View>
-        ))}
-      </View>
+      {selectedLanguages.map((language, index) => (
+        <View key={index} style={styles.languageContainer}>
+          <Text style={styles.languageText}>{language.name}</Text>
+          <ToggleSwitch
+            isOn={language.isEnabled}
+            onColor="#209FA6"
+            offColor="gray"
+            label=""
+            size="medium"
+            onToggle={() => toggleLanguage(index)}
+          />
+        </View>
+      ))}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#666666',
-  },
-  topHalf: {
-    height:130,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingBottom: 5, // Adjust padding to reduce the size of the background color
-  },
-  title: {
-    fontSize: 24,
-    fontFamily: FontFamily.titlePoppinsMedium,
-    color: 'white',
-  },
-  bottomHalf: {
-    flex: 1,
-    backgroundColor: 'white',
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
-    paddingHorizontal: 20,
-    paddingTop: 20,
-  },
-  languageContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     marginBottom: 10,
   },
+  languageContainer: {
+    marginLeft: 10,
+  },
   languageText: {
-    fontSize: FontSize.bodyMedium_size,
-    fontFamily: FontFamily.bodySmall,
-    color: Color.darkGray0,
+    fontSize: 16,
+    color: 'black',
   },
 });
 

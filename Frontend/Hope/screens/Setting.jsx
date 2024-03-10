@@ -125,7 +125,7 @@ const Setting = () => {
       </View>
       <Pressable
         style={[styles.settingInner, styles.settingInnerLayout]}
-        onPress={() => navigation.navigate("ProfileEdit")}
+        onPress={() => navigation.navigate("EditProfile")}
       />
       <Text style={[styles.editProfile, styles.profileClr]}>{t('Edit Profile')}</Text>
       <Image

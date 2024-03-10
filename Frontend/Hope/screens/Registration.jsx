@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, Text, StyleSheet, Alert } from 'react-native';
+import { View, TextInput, TouchableOpacity, Text, StyleSheet, Alert, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { MaterialCommunityIcons, Ionicons, AntDesign } from '@expo/vector-icons';
 import axios from 'axios';
 import { FontAwesome } from '@expo/vector-icons';
-import * as Location from 'expo-location';
 
 import FontFamily from './FontFamily';
 
@@ -14,11 +14,6 @@ const Register = () => {
   const [phone, setphone] = useState('');
 
   const navigation = useNavigation();
-
-  // Define latitude, longitude, and altitude for El Kef
-  const elKefLatitude = 36.1826;
-  const elKefLongitude = 8.7046;
-  const elKefAltitude = 800; // Placeholder altitude value
 
   const handlePost = () => {
     const obj = {
@@ -46,13 +41,28 @@ const Register = () => {
   };
 
   const handleLocationPress = async () => {
-    // Set location to El Kef's latitude, longitude, and altitude
-    setlocation(`El Kef`);
+    // Handle location press logic
+  };
+
+  const handleHomeNavigation = () => {
+    navigation.navigate('Home');
+  };
+
+  const handleChatNavigation = () => {
+    navigation.navigate('ChatRoom');
+  };
+
+  const handleSchoolNavigation = () => {
+    navigation.navigate('School');
+  };
+
+  const handleMESNavigation = () => {
+    navigation.navigate('Messages');
   };
 
   return (
     <View style={styles.container}>
-      <View style={styles.formContainer}>
+      <ScrollView contentContainerStyle={styles.formContainer}>
         <Text style={styles.title}>
           If you are willing to join us and volunteer, fill the fields below
         </Text>
@@ -106,6 +116,13 @@ const Register = () => {
         >
           <Text style={styles.buttonText}>Submit</Text>
         </TouchableOpacity>
+      </ScrollView>
+
+      <View style={styles.tabbar}>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={24} color="black" /></TouchableOpacity>
       </View>
     </View>
   );
@@ -116,20 +133,20 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white'
+
+    paddingVertical: 20,
+    marginTop:100
   },
   formContainer: {
     width: '80%',
-    marginBottom: 20
   },
   title: {
-    height: 66,
     fontSize: 24,
     fontWeight: 'bold',
     color: 'black',
     marginBottom: 10,
     textAlign: 'center',
-    fontFamily: FontFamily.kanit
+    fontFamily: FontFamily.kanit,
   },
   inputContainer: {
     flexDirection: 'row',
@@ -137,33 +154,47 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     paddingHorizontal: 10,
     backgroundColor: '#D9D9D9',
-    width: 290,
-    borderRadius: 30
+    width: '100%',
+    borderRadius: 30,
   },
   icon: {
-    marginRight: 10
+    marginRight: 10,
   },
   input: {
     flex: 1,
     height: 55,
-    fontSize: 16
+    fontSize: 16,
   },
   button: {
     height: 55,
     marginBottom: 10,
     paddingHorizontal: 10,
     backgroundColor: '#209FA6',
-    width: 290,
+    width: '100%',
     borderRadius: 30,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   buttonText: {
     fontSize: 18,
     fontWeight: 'bold',
     color: 'white',
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+  },
+  tabbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+    paddingVertical: 10,
+    width: '100%',
+    position: 'absolute',
+    bottom: 0,
+  },
+  tabItem: {
+    flex: 1,
+    alignItems: 'center',
+  },
 });
 
 export default Register;

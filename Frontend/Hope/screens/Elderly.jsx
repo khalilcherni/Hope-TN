@@ -4,9 +4,29 @@ import { StyleSheet, Text, View, Pressable, ScrollView, Dimensions ,TouchableOpa
 import { FontFamily, Color, FontSize } from "../GlobalStyles";
 import { WebView } from 'react-native-webview';
 import { useNavigation } from "@react-navigation/native"; 
-const Frame2 = () => {
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+const aaaa = () => {
   const videoUrl = 'https://youtu.be/Qro0Rb7XJjI?si=dA1H-KkCa_u-RL-g';
   const navigation = useNavigation();
+  const handleHomeNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('Home');
+  };
+  const handleChatNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('ChatRoom');
+  };
+  const handleSchoolNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('School');
+  };
+  const handleMESNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('Messages');
+  };
+
   return (
     <ScrollView>
       <View style={styles.vectorParent}>
@@ -14,21 +34,26 @@ const Frame2 = () => {
           style={styles.frameChild}
           contentFit="cover"
           // source={require("../assets/orphan1.jpg")}
+          source={require("../assets/poor1.jpg")}
+
         />
         <Image
           style={styles.needwater21Icon}
           contentFit="cover"
           // source={require("../assets/pp.jpg")}
+          source={require("../assets/poor1.jpg")}
         />
         <Image
           style={[styles.needwater22Icon, styles.iconPosition]}
           contentFit="cover"
-          source={require("../assets/needWater2.jpg")}
+          // source={require("../assets/needWater2.jpg")}
+          source={require("../assets/poor1.jpg")}
         />
         <Image
           style={styles.needwater31Icon}
           contentFit="cover"
-          source={require("../assets/needWater2.jpg")}
+          // source={require("../assets/needWater2.jpg")}
+          source={require("../assets/poor1.jpg")}
         />
         <Text style={[styles.yearOldOunissaMazhoud, styles.donateTypo]}>
           The neglect of education infrastructure in Tunisia has left numerous children without access to schools, perpetuating a cycle of disadvantage and despair. These children face insurmountable obstacles as they navigate a landscape devoid of educational opportunities. The absence of adequate roads leading to villages isolates these children further, compounding their sense of abandonment and hopelessness. Many families, witnessing the lack of investment in education and infrastructure, feel compelled to leave their homes behind in pursuit of a better future in urban areas or even abroad.
@@ -55,6 +80,7 @@ const Frame2 = () => {
           style={styles.captureDcran20240227113}
           contentFit="cover"
           // source={require("../assets/khhh.jpg")}
+          source={require("../assets/poor1.jpg")}
         />
         <Text style={[styles.theSouthernRegion, styles.donateTypo]}>
           The 2014 Tunisia Country report on Out-of-school children showed that while pre-primary out-of-school rates decreased, and primary rates fell to nearly zero, there had been no improvement at the lower secondary level. Poor children, children in rural areas, disabled children and children with uneducated parents were facing particular risk of being excluded from school. The report argued that poverty, poor school conditions, difference of language of instruction and low quality of education were among key barriers to education access.
@@ -65,6 +91,12 @@ const Frame2 = () => {
         >
           <Text style={styles.donate}>Donate</Text>
         </TouchableOpacity>
+      </View>
+      <View style={styles.tabbar}>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={24} color="black" /></TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -207,6 +239,17 @@ const styles = StyleSheet.create({
     height: 2353,
     overflow: "hidden",
   },
+  tabbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+    paddingVertical: 10,
+  },
+  tabItem: {
+    flex: 1,
+    alignItems: 'center',
+  },
 });
 
-export default Frame2;
+export default aaaa;

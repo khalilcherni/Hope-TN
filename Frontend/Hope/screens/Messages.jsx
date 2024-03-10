@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ScrollView, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ScrollView, Alert,Dimensions } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-// var ImagePicker = require('react-native-image-picker');
-
+import ImageUploadTwo from './ImageUploadTwo';
+import { Feather } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+const { width, height } = Dimensions.get('window');
 
 const MessageCard = ({ id, primary, secondary, person, imageUrl, comments, onDelete, onComment }) => {
   const [newComment, setNewComment] = useState('');
-
+  
   const handleAddComment = () => {
     if (newComment.trim() !== '') {
       onComment(id, newComment.trim());
@@ -16,30 +22,36 @@ const MessageCard = ({ id, primary, secondary, person, imageUrl, comments, onDel
 
   return (
     <View style={styles.messageCard}>
-      <Image source={{ uri: person }} style={styles.avatar} />
+      <Image source={{ uri: "https://cdn-icons-png.flaticon.com/128/3177/3177440.png" }} style={styles.avatar} />
       <View style={styles.messageContent}>
         <Text style={styles.primaryText}>{primary}</Text>
         <Text style={styles.secondaryText}>{secondary}</Text>
-        {imageUrl && <Image source={{ uri: imageUrl }} style={styles.messageImage} />}
-     
-        <Text style={styles.commentsText}>Comments:</Text>
-        {comments.map((comment, index) => (
-          <Text key={`${id}_${index}`} style={styles.commentText}>{comment}</Text>
-        ))}
-        <View style={styles.commentInputContainer}>
-          <TextInput
-            style={styles.commentInput}
-            placeholder="Add a comment..."
-            value={newComment}
-            onChangeText={setNewComment}
-          />
-          <TouchableOpacity style={styles.addCommentButton} onPress={handleAddComment}>
-            <Text style={styles.addCommentButtonText}>Add</Text>
-          </TouchableOpacity>
+        {imageUrl && (
+          <View style={styles.imageContainer}>
+            <Image source={{ uri: imageUrl }} style={styles.messageImage} />
+          </View>
+        )}
+        <View style={styles.commentsContainer}>
+          <Text style={styles.commentsText}>Comments:</Text>
+
+          {comments.map((comment, index) => (
+            <Text key={`${id}_${index}`} style={styles.commentText}>{comment}</Text>
+          ))}
+          <View style={styles.commentInputContainer}>
+            <TextInput
+              style={styles.commentInput}
+              placeholder="Add a comment..."
+              value={newComment}
+              onChangeText={setNewComment}
+            />
+            <TouchableOpacity style={styles.addCommentButton} onPress={handleAddComment}>
+              <Feather name="send" size={20} color="#fff"  />
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
       <TouchableOpacity onPress={() => onDelete(id)}>
-        <Text>Delete</Text>
+        <Feather name="trash" size={24} color="red" />
       </TouchableOpacity>
     </View>
   );
@@ -47,11 +59,9 @@ const MessageCard = ({ id, primary, secondary, person, imageUrl, comments, onDel
 
 const BottomAppBar = () => {
   const [inputValue, setInputValue] = useState('');
-  const [ratingValue, setRatingValue] = useState(0);
   const [imageUrl, setImageUrl] = useState('');
   const [messages, setMessages] = useState([]);
-
-  // Load messages from AsyncStorage when component mounts
+  const navigation = useNavigation();
   useEffect(() => {
     const loadMessages = async () => {
       try {
@@ -66,7 +76,6 @@ const BottomAppBar = () => {
     loadMessages();
   }, []);
 
-  // Save messages to AsyncStorage whenever messages state changes
   useEffect(() => {
     const saveMessages = async () => {
       try {
@@ -88,15 +97,12 @@ const BottomAppBar = () => {
         id: messages.length + 1,
         primary: inputValue,
         secondary: 'New message',
-        person: 'https://example.com/avatar.jpg', // Replace with actual avatar URL
         imageUrl: imageUrl,
-        rating: ratingValue,
-        comments: [], // Initialize comments array for each new message
+        comments: [],
       };
       const updatedMessages = [...messages, newMessage];
       setMessages(updatedMessages);
       setInputValue('');
-      setRatingValue(0);
       setImageUrl('');
       Alert.alert('Message Posted', 'Your message has been posted successfully.');
     }
@@ -120,43 +126,35 @@ const BottomAppBar = () => {
     setMessages(updatedMessages);
   };
 
-  const handleChoosePhoto = () => {
-    const options = {
-      title: 'Select Photo',
-      storageOptions: {
-        skipBackup: true,
-        path: 'images',
-      },
-    };
-
-    ImagePicker.showImagePicker(options, (response) => {
-      if (response.didCancel) {
-        console.log('User cancelled image picker');
-      } else if (response.error) {
-        console.log('ImagePicker Error: ', response.error);
-      } else {
-        const source = response.uri;
-        setImageUrl(source);
-      }
-    });
+  const handleChangeImage = (url) => {
+    setImageUrl(url);
   };
-
+  const handleHomeNavigation = () => {
+    navigation.navigate('Home');
+  };
+  const handleChatNavigation = () => {
+    navigation.navigate('ChatRoom');
+  };
+  const handleSchoolNavigation = () => {
+    navigation.navigate('School');
+  };
+  const handleMESNavigation = () => {
+    navigation.navigate('Messages');
+  };
   return (
     <View style={styles.container}>
-  <ScrollView style={styles.messageContainer}>
-  {messages.map(message => (
-    <MessageCard
-      key={`message_${message.id}`} // Ensure each MessageCard has a unique key based on its id
-      {...message}
-      onDelete={handleDeleteMessage}
-      onComment={handleComment}
-    />
-  ))}
-</ScrollView>
+      <ScrollView style={styles.messageContainer}>
+        {messages.map(message => (
+          <MessageCard
+            key={message.id}
+            {...message}
+            onDelete={handleDeleteMessage}
+            onComment={handleComment}
+          />
+        ))}
+      </ScrollView>
       <View style={styles.inputContainer}>
-        <TouchableOpacity style={styles.choosePhotoButton} onPress={handleChoosePhoto}>
-          <Text style={styles.choosePhotoButtonText}>Choose Photo</Text>
-        </TouchableOpacity>
+        <ImageUploadTwo changeImage={handleChangeImage} />
         <TextInput
           style={styles.input}
           placeholder="Type your message here..."
@@ -164,8 +162,15 @@ const BottomAppBar = () => {
           onChangeText={handleInputChange}
         />
         <TouchableOpacity style={styles.postButton} onPress={handlePostMessage}>
-          <Text style={styles.postButtonText}>Post Message</Text>
+  
+         < Feather name="send" size={20} color="#fff" />
         </TouchableOpacity>
+      </View>
+      <View style={styles.tabbar}>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={width * 0.06} color="black" /></TouchableOpacity>
       </View>
     </View>
   );
@@ -175,15 +180,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f0f0f0',
-    paddingHorizontal: 10,
-    paddingTop: 40,
+  },
+  messageContainer: {
+    flex: 1,
+  marginTop:60
   },
   messageCard: {
     flexDirection: 'row',
     alignItems: 'center',
     padding: 20,
     marginBottom: 20,
-    backgroundColor: '#fff',
+    backgroundColor: '#f0f0f0',
     borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: {
@@ -199,6 +206,7 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 25,
     marginRight: 10,
+    marginTop:-280
   },
   messageContent: {
     flex: 1,
@@ -206,32 +214,42 @@ const styles = StyleSheet.create({
   primaryText: {
     fontWeight: 'bold',
     marginBottom: 5,
-    fontSize: 18,
+    fontSize: 16,
+    color: '#333',
   },
   secondaryText: {
+    marginBottom: 5,
+    fontSize: 14,
+    color: '#666',
+  },
+  imageContainer: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 10,
+    overflow: 'hidden',
     marginBottom: 10,
-    fontSize: 16,
   },
   messageImage: {
     width: '100%',
     height: 200,
-    marginBottom: 10,
-    borderRadius: 10,
+  },
+  commentsContainer: {
+    marginTop: 10,
   },
   commentsText: {
-    marginTop: 10,
-    marginBottom: 5,
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 14,
+    color: '#333',
   },
   commentText: {
     marginBottom: 5,
-    fontSize: 14,
+    fontSize: 12,
+    color: '#666',
   },
   commentInputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: 5,
   },
   commentInput: {
     flex: 1,
@@ -241,38 +259,23 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     height: 40,
     marginRight: 10,
-    fontSize: 14,
   },
   addCommentButton: {
-    backgroundColor: '#007bff',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
+    backgroundColor:'#209FA6',
     borderRadius: 5,
-  },
-  addCommentButtonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 14,
-  },
-  deleteButton: {
-    marginLeft: 'auto',
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    backgroundColor: '#dc3545',
-    borderRadius: 5,
-  },
-  deleteButtonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 14,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 40,
+    height: 40,
   },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 10,
-    borderTopWidth: 1,
+    padding: 15,
+marginRight:30,
+
     borderTopColor: '#ccc',
-    backgroundColor: '#fff',
+    backgroundColor: 'rgba(240, 240, 240, 0.5)'
   },
   input: {
     flex: 1,
@@ -282,29 +285,34 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
     marginRight: 10,
-    fontSize: 16,
-  },
-  choosePhotoButton: {
-    backgroundColor: '#28a745',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
-  },
-  choosePhotoButtonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 16,
+    width:10
   },
   postButton: {
-    backgroundColor: '#007bff',
+    backgroundColor: '#209FA6',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   postButtonText: {
-    color: '#fff',
+    color: 'white',
     fontWeight: 'bold',
-    fontSize: 16,
+  },
+  tabbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+    paddingVertical: 10,
+    width: '100%',
+    position: 'absolute',
+    bottom: 0,
+  },
+  tabItem: {
+    flex: 1,
+    alignItems: 'center',
   },
 });
+
 export default BottomAppBar;
