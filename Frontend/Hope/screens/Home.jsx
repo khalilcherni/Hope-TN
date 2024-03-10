@@ -6,18 +6,15 @@ import { useNavigation } from "@react-navigation/native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
-import { FontAwesome } from '@expo/vector-icons';
-import { FontAwesome5 } from '@expo/vector-icons';
 const { width, height } = Dimensions.get('window');
 const HomeRE = () => {
   const navigation = useNavigation();
-
+  const [isClicked, setIsClicked] = useState(false);
   const images = [
-    require("../assets/tunisia-covid-station-767_1_1.png"),
-    require("../assets/charity-work.png"),
-    require("../assets/charity-work.png"),
+    // require("../assets/tunisia-covid-station-767_1_1.png"),
+    // require("../assets/charity-work.png"),
+    // require("../assets/charity-work.png"),
     // Add more images as needed
   ];
 
@@ -46,35 +43,35 @@ const HomeRE = () => {
   };
   const handleHomeNavigation = () => {
     navigation.navigate('Home');
-  
+    setIsClicked(true);
   };
   const handleChatNavigation = () => {
     navigation.navigate('ChatRoom');
-  
+    setIsClicked(true);
   };
   const handleSchoolNavigation = () => {
     navigation.navigate('School');
-  
+    setIsClicked(true);
   };
   const handleMESNavigation = () => {
     navigation.navigate('Messages');
-  
+    setIsClicked(true);
   };
   const navigateToPeopleWhoNeedWater = () => {
     navigation.navigate("categoriePeopleWhoNeedWater");
-  
+    setIsClicked(true);
   };
   const navigateToPoor = () => {
     navigation.navigate("poorPeople");
-  
+    setIsClicked(true);
   };
   const navigateToPalestine = () => {
     navigation.navigate("Palestine");
-  
+    setIsClicked(true);
   };
   const navigateToElde = () => {
     navigation.navigate("Elders");
-  
+    setIsClicked(true);
   };
   const handlePress = () => {
     navigation.navigate('ChatScreen');
@@ -82,21 +79,7 @@ const HomeRE = () => {
   const handlePressHelp = () => {
     navigation.navigate('Messages');
   };
-  const handlhelp = () => {
-    navigation.navigate('Helping');
-  };
-  const handledonation = () => {
-    navigation.navigate('donation');
-  };
-  const handlecontact = () => {
-    navigation.navigate('Contactus');
-  };
-  const hendleeven = () => {
-    navigation.navigate('Events');
-  };
   return (
-    <View style={styles.container}>
-      
     <ScrollView>
     <View style={styles.homeRe}>
       <Pressable
@@ -106,7 +89,7 @@ const HomeRE = () => {
         <Image
           style={[styles.icon, styles.iconLayout3]}
           contentFit="cover"
-          source={require("../assets/profile-circle.png")}
+          // source={require("../assets/profile-circle.png")}
         />
       </Pressable>
       <Text style={[styles.welcome, styles.welcomeTypo]}>Welcome</Text>
@@ -114,7 +97,7 @@ const HomeRE = () => {
       <Image
         style={styles.homeReChild}
         contentFit="cover"
-        source={require("../assets/hh.png")}
+        // source={require("../assets/hh.png")}
       />
       <Text style={[styles.categories, styles.categoriesTypo]}>
         Categories:
@@ -122,16 +105,16 @@ const HomeRE = () => {
       <View  style={styles.images}>
       <Pressable onPress={navigateToPeopleWhoNeedWater}>
             <Image
-              style={[styles.homeReItem, styles.homePosition]}
+              style={[styles.homeReItem, styles.homePosition, isClicked && styles.clickedIcon]}
               contentFit="cover"
-              source={require("../assets/Ellipse_52.png")}
+              // source={require("../assets/Ellipse_52.png")}
             />
           </Pressable>
       <Pressable onPress={navigateToPeopleWhoNeedWater}>
         <Image
           style={[styles.dropIcon, styles.iconPosition]}
           contentFit="cover"
-          source={require("../assets/drop .png")}
+          // source={require("../assets/drop .png")}
         />
       </Pressable>
       <Pressable
@@ -141,20 +124,20 @@ const HomeRE = () => {
         <Image
           style={styles.iconLayout3}
           contentFit="cover"
-          source={require("../assets/Ellipse_52.png")}
+          // source={require("../assets/Ellipse_52.png")}
         />
       </Pressable>
       <Pressable onPress={navigateToPoor}>
       <Image
         style={[styles.dollarCircleIcon, styles.iconPosition]}
         contentFit="cover"
-        source={require("../assets/poverty.png")}
+        // source={require("../assets/poverty.png")}
       />
         <Pressable onPress={ navigateToElde}>
       <Image
         style={[styles.homeReInner, styles.homePosition]}
         contentFit="cover"
-        source={require("../assets/Ellipse_52.png")}
+        // source={require("../assets/Ellipse_52.png")}
       />
       </Pressable>
          </Pressable >
@@ -162,30 +145,30 @@ const HomeRE = () => {
       <Image
         style={[styles.downloadRemovebgPreview1Icon, styles.iconLayout2]}
         contentFit="cover"
-        source={require("../assets/eld.png")}
+        // source={require("../assets/eld.png")}
       />
         </Pressable >
         <Pressable onPress={navigateToPalestine}>
       <Image
         style={[styles.ellipseIcon, styles.ellipseIconLayout]}
         contentFit="cover"
-        source={require("../assets/Ellipse_52.png")}
+        // source={require("../assets/Ellipse_52.png")}
       />
       <Image
         style={[styles.depositphotos105691240StockIcon, styles.iconLayout2]}
         contentFit="cover"
-        source={require("../assets/mosque.png")}
+        // source={require("../assets/mosque.png")}
       />
       </Pressable>
       <Image
         style={[styles.homeReChild1, styles.homePosition]}
         contentFit="cover"
-        source={require("../assets/Ellipse_52.png")}
+        // source={require("../assets/Ellipse_52.png")}
       />
       <Image
         style={styles.seniorCitizenLogoPngSeniorIcon}
         contentFit="cover"
-        source={require("../assets/funeral.png")}
+        // source={require("../assets/funeral.png")}
       />
       </View> 
 
@@ -194,17 +177,17 @@ const HomeRE = () => {
       <Image
         style={[styles.demt1Icon, styles.iconLayout1]}
         contentFit="cover"
-        source={require("../assets/tunisia-covid-station-767_1_1.png")}
+        // source={require("../assets/tunisia-covid-station-767_1_1.png")}
       />
       <Image
         style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
         contentFit="cover"
-        source={require("../assets/charity-work.png")}
+        // source={require("../assets/charity-work.png")}
       />
         <Image
         style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
         contentFit="cover"
-        source={require("../assets/charity-work.png")}
+        // source={require("../assets/charity-work.png")}
       />
       </View>
       <Text style={[styles.povertyInTunisia, styles.categoriesTypo]}>
@@ -213,46 +196,33 @@ const HomeRE = () => {
       <Image
         style={styles.jpgRemovebgPreview1Icon}
         contentFit="cover"
-        source={require("../assets/map.png")}
+        // source={require("../assets/jpg-removebg-preview_1.png")}
       />
     
      
     </View>
-    
+    <View style={styles.card}>
+      <Text style={styles.text}>
+        In today's world, poverty remains a harsh reality for millions, depriving individuals of basic necessities and dignity. Among the most vulnerable are the homeless, struggling to find shelter and stability amidst societal neglect. For orphans, the absence of familial support compounds their challenges, leaving them adrift in a world of uncertainty. Access to clean water, a fundamental human right, eludes many, exacerbating health crises and perpetuating cycles of deprivation. Moreover, the elderly, often overlooked, face isolation and neglect, despite their invaluable wisdom and experience. Together, we must advocate for change, extending a compassionate hand to those in need.
+      </Text>
+      <TouchableOpacity style={styles.button} onPress={handlePress}>
+        <Text style={styles.buttonText}>Learn More</Text>
+      </TouchableOpacity>
+    </View>
 
     <View style={styles.card}>
-  <Text> if you want to get in charity work  </Text>
-  <TouchableOpacity style={styles.button} onPress={hendleeven}>
-        <Text style={styles.buttonText}>press here </Text>
-        </TouchableOpacity>
-  </View>
-  <View style={styles.card}>
   <Text> If you are an ally of our cause and you have something you want to donate, your contribution can make a real difference. Your support helps us continue our mission and reach those in need. Please press the button below to make a donation: </Text>
   <TouchableOpacity style={styles.button} onPress={handlePressHelp}>
         <Text style={styles.buttonText}>press here </Text>
         </TouchableOpacity>
   </View>
-  <View style={styles.card}>
-      <Text style={styles.text}>
-       If you want to get more information 
-      </Text>
-      <TouchableOpacity onPress={handlePress}>
-    
-        <Image
-         source={{ uri: "https://i.pinimg.com/originals/8e/0e/2d/8e0e2d6ee6d87f6ebd9107bbfb3b2332.gif" }}
-        style={styles.map}
-        />
-      </TouchableOpacity>
-    </View>
-    </ScrollView>
     <View style={styles.tabbar}>
-        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><FontAwesome name="home" size={width * 0.06} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handlhelp}><MaterialCommunityIcons name="charity" size={width * 0.06} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><Ionicons name="school" size={width * 0.06} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handledonation}><FontAwesome5 name="donate" size={width * 0.06}  color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handlecontact}><MaterialIcons name="quick-contacts-dialer" size={width * 0.06}  color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={width * 0.06} color="black" /></TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -272,21 +242,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  map:{
-    flexDirection: 'row',
-    justifyContent: 'space-between',
- 
-    height: 50,
-    width: 80,
-    borderRadius: Border.br_3xs,
-    position: "absolute",
-    marginTop:-40,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
-marginLeft:280
-    
-  },
   clickedIcon: {
     tintColor: '#209FA6', // Change the color to blue when clicked
   },
@@ -303,7 +258,7 @@ marginLeft:280
     left: 9,
     textAlign: "left",
     color: Color.lightBlack,
-    // fontFamily: FontFamily.kalamRegular,
+    fontFamily: FontFamily.kalamRegular,
     fontSize: FontSize.size_xl,
     position: "absolute",
   },
@@ -399,11 +354,10 @@ marginLeft:280
     borderRadius: 10,
     padding: 20,
     margin: 10,
-    marginBottom:40,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 1,
+      height: 2,
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
@@ -529,12 +483,8 @@ marginLeft:280
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-  
+    backgroundColor: '#f0f0f0',
     paddingVertical: height * 0.02,
-    position: 'absolute',
-    bottom: -18,
-    left: 0,
-    right: 0,
   },
   tabItem: {
     flex: 1,
@@ -542,11 +492,6 @@ marginLeft:280
   },
   text:{
     width:350
-  },
-  container: {
-    flex: 1,
-    
-    
   }
 });
 

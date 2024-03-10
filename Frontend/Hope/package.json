@@ -35,6 +35,7 @@
     "expo-status-bar": "~1.11.1",
     "firebase": "^10.8.1",
     "i18next": "^23.10.0",
+    "link": "^2.1.0",
     "moment": "^2.30.1",
     "native-base": "^3.4.28",
     "react": "18.2.0",
@@ -54,10 +55,12 @@
     "react-native-recaptcha-v3": "^0.0.16",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.29.0",
+    "react-native-share": "^10.0.2",
     "react-native-svg": "^12.1.1",
     "react-native-web": "^0.19.10",
     "react-native-webview": "^13.8.1",
-    "socket.io-client": "^4.7.4"
+    "socket.io-client": "^4.7.4",
+    "toggle-switch-react-native": "^3.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

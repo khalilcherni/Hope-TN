@@ -14,27 +14,27 @@ const Frame1 = () => {
       <Image
         style={styles.elder31Icon}
         contentFit="cover"
-        source={require("../assets/elder3.jpeg")}
+        // source={require("../assets/elder3.jpeg")}
       />
       <Image
         style={[styles.elder11Icon, styles.iconLayout1]}
         contentFit="cover"
-        source={require("../assets/elder1.jpeg")}
+        // source={require("../assets/elder1.jpeg")}
       />
       <Image
         style={[styles.elder21Icon, styles.iconLayout1]}
         contentFit="cover"
-        source={require("../assets/elder2.jpeg")}
+        // source={require("../assets/elder2.jpeg")}
       />
       <Image
         style={[styles.elder51Icon, styles.iconLayout]}
         contentFit="cover"
-        source={require("../assets/elder5.jpeg")}
+        // source={require("../assets/elder5.jpeg")}
       />
       <Image
         style={[styles.elder61Icon, styles.iconLayout]}
         contentFit="cover"
-        source={require("../assets/elder6.jpeg")}
+        // source={require("../assets/elder6.jpeg")}
       />
       <Text style={[styles.inTheHeart, styles.theTypo1]}>
         In the heart of Tunisia, a groundbreaking project is emerging—one that
@@ -114,7 +114,7 @@ const Frame1 = () => {
           style={[styles.groupChild, styles.groupChildLayout]}
           contentFit="cover"
           onPress={() => navigation.navigate("donation")}
-          source={require("../assets/Group_3040.png")}
+          // source={require("../assets/Group_3040.png")}
         />
         <Text style={styles.donate}></Text>
         </TouchableOpacity>

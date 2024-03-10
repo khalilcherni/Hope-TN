@@ -80,10 +80,10 @@ const ImageUploadTwo = ({ changeImage }) => {
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.customButtonFolder} onPress={openImagePicker}>
             
-          <Image source={require('../assets/gaa.png')} style={styles.buttonImage} />
+          <Image source={require('../assets/child.jpg')} style={styles.buttonImage} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.customButtonCamera} onPress={handleCameraLaunch}>
-          <Image source={require('../assets/camera.png')} style={styles.buttonImage} />
+          <Image source={require('../assets/child.jpg')} style={styles.buttonImage} />
         </TouchableOpacity>
       </View>
     </View>
