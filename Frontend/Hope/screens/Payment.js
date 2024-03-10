@@ -2,7 +2,8 @@ import * as React from "react";
 import { Text, TextInput, StyleSheet, View, Pressable, ScrollView, Alert } from "react-native";
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
-import { FontFamily, Color, FontSize, Border } from "../GlobalStyles";
+import {  Color, FontSize, Border } from "../GlobalStyles";
+
 
 const Payment = () => {
   const navigation = useNavigation();
@@ -25,7 +26,7 @@ const Payment = () => {
     if (cvv2.length !== 3 || cardNumber.length !== 16 || expiryDate.length !== 5 || fullName.trim() === '' || email.trim() === '') {
       Alert.alert('Invalid Input', 'Please check your inputs.');
     } else {
-      navigation.navigate("AnotherPage");
+      navigation.navigate("SendMail", { email });
     }
   };
 
@@ -67,7 +68,7 @@ const Payment = () => {
           <Image
             style={styles.icon}
             contentFit="cover"
-            source={require("../assets/Sign_out_circle_duotone.jpg")}
+            source={require("../assets/Sign_out_circle_duotone-removebg-preview.png")}
           />
         </Pressable>
         <Image
@@ -228,7 +229,7 @@ const styles = StyleSheet.create({
     top: 114,
     textAlign: "center",
     color: Color.lightBlack,
-    fontFamily: FontFamily.kalamRegular,
+   
     lineHeight: 30,
     fontSize: FontSize.iOSHeadlineBold_size,
     position: "absolute",
@@ -333,9 +334,6 @@ const styles = StyleSheet.create({
   fontSize: FontSize.smallNormalBold_size,
   
 },
-
-  
- 
   mmyy: {
     fontSize: FontSize.smallNormalBold_size,
     left: 45,
@@ -352,12 +350,12 @@ const styles = StyleSheet.create({
   },
   androidLarge3: {
     top:52,
-   
     flex: 1,
     left:28,
     height: 800,
     overflow: "hidden",
     width: 360,
+   
   },
 });
 

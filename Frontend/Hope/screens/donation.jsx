@@ -138,30 +138,33 @@ const AndroidLarge = () => {
 };
 
 const styles = StyleSheet.create({
-  childLayout: {
-    height: 55,
-    width: 253,
-    backgroundColor: Color.colorDarkcyan,
-    borderRadius: Border.br_11xl,
-    position: "absolute",
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
   },
-  checkmarkIcon: {
-    position: "absolute",
-    top: 5,
-    right: 5,
+  heading: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'black',
+    marginBottom: 10,
+    // fontFamily: 'Arial', // Adjust font family as needed
   },
-  inputStyle: {
-    borderWidth: 1,
-    borderColor: 'black',
-    padding: 10,
-    fontSize: 16,
-    fontFamily: 'Arial',
-    marginTop: 10,
+  amountContainer: {
+    flexDirection: 'row',
+    marginBottom: 10,
   },
-  groupChild: {
-    borderWidth: 1,
-    borderColor: 'black',
-    padding: 10,
+  amountButton: {
+    height: 40,
+    marginHorizontal: 5,
+    paddingHorizontal: 10,
+    backgroundColor: '#209FA6',
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  amountButtonText: {
     fontSize: 16,
     fontFamily: 'Arial',
     marginTop: 10,

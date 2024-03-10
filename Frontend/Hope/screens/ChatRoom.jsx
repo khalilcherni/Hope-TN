@@ -59,6 +59,7 @@ const Chatroom = ({ userId }) => {
   const navigation = useNavigation(); 
   useEffect(() => {
     loadMessages();
+    joinChatroom('Room 1'); // Initial join when component mounts
   }, []);
 
   useEffect(() => {
@@ -87,6 +88,18 @@ const Chatroom = ({ userId }) => {
   const onSend = (newMessages = []) => {
     const updatedMessages = GiftedChat.append(messages, newMessages);
     setMessages(updatedMessages);
+    // Emit the new message to the server
+    socket.emit('newMessage', newMessages);
+  };
+
+  const joinChatroom = (roomName) => {
+    // Emit "joinChatroom" event with the room name to the server
+    socket.emit('joinChatroom', roomName);
+  };
+
+  const inviteUser = () => {
+    // Emit "inviteUser" event with the invited user's ID to the server
+    socket.emit('inviteUser', invitedUserId);
   };
   const handleHomeNavigation = () => {
     // Navigate to the Home screen
@@ -116,12 +129,7 @@ const Chatroom = ({ userId }) => {
         }}
         style={styles.giftedChat}
       />
-       <View style={styles.tabbar}>
-        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem}onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem}onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={24} color="black" /></TouchableOpacity>
-      </View>
+      <Button title="Invite User" onPress={inviteUser} />
     </View>
   );
 };
