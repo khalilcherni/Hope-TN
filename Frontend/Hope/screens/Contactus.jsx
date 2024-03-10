@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Linking, Animated, Easing } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Linking, Animated, Easing,Image ,Dimensions} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Accelerometer } from 'expo-sensors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -7,7 +7,8 @@ import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons';
-
+import { FontAwesome } from '@expo/vector-icons';
+const { width, height } = Dimensions.get('window');
 const Contact = () => {
   const navigation = useNavigation();
 
@@ -54,9 +55,26 @@ const Contact = () => {
   const handleTabPress = (route) => {
     navigation.navigate(route);
   };
-
+  const handleHomeNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('Home');
+  };
+  const handlhelp = () => {
+    navigation.navigate('Helping');
+  };
+  const handledonation = () => {
+    navigation.navigate('donation');
+  };
+  const handlecontact = () => {
+    navigation.navigate('Contactus');
+  };
+  const handleSchoolNavigation = () => {
+    // Navigate to the Home screen
+    navigation.navigate('School');
+  };
   return (
     <View style={styles.container}>
+     
       <Animated.View style={[styles.card, animatedStyle]}>
         <Text style={styles.title}>Contact Us</Text>
         <Text style={styles.description}>
@@ -86,24 +104,11 @@ const Contact = () => {
         </View>
       </Animated.View>
       <View style={styles.tabbar}>
-        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Home')}>
-          <AntDesign name="home" size={24} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('ChatRoom')}>
-          <Ionicons name="chatbox-ellipses-outline" size={24} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('School')}>
-          <MaterialCommunityIcons name="school-outline" size={24} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Messages')}>
-          <MaterialCommunityIcons name="android-messages" size={24} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Helping')}>
-          <FontAwesome5 name="hands-helping" size={24} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Events')}>
-          <MaterialIcons name="event" size={24} color="black" />
-        </TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><FontAwesome name="home" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handlhelp}><MaterialCommunityIcons name="charity" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><Ionicons name="school" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handledonation}><FontAwesome5 name="donate" size={width * 0.06}  color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handlecontact}><MaterialIcons name="quick-contacts-dialer" size={width * 0.06}  color="black" /></TouchableOpacity>
       </View>
     </View>
   );
@@ -115,6 +120,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f0f0f0',
     marginTop: 50,
   },
+
   card: {
     borderRadius: 10,
     backgroundColor: '#f0f0f0',

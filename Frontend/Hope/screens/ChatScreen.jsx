@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, TextInput, FlatList, StyleSheet, Image,Dimensions } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, FlatList, StyleSheet, Image, Dimensions } from 'react-native';
 import { FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
+
 const { width, height } = Dimensions.get('window');
 const ChatBubble = ({ onPress }) => {
 
@@ -22,19 +24,19 @@ const ChatInterface = ({ onClose, onSendMessage, messages, input, setInput }) =>
   const navigation = useNavigation();
   const handleHomeNavigation = () => {
     navigation.navigate('Home');
-    setIsClicked(true);
+   
   };
   const handleChatNavigation = () => {
     navigation.navigate('ChatRoom');
-    setIsClicked(true);
+   
   };
   const handleSchoolNavigation = () => {
     navigation.navigate('School');
-    setIsClicked(true);
+   
   };
   const handleMESNavigation = () => {
     navigation.navigate('Messages');
-    setIsClicked(true);
+   
   };
   const renderMessage = ({ item }) => {
     return (
@@ -74,13 +76,21 @@ const ChatInterface = ({ onClose, onSendMessage, messages, input, setInput }) =>
     onSendMessage(userMessage);
     setInput('');
   };
-
+  const handlevents = () => {
+    navigation.navigate('Events');
+  };
+  const handledonation = () => {
+    navigation.navigate('donation');
+  };
+  const handlecontact = () => {
+    navigation.navigate('Contactus');
+  };
   return (
     <View style={styles.chatInterface}>
       <FlatList
         data={messages}
         renderItem={renderMessage}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item, index) => `message_${item.id}_${index}`}
       />
       <View style={styles.inputContainer}>
         <TextInput
@@ -98,10 +108,11 @@ const ChatInterface = ({ onClose, onSendMessage, messages, input, setInput }) =>
         <MaterialIcons name="close" size={18} color="black" />
       </TouchableOpacity>
       <View style={styles.tabbar}>
-        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={width * 0.06} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={width * 0.06} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={width * 0.06} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><FontAwesome name="home" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handlevents}><MaterialCommunityIcons name="charity" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><Ionicons name="school" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handledonation}><FontAwesome5 name="donate" size={width * 0.06}  color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handlecontact}><MaterialIcons name="quick-contacts-dialer" size={width * 0.06}  color="black" /></TouchableOpacity>
       </View>
     </View>
   );
@@ -183,6 +194,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
     padding: 20,
+  
   },
   fullScreenContainer: {
     position: "absolute",
@@ -192,6 +204,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     justifyContent: "center",
     alignItems: "center",
+    
   },
   chatIcon: {
     width: 500,
@@ -220,7 +233,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#f0f0f0',
     borderRadius: 10,
     padding: 10,
-    marginBottom: 10,
+    marginBottom: 100,
+    marginTop:-3
   },
   messageText: {
     fontSize: 16,
@@ -229,7 +243,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 40,
-    marginBottom:40
+    marginBottom:10
   },
   input: {
     flex: 1,
@@ -246,6 +260,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 20,
+    marginBottom:20
   },
   sendButtonText: {
     color: '#fff',
@@ -271,7 +286,7 @@ const styles = StyleSheet.create({
   
     paddingVertical: height * 0.02,
     position: 'absolute',
-    bottom: -15,
+    bottom: -18,
     left: 0,
     right: 0,
   },

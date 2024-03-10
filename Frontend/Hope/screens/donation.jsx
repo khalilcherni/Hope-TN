@@ -1,11 +1,14 @@
 import * as React from "react";
-import { StyleSheet, View, Text, TouchableOpacity, ScrollView, TextInput, Alert } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, ScrollView, TextInput, Alert,Dimensions } from "react-native";
 import { Image } from "expo-image";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-
+import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 import { Color, Border, FontSize, FontFamily } from "../GlobalStyles";
-
+import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+const { width, height } = Dimensions.get('window');
 const AndroidLarge = () => {
   const navigation = useNavigation();
   const [enteredAmount, setEnteredAmount] = React.useState('');
@@ -38,8 +41,25 @@ const AndroidLarge = () => {
       Alert.alert("Please enter a donation amount and select a category");
     }
   };
-
+  const handlevents = () => {
+    navigation.navigate('Events');
+  };
+  const handledonation = () => {
+    navigation.navigate('donation');
+  };
+  const handlecontact = () => {
+    navigation.navigate('Contactus');
+  };
+  const handleSchoolNavigation = () => {
+    navigation.navigate('School');
+  
+  };
+  const handleHomeNavigation = () => {
+    navigation.navigate('Home');
+  
+  };
   return (
+    <>
     <ScrollView>
       <View style={styles.androidLarge4}>
         <View style={[styles.androidLarge4Child, styles.childLayout]} />
@@ -137,16 +157,21 @@ const AndroidLarge = () => {
         <Text style={[styles.eldreyPeople, styles.peopleTypo]}>
           eldrey people
         </Text>
-        <Text style={[styles.palestine, styles.peopleTypo]}>{`palestine
-`}</Text>
-        <Text style={[styles.orphansKids, styles.peopleTypo]}>
-          {`orphans kids `}
-        </Text>
+        <Text style={[styles.palestine, styles.peopleTypo]}>palestine</Text>
+        <Text style={[styles.orphansKids, styles.peopleTypo]}>orphans kids</Text>
         <TouchableOpacity onPress={handleDonate}>
           <Text style={styles.donateButton}>Donate</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
+    <View style={styles.tabbar}>
+      <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><FontAwesome name="home" size={width * 0.06} color="black" /></TouchableOpacity>
+      <TouchableOpacity style={styles.tabItem} onPress={handlevents}><MaterialCommunityIcons name="charity" size={width * 0.06} color="black" /></TouchableOpacity>
+      <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><Ionicons name="school" size={width * 0.06} color="black" /></TouchableOpacity>
+      <TouchableOpacity style={styles.tabItem} onPress={handledonation}><FontAwesome5 name="donate" size={width * 0.06}  color="black" /></TouchableOpacity>
+      <TouchableOpacity style={styles.tabItem} onPress={handlecontact}><MaterialIcons name="quick-contacts-dialer" size={width * 0.06}  color="black" /></TouchableOpacity>
+    </View>
+    </>
   );
 };
 
@@ -162,13 +187,14 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 5,
     right: 5,
+    
   },
   inputStyle: {
     borderWidth: 1,
     borderColor: 'black',
     padding: 10,
     fontSize: 16,
-    fontFamily: 'Arial',
+    // fontFamily: 'Arial',
     marginTop: 10,
   },
   groupChild: {
@@ -176,7 +202,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     padding: 10,
     fontSize: 16,
-    fontFamily: 'Arial',
+    // fontFamily: 'Arial',
     marginTop: 10,
   },
   tndTypo: {
@@ -186,7 +212,7 @@ const styles = StyleSheet.create({
     left: 174,
     color: Color.lightWhite,
     textAlign: "left",
-    fontFamily: FontFamily.inriaSansRegular,
+    // fontFamily: FontFamily.inriaSansRegular,
     position: "absolute",
   },
   androidChildLayout: {
@@ -194,6 +220,7 @@ const styles = StyleSheet.create({
     width: 20,
     left: 34,
     position: "absolute",
+
   },
   peopleTypo: {
     fontSize: FontSize.size_mid,
@@ -277,6 +304,7 @@ const styles = StyleSheet.create({
   },
   tnd: {
     top: 96,
+    
   },
   tnd1: {
     top: 177,
@@ -375,6 +403,24 @@ const styles = StyleSheet.create({
     top: 60,
     width: 360,
     height: 1050,
+  },
+  selectedCategory: {
+    backgroundColor: "lightblue", // Change to the color you want to use for selected category
+  },
+  tabbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  
+    paddingVertical: height * 0.02,
+    position: 'absolute',
+    bottom: -7,
+    left: 0,
+    right: 0,
+  },
+  tabItem: {
+    flex: 1,
+    alignItems: 'center',
   },
 });
 
