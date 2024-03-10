@@ -1,29 +1,96 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, TextInput, FlatList, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, FlatList, StyleSheet, Image, Dimensions } from 'react-native';
+import { FontAwesome5, MaterialIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 
+const { width, height } = Dimensions.get('window');
 const ChatBubble = ({ onPress }) => {
+
   return (
-    <TouchableOpacity style={styles.bubbleContainer} onPress={onPress}>
-      <Text style={styles.bubbleText}>Chat</Text>
+    <TouchableOpacity style={styles.fullScreenContainer} onPress={onPress}>
+      <Image
+        source={{ uri: "https://i.pinimg.com/originals/4b/cb/1f/4bcb1fb72d1d08efa44efa5ceb712ec7.gif" }}
+        style={styles.chatIcon}
+      />
     </TouchableOpacity>
   );
 };
 
 const ChatInterface = ({ onClose, onSendMessage, messages, input, setInput }) => {
-  const sendMessage = () => {
-    onSendMessage();
+  const navigation = useNavigation();
+  const handleHomeNavigation = () => {
+    navigation.navigate('Home');
+   
+  };
+  const handleChatNavigation = () => {
+    navigation.navigate('ChatRoom');
+   
+  };
+  const handleSchoolNavigation = () => {
+    navigation.navigate('School');
+   
+  };
+  const handleMESNavigation = () => {
+    navigation.navigate('Messages');
+   
+  };
+  const renderMessage = ({ item }) => {
+    return (
+      <View style={styles.messageContainer}>
+        <Text style={styles.messageText}>{`${item.sender}: ${item.text}`}</Text>
+        {item.response && <Text style={styles.messageText}>{`Bot: ${item.response}`}</Text>}
+      </View>
+    );
   };
 
+  const sendMessage = () => {
+    if (input.trim() === '') {
+      return;
+    }
+
+    if (input.trim().toLowerCase() === 'home') {
+      navigation.navigate('Home');
+      setInput('');
+      return;
+    } else if (input.trim().toLowerCase() === 'help') {
+      navigation.navigate('Helping');
+      setInput('');
+      return;
+    } else if (input.trim().toLowerCase() === 'school') {
+      navigation.navigate('School');
+      setInput('');
+      return;
+    }
+    else if (input.trim().toLowerCase() === 'events') {
+      navigation.navigate('Events');
+      setInput('');
+      return;
+    }
+
+    const userIcon = '👤';
+    const userMessage = { id: messages.length, text: input, sender: userIcon};
+    onSendMessage(userMessage);
+    setInput('');
+  };
+  const handlevents = () => {
+    navigation.navigate('Events');
+  };
+  const handledonation = () => {
+    navigation.navigate('donation');
+  };
+  const handlecontact = () => {
+    navigation.navigate('Contactus');
+  };
   return (
     <View style={styles.chatInterface}>
       <FlatList
         data={messages}
-        renderItem={({ item }) => (
-          <View style={styles.messageContainer}>
-            <Text style={styles.messageText}>{`${item.sender}: ${item.text}`}</Text>
-          </View>
-        )}
-        keyExtractor={(item) => item.id.toString()}
+        renderItem={renderMessage}
+        keyExtractor={(item, index) => `message_${item.id}_${index}`}
       />
       <View style={styles.inputContainer}>
         <TextInput
@@ -34,17 +101,26 @@ const ChatInterface = ({ onClose, onSendMessage, messages, input, setInput }) =>
           onSubmitEditing={sendMessage}
         />
         <TouchableOpacity style={styles.sendButton} onPress={sendMessage}>
-          <Text style={styles.sendButtonText}>Send</Text>
+          <FontAwesome5 name="paper-plane" size={18} color="white" />
         </TouchableOpacity>
       </View>
       <TouchableOpacity style={styles.closeButton} onPress={onClose}>
-        <Text style={styles.closeButtonText}>Close</Text>
+        <MaterialIcons name="close" size={18} color="black" />
       </TouchableOpacity>
+      <View style={styles.tabbar}>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><FontAwesome name="home" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handlevents}><MaterialCommunityIcons name="charity" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><Ionicons name="school" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handledonation}><FontAwesome5 name="donate" size={width * 0.06}  color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handlecontact}><MaterialIcons name="quick-contacts-dialer" size={width * 0.06}  color="black" /></TouchableOpacity>
+      </View>
     </View>
   );
 };
 
 const ChatScreen = () => {
+  const navigation = useNavigation();
+
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([]);
@@ -53,28 +129,17 @@ const ChatScreen = () => {
     setIsChatOpen(!isChatOpen);
   };
 
-  const sendMessage = () => {
-    if (input.trim() === '') {
-      return;
-    }
-  
-    // Add user message to the chat
-    const userMessage = { id: messages.length, text: input, sender: 'User' };
-    setMessages([...messages, userMessage]);
-    setInput('');
-  
-    // Simulate bot response
+  const sendMessage = (message) => {
+    setMessages([...messages, message]);
+
     setTimeout(() => {
       let botMessage = '';
-      const userInput = input.trim();
-  
-      // Detect language based on characters
-      const isArabic = /[\u0600-\u06FF]/.test(userInput); // Check if input contains Arabic characters
-      const isEnglish = /^[a-zA-Z0-9\s,.'!?]*$/.test(userInput); // Check if input contains English characters
-  
-      // Bot responses based on user queries and detected language
+      const userInput = message.text.trim();
+
+      const isArabic = /[\u0600-\u06FF]/.test(userInput);
+      const isEnglish = /^[a-zA-Z0-9\s,.'!?]*$/.test(userInput);
+
       if (isArabic) {
-        // Arabic responses
         if (userInput.includes('مرحبا')) {
           botMessage = 'مرحبًا كيف يمكنني مساعدتك اليوم؟';
         } else if (userInput.includes('كيف حالك؟')) {
@@ -87,7 +152,6 @@ const ChatScreen = () => {
           botMessage = "آسف، لا أملك معلومات حول ذلك. هل هناك شيء آخر يمكنني مساعدتك فيه؟";
         }
       } else if (isEnglish) {
-        // English responses
         if (userInput.includes('hello')) {
           botMessage = 'Hi there! How can I assist you today?';
         } else if (userInput.includes('how are you?')) {
@@ -100,17 +164,14 @@ const ChatScreen = () => {
           botMessage = "I'm sorry, I don't have information about that. Is there anything else I can help you with?";
         }
       } else {
-        // If language cannot be determined, respond with a generic message
         botMessage = "I'm sorry, I couldn't determine the language of your query. Please try again.";
       }
-  
-      // Add bot response to the chat
-      const botResponse = { id: messages.length + 1, text: botMessage, sender: 'Bot' };
+      const botIcon = '🤖';
+      const botResponse = { id: messages.length + 1, text: botMessage, sender: botIcon};
       setMessages([...messages, botResponse]);
-    }, 1000); // Simulate delayed response
+    }, 1000);
   };
-  
-  
+
   return (
     <View style={styles.container}>
       {!isChatOpen && <ChatBubble onPress={toggleChat} />}
@@ -133,31 +194,47 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
     padding: 20,
+  
+  },
+  fullScreenContainer: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: "center",
+    alignItems: "center",
+    
+  },
+  chatIcon: {
+    width: 500,
+    height: 530,
+    alignItems: "center",
+    marginHorizontal: 50,
+    marginLeft: 50
   },
   bubbleContainer: {
     backgroundColor: '#007bff',
     borderRadius: 20,
     paddingHorizontal: 15,
     paddingVertical: 10,
-    marginBottom:380,
-    marginRight:130
   },
   bubbleText: {
     color: '#fff',
     fontSize: 16,
   },
   chatInterface: {
-    backgroundColor: '#fff',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     padding: 20,
-    width: '100%',
+    width: '107%',
   },
   messageContainer: {
     backgroundColor: '#f0f0f0',
     borderRadius: 10,
     padding: 10,
-    marginBottom: 10,
+    marginBottom: 100,
+    marginTop:-3
   },
   messageText: {
     fontSize: 16,
@@ -165,21 +242,25 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 40,
+    marginBottom:10
   },
   input: {
     flex: 1,
     borderWidth: 1,
     borderColor: '#ccc',
-    borderRadius: 10,
-    paddingHorizontal: 10,
+    borderRadius: 30,
+    paddingHorizontal: 80,
     marginRight: 10,
+    height: 50,
+    marginBottom: -40
   },
   sendButton: {
-    backgroundColor: '#007bff',
+    backgroundColor: '#209FA6',
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 20,
+    marginBottom:20
   },
   sendButtonText: {
     color: '#fff',
@@ -190,12 +271,28 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 20,
-    marginTop: 10,
+    marginTop: -30,
     alignSelf: 'flex-end',
+    marginBottom:20
   },
   closeButtonText: {
     color: '#333',
     fontSize: 16,
+  },
+  tabbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  
+    paddingVertical: height * 0.02,
+    position: 'absolute',
+    bottom: -18,
+    left: 0,
+    right: 0,
+  },
+  tabItem: {
+    flex: 1,
+    alignItems: 'center',
   },
 });
 
