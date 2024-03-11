@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const SendMail = ({ route }) => {
   const { email } = route.params;
+  const navigation = useNavigation();
 
   useEffect(() => {
     const sendConfirmationEmail = async () => {
@@ -23,16 +25,17 @@ const SendMail = ({ route }) => {
 
         if (response.ok) {
           console.log('Email sent successfully');
-        } else {
-          console.error('Failed to send email');
-        }
+          setTimeout(() => {
+            navigation.navigate('Home'); // Navigate back to the Home screen after 3 seconds
+          }, 3000);
+        } 
       } catch (error) {
         console.error('Error sending confirmation email:', error);
       }
     };
 
     sendConfirmationEmail();
-  }, [email]);
+  }, [email, navigation]);
 
   return (
     <View style={styles.container}>
@@ -41,7 +44,7 @@ const SendMail = ({ route }) => {
         Your transaction is complete. We have sent a confirmation email to {email}.
       </Text>
       <Text style={styles.thankYouText}>
-        "Thank you for your generous donation! Your payment is a powerful step towards creating positive change and making a meaningful impact on the lives of those in need."
+        Thank you for your generous donation! Your payment is a powerful step towards creating positive change and making a meaningful impact on the lives of those in need.
       </Text>
     </View>
   );

@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image, ProgressBarAndroid, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage'; 
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
-import { FontAwesome5 } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { FontAwesome } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from "@expo/vector-icons";
+import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-
 const { width, height } = Dimensions.get('window');
 const CharityScreen = () => {
   const navigation = useNavigation();
@@ -22,13 +20,11 @@ const CharityScreen = () => {
     },
     {
       id: 2,
-      // image: require('../assets/orphan1.jpg'),
       image: require('../assets/poor1.jpg'),
       description: 'Help Jebreel and his family to escape from death. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id consequat turpis, eget tincidunt lectus.',
       currentAmount: 0,
       goalAmount: 10000,
     },
-
   ]);
 
   useEffect(() => {
@@ -54,41 +50,10 @@ const CharityScreen = () => {
     }
   };
 
-  const handleHomeNavigation = () => {
-    navigation.navigate('Home');
-  };
-
-  const handleChatNavigation = () => {
-    navigation.navigate('ChatRoom');
-  };
-
-  const handleSchoolNavigation = () => {
-    navigation.navigate('School');
-  };
-
-  const handleMESNavigation = () => {
-    navigation.navigate('Messages');
-  };
-
-  const handleHelpnavigation = () => {
-    navigation.navigate('Helping'); 
-  };
-
-  const handleEventsnavigation = () => {
-    navigation.navigate('Events'); 
-  };
-  const handledonation = () => {
-    navigation.navigate('donation');
-  };
-  const handlecontact = () => {
-    navigation.navigate('Contactus');
-  };
-  const handlhelp = () => {
-    navigation.navigate('Helping');
-  };
   const handleBackPress = () => {
     navigation.navigate("Home");
   };
+
   const handleDonate = async (donationAmount, cardId) => {
     const updatedCards = donationCards.map(card => {
       if (card.id === cardId) {
@@ -107,18 +72,23 @@ const CharityScreen = () => {
     }
   };
 
+  const ProgressBar = ({ progress }) => (
+    <View style={styles.progressBarContainer}>
+      <View style={[styles.progressBar, { width: `${progress * 100}%` }]} />
+    </View>
+  );
+
   return (
     <View style={styles.container}>
-       <View style={styles.headerContainer}>
-      <TouchableOpacity onPress={handleBackPress}>
-        <Image
-          source={require("../assets/Sign_out_circle_duotone-removebg-preview.png")}
-          style={styles.headerImg}
-        />
-      </TouchableOpacity>
-    </View>
+      <View style={styles.headerContainer}>
+        <TouchableOpacity onPress={handleBackPress}>
+          <Image
+            source={require("../assets/Sign_out_circle_duotone-removebg-preview.png")}
+            style={styles.headerImg}
+          />
+        </TouchableOpacity>
+      </View>
       <ScrollView contentContainerStyle={styles.scrollViewContainer} stickyHeaderIndices={[1]}>
-    
         {donationCards.map((card) => (
           <View key={card.id} style={styles.card}>
             <Image source={card.image} style={styles.image} />
@@ -126,11 +96,7 @@ const CharityScreen = () => {
             <Text style={styles.progress}>
               {card.currentAmount} DT raised of {card.goalAmount} DT goal
             </Text>
-            <ProgressBarAndroid
-              styleAttr="Horizontal"
-              indeterminate={false}
-              progress={card.currentAmount / card.goalAmount}
-            />
+            <ProgressBar progress={card.currentAmount / card.goalAmount} />
             <TouchableOpacity style={styles.donateButton} onPress={() => navigation.navigate('Donation1', { cardId: card.id, handleDonate })}>
               <Text style={styles.donateButtonText}>Donate</Text>
             </TouchableOpacity>
@@ -140,11 +106,11 @@ const CharityScreen = () => {
         <View style={{ height: height * 0.1 }} />
       </ScrollView>
       <View style={styles.tabbar}>
-        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><FontAwesome name="home" size={width * 0.06} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handlhelp}><MaterialCommunityIcons name="charity" size={width * 0.06} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><Ionicons name="school" size={width * 0.06} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handledonation}><FontAwesome5 name="donate" size={width * 0.06}  color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handlecontact}><MaterialIcons name="quick-contacts-dialer" size={width * 0.06}  color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleBackPress}><FontAwesome name="home" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}><MaterialCommunityIcons name="charity" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}><Ionicons name="school" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}><FontAwesome5 name="donate" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}><MaterialIcons name="quick-contacts-dialer" size={width * 0.06} color="black" /></TouchableOpacity>
       </View>
     </View>
   );
@@ -223,7 +189,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-
     paddingVertical: height * 0.02,
     position: 'absolute',
     bottom: -18,
@@ -233,6 +198,17 @@ const styles = StyleSheet.create({
   tabItem: {
     flex: 1,
     alignItems: 'center',
+  },
+  progressBarContainer: {
+    width: '100%',
+    height: 10,
+    backgroundColor: '#e0e0e0',
+    borderRadius: 5,
+    overflow: 'hidden',
+  },
+  progressBar: {
+    height: '100%',
+    backgroundColor: '#209FA6',
   },
 });
 
