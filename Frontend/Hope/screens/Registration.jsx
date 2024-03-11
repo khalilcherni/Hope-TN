@@ -26,7 +26,7 @@ const Register = () => {
       phone: phone
     };
 
-    axios.post("http://192.168.100.44:4000/help/post", obj)
+    axios.post("http://192.168.72.231:4000/help/post", obj)
       .then(response => {
         // Clear input fields
         setname('');

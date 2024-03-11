@@ -42,7 +42,7 @@ const SignUp = () => {
       //   return;
       // }
 
-      const registerResponse = await axios.post('http://192.168.1.201:4000/users/register', {
+      const registerResponse = await axios.post('http://192.168.72.231:4000/users/register', {
         firstName,
         lastName,
         birth,
