@@ -84,8 +84,19 @@ export default function School() {
   const handlecontact = () => {
     navigation.navigate('Contactus');
   };
+  const handleBackPress = () => {
+    navigation.navigate("Home");
+  };
   return (
     <View style={styles.container}>
+       <View style={styles.headerContainer}>
+      <TouchableOpacity onPress={handleBackPress}>
+        <Image
+          source={require("../assets/Sign_out_circle_duotone-removebg-preview.png")}
+          style={styles.headerImg}
+        />
+      </TouchableOpacity>
+    </View>
       <View style={styles.searchContainer}>
         <TextInput
           style={[styles.searchInput, { width: screenWidth * 0.8 }]} // Use percentage for width
@@ -153,6 +164,20 @@ export default function School() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  headerContainer: {
+    position: "absolute",
+    top: 0,
+    left: -20,
+    zIndex: 1, // to ensure it's above other content
+  },
+  headerImg: {
+    width: 60,
+    height: 60,
+    resizeMode: "contain",
+    margin: 40,
+    top:-10,
+    left:-5
   },
   scrollView: {
     flex: 1,
@@ -253,7 +278,7 @@ const styles = StyleSheet.create({
     marginRight: 20,
     borderRadius: 50,
     height: 50,
-    marginTop: 50
+    marginTop: 80
   },
   searchInput: {
     borderWidth: 1,

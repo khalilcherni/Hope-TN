@@ -86,6 +86,9 @@ const CharityScreen = () => {
   const handlhelp = () => {
     navigation.navigate('Helping');
   };
+  const handleBackPress = () => {
+    navigation.navigate("Home");
+  };
   const handleDonate = async (donationAmount, cardId) => {
     const updatedCards = donationCards.map(card => {
       if (card.id === cardId) {
@@ -106,7 +109,16 @@ const CharityScreen = () => {
 
   return (
     <View style={styles.container}>
+       <View style={styles.headerContainer}>
+      <TouchableOpacity onPress={handleBackPress}>
+        <Image
+          source={require("../assets/Sign_out_circle_duotone-removebg-preview.png")}
+          style={styles.headerImg}
+        />
+      </TouchableOpacity>
+    </View>
       <ScrollView contentContainerStyle={styles.scrollViewContainer} stickyHeaderIndices={[1]}>
+    
         {donationCards.map((card) => (
           <View key={card.id} style={styles.card}>
             <Image source={card.image} style={styles.image} />
@@ -148,6 +160,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 70,
+  },
+  headerContainer: {
+    position: "absolute",
+    top: 0,
+    left: -20,
+    zIndex: 1, // to ensure it's above other content
+  },
+  headerImg: {
+    width: 60,
+    height: 60,
+    resizeMode: "contain",
+    margin: 40,
+    top:-10,
+    left:-5
   },
   card: {
     width: Dimensions.get('window').width - 40,

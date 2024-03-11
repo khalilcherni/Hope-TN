@@ -1,126 +1,161 @@
 import React from 'react';
-import { View, Text, ScrollView, StyleSheet, Image,TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, Image, TouchableOpacity, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { FontAwesome5 } from '@expo/vector-icons';
+
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+
+const { width, height } = Dimensions.get('window');
+
 const MixedCourseScreen = () => {
   const navigation = useNavigation();
+
   const handleHomeNavigation = () => {
-    // Navigate to the Home screen
     navigation.navigate('Home');
   };
-  const handleChatNavigation = () => {
-    // Navigate to the Home screen
-    navigation.navigate('ChatRoom');
+
+  const handlevents = () => {
+    navigation.navigate('Events');
   };
+
   const handleSchoolNavigation = () => {
-    // Navigate to the Home screen
     navigation.navigate('School');
   };
-  const handleMESNavigation = () => {
-    // Navigate to the Home screen
-    navigation.navigate('Messages');
+
+  const handledonation = () => {
+    navigation.navigate('donation');
   };
-  const handleHelpnavigation=()=>{
-    navigation.navigate('Helping'); 
-  }
+  const handleBackPress = () => {
+    navigation.navigate("School");
+  };
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Courses</Text>
+    <View style={styles.container}>
+        <View style={styles.headerContainer}>
+      <TouchableOpacity onPress={handleBackPress}>
+        <Image
+          source={require("../assets/Sign_out_circle_duotone-removebg-preview.png")}
+          style={styles.headerImg}
+        />
+      </TouchableOpacity>
+    </View>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <Text style={styles.title}>Courses</Text>
 
-      {/* English Courses */}
-      <View style={styles.sectionContainer}>
-        <Text style={styles.sectionTitle}>English Courses</Text>
-        <View style={styles.courseContainer}>
-          <Image source={require('../assets/bb.jpg')} style={styles.courseImage} />
-          <View style={styles.courseDetails}>
-            <Text style={styles.courseTitle}>Basic English Grammar</Text>
-            <Text style={styles.courseDescription}>Learn the fundamentals of English grammar.</Text>
+        {/* English Courses */}
+        <View style={styles.sectionContainer}>
+          <Text style={styles.sectionTitle}>English Courses</Text>
+          <View style={styles.courseContainer}>
+            <Image source={require('../assets/bb.jpg')} style={styles.courseImage} />
+            <View style={styles.courseDetails}>
+              <Text style={styles.courseTitle}>Basic English Grammar</Text>
+              <Text style={styles.courseDescription}>Learn the fundamentals of English grammar.</Text>
+            </View>
+          </View>
+          <View style={styles.courseContainer}>
+            <Image source={require('../assets/english_course_2.jpg')} style={styles.courseImage} />
+            <View style={styles.courseDetails}>
+              <Text style={styles.courseTitle}>Intermediate English Speaking</Text>
+              <Text style={styles.courseDescription}>Improve your speaking skills with practical exercises.</Text>
+            </View>
+          </View>
+          <View style={styles.courseContainer}>
+            <Image source={require('../assets/english_course_2.jpg')} style={styles.courseImage} />
+            <View style={styles.courseDetails}>
+              <Text style={styles.courseTitle}>Advanced English Writing</Text>
+              <Text style={styles.courseDescription}>Enhance your writing abilities with advanced techniques.</Text>
+            </View>
           </View>
         </View>
-        <View style={styles.courseContainer}>
-          <Image source={require('../assets/english_course_2.jpg')} style={styles.courseImage} />
-          <View style={styles.courseDetails}>
-            <Text style={styles.courseTitle}>Intermediate English Speaking</Text>
-            <Text style={styles.courseDescription}>Improve your speaking skills with practical exercises.</Text>
-          </View>
-        </View>
-        <View style={styles.courseContainer}>
-          <Image source={require('../assets/english_course_2.jpg')} style={styles.courseImage} />
-          <View style={styles.courseDetails}>
-            <Text style={styles.courseTitle}>Advanced English Writing</Text>
-            <Text style={styles.courseDescription}>Enhance your writing abilities with advanced techniques.</Text>
-          </View>
-        </View>
-      </View>
 
-      {/* German (Deutsch) Courses */}
-      <View style={styles.sectionContainer}>
-        <Text style={styles.sectionTitle}>German (Deutsch) Courses</Text>
-        <View style={styles.courseContainer}>
-          <Image source={require('../assets/bb.jpg')} style={styles.courseImage} />
-          <View style={styles.courseDetails}>
-            <Text style={styles.courseTitle}>Grundlagen der deutschen Grammatik</Text>
-            <Text style={styles.courseDescription}>Lernen Sie die Grundlagen der deutschen Grammatik.</Text>
+        {/* German (Deutsch) Courses */}
+        <View style={styles.sectionContainer}>
+          <Text style={styles.sectionTitle}>German (Deutsch) Courses</Text>
+          <View style={styles.courseContainer}>
+            <Image source={require('../assets/bb.jpg')} style={styles.courseImage} />
+            <View style={styles.courseDetails}>
+              <Text style={styles.courseTitle}>Grundlagen der deutschen Grammatik</Text>
+              <Text style={styles.courseDescription}>Lernen Sie die Grundlagen der deutschen Grammatik.</Text>
+            </View>
+          </View>
+          <View style={styles.courseContainer}>
+            <Image source={require('../assets/english_course_2.jpg')} style={styles.courseImage} />
+            <View style={styles.courseDetails}>
+              <Text style={styles.courseTitle}>Deutsch für Anfänger</Text>
+              <Text style={styles.courseDescription}>Verbessern Sie Ihre Deutschkenntnisse mit praktischen Übungen für Anfänger.</Text>
+            </View>
+          </View>
+          <View style={styles.courseContainer}>
+            <Image source={require('../assets/english_course_2.jpg')} style={styles.courseImage} />
+            <View style={styles.courseDetails}>
+              <Text style={styles.courseTitle}>Fortgeschrittenes Deutsch</Text>
+              <Text style={styles.courseDescription}>Verbessern Sie Ihre Deutschkenntnisse mit fortgeschrittenen Techniken.</Text>
+            </View>
           </View>
         </View>
-        <View style={styles.courseContainer}>
-          <Image source={require('../assets/english_course_2.jpg')} style={styles.courseImage} />
-          <View style={styles.courseDetails}>
-            <Text style={styles.courseTitle}>Deutsch für Anfänger</Text>
-            <Text style={styles.courseDescription}>Verbessern Sie Ihre Deutschkenntnisse mit praktischen Übungen für Anfänger.</Text>
-          </View>
-        </View>
-        <View style={styles.courseContainer}>
-          <Image source={require('../assets/english_course_2.jpg')} style={styles.courseImage} />
-          <View style={styles.courseDetails}>
-            <Text style={styles.courseTitle}>Fortgeschrittenes Deutsch</Text>
-            <Text style={styles.courseDescription}>Verbessern Sie Ihre Deutschkenntnisse mit fortgeschrittenen Techniken.</Text>
-          </View>
-        </View>
-      </View>
 
-      {/* Arabic Courses */}
-      <View style={styles.sectionContainer}>
-        <Text style={styles.sectionTitle}>Arabic Courses</Text>
-        <View style={styles.courseContainer}>
-          <Image source={require('../assets/bb.jpg')} style={styles.courseImage} />
-          <View style={styles.courseDetails}>
-            <Text style={styles.courseTitle}>القواعد الأساسية للغة العربية</Text>
-            <Text style={styles.courseDescription}>تعلم أساسيات قواعد اللغة العربية.</Text>
+        {/* Arabic Courses */}
+        <View style={styles.sectionContainer}>
+          <Text style={styles.sectionTitle}>Arabic Courses</Text>
+          <View style={styles.courseContainer}>
+            <Image source={require('../assets/bb.jpg')} style={styles.courseImage} />
+            <View style={styles.courseDetails}>
+              <Text style={styles.courseTitle}>القواعد الأساسية للغة العربية</Text>
+              <Text style={styles.courseDescription}>تعلم أساسيات قواعد اللغة العربية.</Text>
+            </View>
+          </View>
+          <View style={styles.courseContainer}>
+            <Image source={require('../assets/english_course_2.jpg')} style={styles.courseImage} />
+            <View style={styles.courseDetails}>
+              <Text style={styles.courseTitle}>المحادثة باللغة العربية للمبتدئين</Text>
+              <Text style={styles.courseDescription}>تحسين مهارات المحادثة باللغة العربية للمبتدئين مع التمارين العملية.</Text>
+            </View>
+          </View>
+          <View style={styles.courseContainer}>
+            <Image source={require('../assets/english_course_2.jpg')} style={styles.courseImage} />
+            <View style={styles.courseDetails}>
+              <Text style={styles.courseTitle}>الكتابة باللغة العربية المتقدمة</Text>
+              <Text style={styles.courseDescription}>تحسين مهارات الكتابة باللغة العربية باستخدام التقنيات المتقدمة.</Text>
+            </View>
           </View>
         </View>
-        <View style={styles.courseContainer}>
-          <Image source={require('../assets/english_course_2.jpg')} style={styles.courseImage} />
-          <View style={styles.courseDetails}>
-            <Text style={styles.courseTitle}>المحادثة باللغة العربية للمبتدئين</Text>
-            <Text style={styles.courseDescription}>تحسين مهارات المحادثة باللغة العربية للمبتدئين مع التمارين العملية.</Text>
-          </View>
-        </View>
-        <View style={styles.courseContainer}>
-          <Image source={require('../assets/english_course_2.jpg')} style={styles.courseImage} />
-          <View style={styles.courseDetails}>
-            <Text style={styles.courseTitle}>الكتابة باللغة العربية المتقدمة</Text>
-            <Text style={styles.courseDescription}>تحسين مهارات الكتابة باللغة العربية باستخدام التقنيات المتقدمة.</Text>
-          </View>
-        </View>
-    
+      </ScrollView>
+      
+      <View style={styles.tabbar}>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><FontAwesome name="home" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handlevents}><MaterialCommunityIcons name="charity" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><Ionicons name="school" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handledonation}><FontAwesome5 name="donate" size={width * 0.06}  color="black" /></TouchableOpacity>
       </View>
-   
-    </ScrollView>
-    
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    backgroundColor: '#f0f0f0',
+  },
+  scrollContainer: {
     flexGrow: 1,
-    backgroundColor: '#fff',
     paddingVertical: 20,
     paddingHorizontal: 10,
+    marginTop: 50,
+  },
+  headerContainer: {
+    position: "absolute",
+    top: 0,
+    left: -20,
+    zIndex: 1, // to ensure it's above other content
+  },
+  headerImg: {
+    width: 50,
+    height: 60,
+    resizeMode: "contain",
+    margin: 40,
   },
   title: {
     fontSize: 24,
@@ -167,8 +202,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#f0f0f0',
-    paddingVertical: 10,
+  
+    paddingVertical: height * 0.02,
+    position: 'absolute',
+    bottom: -20,
+    left: 0,
+    right: 0,
   },
   tabItem: {
     flex: 1,
