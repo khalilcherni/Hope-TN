@@ -74,7 +74,7 @@ const Payment = () => {
         
         <Pressable
           style={styles.signOutCircleDuotone}
-          onPress={() => navigation.navigate("AndroidLarge")}
+          onPress={() => navigation.navigate("donation")}
         >
           <Image
             style={styles.icon}

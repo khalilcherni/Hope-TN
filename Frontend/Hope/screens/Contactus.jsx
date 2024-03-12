@@ -72,9 +72,19 @@ const Contact = () => {
     // Navigate to the Home screen
     navigation.navigate('School');
   };
+  const handleBackPress = () => {
+    navigation.navigate("Home");
+  };
   return (
     <View style={styles.container}>
-     
+      <View style={styles.headerContainer}>
+      <TouchableOpacity onPress={handleBackPress}>
+        <Image
+          source={require("../assets/Sign_out_circle_duotone-removebg-preview.png")}
+          style={styles.headerImg}
+        />
+      </TouchableOpacity>
+    </View>
       <Animated.View style={[styles.card, animatedStyle]}>
         <Text style={styles.title}>Contact Us</Text>
         <Text style={styles.description}>
@@ -118,7 +128,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f0f0f0',
-    marginTop: 50,
+    marginTop: 100,
   },
 
   card: {
@@ -157,6 +167,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 10,
     width: "48%",
+  },
+  headerContainer: {
+    position: "absolute",
+    top: 0,
+    left: -20,
+    zIndex: 1, // to ensure it's above other content
+  },
+  headerImg: {
+    width: 60,
+    height: 60,
+    resizeMode: "contain",
+    margin: 40,
+    top:-100,
+    left:-5
   },
   contactText: {
     marginLeft: 5,

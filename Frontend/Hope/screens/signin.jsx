@@ -22,7 +22,7 @@ const SignIn = () => {
         return;
       }
 
-      const loginResponse = await axios.post('http://192.168.1.201:4000/users/login', {
+      const loginResponse = await axios.post('http://192.168.72.231:4000/users/login', {
         email,
         password,
       });
@@ -49,7 +49,8 @@ const SignIn = () => {
   const handleSignInWithGoogle = async () => {
     try {
       const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(auth, provider);
+      const authInstance = getAuth();
+      const result = await signInWithPopup(authInstance, provider);
   
       console.log('Google Sign-In successful:', result.user);
     } catch (error) {

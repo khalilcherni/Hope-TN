@@ -7,7 +7,7 @@ export default function Example() {
   const [loading, setLoading] = useState(true);
   const navigation = useNavigation(); // Navigation hook
   useEffect(() => {
-    axios.get("http://192.168.1.201:4000/palestine/get")
+    axios.get("http://192.168.72.231:4000/palestine/get")
       .then(res => {
         setData(res.data);
         setLoading(false);

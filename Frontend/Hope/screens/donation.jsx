@@ -58,10 +58,21 @@ const AndroidLarge = () => {
     navigation.navigate('Home');
   
   };
+  const handleBackPress = () => {
+    navigation.navigate("Home");
+  };
   return (
     <>
     <ScrollView>
       <View style={styles.androidLarge4}>
+      <View style={styles.headerContainer}>
+      <TouchableOpacity onPress={handleBackPress}>
+        <Image
+          source={require("../assets/Sign_out_circle_duotone-removebg-preview.png")}
+          style={styles.headerImg}
+        />
+      </TouchableOpacity>
+    </View>
         <View style={[styles.androidLarge4Child, styles.childLayout]} />
         <View style={[styles.androidLarge4Item, styles.childLayout]} />
         <View style={[styles.androidLarge4Inner, styles.childLayout]} />
@@ -182,6 +193,20 @@ const styles = StyleSheet.create({
     backgroundColor: Color.colorDarkcyan,
     borderRadius: Border.br_11xl,
     position: "absolute",
+  },
+  headerContainer: {
+    position: "absolute",
+    top: 0,
+    left: -20,
+    zIndex: 1, // to ensure it's above other content
+  },
+  headerImg: {
+    width: 60,
+    height: 60,
+    resizeMode: "contain",
+    margin: 40,
+    top:-65,
+    left:-5
   },
   checkmarkIcon: {
     position: "absolute",
