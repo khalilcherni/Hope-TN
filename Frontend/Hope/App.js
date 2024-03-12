@@ -85,7 +85,7 @@ export default function App() {
          {/* <Stack.Screen name="ChatScreen" component={ChatScreen}/>  */}
          {/* <Stack.Screen name="ChatBot" component={Chatbot}/>  */}
          {/* <Stack.Screen name="Elders" component={Frame2}/>  */}
-         <Stack.Screen name="Language" component={Language}/> 
+         {/* <Stack.Screen name="Language" component={Language}/>  */}
 
   {/* <Stack.Screen name="Messages" component={Messages}/> */}
         {/* <Stack.Screen name="ChatRoom" component={ChatRoom}/> 

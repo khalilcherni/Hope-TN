@@ -1,46 +1,48 @@
-// import * as React from "react";
 import React, { useState } from 'react';
 import { Image } from "expo-image";
-import { StyleSheet, Pressable, Text, View,ScrollView,TouchableOpacity,Dimensions } from "react-native";
+import { StyleSheet, Pressable, Text, View, ScrollView, TouchableOpacity, Dimensions } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { AntDesign, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
+
 const { width, height } = Dimensions.get('window');
+
 const HomeRE = () => {
   const navigation = useNavigation();
   const [isClicked, setIsClicked] = useState(false);
-  const images = [
-    // require("../assets/tunisia-covid-station-767_1_1.png"),
-    // require("../assets/charity-work.png"),
-    // require("../assets/charity-work.png"),
-    // Add more images as needed
-  ];
+  const [language, setLanguage] = useState('en'); // State for selected language
 
-  // Function to render two images per page
-  const renderImages = () => {
-    const pages = [];
-    for (let i = 0; i < images.length; i += 2) {
-      pages.push(
-        <View key={i} style={styles.carouselPage}>
-          <Image
-            style={styles.carouselImage}
-            contentFit="cover"
-            source={images[i]}
-          />
-          {images[i + 1] && (
-            <Image
-              style={styles.carouselImage}
-              contentFit="cover"
-              source={images[i + 1]}
-            />
-          )}
-        </View>
-      );
-    }
-    return pages;
+  const translations = {
+    en: {
+      welcome: "Welcome",
+      categories: "Categories",
+      ourWork: "Our Work",
+      povertyInTunisia: "Poverty in Tunisia",
+      learnMore: "Learn More",
+      povertyDescription: "In today's world, poverty remains a harsh reality for millions, depriving individuals of basic necessities and dignity. Among the most vulnerable are the homeless, struggling to find shelter and stability amidst societal neglect. For orphans, the absence of familial support compounds their challenges, leaving them adrift in a world of uncertainty. Access to clean water, a fundamental human right, eludes many, exacerbating health crises and perpetuating cycles of deprivation. Moreover, the elderly, often overlooked, face isolation and neglect, despite their invaluable wisdom and experience. Together, we must advocate for change, extending a compassionate hand to those in need.",
+      makeDonation: "If you are an ally of our cause and you have something you want to donate, your contribution can make a real difference. Your support helps us continue our mission and reach those in need. Please press the button below to make a donation:",
+      pressHere: "Press Here",
+    },
+    ar: {
+      welcome: "مرحباً",
+      categories: "الفئات",
+      ourWork: "عملنا",
+      povertyInTunisia: "الفقر في تونس",
+      learnMore: "معرفة المزيد",
+      makeDonation: "إذا كنت حليفًا لقضيتنا ولديك شيء ترغب في التبرع به، فإن مساهمتك يمكن أن تحقق فرقًا حقيقيًا. دعمك يساعدنا على مواصلة مهمتنا والوصول إلى أولئك الذين في حاجة. يرجى الضغط على الزر أدناه للتبرع:",
+      pressHere: "اضغط هنا",
+    },
+    fr: {
+      welcome: "Bienvenue",
+      categories: "Catégories",
+      ourWork: "Notre Travail",
+      povertyInTunisia: "La Pauvreté en Tunisie",
+      learnMore: "En savoir plus",
+      makeDonation: "Si vous êtes un allié de notre cause et que vous avez quelque chose à donner, votre contribution peut vraiment faire la différence. Votre soutien nous aide à poursuivre notre mission et à atteindre ceux dans le besoin. Veuillez appuyer sur le bouton ci-dessous pour faire un don:",
+      pressHere: "Appuyez ici",
+    },
   };
+
   const handleHomeNavigation = () => {
     navigation.navigate('Home');
     setIsClicked(true);
@@ -79,152 +81,145 @@ const HomeRE = () => {
   const handlePressHelp = () => {
     navigation.navigate('Messages');
   };
+
+  const handleLanguageChange = (selectedLanguage) => {
+    setLanguage(selectedLanguage);
+  };
+
   return (
     <ScrollView>
-    <View style={styles.homeRe}>
-      <Pressable
-        style={[styles.profileCircle, styles.ellipseIconLayout]}
-        onPress={() => navigation.navigate("Setting")}
-      >
+      <View style={styles.homeRe}>
+        <Pressable
+          style={[styles.profileCircle, styles.ellipseIconLayout]}
+          onPress={() => navigation.navigate("Setting")}
+        >
+          <Image
+            style={[styles.icon, styles.iconLayout3]}
+            contentFit="cover"
+          />
+        </Pressable>
+        <Text style={[styles.welcome, styles.welcomeTypo]}>{translations[language].welcome}</Text>
+
         <Image
-          style={[styles.icon, styles.iconLayout3]}
+          style={styles.homeReChild}
           contentFit="cover"
-          // source={require("../assets/profile-circle.png")}
         />
-      </Pressable>
-      <Text style={[styles.welcome, styles.welcomeTypo]}>Welcome</Text>
-    
-      <Image
-        style={styles.homeReChild}
-        contentFit="cover"
-        // source={require("../assets/hh.png")}
-      />
-      <Text style={[styles.categories, styles.categoriesTypo]}>
-        Categories:
-      </Text>
-      <View  style={styles.images}>
-      <Pressable onPress={navigateToPeopleWhoNeedWater}>
+        <Text style={[styles.categories, styles.categoriesTypo]}>{translations[language].categories}</Text>
+        <View  style={styles.images}>
+          <Pressable onPress={navigateToPeopleWhoNeedWater}>
             <Image
               style={[styles.homeReItem, styles.homePosition, isClicked && styles.clickedIcon]}
               contentFit="cover"
-              // source={require("../assets/Ellipse_52.png")}
             />
           </Pressable>
-      <Pressable onPress={navigateToPeopleWhoNeedWater}>
-        <Image
-          style={[styles.dropIcon, styles.iconPosition]}
-          contentFit="cover"
-          // source={require("../assets/drop .png")}
-        />
-      </Pressable>
-      <Pressable
-        style={[styles.wrapper, styles.homePosition]}
-        onPress={() => navigation.navigate("poorPeople")}
-      >
-        <Image
-          style={styles.iconLayout3}
-          contentFit="cover"
-          // source={require("../assets/Ellipse_52.png")}
-        />
-      </Pressable>
-      <Pressable onPress={navigateToPoor}>
-      <Image
-        style={[styles.dollarCircleIcon, styles.iconPosition]}
-        contentFit="cover"
-        // source={require("../assets/poverty.png")}
-      />
-        <Pressable onPress={ navigateToElde}>
-      <Image
-        style={[styles.homeReInner, styles.homePosition]}
-        contentFit="cover"
-        // source={require("../assets/Ellipse_52.png")}
-      />
-      </Pressable>
-         </Pressable >
-         <Pressable onPress={ navigateToElde}>
-      <Image
-        style={[styles.downloadRemovebgPreview1Icon, styles.iconLayout2]}
-        contentFit="cover"
-        // source={require("../assets/eld.png")}
-      />
-        </Pressable >
-        <Pressable onPress={navigateToPalestine}>
-      <Image
-        style={[styles.ellipseIcon, styles.ellipseIconLayout]}
-        contentFit="cover"
-        // source={require("../assets/Ellipse_52.png")}
-      />
-      <Image
-        style={[styles.depositphotos105691240StockIcon, styles.iconLayout2]}
-        contentFit="cover"
-        // source={require("../assets/mosque.png")}
-      />
-      </Pressable>
-      <Image
-        style={[styles.homeReChild1, styles.homePosition]}
-        contentFit="cover"
-        // source={require("../assets/Ellipse_52.png")}
-      />
-      <Image
-        style={styles.seniorCitizenLogoPngSeniorIcon}
-        contentFit="cover"
-        // source={require("../assets/funeral.png")}
-      />
-      </View> 
+          <Pressable onPress={navigateToPeopleWhoNeedWater}>
+            <Image
+              style={[styles.dropIcon, styles.iconPosition]}
+              contentFit="cover"
+            />
+          </Pressable>
+          <Pressable
+            style={[styles.wrapper, styles.homePosition]}
+            onPress={() => navigation.navigate("poorPeople")}
+          >
+            <Image
+              style={styles.iconLayout3}
+              contentFit="cover"
+            />
+          </Pressable>
+          <Pressable onPress={navigateToPoor}>
+            <Image
+              style={[styles.dollarCircleIcon, styles.iconPosition]}
+              contentFit="cover"
+            />
+          </Pressable>
+          <Pressable onPress={ navigateToElde}>
+            <Image
+              style={[styles.homeReInner, styles.homePosition]}
+              contentFit="cover"
+            />
+          </Pressable>
+          <Pressable onPress={ navigateToElde}>
+            <Image
+              style={[styles.downloadRemovebgPreview1Icon, styles.iconLayout2]}
+              contentFit="cover"
+            />
+          </Pressable >
+          <Pressable onPress={navigateToPalestine}>
+            <Image
+              style={[styles.ellipseIcon, styles.ellipseIconLayout]}
+              contentFit="cover"
+            />
+            <Image
+              style={[styles.depositphotos105691240StockIcon, styles.iconLayout2]}
+              contentFit="cover"
+            />
+          </Pressable>
+          <Image
+            style={[styles.homeReChild1, styles.homePosition]}
+            contentFit="cover"
+          />
+          <Image
+            style={styles.seniorCitizenLogoPngSeniorIcon}
+            contentFit="cover"
+          />
+        </View>
 
-      <Text style={[styles.ourWork, styles.welcomeTypo]}>Our Work :</Text>
-      <View   style={styles.imageWork}>
-      <Image
-        style={[styles.demt1Icon, styles.iconLayout1]}
-        contentFit="cover"
-        // source={require("../assets/tunisia-covid-station-767_1_1.png")}
-      />
-      <Image
-        style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
-        contentFit="cover"
-        // source={require("../assets/charity-work.png")}
-      />
+        <Text style={[styles.ourWork, styles.welcomeTypo]}>{translations[language].ourWork}</Text>
+        <View   style={styles.imageWork}>
+          <Image
+            style={[styles.demt1Icon, styles.iconLayout1]}
+            contentFit="cover"
+          />
+          <Image
+            style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
+            contentFit="cover"
+          />
+          <Image
+            style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
+            contentFit="cover"
+          />
+        </View>
+        <Text style={[styles.povertyInTunisia, styles.categoriesTypo]}>{translations[language].povertyInTunisia}</Text>
         <Image
-        style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
-        contentFit="cover"
-        // source={require("../assets/charity-work.png")}
-      />
+          style={styles.jpgRemovebgPreview1Icon}
+          contentFit="cover"
+        />
       </View>
-      <Text style={[styles.povertyInTunisia, styles.categoriesTypo]}>
-        Poverty in Tunisia :
-      </Text>
-      <Image
-        style={styles.jpgRemovebgPreview1Icon}
-        contentFit="cover"
-        // source={require("../assets/jpg-removebg-preview_1.png")}
-      />
-    
-     
-    </View>
-    <View style={styles.card}>
-      <Text style={styles.text}>
-        In today's world, poverty remains a harsh reality for millions, depriving individuals of basic necessities and dignity. Among the most vulnerable are the homeless, struggling to find shelter and stability amidst societal neglect. For orphans, the absence of familial support compounds their challenges, leaving them adrift in a world of uncertainty. Access to clean water, a fundamental human right, eludes many, exacerbating health crises and perpetuating cycles of deprivation. Moreover, the elderly, often overlooked, face isolation and neglect, despite their invaluable wisdom and experience. Together, we must advocate for change, extending a compassionate hand to those in need.
-      </Text>
-      <TouchableOpacity style={styles.button} onPress={handlePress}>
-        <Text style={styles.buttonText}>Learn More</Text>
-      </TouchableOpacity>
-    </View>
-
-    <View style={styles.card}>
-  <Text> If you are an ally of our cause and you have something you want to donate, your contribution can make a real difference. Your support helps us continue our mission and reach those in need. Please press the button below to make a donation: </Text>
+      <View style={styles.card}>
+  <Text style={styles.text}>
+    {translations[language].povertyDescription}
+  </Text>
+  <TouchableOpacity style={styles.button} onPress={handlePress}>
+    <Text style={styles.buttonText}>{translations[language].learnMore}</Text>
+  </TouchableOpacity>
+</View>
+<View style={styles.card}>
+  <Text>{translations[language].makeDonation}</Text>
   <TouchableOpacity style={styles.button} onPress={handlePressHelp}>
-        <Text style={styles.buttonText}>press here </Text>
-        </TouchableOpacity>
-  </View>
-    <View style={styles.tabbar}>
+    <Text style={styles.buttonText}>{translations[language].pressHere}</Text>
+  </TouchableOpacity>
+</View>
+      <View style={styles.tabbar}>
         <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={width * 0.06} color="black" /></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={width * 0.06} color="black" /></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={width * 0.06} color="black" /></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={width * 0.06} color="black" /></TouchableOpacity>
       </View>
+      <View style={styles.languageButtons}>
+        <TouchableOpacity onPress={() => handleLanguageChange('en')}>
+          <Text style={[styles.languageButton, language === 'en' && styles.selectedLanguage]}>English</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => handleLanguageChange('ar')}>
+          <Text style={[styles.languageButton, language === 'ar' && styles.selectedLanguage]}>العربية</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => handleLanguageChange('fr')}>
+          <Text style={[styles.languageButton, language === 'fr' && styles.selectedLanguage]}>Français</Text>
+        </TouchableOpacity>
+      </View>
     </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   ellipseIconLayout: {
@@ -366,6 +361,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     marginBottom: 20,
+    width: 320, // Adjust the width as needed to accommodate translated text
   },
   button: {
     backgroundColor: "#209FA6",
