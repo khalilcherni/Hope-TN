@@ -25,11 +25,10 @@ const PasswordInput = ({ value, onChangeText }) => {
         style={styles.visibilityButton}
         onPress={togglePasswordVisibility}
       >
-        <Image
-          style={styles.icon}
-          contentFit="cover"
-          // source={require("../assets/backleft.png")}
-          // source={require("../assets/iyess.png")}
+        <Ionicons
+          name={isPasswordVisible ? "eye-off" : "eye"}
+          size={24}
+          color="#777"
         />
       </Pressable>
     </View>
@@ -62,7 +61,7 @@ const ProfileEdit = () => {
     <View style={styles.container}>
       <Image
         style={styles.logo}
-        source={require("../assets/aaa.jpg")}
+        source={require("../assets/logo.png")}
       />
       <View style={styles.editProfileContainer}>
         <Text style={styles.editProfile}>Edit Profile</Text>
@@ -95,12 +94,12 @@ const ProfileEdit = () => {
       <Pressable style={styles.backIcon} onPress={() => navigation.navigate("Setting")}>
         <Image
           style={styles.icon}
-          source={require("../assets/aaa.jpg")}
+          source={require("../assets/backleft.png")}
         />
       </Pressable>
       <Image
         style={styles.shareIcon}
-        source={require("../assets/aaa.jpg")}
+        // source={require("../assets/share.png")}
       />
     </View>
   );

@@ -27,7 +27,7 @@ const OnboardingPage1 = () => {
       <Image
         style={[styles.poor101Icon, styles.iconLayout1]}
         contentFit="cover"
-        source={require("../assets/poor11.jpg")}
+        // source={require("../assets/poor11.jpg")}
       />
       <Image
         style={[styles.poor31Icon, styles.iconLayout]}
@@ -42,12 +42,12 @@ const OnboardingPage1 = () => {
       <Image
         style={[styles.poor11Icon, styles.iconLayout]}
         contentFit="cover"
-        source={require("../assets/aaa.jpg")}
+        // source={require("../assets/aaa.jpg")}
       />
       <Image
         style={[styles.poo3131Icon, styles.iconLayout2]}
         contentFit="cover"
-        source={require("../assets/aaa.jpg")}
+        // source={require("../assets/aaa.jpg")}
       />
       <Text style={styles.letsHelpEach}>Let’s help each others</Text>
       <Text style={[styles.whenWeGive, styles.whenWeGiveTypo]}>

@@ -20,7 +20,7 @@ More than 100 children have been killed every day since Israel started bombing
       <Image
         style={styles.image1Icon}
         contentFit="cover"
-        source={require("../assets/aaa.jpg")}
+        // source={require("../assets/palestine1.jpg")}
       />
       <Text
         style={[styles.gazaChildrenDizzy, styles.donateTypo]}
@@ -29,22 +29,22 @@ More than 100 children have been killed every day since Israel started bombing
   <Image
     style={[styles.palestine21Icon, styles.iconLayout]}
     contentFit="cover"
-    source={require("../assets/aaa.jpg")}
+    // source={require("../assets/aaa.jpg")}
   />
   <Image
     style={[styles.palestine31Icon, styles.iconLayout]}
     contentFit="cover"
-    source={require("../assets/aaa.jpg")}
+    // source={require("../assets/aaa.jpg")}
   />
   <Image
     style={[styles.palestine41Icon, styles.iconPosition]}
     contentFit="cover"
-    source={require("../assets/aaa.jpg")}
+    // source={require("../assets/aaa.jpg")}
   />
   <Image
     style={[styles.palestine51Icon, styles.iconPosition]}
     contentFit="cover"
-    source={require("../assets/aaa.jpg")}
+    // source={require("../assets/aaa.jpg")}
   />
 </View>
       <Text
@@ -63,7 +63,7 @@ One challenge medical staff face in Gaza at the moment is the lack of a safe opt
       <Image
         style={styles.frameChild}
         contentFit="cover"
-        source={require("../assets/aaa.jpg")}
+        // source={require("../assets/aaa.jpg")}
       />
       <Pressable
           style={styles.nextButton}
