@@ -39,7 +39,7 @@ const addUser = async (req, res) => {
             email:email,
             birth:birth,
             password: hashedPassword,
-            // role:'user'
+           
         };
 
         await user.register(newUser, (err, result) => {
