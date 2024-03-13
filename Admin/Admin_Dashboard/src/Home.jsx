@@ -85,13 +85,20 @@ function Home() {
                 </div>
                 <h1>33</h1>
                 </Link>
-            <div className='card'>
+                <Link to="/Voluntary" className="card"> 
                 <div className='card-inner'>
-                    <h3>ALERTS</h3>
+                    <h3>volunteers</h3>
                     <BsFillBellFill className='card_icon'/>
                 </div>
                 <h1>42</h1>
-            </div>
+                </Link>
+                <Link to="/Supporters" className="card"> 
+                <div className='card-inner'>
+                    <h3>Supporters</h3>
+                    <BsFillBellFill className='card_icon'/>
+                </div>
+                <h1>42</h1>
+                </Link>
         </div>
 
         <div className='charts'>

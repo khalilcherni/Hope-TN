@@ -9,6 +9,8 @@ import Home from './Home';
 import Users from './Users'; // Import the Users component
 import Events from './Events'
 import School from './School';
+import Voluntarywork from './Voluntary';
+import Supporters from './Supporters';
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
@@ -37,6 +39,18 @@ function App() {
 <Routes>
   <Route path="/" element={<Home />} />
   <Route path="/School" element={<School />}
+   />
+   
+</Routes>
+<Routes>
+  <Route path="/" element={<Home />} />
+  <Route path="/Voluntary" element={<Voluntarywork />}
+   />
+   
+</Routes>
+<Routes>
+  <Route path="/" element={<Home />} />
+  <Route path="/Supporters" element={<Supporters />}
    />
    
 </Routes>
