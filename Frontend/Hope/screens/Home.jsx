@@ -4,6 +4,8 @@ import { StyleSheet, Pressable, Text, View, ScrollView, TouchableOpacity, Dimens
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
+import { Picker } from '@react-native-picker/picker';
+
 
 const { width, height } = Dimensions.get('window');
 
@@ -11,6 +13,29 @@ const HomeRE = () => {
   const navigation = useNavigation();
   const [isClicked, setIsClicked] = useState(false);
   const [language, setLanguage] = useState('en'); // State for selected language
+
+    // Function to render two images per page
+    const renderImages = () => {
+      const pages = [];
+      for (let i = 0; i < images.length; i += 2) {
+        pages.push(
+          <View key={i} style={styles.carouselPage}>
+            <Image
+              style={styles.carouselImage}
+              contentFit="cover"
+              source={images[i]}
+            />
+            {images[i + 1] && (
+              <Image
+                style={styles.carouselImage}
+                contentFit="cover"
+                source={images[i + 1]}
+              />
+            )}
+          </View>
+        );
+            }
+          }
 
   const translations = {
     en: {
@@ -29,6 +54,7 @@ const HomeRE = () => {
       ourWork: "عملنا",
       povertyInTunisia: "الفقر في تونس",
       learnMore: "معرفة المزيد",
+      povertyDescription:" في عالمنا الحالي، يظل الفقر حقيقة قاسية لملايين الأشخاص، محرومًا الأفراد من الاحتياجات الأساسية والكرامة. من بين الأكثر ضعفًا هم المشردين، الذين يكافحون من أجل العثور على مأوى واستقرار في ظل الإهمال الاجتماعي. بالنسبة للأيتام، تزداد تحدياتهم بسبب غياب الدعم الأسري، مما يتركهم عالقين في عالم من عدم اليقين. الوصول إلى المياه النظيفة، حق إنساني أساسي، يفوت الكثيرين، مما يزيد من أزمات الصحة ويُديم دورات الحرمان. علاوة على ذلك، يواجه المسنون، الذين غالبًا ما يتم تجاهلهم، العزلة والإهمال، على الرغم من حكمتهم وخبرتهم الثمينة. معًا، يجب أن ندعو للتغيير، ممددين يد الرحمة لأولئك الذين في حاجة",
       makeDonation: "إذا كنت حليفًا لقضيتنا ولديك شيء ترغب في التبرع به، فإن مساهمتك يمكن أن تحقق فرقًا حقيقيًا. دعمك يساعدنا على مواصلة مهمتنا والوصول إلى أولئك الذين في حاجة. يرجى الضغط على الزر أدناه للتبرع:",
       pressHere: "اضغط هنا",
     },
@@ -38,10 +64,19 @@ const HomeRE = () => {
       ourWork: "Notre Travail",
       povertyInTunisia: "La Pauvreté en Tunisie",
       learnMore: "En savoir plus",
+      povertyDescription: "Dans le monde daujourdhui, la pauvreté reste une réalité cruelle pour des millions de personnes, les privant de leurs besoins fondamentaux et de leur dignité. Parmi les plus vulnérables se trouvent les sans-abri, qui luttent pour trouver un abri et une stabilité au milieu de la négligence sociale. Pour les orphelins, labsence de soutien familial aggrave leurs difficultés, les laissant à la dérive dans un monde dincertitude. Laccès à leau propre, un droit humain fondamental, échappe à beaucoup, exacerbant les crises sanitaires et perpétuant les cycles de privation. De plus, les personnes âgées, souvent négligées, font face à lisolement et à la négligence, malgré leur sagesse et leur expérience inestimables. Ensemble, nous devons plaider pour le changement, en tendant une main compatissante à ceux dans le besoin",
       makeDonation: "Si vous êtes un allié de notre cause et que vous avez quelque chose à donner, votre contribution peut vraiment faire la différence. Votre soutien nous aide à poursuivre notre mission et à atteindre ceux dans le besoin. Veuillez appuyer sur le bouton ci-dessous pour faire un don:",
       pressHere: "Appuyez ici",
     },
   };
+
+  console.log("Poverty Description (English):", translations.en.povertyDescription);
+  console.log("Make Donation (English):", translations.en.makeDonation);
+  console.log("Poverty Description (Arabic):", translations.ar.povertyDescription);
+  console.log("Make Donation (Arabic):", translations.ar.makeDonation);
+  console.log("Poverty Description (French):", translations.fr.povertyDescription);
+  console.log("Make Donation (French):", translations.fr.makeDonation);
+
 
   const handleHomeNavigation = () => {
     navigation.navigate('Home');
@@ -88,6 +123,19 @@ const HomeRE = () => {
 
   return (
     <ScrollView>
+      {/* Language Selection Dropdown */}
+      <View style={styles.languageDropdown}>
+        <Picker
+          selectedValue={language}
+          onValueChange={(itemValue) => handleLanguageChange(itemValue)}
+          style={styles.picker}
+        >
+          <Picker.Item label="English" value="en" />
+          <Picker.Item label="Arabic" value="ar" />
+          <Picker.Item label="French" value="fr" />
+        </Picker>
+      </View>
+
       <View style={styles.homeRe}>
         <Pressable
           style={[styles.profileCircle, styles.ellipseIconLayout]}
@@ -96,6 +144,8 @@ const HomeRE = () => {
           <Image
             style={[styles.icon, styles.iconLayout3]}
             contentFit="cover"
+             // source={require("../assets/profile-circle.png")}
+
           />
         </Pressable>
         <Text style={[styles.welcome, styles.welcomeTypo]}>{translations[language].welcome}</Text>
@@ -103,6 +153,8 @@ const HomeRE = () => {
         <Image
           style={styles.homeReChild}
           contentFit="cover"
+          // source={require("../assets/hh.png")}
+
         />
         <Text style={[styles.categories, styles.categoriesTypo]}>{translations[language].categories}</Text>
         <View  style={styles.images}>
@@ -110,12 +162,14 @@ const HomeRE = () => {
             <Image
               style={[styles.homeReItem, styles.homePosition, isClicked && styles.clickedIcon]}
               contentFit="cover"
+                // source={require("../assets/Ellipse_52.png")}
             />
           </Pressable>
           <Pressable onPress={navigateToPeopleWhoNeedWater}>
             <Image
               style={[styles.dropIcon, styles.iconPosition]}
               contentFit="cover"
+              // source={require("../assets/drop .png")}
             />
           </Pressable>
           <Pressable
@@ -125,43 +179,51 @@ const HomeRE = () => {
             <Image
               style={styles.iconLayout3}
               contentFit="cover"
+               // source={require("../assets/Ellipse_52.png")}
             />
           </Pressable>
           <Pressable onPress={navigateToPoor}>
             <Image
               style={[styles.dollarCircleIcon, styles.iconPosition]}
               contentFit="cover"
+             // source={require("../assets/poverty.png")}
             />
           </Pressable>
           <Pressable onPress={ navigateToElde}>
             <Image
               style={[styles.homeReInner, styles.homePosition]}
               contentFit="cover"
+              // source={require("../assets/Ellipse_52.png")}
             />
           </Pressable>
           <Pressable onPress={ navigateToElde}>
             <Image
               style={[styles.downloadRemovebgPreview1Icon, styles.iconLayout2]}
               contentFit="cover"
+               // source={require("../assets/eld.png")}
             />
           </Pressable >
           <Pressable onPress={navigateToPalestine}>
             <Image
               style={[styles.ellipseIcon, styles.ellipseIconLayout]}
               contentFit="cover"
+              // source={require("../assets/Ellipse_52.png")}
             />
             <Image
               style={[styles.depositphotos105691240StockIcon, styles.iconLayout2]}
               contentFit="cover"
+              // source={require("../assets/mosque.png")}
             />
           </Pressable>
           <Image
             style={[styles.homeReChild1, styles.homePosition]}
             contentFit="cover"
+            // source={require("../assets/Ellipse_52.png")}
           />
           <Image
             style={styles.seniorCitizenLogoPngSeniorIcon}
             contentFit="cover"
+             // source={require("../assets/funeral.png")}
           />
         </View>
 
@@ -170,56 +232,50 @@ const HomeRE = () => {
           <Image
             style={[styles.demt1Icon, styles.iconLayout1]}
             contentFit="cover"
+              // source={require("../assets/tunisia-covid-station-767_1_1.png")}
           />
           <Image
             style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
             contentFit="cover"
+             // source={require("../assets/charity-work.png")}
           />
           <Image
             style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
             contentFit="cover"
+             // source={require("../assets/charity-work.png")}
           />
         </View>
         <Text style={[styles.povertyInTunisia, styles.categoriesTypo]}>{translations[language].povertyInTunisia}</Text>
         <Image
           style={styles.jpgRemovebgPreview1Icon}
           contentFit="cover"
+        // source={require("../assets/jpg-removebg-preview_1.png")}
         />
       </View>
       <View style={styles.card}>
-  <Text style={styles.text}>
-    {translations[language].povertyDescription}
-  </Text>
-  <TouchableOpacity style={styles.button} onPress={handlePress}>
-    <Text style={styles.buttonText}>{translations[language].learnMore}</Text>
-  </TouchableOpacity>
-</View>
-<View style={styles.card}>
-  <Text>{translations[language].makeDonation}</Text>
-  <TouchableOpacity style={styles.button} onPress={handlePressHelp}>
-    <Text style={styles.buttonText}>{translations[language].pressHere}</Text>
-  </TouchableOpacity>
-</View>
+        <Text style={styles.text}>
+          {translations[language].povertyDescription}
+        </Text>
+        <TouchableOpacity style={styles.button} onPress={handlePress}>
+          <Text style={styles.buttonText}>{translations[language].learnMore}</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.card}>
+        <Text>{translations[language].makeDonation}</Text>
+        <TouchableOpacity style={styles.button} onPress={handlePressHelp}>
+          <Text style={styles.buttonText}>{translations[language].pressHere}</Text>
+        </TouchableOpacity>
+      </View>
       <View style={styles.tabbar}>
         <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={width * 0.06} color="black" /></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={width * 0.06} color="black" /></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={width * 0.06} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={width * 0.06} color="black" /></TouchableOpacity>
-      </View>
-      <View style={styles.languageButtons}>
-        <TouchableOpacity onPress={() => handleLanguageChange('en')}>
-          <Text style={[styles.languageButton, language === 'en' && styles.selectedLanguage]}>English</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleLanguageChange('ar')}>
-          <Text style={[styles.languageButton, language === 'ar' && styles.selectedLanguage]}>العربية</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleLanguageChange('fr')}>
-          <Text style={[styles.languageButton, language === 'fr' && styles.selectedLanguage]}>Français</Text>
-        </TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleMESNavigation}><MaterialCommunityIcons name="message-reply-text" size={width * 0.06} color="black" /></TouchableOpacity>
       </View>
     </ScrollView>
   );
 };
+
 
 const styles = StyleSheet.create({
   ellipseIconLayout: {
@@ -361,7 +417,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     marginBottom: 20,
-    width: 320, // Adjust the width as needed to accommodate translated text
+    
   },
   button: {
     backgroundColor: "#209FA6",
@@ -488,6 +544,20 @@ const styles = StyleSheet.create({
   },
   text:{
     width:350
+  },
+  languageDropdown: {
+    Color:"#f0f0f03",
+    position: 'absolute',
+    top: 45,
+    left: 15,
+    zIndex: 999,
+    backgroundColor: '#f0f0f0',
+    borderRadius: 15,
+    padding: 1,
+  },
+  picker: {
+    width: 110,
+    height: 5,
   }
 });
 
