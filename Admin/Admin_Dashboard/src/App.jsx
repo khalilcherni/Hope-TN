@@ -3,12 +3,14 @@ import { BrowserRouter as Router, Route ,Routes} from 'react-router-dom';
 
 import { useState } from 'react';
 import './App.css';
-import Header from './Header';
+
 import Sidebar from './Sidebar';
 import Home from './Home';
 import Users from './Users'; // Import the Users component
 import Events from './Events'
 import School from './School';
+import Voluntarywork from './Voluntary';
+import Supporters from './Supporters';
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
@@ -20,7 +22,7 @@ function App() {
   return (
     <Router>
       <div className="grid-container">
-        <Header OpenSidebar={OpenSidebar} />
+        
         <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar} />
         <Routes>
   <Route path="/" element={<Home />} />
@@ -37,6 +39,18 @@ function App() {
 <Routes>
   <Route path="/" element={<Home />} />
   <Route path="/School" element={<School />}
+   />
+   
+</Routes>
+<Routes>
+  <Route path="/" element={<Home />} />
+  <Route path="/Voluntary" element={<Voluntarywork />}
+   />
+   
+</Routes>
+<Routes>
+  <Route path="/" element={<Home />} />
+  <Route path="/Supporters" element={<Supporters />}
    />
    
 </Routes>

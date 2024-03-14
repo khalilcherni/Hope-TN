@@ -71,4 +71,25 @@ const loginUser = async (req, res) => {
     }
 };
 
-module.exports = { getUsers, getUserByEmail, addUser, loginUser };
+const deleted=(function(req, res) {
+    const id = (req.params.id);
+    user.deleteUser(id, function(err, result) {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).json(result);
+      }
+    });
+  }); 
+  const put=( function(req, res) {
+    const id = (req.params.id); 
+    const updatedacc = req.body;
+   user.updateUser(id, updatedacc, function(err, result) {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).json(result);
+      }
+    });
+  })
+module.exports = { getUsers, getUserByEmail, addUser, loginUser,deleted,put };

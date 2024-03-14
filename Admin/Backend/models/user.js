@@ -78,4 +78,17 @@ const login = async (email, password, callback) => {
         callback(error, null);
     }
 };
-module.exports = { getAll,getUser,login,register };
+const deleteUser=(id,callback)=>{
+  const sql='DELETE FROM user WHERE `id`=?';
+  connection.query(sql,[id],function(err,results){
+      callback(err,results)
+  })
+}
+const updateUser= function (id,password,callback){
+  const sql = 'UPDATE `user` SET  `password`=? WHERE id= ?';
+  const values = [password, id];
+  connection.query(sql, values, function (error, results, fields) {
+    callback(error, results);
+  })} 
+
+module.exports = { getAll,getUser,login,register,deleteUser,updateUser };
