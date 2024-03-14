@@ -9,8 +9,11 @@ function Volunteers() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [job, setJob] = useState("");
+  const [newname, setnewName] = useState("");
+  const [newphone, setnewPhone] = useState("");
+  const [newjob, setnewJob] = useState("");
   const [showAddForm, setShowAddForm] = useState(false);
-
+  const [editingId, setEditingId] = useState(null);
   useEffect(() => {
     axios.get('http://localhost:4000/api/voluntary/getAll')
       .then(res => {
@@ -81,7 +84,32 @@ function Volunteers() {
         console.error("Error adding volunteer:", error);
       });
   };
-
+  const handleUpdate = (id) => {
+    axios.put(`http://localhost:4000/api/voluntary/update/${id}`, { 
+     name:newname,
+     phone:newphone,
+     job:newjob
+   
+  
+    })
+      .then(() => {
+        const updatedData = data.map(item => {
+          if (item.id === id) {
+            return { 
+              ...item, 
+              name:newname,
+              phone:newphone,
+              job:newjob
+            
+            };
+          }
+          return item;
+        });
+        setData(updatedData);
+        setEditingId(null);
+      })
+      .catch(err => console.error("Error updating event:", err));
+  };
   return (
     <div className="users-container">
       <h1 className="users-title">Volunteers</h1>
@@ -137,6 +165,19 @@ function Volunteers() {
                 <strong>Job:</strong> {user.job}
               </div>
               <button onClick={() => handleDelete(user.id)}>Delete</button>
+              <div className="event-info">
+                {editingId === user.id ? (
+                  <>
+                    <input type="text" value={newname} onChange={(e) => setnewName(e.target.value)} placeholder="Name"/>
+                    <input type="text" value={newjob} onChange={(e) => setnewJob(e.target.value)} placeholder="job"/>
+                    <input type="text" value={newphone} onChange={(e) => setnewPhone(e.target.value)}placeholder="phone" />
+                   
+                    <button onClick={() => handleUpdate(user.id)}>Save</button>
+                  </>
+                ) : (
+                  <button onClick={() => setEditingId(user.id)}>Update</button>
+                )}
+            </div>
             </div>
           ))}
         </div>
