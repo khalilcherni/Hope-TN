@@ -22,6 +22,7 @@ function School() {
   const [newend, setNewend] = useState('');
   const [newduration, setNewduration] = useState('');
   const [editingId, setEditingId] = useState(null); // Track the ID of the school being edited
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     axios.get('http://localhost:4000/api/school/get')
@@ -34,6 +35,10 @@ function School() {
         setLoading(false);
       });
   }, []);
+
+  useEffect(() => {
+    handleSearch();
+  }, [searchTerm]);
 
   const handlePost = () => {
     const obj = {
@@ -49,9 +54,7 @@ function School() {
     axios.post("http://localhost:4000/api/school", obj)
       .then(response => {
         console.log(response.data);
-        // Append the new school data to the current data state
         setData(prevData => [...prevData, response.data]);
-        // Clear input fields after successful post
         setName("");
         setNameodteacher("");
         setDescription("");
@@ -66,7 +69,7 @@ function School() {
   }
   
   const handleUpdate = (id) => {
-    setEditingId(id); // Set the ID of the school being edited
+    setEditingId(id);
 
     const schoolToUpdate = data.find(school => school.id === id);
     setNewname(schoolToUpdate.name);
@@ -99,28 +102,51 @@ function School() {
           return school;
         });
         setData(updatedData);
-        setEditingId(null); // Reset editing state
+        setEditingId(null);
       })
       .catch(error => {
         console.error("Error updating school data:", error);
       });
   }
+
   const handleDelete=(id)=>{
     axios.delete(`http://localhost:4000/api/school/${id}`)
     .then(response => {
-      console.log(response.data); // Log the response data after successful deletion
-      // Optionally, you can update the state or do any additional actions after deletion
+      console.log(response.data);
       setData(prevData => prevData.filter(event => event.id !== id));
     })
     .catch(error => {
       console.error("Error deleting event:", error);
     });
-
   }
+
+  const handleSearch = () => {
+    if (searchTerm === "") {
+      axios.get('http://localhost:4000/api/school/get')
+        .then(res => {
+          setData(res.data);
+          setLoading(false);
+        })
+        .catch(err => {
+          console.error("Error fetching schools:", err);
+          setLoading(false);
+        });
+    } else {
+      const filteredData = data.filter(school => school.name.toLowerCase().includes(searchTerm.toLowerCase()));
+      setData(filteredData);
+    }
+  };
 
   return (
     <div className="school-container">
       <h1 className="school-title">School List</h1>
+      <input 
+        type="text" 
+        value={searchTerm} 
+        onChange={(e) => setSearchTerm(e.target.value)} 
+        placeholder="Search by name" 
+      />
+      <button onClick={handleSearch}>Search</button>
       <button onClick={() => setShowForm(!showForm)} className="add-school-button">
         {showForm ? "Close Form" : "Add School"}
       </button>

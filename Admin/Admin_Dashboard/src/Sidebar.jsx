@@ -1,6 +1,7 @@
 import React from 'react';
 import { BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsListCheck, BsMenuButtonWideFill, BsFillGearFill } from 'react-icons/bs';
 import { BiSolidDonateHeart } from "react-icons/bi";
+import { Link } from 'react-router-dom';
 function Sidebar({ openSidebarToggle, OpenSidebar }) {
   return (
     <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive" : ""}>
@@ -13,22 +14,22 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
 
       <ul className='sidebar-list'>
         <li className='sidebar-list-item'>
-          <a href="">
+          <a href="http://localhost:5173/">
             <BsGrid1X2Fill className='icon' /> Dashboard
           </a>
         </li>
         <li className='sidebar-list-item'>
-          <a href="">
+          <a href="http://localhost:5173/Users">
             <BsFillArchiveFill className='icon' /> Users
           </a>
         </li>
         <li className='sidebar-list-item'>
-          <a href="">
-            <BsFillGrid3X3GapFill className='icon' /> Categories
+          <a href="http://localhost:5173/Events">
+            <BsFillGrid3X3GapFill className='icon' /> Events
           </a>
         </li>
         <li className='sidebar-list-item'>
-          <a href="">
+          <a href="http://localhost:5173/Supporters">
             <BsPeopleFill className='icon' /> Leaderboard
           </a>
         </li>
