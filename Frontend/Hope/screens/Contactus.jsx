@@ -2,8 +2,15 @@ import React, { useEffect } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Linking, Animated, Easing } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Accelerometer } from 'expo-sensors';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { FontAwesome5 } from '@expo/vector-icons';
 
 const Contact = () => {
+  const navigation = useNavigation();
+
   const openLinkedIn = () => {
     Linking.openURL("https://www.linkedin.com/in/khalil-cherni-778464266/");
   };
@@ -19,7 +26,6 @@ const Contact = () => {
   const openWhatsApp = () => {
     Linking.openURL("https://wa.me/21655331742");
   };
-  
 
   const openFacebook = () => {
     Linking.openURL("fb://profile/khalil.cherni.338");
@@ -43,6 +49,10 @@ const Contact = () => {
 
   const animatedStyle = {
     transform: [{ translateX: shakeAnimation }]
+  };
+
+  const handleTabPress = (route) => {
+    navigation.navigate(route);
   };
 
   return (
@@ -76,11 +86,24 @@ const Contact = () => {
         </View>
       </Animated.View>
       <View style={styles.tabbar}>
-        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Home')}><Text>Home</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('ChatRoom')}><Text>ChatRoom</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Messages')}><Text>Messages</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Setting')}><Text>Setting</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Setting')}><Text>Setting</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Home')}>
+          <AntDesign name="home" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('ChatRoom')}>
+          <Ionicons name="chatbox-ellipses-outline" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('School')}>
+          <MaterialCommunityIcons name="school-outline" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Messages')}>
+          <MaterialCommunityIcons name="android-messages" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Helping')}>
+          <FontAwesome5 name="hands-helping" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Events')}>
+          <MaterialIcons name="event" size={24} color="black" />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -89,11 +112,12 @@ const Contact = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ffffff",
-    marginTop:300
+    backgroundColor: '#f0f0f0',
+    marginTop: 50,
   },
   card: {
     borderRadius: 10,
+    backgroundColor: '#f0f0f0',
     padding: 20,
     marginBottom: 20,
     shadowColor: "#000",
@@ -138,6 +162,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: '#f0f0f0',
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
     paddingVertical: 10,
   },
   tabItem: {

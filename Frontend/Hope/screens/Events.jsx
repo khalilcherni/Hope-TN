@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Linking } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Linking, Dimensions } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import axios from 'axios';
 import { Ionicons } from '@expo/vector-icons';
 import moment from 'moment';
-import { useNavigation } from '@react-navigation/native'; // Import the necessary module
+import { useNavigation } from '@react-navigation/native';
+
+const { width, height } = Dimensions.get('window');
 
 export default function Events() {
-  const navigation = useNavigation(); // Initialize navigation
+  const navigation = useNavigation(); 
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -32,7 +34,6 @@ export default function Events() {
   };
 
   const handleRegistration = () => {
-    // Navigate to the registration screen when Register button is pressed
     navigation.navigate('Registration');
   };
 
@@ -41,19 +42,15 @@ export default function Events() {
   };
 
   const handleHomeNavigation = () => {
-    // Navigate to the Home screen
     navigation.navigate('Home');
   };
   const handleChatNavigation = () => {
-    // Navigate to the Home screen
     navigation.navigate('ChatRoom');
   };
   const handleSchoolNavigation = () => {
-    // Navigate to the Home screen
     navigation.navigate('School');
   };
   const handleMESNavigation = () => {
-    // Navigate to the Home screen
     navigation.navigate('Messages');
   };
 
@@ -83,21 +80,21 @@ export default function Events() {
 
             <TouchableOpacity onPress={() => handleMapNavigation(event.location)}>
               <View style={styles.dateContainer}>
-                <Ionicons name="location-outline" size={24} color="blue" />
+                <Ionicons name="location-outline" size={width * 0.05} color="blue" />
                 <Text style={styles.details}> {event.location}</Text>
               </View>
             </TouchableOpacity>
             <View style={styles.dateContainer}>
-              <Ionicons name="calendar-outline" size={24} color="green" />
+              <Ionicons name="calendar-outline" size={width * 0.05} color="green" />
               <Text style={styles.details}>Start Date: {(event.startdate)}</Text>
             </View>
             <View style={styles.dateContainer}>
-              <Ionicons name="calendar-outline" size={24} color="red" />
+              <Ionicons name="calendar-outline" size={width * 0.05} color="red" />
               <Text style={styles.details}>End Date: {(event.enddate)}</Text>
             </View>
             <View style={styles.deadlineContainer}>
               <View style={styles.registrationDeadline}>
-                <Ionicons name="calendar-outline" size={24} color="purple" />
+                <Ionicons name="calendar-outline" size={width * 0.05} color="purple" />
                 <Text style={styles.details}>Registration Deadline: {(event.registrationdeadline)}</Text>
               </View>
 
@@ -112,10 +109,10 @@ export default function Events() {
         ))}
       </ScrollView>
       <View style={styles.tabbar}>
-        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem}onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem}onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={width * 0.06} color="black" /></TouchableOpacity>
       </View>
     </View>
   );
@@ -127,55 +124,56 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     flex: 1,
-    padding: 15,
-    marginTop: 30
+    padding: width * 0.03,
+    marginTop: height * 0.03
   },
   eventContainer: {
-    marginBottom: 20,
+    marginBottom: height * 0.02,
     borderWidth: 1,
     borderColor: '#ccc',
-    borderRadius: 10,
-    padding: 15,
+    borderRadius: width * 0.05,
+    padding: width * 0.03,
   },
   image: {
     width: '100%',
-    height: 200,
-    borderRadius: 10,
-    marginBottom: 10,
+    height: height * 0.25,
+    borderRadius: width * 0.05,
+    marginBottom: height * 0.02,
   },
   title: {
-    fontSize: 20,
+    fontSize: width * 0.06,
     fontWeight: 'bold',
-    marginBottom: 5,
-    textAlign: 'center'
+    marginBottom: height * 0.01,
+    textAlign: 'center',
+    color:'#209FA6'
   },
   card: {
     backgroundColor: '#f0f0f0',
-    padding: 10,
-    borderRadius: 5,
-    marginBottom: 10,
+    padding: width * 0.03,
+    borderRadius: width * 0.02,
+    marginBottom: height * 0.02,
   },
   cardText: {
-    fontSize: 16,
+    fontSize: width * 0.04,
   },
   description: {
-    fontSize: 16,
-    marginBottom: 5,
+    fontSize: width * 0.04,
+    marginBottom: height * 0.01,
   },
   details: {
-    fontSize: 14,
-    marginBottom: 3,
+    fontSize: width * 0.03,
+    marginBottom: height * 0.007,
   },
   dateContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 5,
+    marginBottom: height * 0.005,
   },
   deadlineContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 5,
+    marginBottom: height * 0.005,
   },
   registrationDeadline: {
     flexDirection: 'row',
@@ -183,14 +181,14 @@ const styles = StyleSheet.create({
   },
   countdownContainer: {
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: height * 0.01,
   },
   button: {
-    backgroundColor: 'blue',
-    padding: 10,
-    borderRadius: 5,
+    backgroundColor: '#209FA6',
+    padding: width * 0.03,
+    borderRadius: width * 0.02,
     alignItems: 'center',
-    marginBottom: 5,
+    marginBottom: height * 0.005,
   },
   buttonText: {
     color: 'white',
@@ -201,7 +199,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: '#f0f0f0',
-    paddingVertical: 10,
+    paddingVertical: height * 0.02,
   },
   tabItem: {
     flex: 1,
