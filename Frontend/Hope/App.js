@@ -52,6 +52,7 @@ import Chatbot from './screens/ChatBot.jsx';
 import ChatScreen from './screens/ChatScreen.jsx';
 import Frame2 from './screens/Elders.jsx';
 import Language from './screens/Language.jsx'
+import Chat from "./screens/Chat.jsx"
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -64,7 +65,7 @@ export default function App() {
          {/* <Stack.Screen name="OnboardingPage2" component={OnboardingPage2} /> : */}
          {/* <Stack.Screen name="SignUp" component={SignUp} />  */}
          {/* <Stack.Screen name="signin" component={SignIn} />  */}
-         <Stack.Screen name="Home" component={HomeRE}/>  
+         {/* <Stack.Screen name="Home" component={HomeRE}/>   */}
          {/* <Stack.Screen name="ChatrommContainer" component={ChatroomContainer}/> :  */}
          {/* <Stack.Screen name="ChatRoom" component={Chatroom}/>   */}
          {/* <Stack.Screen name="Helping" component={CharityScreen}/>  */}
@@ -86,6 +87,7 @@ export default function App() {
          {/* <Stack.Screen name="ChatBot" component={Chatbot}/>  */}
          {/* <Stack.Screen name="Elders" component={Frame2}/>  */}
          {/* <Stack.Screen name="Language" component={Language}/>  */}
+         <Stack.Screen name ="Chat" component={Chat}/>
 
   {/* <Stack.Screen name="Messages" component={Messages}/> */}
         {/* <Stack.Screen name="ChatRoom" component={ChatRoom}/> 

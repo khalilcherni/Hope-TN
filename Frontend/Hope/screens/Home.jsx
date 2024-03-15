@@ -144,8 +144,7 @@ const HomeRE = () => {
           <Image
             style={[styles.icon, styles.iconLayout3]}
             contentFit="cover"
-             // source={require("../assets/profile-circle.png")}
-
+             source={require("../assets/profile-circle.png")}
           />
         </Pressable>
         <Text style={[styles.welcome, styles.welcomeTypo]}>{translations[language].welcome}</Text>
@@ -154,7 +153,6 @@ const HomeRE = () => {
           style={styles.homeReChild}
           contentFit="cover"
           // source={require("../assets/hh.png")}
-
         />
         <Text style={[styles.categories, styles.categoriesTypo]}>{translations[language].categories}</Text>
         <View  style={styles.images}>
@@ -179,14 +177,14 @@ const HomeRE = () => {
             <Image
               style={styles.iconLayout3}
               contentFit="cover"
-               // source={require("../assets/Ellipse_52.png")}
+              //  source={require("../assets/Ellipse_52.png")}
             />
           </Pressable>
           <Pressable onPress={navigateToPoor}>
             <Image
               style={[styles.dollarCircleIcon, styles.iconPosition]}
               contentFit="cover"
-             // source={require("../assets/poverty.png")}
+             source={require("../assets/poverty.png")}
             />
           </Pressable>
           <Pressable onPress={ navigateToElde}>
@@ -200,7 +198,7 @@ const HomeRE = () => {
             <Image
               style={[styles.downloadRemovebgPreview1Icon, styles.iconLayout2]}
               contentFit="cover"
-               // source={require("../assets/eld.png")}
+               source={require("../assets/eld.png")}
             />
           </Pressable >
           <Pressable onPress={navigateToPalestine}>
@@ -212,7 +210,7 @@ const HomeRE = () => {
             <Image
               style={[styles.depositphotos105691240StockIcon, styles.iconLayout2]}
               contentFit="cover"
-              // source={require("../assets/mosque.png")}
+              source={require("../assets/mosque.png")}
             />
           </Pressable>
           <Image
@@ -223,7 +221,7 @@ const HomeRE = () => {
           <Image
             style={styles.seniorCitizenLogoPngSeniorIcon}
             contentFit="cover"
-             // source={require("../assets/funeral.png")}
+             source={require("../assets/funeral.png")}
           />
         </View>
 
@@ -237,7 +235,7 @@ const HomeRE = () => {
           <Image
             style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
             contentFit="cover"
-             // source={require("../assets/charity-work.png")}
+            //  source={require("../assets/charity-work.png")}
           />
           <Image
             style={[styles.tunisiaCovidStation7671Icon, styles.iconLayout1]}
