@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, Text, StyleSheet, Alert, ScrollView } from 'react-native';
+import { View, TextInput, TouchableOpacity, Text, StyleSheet, Alert, ScrollView,Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons, Ionicons, AntDesign } from '@expo/vector-icons';
 import axios from 'axios';
 import { FontAwesome } from '@expo/vector-icons';
-
+import { MaterialIcons } from '@expo/vector-icons';
 import FontFamily from './FontFamily';
+import { FontAwesome5 } from '@expo/vector-icons';
+import * as Location from 'expo-location';
 
+const { width, height } = Dimensions.get('window');
 const Register = () => {
   const [name, setname] = useState('');
   const [description, setdescription] = useState('');
@@ -23,7 +26,7 @@ const Register = () => {
       phone: phone
     };
 
-    axios.post("http://192.168.100.44:4000/help/post", obj)
+    axios.post("http://192.168.72.231:4000/help/post", obj)
       .then(response => {
         // Clear input fields
         setname('');
@@ -41,7 +44,19 @@ const Register = () => {
   };
 
   const handleLocationPress = async () => {
-    // Handle location press logic
+    try {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        Alert.alert('Permission Denied', 'Location permission is required to access the current location.');
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      setlocation(`El KEF`);
+    } catch (error) {
+      console.error('Error getting location:', error);
+      Alert.alert('Error', 'There was an error getting your location. Please try again later.');
+    }
   };
 
   const handleHomeNavigation = () => {
@@ -59,6 +74,15 @@ const Register = () => {
   const handleMESNavigation = () => {
     navigation.navigate('Messages');
   };
+  const handlevents = () => {
+    navigation.navigate('Events');
+  };
+  const handledonation = () => {
+    navigation.navigate('donation');
+  };
+  const handlecontact = () => {
+    navigation.navigate('Contactus');
+  };
 
   return (
     <View style={styles.container}>
@@ -68,7 +92,7 @@ const Register = () => {
         </Text>
 
         <View style={styles.inputContainer}>
-          <FontAwesome name="user" size={24} color="black" style={styles.icon} />
+          <FontAwesome name="user" size={24} color="#209FA6" style={styles.icon} />
           <TextInput
             placeholder="Name"
             value={name}
@@ -78,7 +102,7 @@ const Register = () => {
         </View>
 
         <View style={styles.inputContainer}>
-          <FontAwesome name="info-circle" size={24} color="black" style={styles.icon} />
+          <FontAwesome name="info-circle" size={24} color="#209FA6" style={styles.icon} />
           <TextInput
             placeholder="Description"
             value={description}
@@ -89,7 +113,7 @@ const Register = () => {
 
         <View style={styles.inputContainer}>
           <TouchableOpacity onPress={handleLocationPress}>
-            <FontAwesome name="map-marker" size={24} color="black" style={styles.icon} />
+            <FontAwesome name="map-marker" size={24} color="#209FA6" style={styles.icon} />
           </TouchableOpacity>
           <TextInput
             placeholder="Location"
@@ -100,7 +124,7 @@ const Register = () => {
         </View>
 
         <View style={styles.inputContainer}>
-          <FontAwesome name="phone" size={24} color="black" style={styles.icon} />
+          <FontAwesome name="phone" size={24} color="#209FA6" style={styles.icon} />
           <TextInput
             placeholder="Phone"
             value={phone}
@@ -119,10 +143,11 @@ const Register = () => {
       </ScrollView>
 
       <View style={styles.tabbar}>
-        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><FontAwesome name="home" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handlevents}><MaterialCommunityIcons name="charity" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><Ionicons name="school" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handledonation}><FontAwesome5 name="donate" size={width * 0.06}  color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handlecontact}><MaterialIcons name="quick-contacts-dialer" size={width * 0.06}  color="black" /></TouchableOpacity>
       </View>
     </View>
   );
@@ -135,7 +160,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
 
     paddingVertical: 20,
-    marginTop:100
+    marginTop:160
   },
   formContainer: {
     width: '80%',
@@ -143,7 +168,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: 'black',
+    color: '#209FA6',
     marginBottom: 10,
     textAlign: 'center',
     fontFamily: FontFamily.kanit,
@@ -151,7 +176,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: 25,
     paddingHorizontal: 10,
     backgroundColor: '#D9D9D9',
     width: '100%',
@@ -174,6 +199,8 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
+    marginLeft:70,
+    width:180
   },
   buttonText: {
     fontSize: 18,

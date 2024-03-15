@@ -6,8 +6,10 @@ import moment from 'moment';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
-
+const { width, height } = Dimensions.get('window');
 export default function School() {
   const navigation = useNavigation();
 
@@ -18,7 +20,7 @@ export default function School() {
   const screenWidth = Dimensions.get('window').width; // Get Screen Width
 
   useEffect(() => {
-    axios.get('http://192.168.1.201:4000/api/school/get')
+    axios.get('http://192.168.72.231:4000/api/school/get')
       .then(res => {
         setData(res.data);
         setLoading(false);
@@ -73,8 +75,28 @@ export default function School() {
   const handleHelpnavigation=()=>{
     navigation.navigate('Helping'); 
   }
+  const handlhelp = () => {
+    navigation.navigate('Helping');
+  };
+  const handledonation = () => {
+    navigation.navigate('donation');
+  };
+  const handlecontact = () => {
+    navigation.navigate('Contactus');
+  };
+  const handleBackPress = () => {
+    navigation.navigate("Home");
+  };
   return (
     <View style={styles.container}>
+       <View style={styles.headerContainer}>
+      <TouchableOpacity onPress={handleBackPress}>
+        <Image
+          source={require("../assets/Sign_out_circle_duotone-removebg-preview.png")}
+          style={styles.headerImg}
+        />
+      </TouchableOpacity>
+    </View>
       <View style={styles.searchContainer}>
         <TextInput
           style={[styles.searchInput, { width: screenWidth * 0.8 }]} // Use percentage for width
@@ -129,11 +151,11 @@ export default function School() {
         ))}
       </ScrollView>
       <View style={styles.tabbar}>
-        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem}onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem}onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={24} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleHelpnavigation}><FontAwesome5 name="hands-helping" size={24} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><FontAwesome name="home" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handlhelp}><MaterialCommunityIcons name="charity" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><Ionicons name="school" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handledonation}><FontAwesome5 name="donate" size={width * 0.06}  color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handlecontact}><MaterialIcons name="quick-contacts-dialer" size={width * 0.06}  color="black" /></TouchableOpacity>
       </View>
     </View>
   );
@@ -142,6 +164,20 @@ export default function School() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  headerContainer: {
+    position: "absolute",
+    top: 0,
+    left: -20,
+    zIndex: 1, // to ensure it's above other content
+  },
+  headerImg: {
+    width: 60,
+    height: 60,
+    resizeMode: "contain",
+    margin: 40,
+    top:-10,
+    left:-5
   },
   scrollView: {
     flex: 1,
@@ -218,8 +254,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#f0f0f0',
-    paddingVertical: 10,
+  
+    paddingVertical: height * 0.02,
+    position: 'absolute',
+    bottom: -15,
+    left: 0,
+    right: 0,
   },
   tabItem: {
     flex: 1,
@@ -238,7 +278,7 @@ const styles = StyleSheet.create({
     marginRight: 20,
     borderRadius: 50,
     height: 50,
-    marginTop: 50
+    marginTop: 80
   },
   searchInput: {
     borderWidth: 1,

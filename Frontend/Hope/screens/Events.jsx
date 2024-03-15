@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Linking, Dimensions } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Linking, Dimensions, Modal, TextInput } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import axios from 'axios';
 import { Ionicons } from '@expo/vector-icons';
 import moment from 'moment';
 import { useNavigation } from '@react-navigation/native';
-
+import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 const { width, height } = Dimensions.get('window');
 
 export default function Events() {
@@ -15,9 +16,19 @@ export default function Events() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [newEvent, setNewEvent] = useState({
+    name: '',
+    description: '',
+    image: '',
+    location: '',
+    startdate: '',
+    enddate: '',
+    registrationdeadline: ''
+  });
 
   useEffect(() => {
-    axios.get('http://192.168.72.231:4000/events/get')
+    axios.get('http://192.168.72.231:4000/api/get')
       .then(res => {
         setData(res.data);
         setLoading(false);
@@ -41,6 +52,30 @@ export default function Events() {
     // Implement your countdown rendering logic here
   };
 
+  const handleAddEvent = () => {
+    // Call API to add new event
+    axios.post('http://192.168.72.231:4000/api/add', newEvent)
+      .then(response => {
+        // Add the new event to the data array
+        setData([...data, response.data]);
+        // Reset the newEvent state
+        setNewEvent({
+          name: '',
+          description: '',
+          image: '',
+          location: '',
+          startdate: '',
+          enddate: '',
+          registrationdeadline: ''
+        });
+        // Close the modal
+        setShowModal(false);
+      })
+      .catch(error => {
+        console.error('Error adding new event:', error);
+      });
+  };
+
   const handleHomeNavigation = () => {
     navigation.navigate('Home');
   };
@@ -52,6 +87,12 @@ export default function Events() {
   };
   const handleMESNavigation = () => {
     navigation.navigate('Messages');
+  };
+  const handleEvents = () => {
+    navigation.navigate('Events');
+  };
+  const handleDonation = () => {
+    navigation.navigate('Donation');
   };
 
   if (loading) {
@@ -108,12 +149,76 @@ export default function Events() {
           </View>
         ))}
       </ScrollView>
+      <TouchableOpacity style={styles.addButton} onPress={() => setShowModal(true)}>
+        <FontAwesome name="plus" size={width * 0.06} color="white" />
+      </TouchableOpacity>
+
       <View style={styles.tabbar}>
-        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={width * 0.06} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={width * 0.06} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={width * 0.06} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><FontAwesome name="home" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handlevents}><MaterialCommunityIcons name="charity" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><Ionicons name="school" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handledonation}><FontAwesome5 name="donate" size={width * 0.06}  color="black" /></TouchableOpacity>
       </View>
+
+      {/* Modal for adding new event */}
+      <Modal
+        visible={showModal}
+        transparent={true}
+        animationType="slide"
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <TextInput
+              style={styles.input}
+              placeholder="Event Name"
+              value={newEvent.name}
+              onChangeText={(text) => setNewEvent({ ...newEvent, name: text })}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Event Description"
+              value={newEvent.description}
+              onChangeText={(text) => setNewEvent({ ...newEvent, description: text })}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Event Image URL"
+              value={newEvent.image}
+              onChangeText={(text) => setNewEvent({ ...newEvent, image: text })}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Event Location"
+              value={newEvent.location}
+              onChangeText={(text) => setNewEvent({ ...newEvent, location: text })}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Start Date"
+              value={newEvent.startdate}
+              onChangeText={(text) => setNewEvent({ ...newEvent, startdate: text })}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="End Date"
+              value={newEvent.enddate}
+              onChangeText={(text) => setNewEvent({ ...newEvent, enddate: text })}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Registration Deadline"
+              value={newEvent.registrationdeadline}
+              onChangeText={(text) => setNewEvent({ ...newEvent, registrationdeadline: text })}
+            />
+            <TouchableOpacity style={styles.addButton} onPress={handleAddEvent}>
+              <Text style={styles.buttonText}>Add Event</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.cancelButton} onPress={() => setShowModal(false)}>
+              <Text style={styles.buttonText}>Cancel</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -198,11 +303,52 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#f0f0f0',
+  
     paddingVertical: height * 0.02,
+    position: 'absolute',
+    bottom: -18,
+    left: 0,
+    right: 0,
   },
   tabItem: {
     flex: 1,
     alignItems: 'center',
+  },
+  addButton: {
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
+    backgroundColor: '#209FA6',
+    borderRadius: 50,
+    width: 50,
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalContent: {
+    backgroundColor: 'white',
+    padding: 20,
+    borderRadius: 10,
+    width: '80%',
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    padding: 10,
+    marginBottom: 10,
+  },
+  cancelButton: {
+    backgroundColor: '#ccc',
+    padding: width * 0.03,
+    borderRadius: width * 0.02,
+    alignItems: 'center',
+    marginBottom: height * 0.005,
   },
 });

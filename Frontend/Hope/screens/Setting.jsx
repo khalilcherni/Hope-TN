@@ -168,10 +168,12 @@ const Setting = () => {
 
 const styles = StyleSheet.create({
   setting: {
-    backgroundColor: Color.lightWhite,
+
     flex: 1,
     justifyContent: 'center', // Center items vertically
-    alignItems: 'center', // Center items horizontally
+    alignItems: 'center', 
+    marginTop:30,
+    // Center items horizontally
   },
   settingLayout: {
     width: 390,
@@ -223,6 +225,8 @@ const styles = StyleSheet.create({
     height:267,
     left: 0,
     top: 0,
+    
+
   },
   settingItem: {
     top: 361,

@@ -78,12 +78,11 @@ const ImageUploadTwo = ({ changeImage }) => {
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center", paddingVertical: 30 }}>
       {uploading && <ActivityIndicator size="large" color="#4CAF50" />}
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.customButtonFolder} onPress={openImagePicker}>
-            
-          <Image source={require('../assets/child.jpg')} style={styles.buttonImage} />
+      <TouchableOpacity style={styles.customButtonFolder} onPress={openImagePicker}>
+          <Image source={require('../assets/gaa.png')} style={styles.buttonImage} />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.customButtonCamera} onPress={handleCameraLaunch}>
-          <Image source={require('../assets/child.jpg')} style={styles.buttonImage} />
+         <TouchableOpacity style={styles.customButtonCamera} onPress={handleCameraLaunch}>
+          <Image source={require('../assets/camera.png')} style={styles.buttonImage} />
         </TouchableOpacity>
       </View>
     </View>

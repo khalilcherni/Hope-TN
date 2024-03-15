@@ -12,7 +12,12 @@ const { width, height } = Dimensions.get('window');
 const HomeRE = () => {
   const navigation = useNavigation();
   const [isClicked, setIsClicked] = useState(false);
-  const [language, setLanguage] = useState('en'); // State for selected language
+  const images = [
+    // require("../assets/tunisia-covid-station-767_1_1.png"),
+    // require("../assets/charity-work.png"),
+    // require("../assets/charity-work.png"),
+    // Add more images as needed
+  ];
 
     // Function to render two images per page
     const renderImages = () => {
@@ -80,35 +85,35 @@ const HomeRE = () => {
 
   const handleHomeNavigation = () => {
     navigation.navigate('Home');
-    setIsClicked(true);
+  
   };
   const handleChatNavigation = () => {
     navigation.navigate('ChatRoom');
-    setIsClicked(true);
+  
   };
   const handleSchoolNavigation = () => {
     navigation.navigate('School');
-    setIsClicked(true);
+  
   };
   const handleMESNavigation = () => {
     navigation.navigate('Messages');
-    setIsClicked(true);
+  
   };
   const navigateToPeopleWhoNeedWater = () => {
     navigation.navigate("categoriePeopleWhoNeedWater");
-    setIsClicked(true);
+  
   };
   const navigateToPoor = () => {
     navigation.navigate("poorPeople");
-    setIsClicked(true);
+  
   };
   const navigateToPalestine = () => {
     navigation.navigate("Palestine");
-    setIsClicked(true);
+  
   };
   const navigateToElde = () => {
     navigation.navigate("Elders");
-    setIsClicked(true);
+  
   };
   const handlePress = () => {
     navigation.navigate('ChatScreen');
@@ -116,12 +121,9 @@ const HomeRE = () => {
   const handlePressHelp = () => {
     navigation.navigate('Messages');
   };
-
-  const handleLanguageChange = (selectedLanguage) => {
-    setLanguage(selectedLanguage);
-  };
-
   return (
+    <View style={styles.container}>
+      
     <ScrollView>
       {/* Language Selection Dropdown */}
       <View style={styles.languageDropdown}>
@@ -158,9 +160,9 @@ const HomeRE = () => {
         <View  style={styles.images}>
           <Pressable onPress={navigateToPeopleWhoNeedWater}>
             <Image
-              style={[styles.homeReItem, styles.homePosition, isClicked && styles.clickedIcon]}
+              style={[styles.homeReItem, styles.homePosition]}
               contentFit="cover"
-                // source={require("../assets/Ellipse_52.png")}
+              // source={require("../assets/Ellipse_52.png")}
             />
           </Pressable>
           <Pressable onPress={navigateToPeopleWhoNeedWater}>
@@ -263,14 +265,14 @@ const HomeRE = () => {
         <TouchableOpacity style={styles.button} onPress={handlePressHelp}>
           <Text style={styles.buttonText}>{translations[language].pressHere}</Text>
         </TouchableOpacity>
-      </View>
-      <View style={styles.tabbar}>
+  </View>
+    <View style={styles.tabbar}>
         <TouchableOpacity style={styles.tabItem} onPress={handleHomeNavigation}><AntDesign name="home" size={width * 0.06} color="black" /></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={handleChatNavigation}><Ionicons name="chatbox-ellipses-outline" size={width * 0.06} color="black" /></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={handleSchoolNavigation}><MaterialCommunityIcons name="school-outline" size={width * 0.06} color="black" /></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={handleMESNavigation}><MaterialCommunityIcons name="message-reply-text" size={width * 0.06} color="black" /></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={handleMESNavigation}><MaterialCommunityIcons name="android-messages" size={width * 0.06} color="black" /></TouchableOpacity>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
@@ -291,6 +293,21 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  map:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+ 
+    height: 50,
+    width: 80,
+    borderRadius: Border.br_3xs,
+    position: "absolute",
+    marginTop:-40,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+marginLeft:280
+    
+  },
   clickedIcon: {
     tintColor: '#209FA6', // Change the color to blue when clicked
   },
@@ -307,7 +324,7 @@ const styles = StyleSheet.create({
     left: 9,
     textAlign: "left",
     color: Color.lightBlack,
-    fontFamily: FontFamily.kalamRegular,
+    // fontFamily: FontFamily.kalamRegular,
     fontSize: FontSize.size_xl,
     position: "absolute",
   },
@@ -403,10 +420,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 20,
     margin: 10,
+    marginBottom:40,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 1,
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
@@ -533,8 +551,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#f0f0f0',
+  
     paddingVertical: height * 0.02,
+    position: 'absolute',
+    bottom: -18,
+    left: 0,
+    right: 0,
   },
   tabItem: {
     flex: 1,
@@ -542,20 +564,6 @@ const styles = StyleSheet.create({
   },
   text:{
     width:350
-  },
-  languageDropdown: {
-    Color:"#f0f0f03",
-    position: 'absolute',
-    top: 45,
-    left: 15,
-    zIndex: 999,
-    backgroundColor: '#f0f0f0',
-    borderRadius: 15,
-    padding: 1,
-  },
-  picker: {
-    width: 110,
-    height: 5,
   }
 });
 
