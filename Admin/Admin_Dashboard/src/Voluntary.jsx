@@ -15,7 +15,7 @@ function Volunteers() {
   const [showAddForm, setShowAddForm] = useState(false);
   const [editingId, setEditingId] = useState(null);
   useEffect(() => {
-    axios.get('http://localhost:4000/api/voluntary/getAll')
+    axios.get('http://localhost:4001/api/voluntary/getAll')
       .then(res => {
         setData(res.data);
         setLoading(false);
@@ -32,7 +32,7 @@ function Volunteers() {
 
   const handleSearch = () => {
     if (searchTerm === "") {
-      axios.get('http://localhost:4000/api/voluntary/getAll')
+      axios.get('http://localhost:4001/api/voluntary/getAll')
         .then(res => {
           setData(res.data);
           setLoading(false);
@@ -50,7 +50,7 @@ function Volunteers() {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:4000/api/voluntary/delete/${id}`)
+    axios.delete(`http://localhost:4001/api/voluntary/delete/${id}`)
       .then(response => {
         console.log("User deleted successfully:", response.data);
         setData(prevData => prevData.filter(user => user.id !== id));
@@ -71,7 +71,7 @@ function Volunteers() {
       job
     };
 
-    axios.post("http://localhost:4000/api/voluntary/add", newVolunteer)
+    axios.post("http://localhost:4001/api/voluntary/add", newVolunteer)
       .then(response => {
         console.log("Volunteer added successfully:", response.data);
         setData(prevData => [...prevData, response.data]);
@@ -85,7 +85,7 @@ function Volunteers() {
       });
   };
   const handleUpdate = (id) => {
-    axios.put(`http://localhost:4000/api/voluntary/update/${id}`, { 
+    axios.put(`http://localhost:4001/api/voluntary/update/${id}`, { 
      name:newname,
      phone:newphone,
      job:newjob

@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, ScrollView, Pressable } from "react-native";
 import { Border, Color, FontSize, FontFamily } from "../GlobalStyles";
 import { useNavigation } from "@react-navigation/native";
 import Language from './Language'; // Import the Language component
+import { Picker } from '@react-native-picker/picker';
 
 
 const Poor = () => {
@@ -14,6 +15,8 @@ const Poor = () => {
   const handleLanguageChange = (langCode) => {
       setLanguage(langCode);
   };
+
+
     // Function to get text content based on selected language
     const getTextContent = () => {
         // English content
@@ -58,6 +61,26 @@ const Poor = () => {
 
     return (
         <ScrollView>
+
+<View style={styles.container}>
+<View style={styles.pickerContainer}>
+  <Picker
+    selectedValue={language}
+    style={styles.picker}
+    onValueChange={(itemValue, itemIndex) => setLanguage(itemValue)}
+  >
+    <Picker.Item label="English" value="en" />
+    <Picker.Item label="French" value="fr" />
+    <Picker.Item label="Arabic" value="ar" />
+    {/* Add more languages as needed */}
+  </Picker>
+</View>
+        <View style={styles.content}>
+          {/* Your content here */}
+          <Text>{textContent.title}</Text>
+          {/* Other content... */}
+        </View>
+      </View>
             <View style={styles.poor13Parent}>
                 <Image
                     style={[styles.poor13Icon]}
@@ -287,9 +310,29 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     top: 50,
     
-  }
+  },
+  container: {
+    flex: 1,
+  },
+  header: {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+  },
+  pickerContainer: {
+    marginTop: 50, // Adjust this value to move the picker down
+  },
+  picker: {
+    height: 40,
+    width: 110,
+  },
+  content: {
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+  },
   
-  ,
+
 });
 
 export default Poor;

@@ -15,7 +15,7 @@ function Supporters() {
   const [newpoints, setnexpo] = useState("");
   const [editingId, setEditingId] = useState(null);
   useEffect(() => {
-    axios.get('http://localhost:4000/supporters/get')
+    axios.get('http://localhost4001/supporters/get')
       .then(res => {
         setData(res.data);
         setLoading(false);
@@ -28,7 +28,7 @@ function Supporters() {
 
   useEffect(() => {
     if (searchTerm === "") {
-      axios.get('http://localhost:4000/supporters/get')
+      axios.get('http://localhost4001/supporters/get')
         .then(res => {
           setData(res.data);
           setLoading(false);
@@ -52,7 +52,7 @@ function Supporters() {
       poitns
     };
 
-    axios.post("http://localhost:4000/supporters/post", newSupporter) // Assuming this is the correct URL for adding supporters
+    axios.post("http://localhost4001/supporters/post", newSupporter) // Assuming this is the correct URL for adding supporters
       .then(response => {
         console.log("Supporter added successfully:", response.data);
         setData(prevData => [...prevData, response.data]);
@@ -66,7 +66,7 @@ function Supporters() {
       });
   };
   const handleUpdate = (id) => {
-    axios.put(`http://localhost:4000/supporters/update/${id}`, { 
+    axios.put(`http://localhost4001/supporters/update/${id}`, { 
      name:newname,
      image:newnimage,
      poitns:newpoints
@@ -92,7 +92,7 @@ function Supporters() {
       .catch(err => console.error("Error updating event:", err));
   };
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:4000/supporters/delete/${id}`)
+    axios.delete(`http://localhost4001/supporters/delete/${id}`)
       .then(response => {
         console.log("User deleted successfully:", response.data);
         setData(prevData => prevData.filter(user => user.id !== id));
