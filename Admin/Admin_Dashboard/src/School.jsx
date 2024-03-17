@@ -25,7 +25,7 @@ function School() {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    axios.get('http://localhost:4000/api/school/get')
+    axios.get('http://localhost:4001/api/school/get')
       .then(res => {
         setData(res.data);
         setLoading(false);
@@ -51,7 +51,7 @@ function School() {
       duration
     };
   
-    axios.post("http://localhost:4000/api/school", obj)
+    axios.post("http://localhost:4001/api/school", obj)
       .then(response => {
         console.log(response.data);
         setData(prevData => [...prevData, response.data]);
@@ -92,7 +92,7 @@ function School() {
       duration: newduration
     };
 
-    axios.put(`http://localhost:4000/api/school/${editingId}`, updatedSchool)
+    axios.put(`http://localhost:4001/api/school/${editingId}`, updatedSchool)
       .then(response => {
         console.log(response.data);
         const updatedData = data.map(school => {
@@ -110,7 +110,7 @@ function School() {
   }
 
   const handleDelete=(id)=>{
-    axios.delete(`http://localhost:4000/api/school/${id}`)
+    axios.delete(`http://localhost:4001/api/school/${id}`)
     .then(response => {
       console.log(response.data);
       setData(prevData => prevData.filter(event => event.id !== id));
@@ -122,7 +122,7 @@ function School() {
 
   const handleSearch = () => {
     if (searchTerm === "") {
-      axios.get('http://localhost:4000/api/school/get')
+      axios.get('http://localhost:4001/api/school/get')
         .then(res => {
           setData(res.data);
           setLoading(false);

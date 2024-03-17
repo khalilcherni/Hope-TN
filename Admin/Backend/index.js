@@ -21,7 +21,7 @@ const Voluntarywork = require('./routes/voluntarywork.js');
 // // const profileRoute = require('./routes/ProfileRoutes.js');
 // const events=require('./routes/events.js')
 const app = express();
-const PORT = 4000;
+const PORT = 4001;
 
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(cors()); // Enable CORS
@@ -33,7 +33,7 @@ app.use(express.json());
 app.use("/api/voluntary", Voluntarywork);
 // app.use("/api/people", peopleRoute);
 // app.use('/api', donationRoute);
-app.use('/api', eventsRoute);
+app.use('/api', eventsRoute); // Use the eventsRoute for /api route
 app.use('/api', schoolRoute);
 app.use('/users', userRoute);
 app.use('/supporters', supporterRoute);
