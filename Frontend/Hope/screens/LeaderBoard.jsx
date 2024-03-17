@@ -8,12 +8,14 @@ import axios from "axios";
 const LeaderBoard = () => {
 
   const [supporters, setSupporters] = useState([]);
-  
+  const [topThreeSupporters, setTopThreeSupporters] = useState([]);
+  const [otherSupporters, setOtherSupporters] = useState([]);
+
   useEffect(() => {
     const fetchSupporters = async () => {
       try {
         const response = await axios.get('http://localhost:4000/supporters/get');
-        const sortedSupporters = response.data.sort((a, b) => b.points - a.points);
+        const sortedSupporters = response.data.sort((a, b) => b.poitns - a.poitns);
         
         // Splitting supporters into top three and the rest
         const topThreeSupporters = sortedSupporters.slice(0, 3);
@@ -38,7 +40,7 @@ const LeaderBoard = () => {
         source={require("../assets/leadrbg.jpg")}
       />
       <View style={[styles.davidParent, styles.parentLayout]}>
-        <Text style={[styles.david, styles.johnTypo]}>Ahmed</Text>
+        <Text style={[styles.david, styles.johnTypo]}>{topThreeSupporters.length > 0 && topThreeSupporters[0].name}</Text>
         <Text style={styles.text}>4578</Text>
         <View style={[styles.groupParent, styles.groupParentPosition]}>
           <Image
@@ -214,15 +216,19 @@ const styles = StyleSheet.create({
   johnParentLayout: {
     width: 102,
     position: "absolute",
+    justifyContent: 'center', // Center vertically
+    alignItems: 'center', // Keep horizontally aligned
+    alignSelf: 'center', // Center horizontally within its parent
   },
   textTypo: {
-    top: 138,
     color: Color.colorWhitesmoke_100,
     fontFamily: FontFamily.androidFootnote,
     fontSize: FontSize.size_lg,
     textAlign: "center",
     position: "absolute",
-  },
+    justifyContent: 'center', // Center vertically
+    alignSelf: 'center', // Center horizontally within its parent
+  },  
   groupPosition: {
     height: 100,
     left: 0,
@@ -462,7 +468,9 @@ const styles = StyleSheet.create({
     width: "90%",
     height: 800,
     overflow: "hidden",
-    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center', // Center horizontally
+    alignSelf: 'center', // Center vertically
     shadowOpacity: 1,
     shadowOffset: {
       width: 8,
@@ -470,6 +478,7 @@ const styles = StyleSheet.create({
     },
     shadowColor: "rgba(0, 0, 0, 0.25)",
   },
+  
 });
 
 export default LeaderBoard;

@@ -87,8 +87,14 @@ export default function School() {
         {filteredData.map(event => (
           <TouchableOpacity key={event.id} onPress={handleImagePress}>
             <View style={styles.eventContainer}>
-              <Text style={styles.title}>{event.name}</Text>
-              <Text style={styles.aa}>{event.nameodteacher}</Text>
+            <Text style={styles.title}>
+  <FontAwesome5 name="book" size={20} color="black" /> {event.name}
+</Text>
+
+              <View style={styles.teacherContainer}>
+                <AntDesign name="user" size={20} color="black" />
+                <Text style={styles.teacherName}>{event.nameodteacher}</Text>
+              </View>
               {event.image ? (
                 <Image source={{ uri: event.image }} style={[styles.image, { width: screenWidth - 60 }]} /> // Adjust width according to screen
               ) : (
@@ -198,7 +204,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: '#209FA6',
     padding: 10,
     borderRadius: 5,
     alignItems: 'center',
@@ -242,5 +248,15 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     flex: 1,
     marginRight: 10,
+    backgroundColor: '#0000',
+  },
+  teacherContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 5,
+  },
+  teacherName: {
+    fontSize: 17,
+    marginLeft: 5,
   },
 });

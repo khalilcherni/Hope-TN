@@ -7,27 +7,29 @@ import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import  colors  from "../config/theme.jsx";
 
-const {height ,width} = Dimensions.get('window')
 
 const Orphan = () => {
-  const videoUrl = 'https://youtu.be/dmosK4LHeUU?si=HYD_Xr66MW9-r-l5';
+  const theme = {mode:"dark"}
+  let activeColor = colors[theme.mode]
+
+  const videoUrl = 'https://youtu.be/Qro0Rb7XJjI?si=dA1H-KkCa_u-RL-g';
   const navigation = useNavigation();
   const handleHomeNavigation = () => {
     // Navigate to the Home screen
     navigation.navigate('Home');
   };
   const handleChatNavigation = () => {
-    // Navigate to the ChatRoom screen
+    // Navigate to the Home screen
     navigation.navigate('ChatRoom');
   };
   const handleSchoolNavigation = () => {
-    // Navigate to the School screen
+    // Navigate to the Home screen
     navigation.navigate('School');
   };
   const handleMESNavigation = () => {
-    // Navigate to the Messages screen
+    // Navigate to the Home screen
     navigation.navigate('Messages');
   };
 
@@ -60,10 +62,10 @@ const Orphan = () => {
           source={require("../assets/orphan4.jpg")}
         />
         <Text style={[styles.yearOldOunissaMazhoud, styles.donateTypo]}>
-          In Tunisia, a vital initiative is taking shape—one that aims to provide essential support and care for orphaned children who have been left vulnerable and in need. The "Orphan Care Project" is dedicated to addressing the pressing challenges faced by these children, offering them a pathway towards a brighter and more secure future. However, to bring this vision to fruition, the initiative relies on the generosity and compassion of donors who recognize the urgent need to uplift and empower orphaned children in Tunisia.
+          The neglect of education infrastructure in Tunisia has left numerous children without access to schools, perpetuating a cycle of disadvantage and despair. These children face insurmountable obstacles as they navigate a landscape devoid of educational opportunities. The absence of adequate roads leading to villages isolates these children further, compounding their sense of abandonment and hopelessness. Many families, witnessing the lack of investment in education and infrastructure, feel compelled to leave their homes behind in pursuit of a better future in urban areas or even abroad.
         </Text>
         <Text style={[styles.mazhoudiFeelsAbandonned, styles.donateTypo]}>
-          At the heart of the Orphan Care Project lies a comprehensive approach to meeting the needs of orphaned children across the country. Many of these children face significant barriers to accessing education, healthcare, and basic necessities, leaving them vulnerable to exploitation and neglect. Through the initiative, donations will be channeled into establishing and supporting orphanages and foster care programs that provide safe and nurturing environments for orphaned children. These facilities will offer shelter, education, healthcare, and emotional support, giving orphaned children the opportunity to thrive and reach their full potential.
+          In the midst of this crisis, it is disheartening to note that hundreds of thousands of children in Tunisia are denied the basic right to education. Their plight serves as a stark reminder of the urgent need for government intervention and international support to address systemic inequalities and ensure that every child has access to quality education.
         </Text>
         <WebView
           source={{ uri: videoUrl }}
@@ -71,14 +73,14 @@ const Orphan = () => {
           style={[styles.d7unHighres17024256661Icon]}
         />
         <Text style={[styles.inMarchAuthorities, styles.theOnlyRoadPosition]}>
-          Moreover, the Orphan Care Project recognizes the importance of providing holistic support to orphaned children, addressing not only their material needs but also their emotional well-being. Donations will fund counseling services, trauma-informed care programs, and recreational activities aimed at helping orphaned children heal from past traumas and build resilience for the future. By nurturing their mental and emotional health, the initiative seeks to empower orphaned children to overcome adversity and embrace opportunities for growth and development.
+          In Tunisia, countless children are deprived of their right to education, facing dire circumstances and enduring immense hardship. Many of these children, predominantly in rural areas, lack access to proper schooling facilities and resources. As authorities implement water rationing measures, these already marginalized communities suffer further. Families are forced to prioritize survival over education, with some even selling livestock to make ends meet.
         </Text>
         <Text style={[styles.theOnlyRoad, styles.theOnlyRoadPosition]}>
-          In addition to providing direct support to orphaned children, the Orphan Care Project is committed to strengthening families and communities to prevent children from being orphaned in the first place. Donations will support initiatives that provide financial assistance, vocational training, and parenting support to at-risk families, helping them stay together and provide a stable and loving home environment for their children. By investing in family support services, the initiative aims to reduce the number of children who are orphaned or separated from their families due to poverty, conflict, or other crises.
+          The only road that leads to the village is decrepit and hasn't been paved in decades, and residents say this only deepens their sense of isolation. Some villagers have felt pushed to move to urban areas or abroad. About 300,000 of Tunisia's 12 million people have no drinking water in their homes, according to the Tunisian Forum for Economic and Social Rights.
         </Text>
-        <View style={[styles.youtubeAndVimeoVideo]} />
+        <View style={styles.youtubeAndVimeoVideo} />
         <Text style={[styles.tunisiansSatisfiedWith]}>
-          So helping Orphans is our job !
+          Education Disparities in Tunisia:
         </Text>
         <Image
           style={styles.captureDcran20240227113}
@@ -87,10 +89,10 @@ const Orphan = () => {
           source={require("../assets/orphan5.jpeg")}
         />
         <Text style={[styles.theSouthernRegion, styles.donateTypo]}>
-          In essence, the Orphan Care Project represents a beacon of hope for orphaned children in Tunisia, offering them a lifeline of support and opportunity in their time of need. Through the collective efforts of donors and volunteers, this initiative has the power to transform the lives of countless orphaned children, giving them the chance to grow, learn, and succeed. Together, let us join hands and make a difference in the lives of Tunisia's orphaned children by supporting the Orphan Care Project. Your donation can help to provide love, security, and hope to orphaned children who deserve nothing less.
+          The 2014 Tunisia Country report on Out-of-school children showed that while pre-primary out-of-school rates decreased, and primary rates fell to nearly zero, there had been no improvement at the lower secondary level. Poor children, children in rural areas, disabled children and children with uneducated parents were facing particular risk of being excluded from school. The report argued that poverty, poor school conditions, difference of language of instruction and low quality of education were among key barriers to education access.
         </Text>
         <TouchableOpacity
-          style={[styles.nextButton]}
+          style={styles.nextButton}
           onPress={() => navigation.navigate("donation")}
         >
           <Text style={styles.donate}>Donate</Text>
@@ -107,7 +109,7 @@ const Orphan = () => {
 };
 
 const styles = StyleSheet.create({
-    iconPosition: {
+  iconPosition: {
     top: 260,
     position: "absolute",
   },
@@ -122,7 +124,6 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   frameChild: {
-    height: hp(7),
     top: 260,
     left: 9,
     borderRadius: 20,
@@ -163,7 +164,7 @@ const styles = StyleSheet.create({
     left: 21,
   },
   mazhoudiFeelsAbandonned: {
-    top: 750,
+    top: 883,
     left: 20,
     width: 372,
     height: 488,
@@ -172,20 +173,20 @@ const styles = StyleSheet.create({
     fontSize: FontSize.size_mini,
   },
   inMarchAuthorities: {
-    top: 1240,
+    top: 1290,
     width: 372,
     height: 220,
     fontSize: FontSize.size_mini,
   },
   theOnlyRoad: {
-    top: 1470,
+    top: 1537,
     width: 372,
-    height: 250,
+    height: 200,
     fontSize: FontSize.size_mini,
     left: 27,
   },
   d7unHighres17024256661Icon: {
-    top: 1000,
+    top: 1050,
     borderRadius: 14,
     width: 370,
     height: 200,

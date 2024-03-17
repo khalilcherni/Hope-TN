@@ -139,6 +139,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     paddingHorizontal: 15,
     paddingVertical: 10,
+    marginBottom:380,
+    marginRight:130
   },
   bubbleText: {
     color: '#fff',

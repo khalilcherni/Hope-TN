@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
     marginBottom: 10,
-    // fontFamily: 'Arial', // Adjust font family as needed
+    fontFamily: 'Arial', // Adjust font family as needed
   },
   amountContainer: {
     flexDirection: 'row',
