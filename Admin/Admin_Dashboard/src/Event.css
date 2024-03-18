@@ -7,17 +7,20 @@
 
 .events-title {
   font-size: 24px;
-  color: #333;
+  color: #efebeb;
   margin-bottom: 20px;
+  margin-left: 600px;
 }
 
 /* Search bar */
 .search-bar {
   margin-bottom: 20px;
+  width: calc(14% - 20px);
+
 }
 
 .search-input {
-  padding: 8px;
+  padding: 50px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
@@ -26,7 +29,7 @@
 
 .search-button {
   padding: 8px 12px;
-  background-color: #007bff;
+  background-color: #ff0044;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -34,81 +37,94 @@
   cursor: pointer;
   margin-left: 10px;
 }
+.add-event-button {
+  left: 1550px;
+  width: 100px;
+}
 
 /* Add event button */
 .add-event-button {
   padding: 8px 12px;
-  background-color: #28a745;
+  background-color: rgba(255, 255, 255, 0.2);
   color: #fff;
   border: none;
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
   margin-bottom: 20px;
-}
-
-/* Event form */
-.event-form {
-  margin-bottom: 20px;
-}
-
-.event-form input[type="text"],
-.event-form input[type="date"],
-.event-form input[type="number"] {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-.event-form button {
-  padding: 8px 12px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
 }
 
 /* Event list */
 .event-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+  width: 170%;
+  border-collapse: collapse;
 }
 
-.event-card {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.event-list th,
+.event-list td {
+  padding: 11px;
+  border: 1px solid #ffffff;
 }
 
-.event-card img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 4px;
-  margin-bottom: 10px;
-}
-
-.event-info {
-  margin-bottom: 10px;
-}
-
-.event-info strong {
+.event-list th {
+  background-color: #1d2634;
+  ;
   font-weight: bold;
 }
 
-.event-info button {
-  padding: 8px 12px;
-  background-color: #dc3545;
-  color: #fff;
-  border: none;
+.event-list tr:nth-child(even) {
+  background-color: #1d2634;
+}
+
+.event-list tr:hover {
+  background-color: #4a4a4a;
+}
+
+.event-list img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Event.css */
+
+/* Event.css */
+
+.event-list .actions {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  align-items: center; /* Center buttons horizontally */
+}
+
+.event-list button {
+  padding: 8px 15px;
+  background-color: #767474;
+  color: #000;
+  border: 2px solid #000;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
   cursor: pointer;
+  margin-bottom: 5px; /* Adjust margin between buttons */
+  transition: all .3s;
+}
+
+.event-list button:hover {
+  background-color: rgba(69, 69, 69, 0.903);
+  color: #5d5c5c;
+  border-color: rgb(64, 64, 64);
+}
+
+.event-list button:focus {
+  outline: 0;
+  box-shadow: 0 0 0 2px rgb(117, 118, 120);
+}
+.event-list button + button {
+  margin-top: 5px; /* Add margin to separate buttons vertically */
+}
+
+.events-container input[type="text"] {
+  width: 312px; /* Adjust the width as needed */
+  padding: 8px; /* Add padding for better appearance */
+  margin-bottom: 10px; /* Add some space below the input */
 }

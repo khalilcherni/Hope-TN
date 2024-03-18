@@ -6,21 +6,17 @@ function Users() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+  const [showAddForm, setShowAddForm] = useState(false);
+  const [showEditForm, setShowEditForm] = useState(false);
+  const [editingUser, setEditingUser] = useState(null);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [birth, setBirth] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [newFirstName, setNewFirstName] = useState("");
-  const [newLastName, setNewLastName] = useState("");
-  const [newBirth, setNewBirth] = useState("");
-  const [newEmail, setNewEmail] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [editingId, setEditingId] = useState(null);
-  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
-    axios.get('http://localhost:4000/users/get')
+    axios.get('http://localhost:4001/users/get')
       .then(res => {
         setData(res.data);
         setLoading(false);
@@ -37,7 +33,7 @@ function Users() {
 
   const handleSearch = () => {
     if (searchTerm === "") {
-      axios.get('http://localhost:4000/users/get')
+      axios.get('http://localhost:4001/users/get')
         .then(res => {
           setData(res.data);
           setLoading(false);
@@ -47,7 +43,7 @@ function Users() {
           setLoading(false);
         });
     } else {
-      const filteredData = data.filter(user => 
+      const filteredData = data.filter(user =>
         user.firstName && user.firstName.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setData(filteredData);
@@ -55,7 +51,7 @@ function Users() {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:4000/users/delete/${id}`)
+    axios.delete(`http://localhost:4001/users/delete/${id}`)
       .then(response => {
         console.log("User deleted successfully:", response.data);
         setData(prevData => prevData.filter(user => user.id !== id));
@@ -65,41 +61,9 @@ function Users() {
       });
   };
 
-  const handleUpdate = (id) => {
-    axios.put(`http://localhost:4000/users/update/${id}`, { 
-      firstName: newFirstName, 
-      lastName: newLastName, 
-      birth: newBirth,
-      email: newEmail,
-      password: newPassword,
-    })
-      .then(() => {
-        const updatedData = data.map(item => {
-          if (item.id === id) {
-            return { 
-              ...item, 
-              firstName: newFirstName, 
-              lastName: newLastName, 
-              birth: newBirth,
-              email: newEmail,
-              password: newPassword,
-            };
-          }
-          return item;
-        });
-        setData(updatedData);
-        setEditingId(null);
-      })
-      .catch(err => console.error("Error updating user:", err));
-  };
-
-  const handleAddUser = () => {
-    setShowForm(true);
-  };
-
-  const handleSubmit = async () => {
+  const handleSubmitAddUser = async () => {
     try {
-      const registerResponse = await axios.post('http://localhost:4000/users/register', {
+      const registerResponse = await axios.post('http://localhost:4001/users/register', {
         firstName,
         lastName,
         birth,
@@ -107,84 +71,168 @@ function Users() {
         password
       });
       console.log('Registration API response:', registerResponse.data);
-  
+
+      // Update the user list with the newly added user
       setData(prevData => [...prevData, registerResponse.data]);
-      setShowForm(false);
-      setFirstName('');
-      setLastName('');
-      setBirth('');
-      setEmail('');
-      setPassword('');
-      // Resetting the input fields for new user details
-      setNewFirstName('');
-      setNewLastName('');
-      setNewBirth('');
-      setNewEmail('');
-      setNewPassword('');
+      setShowAddForm(false);
+      resetFormFields();
     } catch (error) {
       console.error(error);
     }
   };
 
- 
+  const handleSubmitEditUser = async () => {
+    try {
+      await axios.put(`http://localhost:4001/users/update/${editingUser.id}`, { 
+        firstName,
+        lastName,
+        birth,
+        email,
+        password
+      });
+      const updatedData = data.map(item => {
+        if (item.id === editingUser.id) {
+          return { 
+            ...item, 
+            firstName,
+            lastName,
+            birth,
+            email,
+            password
+          };
+        }
+        return item;
+      });
+      setData(updatedData);
+      setShowEditForm(false);
+      resetFormFields();
+    } catch (error) {
+      console.error("Error updating user:", error);
+    }
+  };
+
+  const resetFormFields = () => {
+    setFirstName('');
+    setLastName('');
+    setBirth('');
+    setEmail('');
+    setPassword('');
+  };
 
   return (
     <div className="users-container">
-      <h1 className="users-title">User List</h1>
-      <input 
-        type="text" 
-        value={searchTerm} 
-        onChange={(e) => setSearchTerm(e.target.value)} 
-        placeholder="Search by name" 
-      />
-      <button onClick={handleSearch}>Search</button>
-      <button onClick={handleAddUser}>Add User</button>
-      {showForm && (
-        <div className="form-card">
-          <div className="form-card-content">
-            <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="First Name" />
-            <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder="Last Name" />
-            <input type="text" value={birth} onChange={(e) => setBirth(e.target.value)} placeholder="Birth" />
-            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-          </div>
-          <div className="form-card-buttons">
-            <button onClick={handleSubmit}>Submit</button>
+      <h1 className="users-title">Users.List</h1>
+      <div className="search-bar">
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search by name"
+        />
+        {/* <button onClick={handleSearch}>Search</button> */}
+      </div>
+      <button className="add-button" onClick={() => setShowAddForm(true)}>Add User</button>
+      {showAddForm && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={() => setShowAddForm(false)}>&times;</span>
+            <h2>Add User</h2>
+            <div className="form-card-content">
+              <table>
+                <tbody>
+                  <tr>
+                    <td><label htmlFor="firstName">First Name:</label></td>
+                    <td><input type="text" id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="First Name" /></td>
+                  </tr>
+                  <tr>
+                    <td><label htmlFor="lastName">Last Name:</label></td>
+                    <td><input type="text" id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder="Last Name" /></td>
+                  </tr>
+                  <tr>
+                    <td><label htmlFor="birth">Birth:</label></td>
+                    <td><input type="text" id="birth" value={birth} onChange={(e) => setBirth(e.target.value)} placeholder="Birth" /></td>
+                  </tr>
+                  <tr>
+                    <td><label htmlFor="email">Email:</label></td>
+                    <td><input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" /></td>
+                  </tr>
+                  <tr>
+                    <td><label htmlFor="password">Password:</label></td>
+                    <td><input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" /></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="form-card-buttons">
+              <button onClick={handleSubmitAddUser}>Done</button>
+            </div>
           </div>
         </div>
       )}
+
+      {showEditForm && editingUser && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={() => setShowEditForm(false)}>&times;</span>
+            <h2>Edit User</h2>
+            <div className="form-card-content">
+              <div className="form-group">
+                <label htmlFor="editFirstName">First Name:</label>
+                <input type="text" id="editFirstName" value={editingUser.firstName} onChange={(e) => setEditingUser({...editingUser, firstName: e.target.value})} placeholder="First Name" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="editLastName">Last Name:</label>
+                <input type="text" id="editLastName" value={editingUser.lastName} onChange={(e) => setEditingUser({...editingUser, lastName: e.target.value})} placeholder="Last Name" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="editBirth">Birth:</label>
+                <input type="text" id="editBirth" value={editingUser.birth} onChange={(e) => setEditingUser({...editingUser, birth: e.target.value})} placeholder="Birth" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="editEmail">Email:</label>
+                <input type="text" id="editEmail" value={editingUser.email} onChange={(e) => setEditingUser({...editingUser, email: e.target.value})} placeholder="Email" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="editPassword">Password:</label>
+                <input type="password" id="editPassword" value={editingUser.password} onChange={(e) => setEditingUser({...editingUser, password: e.target.value})} placeholder="Password" />
+              </div>
+            </div>
+            <div className="form-card-buttons">
+              <button onClick={handleSubmitEditUser}>Done</button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {loading ? (
         <div>Loading...</div>
       ) : (
         <div className="user-list">
-          {data.map((user, index) => (
-            <div key={index} className="user-card">
-              <div className="user-info">
-                <strong>Name:</strong> {user.firstName} {user.lastName}
-              </div>
-              <div className="user-info">
-                <strong>Birth:</strong> {user.birth}
-              </div>
-              <div className="user-info">
-                <strong>Email:</strong> {user.email}
-              </div>
-              <button onClick={() => handleDelete(user.id)}>Delete</button>
-              <div className="event-info">
-                {editingId === user.id ? (
-                  <>
-                    <input type="text" value={newFirstName} onChange={(e) => setNewFirstName(e.target.value)} placeholder="First Name"/>
-                    <input type="text" value={newLastName} onChange={(e) => setNewLastName(e.target.value)} placeholder="Last Name"/>
-                    <input type="text" value={newBirth} onChange={(e) => setNewBirth(e.target.value)}placeholder="Birth" />
-                    <input type="text" value={newEmail} onChange={(e) => setNewEmail(e.target.value)} placeholder="Email"/>
-                    <input type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} placeholder="Password"/>
-                    <button onClick={() => handleUpdate(user.id)}>Save</button>
-                  </>
-                ) : (
-                  <button onClick={() => setEditingId(user.id)}>Update</button>
-                )}
-              </div>
-            </div>
-          ))}
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Birth</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((user, index) => (
+                <tr key={index}>
+                  <td>{user.firstName} {user.lastName}</td>
+                  <td>{user.birth}</td>
+                  <td>{user.email}</td>
+                  <td>{user.password}</td>
+                  <td>
+                    <button className="button-59" onClick={() => handleDelete(user.id)}>Delete</button>
+                    <button className="button-59" onClick={() => { setShowEditForm(true); setEditingUser(user); }}>Edit</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
     </div>

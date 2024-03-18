@@ -5,28 +5,28 @@ import './Event.css'; // Import the CSS file
 function Events() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
+  // const [image, setImage] = useState("");
   const [location, setLocation] = useState("");
   const [type, setType] = useState("");
   const [startdate, setStartDate] = useState("");
   const [enddate, setEndDate] = useState("");
   const [registrationdeadline, setRegistrationDeadline] = useState("");
-  const [Newname, setNewName] = useState("");
-  const [newdescription, setNewDescription] = useState("");
-  const [Newimage, setNewImage] = useState("");
-  const [newlocation, setNewLocation] = useState("");
-  const [newtype, setNewType] = useState("");
-  const [newstartDate, setNewStartDate] = useState("");
-  const [newendDate, setNewEndDate] = useState("");
-  const [newregistrationDeadline, setNewRegistrationDeadline] = useState("");
-  const [editingId, setEditingId] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
-  
+  const [editingEvent, setEditingEvent] = useState(null);
+
   useEffect(() => {
-    axios.get('http://localhost:4000/api/get')
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    handleSearch();
+  }, [searchTerm]);
+
+  const fetchData = () => {
+    axios.get('http://localhost:4001/api/get')
       .then(res => {
         setData(res.data);
         setLoading(false);
@@ -35,45 +35,49 @@ function Events() {
         console.error("Error fetching events:", err);
         setLoading(false);
       });
-  }, []);
-
-  useEffect(() => {
-    handleSearch();
-  }, [searchTerm]);
+  };
 
   const handlePost = () => {
     const eventData = {
       name,
       description,
-      image,
+      // image,
       location,
       type,
-      startdate: startdate ,
+      startdate,
       enddate,
       registrationdeadline
     };
 
-    axios.post("http://localhost:4000/api/add", eventData)
+    axios.post("http://localhost:4001/api/add", eventData)
       .then(response => {
         console.log("Event added successfully:", response.data);
         setData(prevData => [...prevData, response.data]);
-        setName("");
-        setDescription("");
-        setImage("");
-        setLocation("");
-        setType("");
-        setStartDate("");
-        setEndDate("");
-        setRegistrationDeadline("");
+        resetFormFields();
       })
       .catch(error => {
         console.error("Error posting event data:", error);
       });
   };
 
+  const handleUpdate = () => {
+    axios.put(`http://localhost:4001/api/put/${editingEvent.id}`, editingEvent) // Update the URL path here
+    .then(() => {
+        const updatedData = data.map(item => {
+          if (item.id === editingEvent.id) {
+            return editingEvent;
+          }
+          return item;
+        });
+        setData(updatedData);
+        setEditingEvent(null);
+      })
+      .catch(err => console.error("Error updating event:", err));
+  };
+
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:4000/api/${id}`)
-      .then(response => {
+    axios.delete(`http://localhost:4001/api/delete/${id}`) // Update the URL path here
+    .then(response => {
         console.log("Event deleted successfully:", response.data);
         setData(prevData => prevData.filter(event => event.id !== id));
       })
@@ -82,53 +86,11 @@ function Events() {
       });
   };
 
-  const handleUpdate = (id) => {
-    axios.put(`http://localhost:4000/api/events/put/${id}`, { 
-      name: Newname, 
-      description: newdescription, 
-      image: Newimage,
-      location: newlocation,
-      type: newtype,
-      startdate: newstartDate,
-      enddate: newendDate,
-      registrationdeadline: newregistrationDeadline
-    })
-      .then(() => {
-        const updatedData = data.map(item => {
-          if (item.id === id) {
-            return { 
-              ...item, 
-              name: Newname, 
-              description: newdescription, 
-              image: Newimage,
-              location: newlocation,
-              type: newtype,
-              startdate: newstartDate,
-              enddate: newendDate,
-              registrationdeadline: newregistrationDeadline
-            };
-          }
-          return item;
-        });
-        setData(updatedData);
-        setEditingId(null);
-      })
-      .catch(err => console.error("Error updating event:", err));
-  };
-
   const handleSearch = () => {
     // Perform search by name
     if (searchTerm === "") {
       // If search term is empty, reset data to original state
-      axios.get('http://localhost:4000/api/get')
-        .then(res => {
-          setData(res.data);
-          setLoading(false);
-        })
-        .catch(err => {
-          console.error("Error fetching events:", err);
-          setLoading(false);
-        });
+      fetchData();
     } else {
       // If search term is not empty, filter data
       const filteredData = data.filter(event => event.name.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -136,83 +98,163 @@ function Events() {
     }
   };
 
+  const resetFormFields = () => {
+    setName('');
+    setDescription('');
+    // setImage('');
+    setLocation('');
+    setType('');
+    setStartDate('');
+    setEndDate('');
+    setRegistrationDeadline('');
+  };
+
   return (
     <div className="events-container">
-      <h1 className="events-title">Event List</h1>
+      <h1 className="events-title">Event.List</h1>
       <input 
         type="text" 
         value={searchTerm} 
         onChange={(e) => setSearchTerm(e.target.value)} 
         placeholder="Search by name" 
       />
-      <button onClick={handleSearch}>Search</button>
       <button onClick={() => setShowForm(!showForm)} className="add-event-button">
         {showForm ? "Close Form" : "Add Event"}
       </button>
       {showForm && (
-        <div className="event-form">
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Event Name" />
-          <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Event Description" />
-          <input type="text" value={image} onChange={(e) => setImage(e.target.value)} placeholder="Event Image URL" />
-          <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} placeholder="Event Location" />
-          <input type="text" value={type} onChange={(e) => setType(e.target.value)} placeholder="Event Type" />
-          <input type="date" value={startdate} onChange={(e) => setStartDate(e.target.value)} placeholder="Start Date" />
-          <input type="date" value={enddate} onChange={(e) => setEndDate(e.target.value)} placeholder="End Date" />
-          <input type="number" value={registrationdeadline} onChange={(e) => setRegistrationDeadline(e.target.value)} placeholder="Registration Deadline" />
-          <button onClick={handlePost}>Submit</button>
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={() => setShowForm(false)}>&times;</span>
+            <h2>Add Event</h2>
+            <div className="form-card-content">
+              <table>
+                <tbody>
+                  <tr>
+                    <td><label htmlFor="name">Name:</label></td>
+                    <td><input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Event Name" /></td>
+                  </tr>
+                  <tr>
+                    <td><label htmlFor="description">Description:</label></td>
+                    <td><input type="text" id="description" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Event Description" /></td>
+                  </tr>
+                  <tr>
+                    {/* <td><label htmlFor="image">Image:</label></td> */}
+                    {/* <td><input type="text" id="image" value={image} onChange={(e) => setImage(e.target.value)} placeholder="Event Image URL" /></td> */}
+                  </tr>
+                  <tr>
+                    <td><label htmlFor="location">Location:</label></td>
+                    <td><input type="text" id="location" value={location} onChange={(e) => setLocation(e.target.value)} placeholder="Event Location" /></td>
+                  </tr>
+                  <tr>
+                    <td><label htmlFor="type">Type:</label></td>
+                    <td><input type="text" id="type" value={type} onChange={(e) => setType(e.target.value)} placeholder="Event Type" /></td>
+                  </tr>
+                  <tr>
+                    <td><label htmlFor="startdate">Start Date:</label></td>
+                    <td><input type="date" id="startdate" value={startdate} onChange={(e) => setStartDate(e.target.value)} /></td>
+                  </tr>
+                  <tr>
+                    <td><label htmlFor="enddate">End Date:</label></td>
+                    <td><input type="date" id="enddate" value={enddate} onChange={(e) => setEndDate(e.target.value)} /></td>
+                  </tr>
+                  <tr>
+                    <td><label htmlFor="registrationdeadline">Registration Deadline:</label></td>
+                    <td><input type="number" id="registrationdeadline" value={registrationdeadline} onChange={(e) => setRegistrationDeadline(e.target.value)} placeholder="Registration Deadline" /></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="form-card-buttons">
+              <button onClick={handlePost}>Submit</button>
+            </div>
+          </div>
+        </div>
+      )}
+      {editingEvent && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={() => setEditingEvent(null)}>&times;</span>
+            <h2>Edit Event</h2>
+            <div className="form-card-content">
+              <table>
+                <tbody>
+                  <tr>
+                    <td><label htmlFor="name">Name:</label></td>
+                    <td><input type="text" id="name" value={editingEvent.name} onChange={(e) => setEditingEvent({...editingEvent, name: e.target.value})} placeholder="Event Name" /></td>
+                  </tr>
+                  <tr>
+                    <td><label htmlFor="description">Description:</label></td>
+                    <td><input type="text" id="description" value={editingEvent.description} onChange={(e) => setEditingEvent({...editingEvent, description: e.target.value})} placeholder="Event Description" /></td>
+                  </tr>
+                  <tr>
+                    {/* <td><label htmlFor="image">Image:</label></td>
+                    <td><input type="text" id="image" value={editingEvent.image} onChange={(e) => setEditingEvent({...editingEvent, image: e.target.value})} placeholder="Event Image URL" /></td> */}
+                  </tr>
+                  <tr>
+                    <td><label htmlFor="location">Location:</label></td>
+                    <td><input type="text" id="location" value={editingEvent.location} onChange={(e) => setEditingEvent({...editingEvent, location: e.target.value})} placeholder="Event Location" /></td>
+                  </tr>
+                  <tr>
+                    <td><label htmlFor="type">Type:</label></td>
+                    <td><input type="text" id="type" value={editingEvent.type} onChange={(e) => setEditingEvent({...editingEvent, type: e.target.value})} placeholder="Event Type" /></td>
+                  </tr>
+                  <tr>
+                    <td><label htmlFor="startdate">Start Date:</label></td>
+                    <td><input type="date" id="startdate" value={editingEvent.startdate} onChange={(e) => setEditingEvent({...editingEvent, startdate: e.target.value})} /></td>
+                  </tr>
+                  <tr>
+                    <td><label htmlFor="enddate">End Date:</label></td>
+                    <td><input type="date" id="enddate" value={editingEvent.enddate} onChange={(e) => setEditingEvent({...editingEvent, enddate: e.target.value})} /></td>
+                  </tr>
+                  <tr>
+                    <td><label htmlFor="registrationdeadline">Registration Deadline:</label></td>
+                    <td><input type="number" id="registrationdeadline" value={editingEvent.registrationdeadline} onChange={(e) => setEditingEvent({...editingEvent, registrationdeadline: e.target.value})} placeholder="Registration Deadline" /></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="form-card-buttons">
+              <button onClick={handleUpdate}>Submit</button>
+            </div>
+          </div>
         </div>
       )}
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <div className="event-list">
-          {data.map((event, index) => (
-            <div key={index} className="event-card">
-              <div className="event-info">
-                <strong>Name:</strong> {event.name}
-              </div>
-              <div className="event-info">
-                <strong>Description:</strong> {event.description}
-              </div>
-              <div className="event-info">
-                <img src={event.image} alt="" />
-              </div>
-              <div className="event-info">
-                <strong>Location:</strong> {event.location}
-              </div>
-              <div className="event-info">
-                <strong>Type:</strong> {event.type}
-              </div>
-              <div className="event-info">
-                <strong>Start Date:</strong> {event.startdate}
-              </div>
-              <div className="event-info">
-                <strong>End Date:</strong> {event.enddate}
-              </div>
-              <div className="event-info">
-                <strong>Registration Deadline:</strong> {event.registrationdeadline}
-              </div>
-              <button onClick={() => handleDelete(event.id)}>Delete</button>
-              <div className="event-info">
-                {editingId === event.id ? (
-                  <>
-                    <input type="text" value={Newname} onChange={(e) => setNewName(e.target.value)} placeholder="Event Name"/>
-                    <input type="text" value={Newimage} onChange={(e) => setNewImage(e.target.value)} placeholder="image"/>
-                    <input type="text" value={newdescription} onChange={(e) => setNewDescription(e.target.value)}placeholder="description" />
-                    <input type="text" value={newlocation} onChange={(e) => setNewLocation(e.target.value)} placeholder="location"/>
-                    <input type="text" value={newtype} onChange={(e) => setNewType(e.target.value)}  placeholder="type"/>
-                    <input type="date" value={newstartDate} onChange={(e) => setNewStartDate(e.target.value)}  />
-                    <input type="date" value={newendDate} onChange={(e) => setNewEndDate(e.target.value)} />
-                    <input type="number" value={newregistrationDeadline} onChange={(e) => setNewRegistrationDeadline(e.target.value)}  placeholder="registrationdeadline" />
-                    <button onClick={() => handleUpdate(event.id)}>Save</button>
-                  </>
-                ) : (
-                  <button onClick={() => setEditingId(event.id)}>Update</button>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
+        <table className="event-list">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              {/* <th>Image</th> */}
+              <th>Location</th>
+              <th>Type</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Registration Deadline</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((event, index) => (
+              <tr key={index}>
+                <td>{event.name}</td>
+                <td>{event.description}</td>
+                {/* <td><img src={event.image} alt="" /></td> */}
+                <td>{event.location}</td>
+                <td>{event.type}</td>
+                <td>{event.startdate}</td>
+                <td>{event.enddate}</td>
+                <td>{event.registrationdeadline}</td>
+                <td>
+                  <button onClick={() => handleDelete(event.id)}>Delete</button>
+                  <button onClick={() => setEditingEvent(event)}>Edit</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
     </div>
   );

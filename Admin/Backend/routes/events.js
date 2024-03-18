@@ -6,7 +6,8 @@ const { getALLevents, addevent, update, getOneevents, deleteevents } = require("
 
 router.get('/get', getALLevents);
 router.post('/add',addevent)
-router.put('/events/put/:id',update)
-router.get('/:name',getOneevents)
-router.delete('/:id',deleteevents)
+router.put('/put/:id', update); // Change the route here
+router.get('/get/:name', getOneevents); // Change the route here
+router.delete('/delete/:id', deleteevents); // Change the route here
+
 module.exports=router
