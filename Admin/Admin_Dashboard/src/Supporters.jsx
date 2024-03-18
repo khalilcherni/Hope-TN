@@ -8,14 +8,15 @@ function Supporters() {
   const [searchTerm, setSearchTerm] = useState("");
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
-  const [poitns, setpoitns] = useState("");
+  const [points, setPoints] = useState("");
   const [showAddForm, setShowAddForm] = useState(false);
-  const [newnimage, setnewName] = useState("");
-  const [newname, setnewPhone] = useState("");
-  const [newpoints, setnexpo] = useState("");
+  const [newName, setNewName] = useState("");
+  const [newImage, setNewImage] = useState("");
+  const [newPoints, setNewPoints] = useState("");
   const [editingId, setEditingId] = useState(null);
+
   useEffect(() => {
-    axios.get('http://localhost4001/supporters/get')
+    axios.get('http://localhost:4001/supporters/get')
       .then(res => {
         setData(res.data);
         setLoading(false);
@@ -28,7 +29,7 @@ function Supporters() {
 
   useEffect(() => {
     if (searchTerm === "") {
-      axios.get('http://localhost4001/supporters/get')
+      axios.get('http://localhost:4001/supporters/get')
         .then(res => {
           setData(res.data);
           setLoading(false);
@@ -49,39 +50,37 @@ function Supporters() {
     const newSupporter = {
       name,
       image,
-      poitns
+      points
     };
 
-    axios.post("http://localhost4001/supporters/post", newSupporter) // Assuming this is the correct URL for adding supporters
+    axios.post("http://localhost:4001/supporters/post", newSupporter)
       .then(response => {
         console.log("Supporter added successfully:", response.data);
         setData(prevData => [...prevData, response.data]);
         setShowAddForm(false);
         setName('');
         setImage('');
-        setpoitns('');
+        setPoints('');
       })
       .catch(error => {
         console.error("Error adding supporter:", error);
       });
   };
+
   const handleUpdate = (id) => {
-    axios.put(`http://localhost4001/supporters/update/${id}`, { 
-     name:newname,
-     image:newnimage,
-     poitns:newpoints
-   
-  
+    axios.put(`http://localhost:4001/supporters/update/${id}`, { 
+      name: newName,
+      image: newImage,
+      points: newPoints
     })
       .then(() => {
         const updatedData = data.map(item => {
           if (item.id === id) {
             return { 
               ...item, 
-              name:newname,
-     image:newnimage,
-     poitns:newpoints
-            
+              name: newName,
+              image: newImage,
+              points: newPoints
             };
           }
           return item;
@@ -89,24 +88,34 @@ function Supporters() {
         setData(updatedData);
         setEditingId(null);
       })
-      .catch(err => console.error("Error updating event:", err));
+      .catch(err => console.error("Error updating supporter:", err));
   };
+
   const handleDelete = (id) => {
-    axios.delete(`http://localhost4001/supporters/delete/${id}`)
+    axios.delete(`http://localhost:4001/supporters/delete/${id}`)
       .then(response => {
-        console.log("User deleted successfully:", response.data);
+        console.log("Supporter deleted successfully:", response.data);
         setData(prevData => prevData.filter(user => user.id !== id));
       })
       .catch(error => {
-        console.error("Error deleting user:", error);
+        console.error("Error deleting supporter:", error);
       });
   };
 
   return (
-    <div className="users-container">
-      <h1 className="users-title">Supporters List</h1>
-      <div className="add-form">
-        <button onClick={() => setShowAddForm(true)}>Add Supporter</button>
+    <div className="supporters-container">
+      <h1 className="supporters-title">Supporters List</h1>
+      <div className="supporter-search-container">
+        <input 
+          type="text" 
+          value={searchTerm} 
+          onChange={(e) => setSearchTerm(e.target.value)} 
+          placeholder="Search by name" 
+        />
+        <button className="button" onClick={handleSubmit}>Search</button>
+      </div>
+      <div className="supporter-form">
+        <button className="button" onClick={() => setShowAddForm(true)}>Add Supporter</button>
         {showAddForm && (
           <form onSubmit={handleSubmit}>
             <input 
@@ -125,54 +134,66 @@ function Supporters() {
             />
             <input 
               type="number" 
-              value={poitns} 
-              onChange={(e) => setpoitns(e.target.value)} 
+              value={points} 
+              onChange={(e) => setPoints(e.target.value)} 
               placeholder="Points" 
               required 
             />
-            <button type="submit">Submit</button>
+            <button className="button" type="submit">Submit</button>
           </form>
         )}
       </div>
-      <input 
-        type="text" 
-        value={searchTerm} 
-        onChange={(e) => setSearchTerm(e.target.value)} 
-        placeholder="Search by name" 
-      />
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <div className="user-list">
-          {data.map((user, index) => (
-            <div key={index} className="user-card">
-              <div className="user-info">
-                <img src={user.image}  className="profile-image" />
-              </div>
-              <div className="user-details">
-                <div className="user-info">
-                  <strong>Name:</strong> {user.name}
-                </div>
-                <div className="user-info">
-                  <strong>Points:</strong> {user.poitns}
-                </div>
-                <button onClick={() => handleDelete(user.id)}>Delete</button>
-                <div className="event-info">
-                {editingId === user.id ? (
-                  <>
-                    <input type="text" value={newname} onChange={(e) => setnewPhone(e.target.value)} placeholder="name"/>
-                    <input type="text" value={newnimage} onChange={(e) => setnewName(e.target.value)} placeholder="image"/>
-                    <input type="text" value={newpoints} onChange={(e) => setnexpo(e.target.value)}placeholder="points" />
-                   
-                    <button onClick={() => handleUpdate(user.id)}>Save</button>
-                  </>
-                ) : (
-                  <button onClick={() => setEditingId(user.id)}>Update</button>
-                )}
-            </div>
-              </div>
-            </div>
-          ))}
+        <div className="supporter-list">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Points</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((supporter, index) => (
+                <tr key={index}>
+                  <td>{supporter.name}</td>
+                  <td><img src={supporter.image} alt="Supporter" className="profile-image" /></td>
+                  <td>{supporter.poitns}</td>
+                  <td>
+                    <button className="button" onClick={() => handleDelete(supporter.id)}>Delete</button>
+                    {editingId === supporter.id ? (
+                      <>
+                        <input 
+                          type="text" 
+                          value={newName} 
+                          onChange={(e) => setNewName(e.target.value)} 
+                          placeholder="Name" 
+                        />
+                        <input 
+                          type="text" 
+                          value={newImage} 
+                          onChange={(e) => setNewImage(e.target.value)} 
+                          placeholder="Image URL" 
+                        />
+                        <input 
+                          type="number" 
+                          value={newPoints} 
+                          onChange={(e) => setNewPoints(e.target.value)} 
+                          placeholder="Points" 
+                        />
+                        <button className="button" onClick={() => handleUpdate(supporter.id)}>Save</button>
+                      </>
+                    ) : (
+                      <button className="button" onClick={() => setEditingId(supporter.id)}>Edit</button>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
     </div>
