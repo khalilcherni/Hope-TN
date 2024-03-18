@@ -1,15 +1,13 @@
 import * as React from "react";
-import { StyleSheet, View, Pressable, Text, Image, Share } from "react-native";
+import { StyleSheet, View, Pressable, Text, Image, Share, Alert } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation, useIsFocused } from "@react-navigation/native";
 import { Color, FontFamily, FontSize } from "../GlobalStyles";
-import { useTranslation } from 'react-i18next'; // Import useTranslation hook
 
 const Setting = () => {
   const navigation = useNavigation();
   const isFocused = useIsFocused();
   const [userEmail, setUserEmail] = React.useState('');
-  const { t } = useTranslation(); // Initialize translation function
 
   React.useEffect(() => {
     const fetchUserEmail = async () => {
@@ -27,9 +25,30 @@ const Setting = () => {
     fetchUserEmail();
   }, [isFocused]);
 
-  const url = 'https://www.youtube.com/@BugNinza';
+  const handleLogout = () => {
+    Alert.alert(
+      'Logout',
+      'Are you sure you want to log out?',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel'
+        },
+        { 
+          text: 'Accept', 
+          onPress: () => {
+            AsyncStorage.clear(); // Clear user data from AsyncStorage
+            navigation.navigate('SignIn'); // Navigate to the sign-in page
+          }
+        }
+      ],
+      { cancelable: false }
+    );
+  };
 
   const onShare = async () => {
+    const url = 'https://www.youtube.com/@BugNinza';
     try {
       const result = await Share.share({
         message: 'Bug Ninza: \n' + url,
@@ -47,26 +66,19 @@ const Setting = () => {
       console.log(error.message);
     }
   };
-
-  const handleLanguagePress = () => {
-    navigation.navigate('Language');
+  const handleEditProfilePress = () => {
+    navigation.navigate('EditProfile');
   };
 
   return (
     <View style={styles.setting}>
       <View style={[styles.settingChild, styles.settingLayout]} />
       <View style={[styles.settingItem, styles.settingLayout]} />
-      <View style={styles.statusBar}>
-        <Image
-          style={[styles.notchIcon, styles.notchIconLayout]}
-          contentFit="cover"
-          // source={require("../assets/notch.png")}
-        />
-      </View>
+      <View style={styles.statusBar} />
       <Image
-        style={styles.unsplashjmurdhtm7ngIcon}
+        style={[styles.profilImage,]}
         contentFit="cover"
-        source={require("../assets/logo.png")}
+        source={require("../assets/2.png")}
       />
       <Pressable
         style={[styles.arrowLeft, styles.notchIconLayout]}
@@ -75,36 +87,29 @@ const Setting = () => {
         <Image
           style={styles.icon}
           contentFit="cover"
-          source={require("../assets/backleft.png")}
+          source={require("../assets/2.png")}
         />
       </Pressable>
-      <Image
-        style={[styles.bellIcon, styles.iconLayout1]}
-        contentFit="cover"
-        source={require("../assets/bell.webp")}
-      />
-      {/* Share Icon */}
       <Pressable onPress={onShare}>
         <Image
           style={[styles.shareIcon, styles.iconLayout]}
           contentFit="cover"
-          source={require("../assets/share.png")}
+          source={require("../assets/2.png")}
         />
       </Pressable>
-      {/* End of Share Icon */}
       <Text style={[styles.favorites, styles.eventsFlexBox]}>Favorites</Text>
-      <Text style={[styles.language, styles.eventsFlexBox]} onPress={handleLanguagePress}>{t('Language')}</Text>
-      <Text style={[styles.preferences, styles.eventsTypo]}>Preferences</Text>
-      <Text style={[styles.favourite, styles.favouritePosition]}>
-        {t('Favourite')}
+      <Text style={[styles.logout, styles.eventsFlexBox]} onPress={handleLogout}>
+        Log Out
       </Text>
-      <Text style={[styles.darkmode, styles.eventsFlexBox]}>{t('Darkmode')}</Text>
+      <Text style={[styles.preferences, styles.eventsTypo]}>Preferences</Text>
+      <Text style={[styles.favourite, styles.favouritePosition]}>Favourite</Text>
+      <Text style={[styles.darkmode, styles.eventsFlexBox]}>Darkmode</Text>
       <View style={[styles.rectangle36Copy5Parent, styles.groupLayout]}>
         <View style={styles.rectangle36Copy5} />
         <Image
           style={styles.rightIcon}
           contentFit="cover"
-          source={require("../assets/right.png")}
+          source={require("../assets/2.png")}
         />
       </View>
       <View style={[styles.rectangle36Copy5Group, styles.groupLayout]}>
@@ -112,7 +117,7 @@ const Setting = () => {
         <Image
           style={styles.rightIcon}
           contentFit="cover"
-          source={require("../assets/right.png")}
+          source={require("../assets/2.png")}
         />
       </View>
       <View style={[styles.rectangle36Copy5Container, styles.groupLayout]}>
@@ -120,28 +125,28 @@ const Setting = () => {
         <Image
           style={styles.rightIcon}
           contentFit="cover"
-          source={require("../assets/right.png")}
+          source={require("../assets/2.png")}
         />
       </View>
-      <Pressable
-        style={[styles.settingInner, styles.settingInnerLayout]}
-        onPress={() => navigation.navigate("EditProfile")}
-      />
-      <Text style={[styles.editProfile, styles.profileClr]}>{t('Edit Profile')}</Text>
+     
+        <Text style={[styles.editProfile, styles.profileColor]}  onPress={handleEditProfilePress}>Edit Profile</Text>
+      
       <Image
         style={styles.translateIcon}
-        contentFit="cover"
-        source={require("../assets/translate.png")}
+        resizeMode="cover"
+        source={require('../assets/2.png')}
       />
+    
+
       <Image
         style={[styles.umoonIcon, styles.iconLayout]}
         contentFit="cover"
-        source={require("../assets/moon.png")}
+        source={require("../assets/2.png")}
       />
       <Image
         style={[styles.heartIcon, styles.favouritePosition]}
         contentFit="cover"
-        source={require("../assets/heart.png")}
+        source={require("../assets/2.png")}
       />
       <Text style={[styles.profile, styles.profileClr]}>{userEmail}</Text>
       <View style={[styles.rectangleView, styles.settingLayout]} />
@@ -149,17 +154,15 @@ const Setting = () => {
       <Image
         style={[styles.editDuotoneIcon, styles.iconLayout]}
         contentFit="cover"
-        // source={require("../assets/edit-duotone.png")}
+        source={require("../assets/2.png")}
       />
-      <Text style={[styles.editProfile1, styles.settingInnerLayout]}>
-        {/* Edit Profile */}
-      </Text>
+      <Text style={[styles.editProfile1, styles.settingInnerLayout]} />
       <View style={[styles.groupView, styles.groupLayout]}>
         <View style={styles.rectangle36Copy5} />
         <Image
           style={styles.rightIcon}
           contentFit="cover"
-          // source={require("../assets/right.png")}
+          source={require("../assets/2.png")}
         />
       </View>
     </View>
@@ -176,7 +179,8 @@ const styles = StyleSheet.create({
     // Center items horizontally
   },
   settingLayout: {
-    width: 390,
+    width: 420,
+   
     position: "absolute",
   },
   notchIconLayout: {
@@ -207,14 +211,10 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   settingInnerLayout: {
-    width: 105,
+    width: 155,
     position: "absolute",
   },
-  profileClr: {
-    color: Color.lightWhite,
-    textAlign: "left",
-    position: "absolute",
-  },
+
   iconLayout: {
     height: 24,
     width: 24,
@@ -222,8 +222,8 @@ const styles = StyleSheet.create({
   },
   settingChild: {
     backgroundColor: Color.colorDarkcyan,
-    height:267,
-    left: 0,
+    height:188,
+    left: -12,
     top: 0,
     
 
@@ -231,16 +231,10 @@ const styles = StyleSheet.create({
   settingItem: {
     top: 361,
     left: -23,
-    backgroundColor: "#f6f6f6",
+    backgroundColor: Color.colorGainsboro_100,
     height: 29,
   },
-  notchIcon: {
-    right: 0,
-    maxWidth: "100%",
-    left: 0,
-    top: 0,
-    overflow: "hidden",
-  },
+
   statusBar: {
     right: 4,
     left: -15,
@@ -249,21 +243,15 @@ const styles = StyleSheet.create({
     position: "absolute",
     overflow: "hidden",
   },
-  unsplashjmurdhtm7ngIcon: {
-    top: 99,
-    left: 119,
-    width: 122,
-    height: 122,
-    position: "absolute",
-  },
+
   icon: {
     height: "100%",
     width: "100%",
   },
   arrowLeft: {
-    left: 24,
+    left: 10,
     width: 26,
-    top: 50,
+    top: 45,
   },
   bellIcon: {
     transform: [{ scale: 1.5 }], // Adjust the scale value as needed
@@ -282,11 +270,11 @@ const styles = StyleSheet.create({
     fontSize: FontSize.size_mini,
     position: "absolute",
   },
-  language: {
+  logout: {
     top: 399,
     left: 47,
-    fontFamily: FontFamily.poppinsMedium,
-    fontWeight: "500",
+   
+    fontWeight: "700",
     fontSize: FontSize.size_mini,
     position: "absolute",
   },
@@ -299,18 +287,17 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   favourite: {
-    left: 33,
+    left: 45,
     textAlign: "left",
     color: Color.lightBlack,
-    fontFamily: FontFamily.poppinsMedium,
-    fontWeight: "500",
+ 
+    fontWeight: "700",
     fontSize: FontSize.size_mini,
   },
   darkmode: {
-    top: 433,
+    top: 436,
     left: 45,
-    fontFamily: FontFamily.poppinsMedium,
-    fontWeight: "500",
+    fontWeight: "700",
     fontSize: FontSize.size_mini,
     position: "absolute",
   },
@@ -339,22 +326,28 @@ const styles = StyleSheet.create({
     opacity: 0.65,
   },
   rectangle36Copy5Container: {
-    top: 442,
-    left: 339,
+    top: 443,
+    left: 338,
   },
   settingInner: {
     top: 225,
-    left: 128,
+    left: 115,
     borderRadius: 5,
-    backgroundColor: Color.colorGray_200,
+    backgroundColor: Color.colorGainsboro_100,
     height: 29,
   },
   editProfile: {
-    top: 230,
-    left: 150,
-    fontSize: FontSize.unifiedDesignDeprecatedFootnote_size,
-    fontFamily: FontFamily.poppinsMedium,
-    fontWeight: "500",
+    top: 475,
+    left: 24,
+    left: 45,
+    fontWeight: "700",
+    fontSize: FontSize.size_mini,
+    position: "absolute",
+  },
+  profileClr: {
+    color: Color.lightBlack,
+    textAlign: "left",
+    position: "absolute",
   },
   translateIcon: {
     top: 400,
@@ -364,14 +357,15 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   umoonIcon: {
-    top: 428,
+    top: 435,
     left: 17,
     overflow: "hidden",
   },
   heartIcon: {
-    left: 7,
+    left: 19,
     height: 19,
     width: 19,
+    
     overflow: "hidden",
   },
   profile: {
@@ -386,7 +380,7 @@ const styles = StyleSheet.create({
     top: 266,
     backgroundColor: Color.colorGainsboro_100,
     height: 32,
-    left: 0,
+    left:-8,
   },
   events: {
     top: 271,
@@ -399,7 +393,7 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   editDuotoneIcon: {
-    top: 468,
+    top: 475,
     left: 13,
   },
   editProfile1: {
@@ -413,17 +407,25 @@ const styles = StyleSheet.create({
     fontSize: FontSize.size_mini,
   },
   groupView: {
-    top: 472,
-    left: 341,
+    top: 479,
+    left: 338,
   },
   shareIcon: {
-    width: 20, 
-    height: 20, 
-    position: "absolute",
-    top: -322, 
-    right: -125, // Adjust the right position to position the icon between the bell icon and the favorites text
+    top: 50,
+    left: 345,
+    height: 16, // Adjust the height to make the icon smaller
+    width: 16, // Adjust the width to make the icon smaller
+    position: "absolute",// Adjust the right position to position the icon between the bell icon and the favorites text
     zIndex: 1,
   },
+  profilImage: {
+    top: 99,
+    left: 135,
+    width: 122,
+    height: 122,
+    position: "absolute",
+  },
+  
 });
 
 export default Setting;

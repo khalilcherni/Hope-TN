@@ -30,13 +30,13 @@ import ChatroomContainer from './screens/ChatrommContainer';
 import Register from './screens/Registration'
 import Events from './screens/Events.jsx'
 import ChatRoom from './screens/ChatRoom.jsx'
-import HomeRE from './screens/Home.jsx';
+// import HomeRE from './screens/Home.jsx';
 import Messages from './screens/Messages.jsx'
 import Setting from './screens/Setting.jsx'
 import School from './screens/School.jsx';
 import EnglishCourseScreen from './screens/EnglishCourseScreen.jsx';
 import Contact from './screens/Contactus.jsx';
-import Elderly from "./screens/Elderly.jsx"
+// import Elderly from "./screens/Orphans.jsx"
 import Donation from './screens/donation.jsx'
 // import Voluntarywork from './screens/Voluntarywork.jsx'
 import categoriePeopleWhoNeedWater from './screens/categoriePeopleWhoNeedWater.js'
@@ -53,7 +53,7 @@ import ChatScreen from './screens/ChatScreen.jsx';
 import Frame2 from './screens/Elders.jsx';
 import Payment from './screens/Payment.js';
 import SendMail from './screens/SuccessfullPayment.js';
-import Language from './screens/Language.js';
+ import LeaderBoard from './screens/LeaderBoard.jsx';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -110,7 +110,7 @@ export default function App() {
             <Stack.Screen name="Messages" component={Messages}/>    */}
              {/* <Stack.Screen name="Helping" component={CharityScreen}/>   
             <Stack.Screen name="Donation1" component={Donation1}/>    */}
-      </Stack.Navigator>
+       </Stack.Navigator>
 {/* <Events/> */}
 {/* <Azert/> */}
       {/* <HomeRE/> */}
@@ -119,6 +119,7 @@ export default function App() {
       {/* <School/> */}
       {/* <EnglishCourseScreen/> */}
       {/* <CharityScreen/> */}
+      <LeaderBoard/>
     </NavigationContainer>
   );
 }
